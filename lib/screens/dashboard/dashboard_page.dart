@@ -585,7 +585,9 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                   Center(
                     child: Image.asset(
                       'assets/images/notify_icon.png',
-                      color: Theme.of(context).colorScheme.onSurface,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
                       width: 30,
                       height: 30,
                     ),
@@ -1598,12 +1600,18 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
               },
             )),
         bottomNavigationBar: BottomNavigationBar(
-          unselectedItemColor: Theme.of(context).colorScheme.shadow,
+          unselectedItemColor: Theme.of(context).colorScheme.onSurface,
           selectedItemColor: Theme.of(context).colorScheme.primary,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Theme.of(context).colorScheme.onBackground,
-          unselectedLabelStyle: TextStyle(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w500, fontSize: 12),
-          selectedLabelStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500, fontSize: 12),
+          backgroundColor: Theme.of(context).colorScheme.background,
+          unselectedLabelStyle: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface,
+              fontWeight: FontWeight.w500,
+              fontSize: 12),
+          selectedLabelStyle: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.w500,
+              fontSize: 12),
           items: [
             const BottomNavigationBarItem(
               icon: ImageIcon(

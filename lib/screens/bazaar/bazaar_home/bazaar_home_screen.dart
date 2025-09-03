@@ -78,10 +78,16 @@ class _BazaarHomeScreenState extends State<BazaarHomeScreen> {
         body: isPageSet ? page : ChangeNotifierProvider(create: (context) => SellViewmodel(), child: const BuyScreen()),
         bottomNavigationBar: BottomNavigationBar(
           elevation: 8,
-          backgroundColor: Color(0xFFFFFFFF),
-          unselectedLabelStyle: TextStyle(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w500, fontSize: 12),
-          selectedLabelStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500, fontSize: 12),
-          unselectedItemColor: Theme.of(context).colorScheme.shadow,
+          backgroundColor: Theme.of(context).colorScheme.background,
+          unselectedLabelStyle: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface,
+              fontWeight: FontWeight.w500,
+              fontSize: 12),
+          selectedLabelStyle: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.w500,
+              fontSize: 12),
+          unselectedItemColor: Theme.of(context).colorScheme.onSurface,
           selectedItemColor: Theme.of(context).colorScheme.primary,
           type: BottomNavigationBarType.fixed,
           currentIndex: index,
