@@ -109,7 +109,7 @@ class CustomTextFormField extends StatelessWidget {
           counterText: ''),
       style: Theme.of(context).textTheme.titleSmall?.copyWith(
           color: Theme.of(context).brightness == Brightness.light
-              ? ColorsUtils.of(context).greyText
+              ? ColorsUtils.greyText
               : const Color(0xFFAEAEAE),
           fontSize: fontSize,
           fontWeight: FontWeight.w400),
