@@ -5,6 +5,7 @@ import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/screens/appointment/intent/selected_coupon_intent.dart';
 import 'package:oqdo_mobile_app/screens/appointment/response/referral_coupon_response_model.dart';
 import 'package:oqdo_mobile_app/screens/appointment/views/discount_coupon.dart';
+import 'package:oqdo_mobile_app/theme/app_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -33,7 +34,7 @@ class _CopounScreenState extends State<CopounScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: CustomAppBar(
           title: 'Book Appointment',
           onBack: () {
@@ -48,7 +49,7 @@ class _CopounScreenState extends State<CopounScreen> {
               label: 'Select Coupon',
               textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                     fontSize: 19,
-                    color: const Color(0xFF2B2B2B),
+                    color: AppColors.chipText,
                     fontWeight: FontWeight.bold,
                   ),
             ),
@@ -83,13 +84,13 @@ class _CopounScreenState extends State<CopounScreen> {
               : Expanded(
                   child: Center(
                   child: isLoading
-                      ? const CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF006990)),
+                      ? CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(AppColors.dividerColor),
                         )
                       : CustomTextView(
                           label: 'No Coupons Available',
                           textStyle: const TextStyle(
-                            color: Color(0xFF2B2B2B),
+                            color: AppColors.chipText,
                             fontSize: 19,
                             fontWeight: FontWeight.bold,
                           ),

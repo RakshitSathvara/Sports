@@ -9,6 +9,7 @@ import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/model/end_user_appointment_model_details.dart';
 import 'package:oqdo_mobile_app/model/facility_appointment_details_model.dart';
+import 'package:oqdo_mobile_app/theme/app_colors.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
@@ -57,7 +58,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: OQDOThemeData.whiteColor,
+          color: Theme.of(context).colorScheme.background,
           child: _facilityAppointmentDetailModel != null
               ? SingleChildScrollView(
                   child: Column(
@@ -118,7 +119,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                         child: CustomTextView(
                           label: 'Name: ${_facilityAppointmentDetailModel!.facilityName}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -129,7 +130,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                         child: CustomTextView(
                           label: 'Email ID: ${_facilityAppointmentDetailModel!.facilityEmail}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -140,7 +141,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                         child: CustomTextView(
                           label: 'Phone number: ${_facilityAppointmentDetailModel!.facilityMobileNumber}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -151,7 +152,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                         child: CustomTextView(
                           label: _facilityAppointmentDetailModel!.bookingType == 'I' ? 'Booking For: Individual' : 'Booking For: Group',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -164,7 +165,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                           textOverFlow: TextOverflow.ellipsis,
                           label: 'Address : ${_facilityAppointmentDetailModel!.address}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -175,7 +176,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                         child: CustomTextView(
                           label: 'Order ID: ${_facilityAppointmentDetailModel!.bookingNo}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -249,9 +250,9 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                   itemCount: 5,
                   itemSize: 23,
                   itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
-                  itemBuilder: (context, _) => const Icon(
+                  itemBuilder: (context, _) => Icon(
                     Icons.star,
-                    color: Colors.amber,
+                    color: AppColors.pendingAmount,
                     size: 15,
                   ),
                   onRatingUpdate: (rating) {
@@ -277,15 +278,15 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10), bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10), topRight: Radius.circular(10)),
-                    border: Border.all(color: const Color(0xffF1F1F1)),
-                    color: const Color(0xffEFEFEF).withOpacity(0.5)),
+                    border: Border.all(color: AppColors.filterDividerColor),
+                    color: AppColors.greyButton.withOpacity(0.5)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.add,
                       size: 20,
-                      color: Color(0xFF006590),
+                      color: AppColors.dividerColor,
                     ),
                     const SizedBox(
                       width: 10,
@@ -293,7 +294,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                     CustomTextView(
                       label: 'Add Feedback',
                       type: styleSubTitle,
-                      textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: const Color(0xFF006590), fontSize: 14.0, fontWeight: FontWeight.w500),
+                      textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: AppColors.dividerColor, fontSize: 14.0, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
@@ -441,9 +442,9 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
               ),
             ],
           ),
-          const Divider(
+          Divider(
             thickness: 1.0,
-            color: Color(0xFFEFEFEF),
+            color: AppColors.greyButton,
           ),
         ],
       ),
@@ -465,7 +466,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  border: Border.all(width: 7.0, color: const Color.fromRGBO(0, 101, 144, 0.5)),
+                  border: Border.all(width: 7.0, color: AppColors.dividerColor.withOpacity(0.5)),
                 ),
               ),
               const SizedBox(width: 20.0),
@@ -539,7 +540,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
   Widget _paymentSummaryView() {
     return Container(
       decoration: BoxDecoration(
-        color: OQDOThemeData.whiteColor,
+        color: Theme.of(context).colorScheme.background,
         border: Border.all(color: OQDOThemeData.otherTextColor),
       ),
       padding: const EdgeInsets.all(8.0),
@@ -952,7 +953,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
     return SafeArea(
         child: Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.background,
         borderRadius: const BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),
       ),
       child: Column(
@@ -1038,7 +1039,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                               maxLines: 3,
                               style: TextStyle(
                                   fontSize: 15,
-                                  color: paymentTransaction[index].isRefund == false ? ColorsUtils.greenAmount : ColorsUtils.redAmount,
+                                  color: paymentTransaction[index].isRefund == false ? AppColors.greenAmount : AppColors.redAmount,
                                   fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -1176,10 +1177,10 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                               style: TextStyle(
                                   fontSize: 14,
                                   color: paymentTransaction[index].status == 'A'
-                                      ? ColorsUtils.greenAmount
+                                      ? AppColors.greenAmount
                                       : paymentTransaction[index].status == 'P'
-                                          ? Colors.yellow
-                                          : ColorsUtils.redAmount,
+                                          ? AppColors.yellowStatus
+                                          : AppColors.redAmount,
                                   fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -1216,7 +1217,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                               maxLines: 3,
                               style: TextStyle(
                                 fontSize: 14,
-                                color: ColorsUtils.yellowStatus,
+                                color: AppColors.yellowStatus,
                                 fontWeight: FontWeight.w500,
                               ),
                               overflow: TextOverflow.ellipsis,

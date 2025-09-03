@@ -1,27 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:oqdo_mobile_app/utils/utilities.dart';
+import 'package:oqdo_mobile_app/theme/app_colors.dart';
 
 class ColorsUtils {
-  static Color greyButton = parseColor("#EFEFEF");
-  static Color greyCircle = parseColor("#E2E2E8");
-  static Color redColor = parseColor("#FF0000");
-  static Color redDeleteColor = parseColor("#EE2B2F");
-  static Color vacationList = parseColor("#80b2c7");
-  static Color greyText = parseColor("#818181");
-  static Color subTitle = parseColor("#3A3A3A");
-  static Color chipBackground = parseColor("#e1edf2");
-  static Color chipText = parseColor("#2B2B2B");
-  static Color edittextBackProfile = parseColor("#D9D9D9");
-  static Color white = parseColor("#FFFFFF");
-  static Color messageLeft = parseColor("#C7DDE7");
-  static Color messageRight = parseColor("#C7C7C7");
-  static Color greyTab = parseColor("#F8F8F8");
-  static Color greyAmount = parseColor("#656565");
-  static Color redAmount = parseColor("#FF0000");
-  static Color greenAmount = parseColor("#008000");
-  static Color pendingAmount = parseColor("#B59800");
-  static Color yellowStatus = parseColor("#E1B000");
 
+  static Color redColor = AppColors.redColor;
+  static Color redDeleteColor = AppColors.redDeleteColor;
+  static Color redAmount = AppColors.redAmount;
+  static Color greenAmount = AppColors.greenAmount;
+  static Color pendingAmount = AppColors.pendingAmount;
+
+
+  static Color greyButtonTheme(BuildContext context) => AppColors.greyButton;
+  static Color greyCircleTheme(BuildContext context) => AppColors.greyCircle;
+  static Color vacationListTheme(BuildContext context) => AppColors.vacationList;
+  static Color greyTextTheme(BuildContext context) => AppColors.greyText;
+  static Color subTitleTheme(BuildContext context) => AppColors.subTitle;
+  static Color chipBackgroundTheme(BuildContext context) => AppColors.chipBackground;
+  static Color chipTextTheme(BuildContext context) => AppColors.chipText;
+  static Color edittextBackProfileTheme(BuildContext context) => AppColors.edittextBackProfile;
+  static Color whiteTheme(BuildContext context) => AppColors.white;
+  static Color messageLeftTheme(BuildContext context) => AppColors.messageLeft;
+  static Color messageRightTheme(BuildContext context) => AppColors.messageRight;
+  static Color greyTabTheme(BuildContext context) => AppColors.greyTab;
+  static Color greyAmountTheme(BuildContext context) => AppColors.greyAmount;
+  static Color yellowStatusTheme(BuildContext context) => AppColors.yellowStatus;
+
+  static Color getThemeColor(BuildContext context, Color lightColor, Color darkColor) {
+    return Theme.of(context).brightness == Brightness.dark ? darkColor : lightColor;
+  }
+
+  static Color getPrimaryColor(BuildContext context) {
+    return Theme.of(context).colorScheme.primary;
+  }
+
+  static Color getBackgroundColor(BuildContext context) {
+    return Theme.of(context).colorScheme.background;
+  }
 }
 
 

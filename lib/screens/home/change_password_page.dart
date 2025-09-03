@@ -17,6 +17,7 @@ import 'package:oqdo_mobile_app/utils/string_manager.dart';
 import 'package:oqdo_mobile_app/utils/textfields_widget.dart';
 import 'package:oqdo_mobile_app/utils/validator.dart';
 import 'package:oqdo_mobile_app/viewmodels/ProfileViewModel.dart';
+import 'package:oqdo_mobile_app/viewmodels/theme_view_model.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
 
@@ -108,10 +109,23 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       ),
                     ),
                     CustomAppBar(
-                        title: 'Change Password',
-                        onBack: () {
-                          Navigator.of(context).pop();
-                        }),
+                      title: 'Change Password',
+                      onBack: () {
+                        Navigator.of(context).pop();
+                      },
+                      actions: [
+                        Consumer<ThemeViewModel>(
+                          builder: (context, themeViewModel, child) {
+                            return Switch(
+                              value: themeViewModel.themeMode == ThemeMode.dark,
+                              onChanged: (value) {
+                                themeViewModel.setTheme(value ? ThemeMode.dark : ThemeMode.light);
+                              },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ],
                 ),
                 const SizedBox(

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/model/coach_appointment_details_response_model.dart' as model;
+import 'package:oqdo_mobile_app/theme/app_colors.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
@@ -115,7 +116,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                         child: CustomTextView(
                           label: 'Name: ${coachAppointmentDetailResponseModel!.endUserFirstName} ${coachAppointmentDetailResponseModel!.endUserLastName}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -126,7 +127,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                         child: CustomTextView(
                           label: 'Email ID: ${coachAppointmentDetailResponseModel!.endUserEmail}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -137,7 +138,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                         child: CustomTextView(
                           label: 'Phone number: ${coachAppointmentDetailResponseModel!.endUserMobileNumber}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -148,7 +149,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                         child: CustomTextView(
                           label: coachAppointmentDetailResponseModel!.bookingType == 'I' ? 'Booking For: Individual' : 'Booking For: Group',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -161,7 +162,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                           maxLine: 3,
                           textOverFlow: TextOverflow.ellipsis,
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -176,7 +177,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                               maxLine: 3,
                               textOverFlow: TextOverflow.ellipsis,
                               textStyle:
-                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w600),
+                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w600),
                             ),
                             CustomTextView(
                               label: '${coachAppointmentDetailResponseModel!.bookingNo}',
@@ -184,7 +185,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                               textOverFlow: TextOverflow.ellipsis,
                               textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                                     fontSize: 14,
-                                    color: const Color(0xFF818181),
+                                    color: AppColors.greyText,
                                     fontWeight: FontWeight.w400,
                                   ),
                             ),
@@ -264,7 +265,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
   Widget _paymentSummaryView() {
     return Container(
       decoration: BoxDecoration(
-        color: OQDOThemeData.whiteColor,
+        color: Theme.of(context).colorScheme.background,
         border: Border.all(color: OQDOThemeData.otherTextColor),
       ),
       padding: const EdgeInsets.all(8.0),
@@ -435,9 +436,9 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
               ),
             ],
           ),
-          const Divider(
+          Divider(
             thickness: 1.0,
-            color: Color(0xFFEFEFEF),
+            color: AppColors.greyButton,
           ),
         ],
       ),
@@ -468,7 +469,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  border: Border.all(width: 7.0, color: const Color.fromRGBO(0, 101, 144, 0.5)),
+                  border: Border.all(width: 7.0, color: AppColors.dividerColor.withOpacity(0.5)),
                 ),
               ),
               const SizedBox(width: 20.0),
@@ -485,7 +486,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                   ),
                   CustomTextView(
                     label: '${coachAppointmentDetailResponseModel!.activityName} - ${coachAppointmentDetailResponseModel!.subActivityName}',
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                   ),
                 ],
               ),
@@ -591,7 +592,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
     return SafeArea(
         child: Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.background,
         borderRadius: const BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),
       ),
       child: Column(
@@ -676,7 +677,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                               maxLines: 3,
                               style: TextStyle(
                                   fontSize: 15,
-                                  color: paymentTransaction[index].isRefund == false ? ColorsUtils.greenAmount : ColorsUtils.redAmount,
+                                  color: paymentTransaction[index].isRefund == false ? AppColors.greenAmount : AppColors.redAmount,
                                   fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -790,10 +791,10 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                               style: TextStyle(
                                   fontSize: 14,
                                   color: paymentTransaction[index].status == 'A'
-                                      ? ColorsUtils.greenAmount
+                                      ? AppColors.greenAmount
                                       : paymentTransaction[index].status == 'P'
-                                          ? Colors.yellow
-                                          : ColorsUtils.redAmount,
+                                          ? AppColors.yellowStatus
+                                          : AppColors.redAmount,
                                   fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -830,7 +831,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                               maxLines: 3,
                               style: TextStyle(
                                 fontSize: 14,
-                                color: ColorsUtils.yellowStatus,
+                                color: AppColors.yellowStatus,
                                 fontWeight: FontWeight.w500,
                               ),
                               overflow: TextOverflow.ellipsis,

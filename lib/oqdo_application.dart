@@ -10,6 +10,7 @@ import 'package:oqdo_mobile_app/utils/shared_preferences_manager.dart';
 import 'package:oqdo_mobile_app/viewmodels/ProfileViewModel.dart';
 import 'package:oqdo_mobile_app/viewmodels/location_selection_viewmodel.dart';
 import 'package:oqdo_mobile_app/viewmodels/notification_provider.dart';
+import 'package:oqdo_mobile_app/viewmodels/theme_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -70,31 +71,38 @@ class _OQDOApplicationState extends State<OQDOApplication> {
         ChangeNotifierProvider<ProfileViewModel>(create: (_) => ProfileViewModel()),
         ChangeNotifierProvider<NotificationProvider>(create: (_) => NotificationProvider()),
         ChangeNotifierProvider<LocationSelectionViewModel>(create: (_) => LocationSelectionViewModel()),
+        ChangeNotifierProvider<ThemeViewModel>(create: (_) => ThemeViewModel()),
       ],
-      child: MaterialApp(
-          builder: (context, widget) => MediaQuery(
-                data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
-                child: ResponsiveWrapper.builder(
-                  BouncingScrollWrapper.builder(context, widget!),
-                  maxWidth: 1200,
-                  minWidth: 450,
-                  defaultScale: true,
-                  breakpoints: [
-                    const ResponsiveBreakpoint.resize(450, name: MOBILE),
-                    const ResponsiveBreakpoint.autoScale(800, name: TABLET),
-                    const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
-                    const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
-                    const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
-                  ],
-                ),
-              ),
-          onGenerateRoute: RouteGenerator.generateRoute,
-          title: Constants.APP_NAME,
-          home: const Splash(),
-          navigatorKey: navigatorKey,
-          scaffoldMessengerKey: rootScaffoldMessangerKey,
-          debugShowCheckedModeBanner: false,
-          theme: OQDOThemeData.lightThemeData),
+      child: Consumer<ThemeViewModel>(
+        builder: (context, themeViewModel, child) {
+          return MaterialApp(
+              builder: (context, widget) => MediaQuery(
+                    data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
+                    child: ResponsiveWrapper.builder(
+                      BouncingScrollWrapper.builder(context, widget!),
+                      maxWidth: 1200,
+                      minWidth: 450,
+                      defaultScale: true,
+                      breakpoints: [
+                        const ResponsiveBreakpoint.resize(450, name: MOBILE),
+                        const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+                        const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
+                        const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+                        const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+                      ],
+                    ),
+                  ),
+              onGenerateRoute: RouteGenerator.generateRoute,
+              title: Constants.APP_NAME,
+              home: const Splash(),
+              navigatorKey: navigatorKey,
+              scaffoldMessengerKey: rootScaffoldMessangerKey,
+              debugShowCheckedModeBanner: false,
+              theme: OQDOThemeData.lightThemeData,
+              darkTheme: OQDOThemeData.darkThemeData,
+              themeMode: themeViewModel.themeMode);
+        },
+      ),
     );
   }
 }

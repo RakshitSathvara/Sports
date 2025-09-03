@@ -10,6 +10,7 @@ import 'package:oqdo_mobile_app/model/CancelFacilityAppointmentModel.dart';
 import 'package:oqdo_mobile_app/model/end_user_appointment_model_details.dart';
 import 'package:oqdo_mobile_app/model/facility_appointment_details_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
+import 'package:oqdo_mobile_app/theme/app_colors.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
@@ -129,7 +130,7 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                      .copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                                 ),
                               ),
                               const SizedBox(
@@ -142,7 +143,7 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                      .copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                                 ),
                               ),
                               const SizedBox(
@@ -155,7 +156,7 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                      .copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                                 ),
                               ),
                               const SizedBox(
@@ -168,7 +169,7 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                      .copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                                 ),
                               ),
                               const SizedBox(
@@ -181,7 +182,7 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                      .copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                                 ),
                               ),
                               const SizedBox(
@@ -196,15 +197,15 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                      .copyWith(fontSize: 14, color: AppColors.greyText, fontWeight: FontWeight.w400),
                                 ),
                               ),
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Divider(
+                              Divider(
                                 height: 1,
-                                color: Color(0xFFCACACA),
+                                color: AppColors.greyText.withOpacity(0.5),
                               ),
                               const SizedBox(
                                 height: 20.0,

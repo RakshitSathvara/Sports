@@ -14,6 +14,7 @@ import 'package:oqdo_mobile_app/model/end_user_appoinments_model.dart';
 import 'package:oqdo_mobile_app/model/end_user_appointment_model_details.dart';
 import 'package:oqdo_mobile_app/model/facility_appointment_details_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
+import 'package:oqdo_mobile_app/theme/app_colors.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
@@ -123,7 +124,7 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
                                 child: Container(
                                   padding: const EdgeInsets.all(8),
                                   decoration: BoxDecoration(
-                                      color: const Color(0xFF006590),
+                                      color: AppColors.dividerColor,
                                       border: Border.all(color: OQDOThemeData.dividerColor),
                                       borderRadius: const BorderRadius.all(Radius.circular(10))),
                                   child: CustomTextView(
@@ -167,7 +168,7 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
                                               Container(
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.rectangle,
-                                                  border: Border.all(width: 7.0, color: const Color.fromRGBO(0, 101, 144, 0.5)),
+                                                  border: Border.all(width: 7.0, color: AppColors.dividerColor.withOpacity(0.5)),
                                                 ),
                                               ),
                                               const SizedBox(width: 20.0),
@@ -235,7 +236,7 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
                   Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      border: Border.all(width: 7.0, color: const Color.fromRGBO(0, 101, 144, 0.5)),
+                      border: Border.all(width: 7.0, color: AppColors.dividerColor.withOpacity(0.5)),
                     ),
                   ),
                   const SizedBox(width: 20.0),
@@ -379,7 +380,7 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
         children: [
           CustomTextView(
             label: monthStr,
-            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: const Color(0xFF333333)),
+            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: AppColors.greyColor),
           ),
           const Spacer(),
           GestureDetector(
@@ -432,13 +433,13 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
             headerVisible: false,
             daysOfWeekVisible: true,
             daysOfWeekStyle: const DaysOfWeekStyle(
-                weekdayStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500),
-                weekendStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500)),
+                weekdayStyle: TextStyle(color: AppColors.dividerColor, fontWeight: FontWeight.w500),
+                weekendStyle: TextStyle(color: AppColors.dividerColor, fontWeight: FontWeight.w500)),
             calendarStyle: CalendarStyle(
               isTodayHighlighted: false,
               outsideDaysVisible: false,
               selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-              defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black),
+              defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: AppColors.blackColor),
             ),
             onDaySelected: _onDaySelected,
             selectedDayPredicate: (DateTime date) {
