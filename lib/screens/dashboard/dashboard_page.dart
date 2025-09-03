@@ -348,9 +348,9 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(
+              Icon(
                 Icons.network_check_rounded,
-                color: Colors.red,
+                color: Theme.of(mContext).colorScheme.error,
                 size: 100.0,
               ),
               const SizedBox(height: 10.0),
@@ -359,7 +359,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                 textOverFlow: TextOverflow.ellipsis,
                 label: "Slow or No Internet.",
                 textStyle: Theme.of(mContext).textTheme.bodyMedium!.copyWith(
-                      color: OQDOThemeData.blackColor,
+                      color: Theme.of(mContext).colorScheme.onSurface,
                       fontSize: 20,
                     ),
               ),
@@ -369,7 +369,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                 textAlign: TextAlign.center,
                 maxLines: 4,
                 style: Theme.of(mContext).textTheme.bodyMedium!.copyWith(
-                      color: OQDOThemeData.blackColor,
+                      color: Theme.of(mContext).colorScheme.onSurface,
                       fontSize: 16,
                     ),
               ),
@@ -413,9 +413,9 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(
+                Icon(
                   Icons.network_check_rounded,
-                  color: Colors.red,
+                  color: Theme.of(mContext).colorScheme.error,
                   size: 100.0,
                 ),
                 const SizedBox(height: 10.0),
@@ -424,7 +424,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                   textOverFlow: TextOverflow.ellipsis,
                   label: "Slow or No Internet.",
                   textStyle: Theme.of(mContext).textTheme.bodyMedium!.copyWith(
-                        color: OQDOThemeData.blackColor,
+                        color: Theme.of(mContext).colorScheme.onSurface,
                         fontSize: 20,
                       ),
                 ),
@@ -434,7 +434,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                   textAlign: TextAlign.center,
                   maxLines: 4,
                   style: Theme.of(mContext).textTheme.bodyMedium!.copyWith(
-                        color: OQDOThemeData.blackColor,
+                        color: Theme.of(mContext).colorScheme.onSurface,
                         fontSize: 16,
                       ),
                 ),
@@ -517,10 +517,13 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
               color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
-          backgroundColor: OQDOThemeData.whiteColor,
+          backgroundColor: Theme.of(context).colorScheme.background,
           title: Text(
             "oqdo",
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(color: OQDOThemeData.blackColor, fontWeight: FontWeight.w600, fontSize: 20.0),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+                fontWeight: FontWeight.w600,
+                fontSize: 20.0),
           ),
           centerTitle: true,
           actions: [
@@ -529,7 +532,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                     padding: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
                     child: MyButton(
                       text: 'Login',
-                      textcolor: OQDOThemeData.whiteColor,
+                      textcolor: Theme.of(context).colorScheme.onSecondary,
                       textsize: 14,
                       fontWeight: FontWeight.w400,
                       letterspacing: 1.2,
@@ -596,7 +599,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                             height: 10,
                             padding: const EdgeInsets.all(1),
                             decoration: BoxDecoration(
-                              color: Colors.red,
+                              color: Theme.of(context).colorScheme.error,
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
@@ -614,13 +617,13 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
             begin: Alignment.centerRight,
             end: Alignment.centerLeft,
             colors: [
-              Theme.of(context).colorScheme.onBackground,
-              Theme.of(context).colorScheme.onBackground,
+              Theme.of(context).colorScheme.background,
+              Theme.of(context).colorScheme.background,
             ],
           )),
           child: ListTileTheme(
-            textColor: Colors.white,
-            iconColor: Colors.white,
+            textColor: Theme.of(context).colorScheme.onBackground,
+            iconColor: Theme.of(context).colorScheme.onBackground,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -634,7 +637,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                               ? Padding(
                                   padding: const EdgeInsets.fromLTRB(20.0, 0, 0, 0),
                                   child: CircleAvatar(
-                                    backgroundColor: Colors.white,
+                                    backgroundColor: Theme.of(context).colorScheme.background,
                                     radius: 25,
                                     child: CircleAvatar(
                                       radius: 25,
@@ -659,7 +662,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                                                 height: 20,
                                                 width: 20,
                                                 child: CircularProgressIndicator(
-                                                  color: Colors.white,
+                                                  color: Theme.of(context).colorScheme.onBackground,
                                                   value: loadingProgress.expectedTotalBytes != null
                                                       ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
                                                       : null,
@@ -1348,9 +1351,9 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                                     width: 30,
                                     height: 30,
                                   ),
-                                  title: const Text('Logout',
+                                  title: Text('Logout',
                                       style: TextStyle(
-                                        color: Color(0xFFFF0000),
+                                        color: Theme.of(context).colorScheme.error,
                                         fontFamily: 'SFPro',
                                       )),
                                 )
@@ -1383,11 +1386,11 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
-                            color: Color(0xFF006590),
+                            color: Theme.of(context).colorScheme.primary,
                             borderRadius: BorderRadius.circular(24),
                             boxShadow: [
                               BoxShadow(
-                                color: Color(0xFF006590).withAlpha((0.1 * 255).toInt()),
+                                color: Theme.of(context).colorScheme.primary.withAlpha((0.1 * 255).toInt()),
                                 blurRadius: 8,
                                 offset: const Offset(0, 2),
                               ),
@@ -1416,19 +1419,22 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                                   height: 20,
                                   width: 20,
                                 ),
-                                label: const Text(
+                                label: Text(
                                   'Equipments',
-                                  style: TextStyle(color: Colors.white, fontFamily: 'SFPro', fontWeight: FontWeight.w500),
+                                  style: TextStyle(
+                                      color: Theme.of(context).colorScheme.onPrimary,
+                                      fontFamily: 'SFPro',
+                                      fontWeight: FontWeight.w500),
                                 ),
                                 style: TextButton.styleFrom(
-                                  foregroundColor: Colors.white,
+                                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
                                 ),
                               ),
                               const SizedBox(width: 8),
                               Container(
                                 width: 1,
                                 height: 24,
-                                color: Colors.grey[300],
+                                color: Theme.of(context).colorScheme.outline,
                               ),
                               const SizedBox(width: 8),
                               TextButton.icon(
@@ -1444,12 +1450,15 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                                   height: 20,
                                   width: 20,
                                 ),
-                                label: const Text(
+                                label: Text(
                                   'Ads',
-                                  style: TextStyle(color: Colors.white, fontFamily: 'SFPro', fontWeight: FontWeight.w500),
+                                  style: TextStyle(
+                                      color: Theme.of(context).colorScheme.onPrimary,
+                                      fontFamily: 'SFPro',
+                                      fontWeight: FontWeight.w500),
                                 ),
                                 style: TextButton.styleFrom(
-                                  foregroundColor: Colors.white,
+                                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
                                 ),
                               ),
                             ],
@@ -1476,11 +1485,11 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                             decoration: BoxDecoration(
-                              color: Color(0xFF006590),
+                              color: Theme.of(context).colorScheme.primary,
                               borderRadius: BorderRadius.circular(24),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Color(0xFF006590).withAlpha((0.1 * 255).toInt()),
+                                  color: Theme.of(context).colorScheme.primary.withAlpha((0.1 * 255).toInt()),
                                   blurRadius: 8,
                                   offset: const Offset(0, 2),
                                 ),
@@ -1509,19 +1518,22 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                                     height: 20,
                                     width: 20,
                                   ),
-                                  label: const Text(
+                                  label: Text(
                                     'Equipments',
-                                    style: TextStyle(color: Colors.white, fontFamily: 'SFPro', fontWeight: FontWeight.w500),
+                                    style: TextStyle(
+                                        color: Theme.of(context).colorScheme.onPrimary,
+                                        fontFamily: 'SFPro',
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   style: TextButton.styleFrom(
-                                    foregroundColor: Colors.white,
+                                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
                                   ),
                                 ),
                                 const SizedBox(width: 8),
                                 Container(
                                   width: 1,
                                   height: 24,
-                                  color: Colors.grey[300],
+                                  color: Theme.of(context).colorScheme.outline,
                                 ),
                                 const SizedBox(width: 8),
                                 TextButton.icon(
@@ -1537,12 +1549,15 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                                     height: 20,
                                     width: 20,
                                   ),
-                                  label: const Text(
+                                  label: Text(
                                     'Ads',
-                                    style: TextStyle(color: Colors.white, fontFamily: 'SFPro', fontWeight: FontWeight.w500),
+                                    style: TextStyle(
+                                        color: Theme.of(context).colorScheme.onPrimary,
+                                        fontFamily: 'SFPro',
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   style: TextButton.styleFrom(
-                                    foregroundColor: Colors.white,
+                                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
                                   ),
                                 ),
                               ],
@@ -1554,19 +1569,19 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                   ],
                 ),
               ),
-        backgroundColor: OQDOThemeData.whiteColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
             onPressed: _toggleFab,
             mini: false,
-            backgroundColor: Color(0xFF006590),
+            backgroundColor: Theme.of(context).colorScheme.primary,
             disabledElevation: 0,
             elevation: 0,
             clipBehavior: Clip.none,
-            foregroundColor: Color(0xFF006590),
-            splashColor: Color(0xFF006590),
+            foregroundColor: Theme.of(context).colorScheme.primary,
+            splashColor: Theme.of(context).colorScheme.primary,
             autofocus: false,
-            hoverColor: Color(0xFF006590),
+            hoverColor: Theme.of(context).colorScheme.primary,
             child: AnimatedBuilder(
               animation: _animationController,
               builder: (context, child) {
@@ -1577,7 +1592,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                     height: 30,
                     fit: BoxFit.contain,
                     !_isFabOpen ? 'assets/images/ic_bottom_shop.png' : 'assets/images/ic_bottom_close.png',
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.onPrimary,
                   ),
                 );
               },

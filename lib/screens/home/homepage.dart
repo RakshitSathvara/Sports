@@ -254,7 +254,9 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                       Icon(
                         Icons.location_on_outlined,
                         size: 25,
-                        color: Theme.of(context).colorScheme.shadow,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : const Color(0xFF878787),
                       ),
                       const SizedBox(
                         width: 10.0,
@@ -263,6 +265,14 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                         label: 'Location: ${selectedCountry!}',
                         type: styleSubTitle,
                         textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
+
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Colors.white
+                                  : const Color(0xFF878787),
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w400,
+                            ),
+
                             color: Theme.of(context).colorScheme.shadow,
                             fontSize: 16.0,
                             fontWeight: FontWeight.w400),
