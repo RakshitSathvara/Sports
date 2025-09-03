@@ -44,6 +44,7 @@ import 'package:oqdo_mobile_app/viewmodels/service_providers_cancellation_view_m
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
+import 'package:oqdo_mobile_app/widgets/theme_toggle_widgets.dart';
 
 // import 'package:signalr_flutter/signalr_api.dart';
 // import 'package:signalr_flutter/signalr_flutter.dart';
@@ -527,6 +528,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
           ),
           centerTitle: true,
           actions: [
+            const ThemeToggleButton(),
             (isLogin != '1')
                 ? Padding(
                     padding: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
