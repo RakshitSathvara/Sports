@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String labelText;
@@ -95,15 +96,23 @@ class CustomTextFormField extends StatelessWidget {
             borderSide: const BorderSide(color: OQDOThemeData.filterDividerColor, width: 1),
           ),
           labelText: labelText,
-          labelStyle:
-              Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.shadow, fontSize: 20.0, fontWeight: FontWeight.w400),
+          labelStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.black
+                  : Colors.white,
+              fontSize: 20.0,
+              fontWeight: FontWeight.w400),
           hintText: hintText,
           hintStyle:
               Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w400, fontSize: fontSize),
           contentPadding: const EdgeInsets.all(15),
           counterText: ''),
-      style:
-          Theme.of(context).textTheme.titleSmall?.copyWith(color: OQDOThemeData.lightColorScheme.onSecondary, fontSize: fontSize, fontWeight: FontWeight.w400),
+      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+          color: Theme.of(context).brightness == Brightness.light
+              ? ColorsUtils.of(context).greyText
+              : const Color(0xFFAEAEAE),
+          fontSize: fontSize,
+          fontWeight: FontWeight.w400),
     );
   }
 }

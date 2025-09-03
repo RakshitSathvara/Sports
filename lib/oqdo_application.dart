@@ -7,6 +7,7 @@ import 'package:oqdo_mobile_app/screens/login/splash_screen.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/shared_preferences_manager.dart';
+import 'package:oqdo_mobile_app/providers/theme_provider.dart';
 import 'package:oqdo_mobile_app/viewmodels/ProfileViewModel.dart';
 import 'package:oqdo_mobile_app/viewmodels/location_selection_viewmodel.dart';
 import 'package:oqdo_mobile_app/viewmodels/notification_provider.dart';
@@ -55,46 +56,55 @@ class OQDOApplication extends StatefulWidget {
 
 class _OQDOApplicationState extends State<OQDOApplication> {
   String? isLogin = '0';
+  late ThemeProvider _themeProvider;
 
   @override
   void initState() {
     super.initState();
-    // getData(context);
+    _themeProvider = ThemeProvider();
+    _themeProvider.loadTheme();
   }
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<ThemeProvider>.value(value: _themeProvider),
         ChangeNotifierProvider<ChatProvider>(create: (_) => ChatProvider()),
         ChangeNotifierProvider<ProfileViewModel>(create: (_) => ProfileViewModel()),
         ChangeNotifierProvider<NotificationProvider>(create: (_) => NotificationProvider()),
         ChangeNotifierProvider<LocationSelectionViewModel>(create: (_) => LocationSelectionViewModel()),
       ],
-      child: MaterialApp(
-          builder: (context, widget) => MediaQuery(
-                data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
-                child: ResponsiveWrapper.builder(
-                  BouncingScrollWrapper.builder(context, widget!),
-                  maxWidth: 1200,
-                  minWidth: 450,
-                  defaultScale: true,
-                  breakpoints: [
-                    const ResponsiveBreakpoint.resize(450, name: MOBILE),
-                    const ResponsiveBreakpoint.autoScale(800, name: TABLET),
-                    const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
-                    const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
-                    const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
-                  ],
-                ),
-              ),
-          onGenerateRoute: RouteGenerator.generateRoute,
-          title: Constants.APP_NAME,
-          home: const Splash(),
-          navigatorKey: navigatorKey,
-          scaffoldMessengerKey: rootScaffoldMessangerKey,
-          debugShowCheckedModeBanner: false,
-          theme: OQDOThemeData.lightThemeData),
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp(
+              builder: (context, widget) => MediaQuery(
+                    data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
+                    child: ResponsiveWrapper.builder(
+                      BouncingScrollWrapper.builder(context, widget!),
+                      maxWidth: 1200,
+                      minWidth: 450,
+                      defaultScale: true,
+                      breakpoints: [
+                        const ResponsiveBreakpoint.resize(450, name: MOBILE),
+                        const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+                        const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
+                        const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+                        const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+                      ],
+                    ),
+                  ),
+              onGenerateRoute: RouteGenerator.generateRoute,
+              title: Constants.APP_NAME,
+              home: const Splash(),
+              navigatorKey: navigatorKey,
+              scaffoldMessengerKey: rootScaffoldMessangerKey,
+              debugShowCheckedModeBanner: false,
+              theme: OQDOThemeData.lightThemeData,
+              darkTheme: OQDOThemeData.darkThemeData,
+              themeMode: themeProvider.themeMode);
+        },
+      ),
     );
   }
 }

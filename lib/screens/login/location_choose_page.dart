@@ -9,7 +9,6 @@ import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/helper/helpers.dart';
 import 'package:oqdo_mobile_app/model/location_selection_response_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -68,7 +67,7 @@ class _LocationChoosePageState extends State<LocationChoosePage> {
           Container(
             width: double.infinity,
             height: double.infinity,
-            color: OQDOThemeData.backgroundColor,
+            color: Theme.of(context).colorScheme.background,
             child: SingleChildScrollView(
               child: Form(
                 key: hp.formKey,
@@ -105,14 +104,14 @@ class _LocationChoosePageState extends State<LocationChoosePage> {
                                 textStyle: Theme.of(context)
                                     .textTheme
                                     .bodyLarge!
-                                    .copyWith(color: const Color(0xFF595959), fontWeight: FontWeight.w400, fontSize: 24.0),
+                                    .copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400, fontSize: 24.0),
                               ),
                               CustomTextView(
                                 label: 'back',
                                 textStyle: Theme.of(context)
                                     .textTheme
                                     .bodyLarge!
-                                    .copyWith(color: const Color(0xFF595959), fontWeight: FontWeight.w400, fontSize: 24.0),
+                                    .copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400, fontSize: 24.0),
                               ),
                             ],
                           ),
@@ -133,7 +132,7 @@ class _LocationChoosePageState extends State<LocationChoosePage> {
                             textStyle: Theme.of(context)
                                 .textTheme
                                 .titleMedium!
-                                .copyWith(color: OQDOThemeData.dividerColor, fontWeight: FontWeight.w700, fontSize: 22.0),
+                                .copyWith(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w700, fontSize: 22.0),
                           ),
                           const SizedBox(
                             height: 30.0,
@@ -142,7 +141,7 @@ class _LocationChoosePageState extends State<LocationChoosePage> {
                             decoration: BoxDecoration(
                               border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                               borderRadius: BorderRadius.circular(15),
-                              color: OQDOThemeData.backgroundColor,
+                              color: Theme.of(context).colorScheme.background,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.only(left: 10, right: 10),
@@ -150,9 +149,9 @@ class _LocationChoosePageState extends State<LocationChoosePage> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Icon(
+                                  Icon(
                                     Icons.location_on_outlined,
-                                    color: OQDOThemeData.dividerColor,
+                                    color: Theme.of(context).colorScheme.primary,
                                   ),
                                   const SizedBox(
                                     width: 10.0,
@@ -162,14 +161,14 @@ class _LocationChoosePageState extends State<LocationChoosePage> {
                                         isExpanded: true,
                                         underline: const SizedBox(),
                                         borderRadius: BorderRadius.circular(15),
-                                        icon: const Icon(Icons.keyboard_arrow_down_rounded, color: OQDOThemeData.dividerColor),
-                                        dropdownColor: Theme.of(context).colorScheme.onBackground,
+                                        icon: Icon(Icons.keyboard_arrow_down_rounded, color: Theme.of(context).colorScheme.primary),
+                                        dropdownColor: Theme.of(context).colorScheme.background,
                                         hint: CustomTextView(
                                           label: 'Select Location',
                                           textStyle: Theme.of(context)
                                               .textTheme
                                               .titleSmall!
-                                              .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                              .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                                         ),
                                         value: choosedlocation,
                                         items: location!.map((country) {
@@ -180,7 +179,7 @@ class _LocationChoosePageState extends State<LocationChoosePage> {
                                               textStyle: Theme.of(context)
                                                   .textTheme
                                                   .titleSmall!
-                                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                                             ),
                                           );
                                         }).toList(),
