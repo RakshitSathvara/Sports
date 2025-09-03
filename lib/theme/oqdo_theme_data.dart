@@ -11,6 +11,7 @@ class OQDOThemeData {
   static ThemeData lightThemeData = themeData(lightColorScheme, _lightFocusColor);
   static ThemeData darkThemeData = themeData(darkColorScheme, _darkFocusColor);
 
+  // Existing light theme colors
   static const Color blackColor = Colors.black;
   static const Color whiteColor = Colors.white;
   static const Color backgroundColor = Colors.white;
@@ -30,18 +31,65 @@ class OQDOThemeData {
   static const Color wellnessListing = Color(0xFFF7ECEC);
   static const Color sportsListing = Color(0xFFEBF4ED);
 
+  // Dark theme equivalents
+  static const Color darkBackgroundColor = Color(0xFF121212);
+  static const Color darkSurfaceColor = Color(0xFF1E1E1E);
+  static const Color darkGreyColor = Color(0xFFE0E0E0);
+  static const Color darkOtherTextColor = Color(0xFFB0B0B0);
+  static const Color darkFilterDividerColor = Color(0xFF404040);
+  static const Color darkChipColor = Color(0xFF404040);
+
+  static const Color darkHobbiesListing = Color(0xFF2A3B3E);
+  static const Color darkWellnessListing = Color(0xFF3E2A2A);
+  static const Color darkSportsListing = Color(0xFF2A3E2F);
+
   static ThemeData themeData(ColorScheme colorScheme, Color focusColor) {
     return ThemeData(
       useMaterial3: false,
       colorScheme: colorScheme,
       textTheme: _textTheme,
-      primaryColor: const Color(0xFF030303),
-      appBarTheme: AppBarTheme(backgroundColor: colorScheme.background, elevation: 0, iconTheme: IconThemeData(color: colorScheme.primary)),
-      iconTheme: IconThemeData(color: colorScheme.onPrimary),
+      primaryColor: colorScheme.primary,
+      appBarTheme: AppBarTheme(
+        backgroundColor: colorScheme.surface,
+        elevation: 0,
+        iconTheme: IconThemeData(color: colorScheme.onSurface),
+        titleTextStyle: _textTheme.titleLarge?.copyWith(
+          color: colorScheme.onSurface,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      iconTheme: IconThemeData(color: colorScheme.onSurface),
       canvasColor: colorScheme.background,
       scaffoldBackgroundColor: colorScheme.background,
       highlightColor: Colors.transparent,
       focusColor: focusColor,
+      cardTheme: CardTheme(
+        color: colorScheme.surface,
+        elevation: 2,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: colorScheme.surface,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: colorScheme.outline),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: colorScheme.outline),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: colorScheme.primary),
+        ),
+      ),
     );
   }
 
@@ -50,38 +98,40 @@ class OQDOThemeData {
     primaryContainer: Color(0xFF117378),
     secondary: Color(0xFFEFF3F3),
     secondaryContainer: Color(0xFF006590),
-    background: Color(0xFFE6EBEB),
+    background: Color(0xFFFFFFFF),
     surface: Color(0xFFFAFBFB),
-    shadow: Color(0xff818181),
-    onBackground: Colors.white,
-    error: _lightFillColor,
-    onError: _lightFillColor,
-    onPrimary: _lightFillColor,
+    surfaceVariant: Color(0xFFF8F8F8),
+    shadow: Color(0xFF818181),
+    outline: Color(0xFFE0E0E0),
+    onBackground: Color(0xFF1C1B1F),
+    onSurface: Color(0xFF1C1B1F),
+    onPrimary: Color(0xFFFFFFFF),
     onSecondary: Color(0xFF322942),
-    onSurface: Color(0xFF241E30),
+    error: Color(0xFFB3261E),
+    onError: Color(0xFFFFFFFF),
     brightness: Brightness.light,
-    surfaceVariant: Color(0xffF8F8F8),
   );
 
   static const ColorScheme darkColorScheme = ColorScheme(
-    primary: Color(0xFF006590),
-    primaryContainer: Color(0xFF1CDEC9),
-    secondary: Color(0xFF4D1F7C),
-    secondaryContainer: Color(0xFF451B6F),
-    background: Color(0xFF241E30),
-    surface: Color(0xFF1F1929),
-    shadow: Color(0xff818181),
-    onBackground: Color(0x0DFFFFFF),
-    // White with 0.05 opacity
-    error: _darkFillColor,
-    onError: _darkFillColor,
-    onPrimary: _darkFillColor,
-    onSecondary: _darkFillColor,
-    onSurface: _darkFillColor,
+    primary: Color(0xFF4FC3F7),
+    primaryContainer: Color(0xFF00658F),
+    secondary: Color(0xFF2A2A2A),
+    secondaryContainer: Color(0xFF4FC3F7),
+    background: Color(0xFF121212),
+    surface: Color(0xFF1E1E1E),
+    surfaceVariant: Color(0xFF2A2A2A),
+    shadow: Color(0xFF000000),
+    outline: Color(0xFF404040),
+    onBackground: Color(0xFFE6E1E5),
+    onSurface: Color(0xFFE6E1E5),
+    onPrimary: Color(0xFF003547),
+    onSecondary: Color(0xFFE6E1E5),
+    error: Color(0xFFF2B8B5),
+    onError: Color(0xFF601410),
     brightness: Brightness.dark,
-    surfaceVariant: Color(0xffF8F8F8),
   );
 
+  // Text theme remains the same
   static const _regular = FontWeight.w400;
   static const _medium = FontWeight.w500;
   static const _semiBold = FontWeight.w600;
@@ -89,34 +139,20 @@ class OQDOThemeData {
 
   static final TextTheme _textTheme = TextTheme(
     displayLarge: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 57.0),
-    // Was headline1
     displayMedium: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 45.0),
-    // Was headline2
     displaySmall: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 36.0),
-    // Was headline3
     headlineLarge: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 32.0),
-    // Was headline4
     headlineMedium: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 28.0),
-    // Was headline5
     headlineSmall: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 24.0),
-    // Was headline6
     titleLarge: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 22.0),
-    // Was subtitle1
     titleMedium: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 16.0),
-    // Was subtitle2
     titleSmall: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 14.0),
-    // New in Flutter 3.22.2
     bodyLarge: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 16.0),
-    // Was bodyText1
     bodyMedium: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 14.0),
-    // Was bodyText2
     bodySmall: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 12.0),
-    // Was caption
     labelLarge: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 14.0),
-    // Was button
     labelMedium: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 12.0),
-    // New in Flutter 3.22.2
-    labelSmall: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 11.0), // Was overline
+    labelSmall: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 11.0),
   );
 
   Color parseColor(String color) {
