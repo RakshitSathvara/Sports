@@ -585,7 +585,9 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                   Center(
                     child: Image.asset(
                       'assets/images/notify_icon.png',
-                      color: Theme.of(context).colorScheme.onSurface,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
                       width: 30,
                       height: 30,
                     ),

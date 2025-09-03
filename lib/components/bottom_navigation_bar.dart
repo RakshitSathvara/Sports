@@ -51,14 +51,13 @@ class _Mybottom_nav_barState extends State<Mybottomnavbar> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return BottomNavigationBar(
-        unselectedItemColor: Theme.of(context).colorScheme.shadow,
+        unselectedItemColor: Theme.of(context).colorScheme.onSurface,
         selectedItemColor: Theme.of(context).colorScheme.primary,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Theme.of(context).colorScheme.onBackground,
+        backgroundColor: Theme.of(context).colorScheme.background,
         unselectedLabelStyle: TextStyle(
-            color: Theme.of(context).colorScheme.shadow,
+            color: Theme.of(context).colorScheme.onSurface,
             fontWeight: FontWeight.w500,
             fontSize: 12),
         selectedLabelStyle: TextStyle(
