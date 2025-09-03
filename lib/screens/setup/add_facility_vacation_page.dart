@@ -66,7 +66,9 @@ class _AddFacilityVacationPageState extends State<AddFacilityVacationPage> {
             onPressed: () {},
             icon: ImageIcon(
               const AssetImage("assets/images/notify_icon.png"),
-              color: Theme.of(context).colorScheme.onSurface,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white
+                  : Colors.black,
             ),
           ),
           IconButton(

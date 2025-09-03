@@ -20,7 +20,6 @@ import 'package:oqdo_mobile_app/utils/validator.dart';
 import 'package:oqdo_mobile_app/viewmodels/login_view_model.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
-import 'package:oqdo_mobile_app/widgets/theme_toggle_widgets.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -116,11 +115,6 @@ class _LoginPageState extends State<LoginPage> {
                           image: AssetImage('assets/images/login_bg.png'),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      top: 40,
-                      right: 20,
-                      child: const ThemeToggleButton(),
                     ),
                     Positioned(
                       top: 100,

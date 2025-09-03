@@ -44,6 +44,7 @@ import 'package:oqdo_mobile_app/viewmodels/service_providers_cancellation_view_m
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
+import 'package:oqdo_mobile_app/widgets/theme_toggle_widgets.dart';
 
 // import 'package:signalr_flutter/signalr_api.dart';
 // import 'package:signalr_flutter/signalr_flutter.dart';
@@ -527,6 +528,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
           ),
           centerTitle: true,
           actions: [
+            const ThemeToggleButton(),
             (isLogin != '1')
                 ? Padding(
                     padding: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
@@ -585,7 +587,9 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                   Center(
                     child: Image.asset(
                       'assets/images/notify_icon.png',
-                      color: Theme.of(context).colorScheme.onSurface,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
                       width: 30,
                       height: 30,
                     ),
@@ -1598,12 +1602,18 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
               },
             )),
         bottomNavigationBar: BottomNavigationBar(
-          unselectedItemColor: Theme.of(context).colorScheme.shadow,
+          unselectedItemColor: Theme.of(context).colorScheme.onSurface,
           selectedItemColor: Theme.of(context).colorScheme.primary,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Theme.of(context).colorScheme.onBackground,
-          unselectedLabelStyle: TextStyle(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w500, fontSize: 12),
-          selectedLabelStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500, fontSize: 12),
+          backgroundColor: Theme.of(context).colorScheme.background,
+          unselectedLabelStyle: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface,
+              fontWeight: FontWeight.w500,
+              fontSize: 12),
+          selectedLabelStyle: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.w500,
+              fontSize: 12),
           items: [
             const BottomNavigationBarItem(
               icon: ImageIcon(
