@@ -14,7 +14,6 @@ import 'package:oqdo_mobile_app/model/end_user_profile_response.dart';
 import 'package:oqdo_mobile_app/model/facility_profile_response.dart';
 import 'package:oqdo_mobile_app/model/selecte_home_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/ConnectivityService.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
@@ -115,9 +114,9 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(
+              Icon(
                 Icons.network_check_rounded,
-                color: Colors.red,
+                color: Theme.of(mContext).colorScheme.error,
                 size: 100.0,
               ),
               const SizedBox(height: 10.0),
@@ -126,7 +125,7 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                 textOverFlow: TextOverflow.ellipsis,
                 label: "Slow or No Internet.",
                 textStyle: Theme.of(mContext).textTheme.bodyMedium!.copyWith(
-                      color: OQDOThemeData.blackColor,
+                      color: Theme.of(mContext).colorScheme.onSurface,
                       fontSize: 20,
                     ),
               ),
@@ -136,7 +135,7 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                 textAlign: TextAlign.center,
                 maxLines: 4,
                 style: Theme.of(mContext).textTheme.bodyMedium!.copyWith(
-                      color: OQDOThemeData.blackColor,
+                      color: Theme.of(mContext).colorScheme.onSurface,
                       fontSize: 16,
                     ),
               ),
@@ -180,9 +179,9 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(
+                Icon(
                   Icons.network_check_rounded,
-                  color: Colors.red,
+                  color: Theme.of(mContext).colorScheme.error,
                   size: 100.0,
                 ),
                 const SizedBox(height: 10.0),
@@ -191,7 +190,7 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                   textOverFlow: TextOverflow.ellipsis,
                   label: "Slow or No Internet.",
                   textStyle: Theme.of(mContext).textTheme.bodyMedium!.copyWith(
-                        color: OQDOThemeData.blackColor,
+                        color: Theme.of(mContext).colorScheme.onSurface,
                         fontSize: 20,
                       ),
                 ),
@@ -201,7 +200,7 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                   textAlign: TextAlign.center,
                   maxLines: 4,
                   style: Theme.of(mContext).textTheme.bodyMedium!.copyWith(
-                        color: OQDOThemeData.blackColor,
+                        color: Theme.of(mContext).colorScheme.onSurface,
                         fontSize: 16,
                       ),
                 ),
@@ -239,7 +238,7 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
         child: Container(
           width: width,
           height: height,
-          color: OQDOThemeData.whiteColor,
+          color: Theme.of(context).colorScheme.background,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -247,7 +246,7 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                 Container(
                   width: width,
                   height: 40,
-                  color: OQDOThemeData.whiteColor,
+                  color: Theme.of(context).colorScheme.background,
                   padding: const EdgeInsets.only(left: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -255,7 +254,9 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                       Icon(
                         Icons.location_on_outlined,
                         size: 25,
-                        color: Theme.of(context).colorScheme.shadow,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : const Color(0xFF878787),
                       ),
                       const SizedBox(
                         width: 10.0,
@@ -263,8 +264,13 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                       CustomTextView(
                         label: 'Location: ${selectedCountry!}',
                         type: styleSubTitle,
-                        textStyle:
-                            Theme.of(context).textTheme.titleSmall!.copyWith(color: const Color(0xFF878787), fontSize: 16.0, fontWeight: FontWeight.w400),
+                        textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Colors.white
+                                  : const Color(0xFF878787),
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w400,
+                            ),
                       ),
                     ],
                   ),
@@ -314,7 +320,7 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                           fontSize: 24.0,
                           fontFamily: 'Ultra',
                           letterSpacing: 0.5,
-                          color: OQDOThemeData.greyColor,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                   ),
                 ),
@@ -385,7 +391,7 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                                         fontSize: 24.0,
                                         fontFamily: 'Ultra',
                                         letterSpacing: 0.5,
-                                        color: OQDOThemeData.greyColor,
+                                        color: Theme.of(context).colorScheme.onSurface,
                                       ),
                                 ),
                               ),
@@ -425,7 +431,7 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                                     fontSize: 24.0,
                                     fontFamily: 'Ultra',
                                     letterSpacing: 0.5,
-                                    color: OQDOThemeData.greyColor,
+                                    color: Theme.of(context).colorScheme.onSurface,
                                   ),
                             ),
                           ),
@@ -471,7 +477,7 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                 //           fontSize: 24.0,
                 //           fontFamily: 'Ultra',
                 //           letterSpacing: 0.5,
-                //           color: OQDOThemeData.greyColor,
+                //           color: Theme.of(context).colorScheme.onSurface,
                 //         ),
                 //   ),
                 // ),
@@ -503,7 +509,12 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleLarge!
-                        .copyWith(letterSpacing: 0.5, color: OQDOThemeData.greyColor, fontSize: 20.0, fontFamily: 'Ultra', fontWeight: FontWeight.bold),
+                        .copyWith(
+                            letterSpacing: 0.5,
+                            color: Theme.of(context).colorScheme.onSurface,
+                            fontSize: 20.0,
+                            fontFamily: 'Ultra',
+                            fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(
@@ -542,7 +553,11 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleLarge!
-                        .copyWith(color: OQDOThemeData.blackColor, fontSize: 20.0, fontFamily: 'Ultra', fontWeight: FontWeight.bold),
+                        .copyWith(
+                            color: Theme.of(context).colorScheme.onSurface,
+                            fontSize: 20.0,
+                            fontFamily: 'Ultra',
+                            fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(
@@ -582,7 +597,11 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleLarge!
-                        .copyWith(color: OQDOThemeData.blackColor, fontSize: 20.0, fontFamily: 'Ultra', fontWeight: FontWeight.bold),
+                        .copyWith(
+                            color: Theme.of(context).colorScheme.onSurface,
+                            fontSize: 20.0,
+                            fontFamily: 'Ultra',
+                            fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(
@@ -649,9 +668,9 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                   list[index].thumbnailUrl!,
                   fit: BoxFit.fill,
                   errorBuilder: (context, error, stackTrace) {
-                    return const Icon(
+                    return Icon(
                       Icons.error, // or Icons.error
-                      color: Colors.red, // You can customize the color
+                      color: Theme.of(context).colorScheme.error, // You can customize the color
                       size: 40.0, // You can adjust the size
                     );
                   },
@@ -669,9 +688,9 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
                   padding: const EdgeInsets.all(2),
                   child: CustomTextView(
                     label: list[index].subActivityName!,
-                    color: OQDOThemeData.blackColor,
+                    color: Theme.of(context).colorScheme.onSurface,
                     textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          color: OQDOThemeData.blackColor,
+                          color: Theme.of(context).colorScheme.onSurface,
                           fontSize: 14,
                           overflow: TextOverflow.ellipsis,
                           fontWeight: FontWeight.w400,
@@ -728,7 +747,10 @@ class _HomepageState extends State<Homepage> with WidgetsBindingObserver {
             label: text,
             type: styleSubTitle,
             maxLine: 2,
-            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.greyColor, fontSize: 16.0, fontWeight: FontWeight.w400),
+            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w400),
           ),
         ],
       ),

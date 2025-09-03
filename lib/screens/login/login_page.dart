@@ -20,6 +20,7 @@ import 'package:oqdo_mobile_app/utils/validator.dart';
 import 'package:oqdo_mobile_app/viewmodels/login_view_model.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
+import 'package:oqdo_mobile_app/widgets/theme_toggle_widgets.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -96,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: OQDOThemeData.whiteColor,
+        color: Theme.of(context).colorScheme.background,
         child: SingleChildScrollView(
           child: Form(
             key: hp.formKey,
@@ -117,6 +118,11 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     Positioned(
+                      top: 40,
+                      right: 20,
+                      child: const ThemeToggleButton(),
+                    ),
+                    Positioned(
                       top: 100,
                       left: 30,
                       child: Column(
@@ -129,13 +135,17 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           CustomTextView(
                             label: 'Welcome',
-                            textStyle:
-                                Theme.of(context).textTheme.titleLarge!.copyWith(color: const Color(0xff595959), fontSize: 24.0, fontWeight: FontWeight.w400),
+                            textStyle: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 24.0, fontWeight: FontWeight.w400),
                           ),
                           CustomTextView(
                             label: 'Back',
-                            textStyle:
-                                Theme.of(context).textTheme.titleLarge!.copyWith(color: const Color(0xff595959), fontSize: 24.0, fontWeight: FontWeight.w400),
+                            textStyle: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 24.0, fontWeight: FontWeight.w400),
                           ),
                         ],
                       ),
@@ -161,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                           read: false,
                           obscureText: false,
                           labelText: 'Username/Email',
-                          fillColor: OQDOThemeData.backgroundColor,
+                          fillColor: Theme.of(context).colorScheme.background,
                           validator: Validator.notEmpty,
                           keyboardType: TextInputType.emailAddress,
                         ),
@@ -174,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                           read: false,
                           obscureText: isvisible,
                           maxlines: 1,
-                          fillColor: OQDOThemeData.backgroundColor,
+                          fillColor: Theme.of(context).colorScheme.background,
                           labelText: 'Password',
                           validator: Validator.validateLoginPassword,
                           onchanged: (p0) {
@@ -216,7 +226,7 @@ class _LoginPageState extends State<LoginPage> {
                             textStyle: Theme.of(context)
                                 .textTheme
                                 .titleSmall!
-                                .copyWith(fontSize: 18.0, color: const Color.fromRGBO(0, 101, 144, 1), fontWeight: FontWeight.w400),
+                                .copyWith(fontSize: 18.0, color: Theme.of(context).colorScheme.secondaryContainer, fontWeight: FontWeight.w400),
                           ),
                         ),
                         const SizedBox(
@@ -263,7 +273,7 @@ class _LoginPageState extends State<LoginPage> {
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleLarge!
-                                    .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                                    .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
                                 children: [
                                   TextSpan(
                                     text: 'Sign up ',
@@ -274,7 +284,7 @@ class _LoginPageState extends State<LoginPage> {
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleLarge!
-                                        .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                                        .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
                                   ),
                                 ],
                               ),
