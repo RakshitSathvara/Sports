@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String labelText;
@@ -21,8 +20,8 @@ class CustomTextFormField extends StatelessWidget {
   final int? maxlines;
   final int? maxlength;
   final List<TextInputFormatter>? inputformat;
-  final Color fillColor;
-  final Color borderColor;
+  final Color? fillColor;
+  final Color? borderColor;
   final double borderRadius;
   final double fontSize;
   final bool centerText;
@@ -47,8 +46,8 @@ class CustomTextFormField extends StatelessWidget {
     this.maxlines,
     this.maxlength,
     this.inputformat,
-    this.fillColor = Colors.white,
-    this.borderColor = const Color(0xFF006590),
+    this.fillColor,
+    this.borderColor,
     this.borderRadius = 10,
     this.fontSize = 20.0,
     this.centerText = false,
@@ -57,6 +56,11 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color effectiveFillColor =
+        fillColor ?? Theme.of(context).colorScheme.background;
+    final Color effectiveBorderColor =
+        borderColor ?? Theme.of(context).colorScheme.primaryContainer;
+
     return TextFormField(
       autofillHints: autofillHints,
       validator: validator,
@@ -76,17 +80,19 @@ class CustomTextFormField extends StatelessWidget {
       enabled: enabled,
       textAlign: centerText ? TextAlign.center : TextAlign.start,
       decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(borderRadius), borderSide: BorderSide(color: borderColor, width: 1)),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(borderRadius),
+              borderSide: BorderSide(color: effectiveBorderColor, width: 1)),
           filled: true,
-          fillColor: fillColor,
+          fillColor: effectiveFillColor,
           errorStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.w400),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius),
-            borderSide: BorderSide(color: borderColor, width: 1),
+            borderSide: BorderSide(color: effectiveBorderColor, width: 1),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius),
-            borderSide: BorderSide(color: borderColor, width: 1),
+            borderSide: BorderSide(color: effectiveBorderColor, width: 1),
           ),
           prefixIcon: preffixIcon,
           suffixIcon: suffixIcon,
@@ -97,9 +103,7 @@ class CustomTextFormField extends StatelessWidget {
           ),
           labelText: labelText,
           labelStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
-              color: Theme.of(context).brightness == Brightness.light
-                  ? Colors.black
-                  : Colors.white,
+              color: Theme.of(context).colorScheme.onBackground,
               fontSize: 20.0,
               fontWeight: FontWeight.w400),
           hintText: hintText,
@@ -108,9 +112,7 @@ class CustomTextFormField extends StatelessWidget {
           contentPadding: const EdgeInsets.all(15),
           counterText: ''),
       style: Theme.of(context).textTheme.titleSmall?.copyWith(
-          color: Theme.of(context).brightness == Brightness.light
-              ? ColorsUtils.greyText
-              : const Color(0xFFAEAEAE),
+          color: Theme.of(context).colorScheme.onBackground,
           fontSize: fontSize,
           fontWeight: FontWeight.w400),
     );
