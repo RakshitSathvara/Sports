@@ -94,6 +94,8 @@ class FacilityAddPageState extends State<FacilityAddPage> {
 
   @override
   Widget build(BuildContext context) {
+    final textColor =
+        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -128,7 +130,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontSize: 22.0,
                               fontWeight: FontWeight.w600,
-                              color: Theme.of(context).colorScheme.primary,
+                              color: textColor,
                             ),
                       ),
                     ),
@@ -163,8 +165,8 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                         textStyle: Theme.of(context)
                             .textTheme
                             .titleMedium!
-                            .copyWith(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w600, fontSize: 17.0),
-                        color: Theme.of(context).colorScheme.primaryContainer,
+                            .copyWith(color: textColor, fontWeight: FontWeight.w600, fontSize: 17.0),
+                        color: textColor,
                       ),
                     ),
                     const SizedBox(
@@ -189,7 +191,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
-                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
+                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: textColor),
                             ),
                             value: choosedlocation,
                             items: location!.map((country) {
@@ -200,7 +202,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
+                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: textColor),
                                 ),
                               );
                             }).toList(),
@@ -470,7 +472,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                     ),
                     MyButton(
                       text: "Continue",
-                      textcolor: Theme.of(context).colorScheme.onBackground,
+                      textcolor: textColor,
                       textsize: 16,
                       fontWeight: FontWeight.w600,
                       letterspacing: 0.7,

@@ -111,6 +111,8 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
     //   _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
     //   _progressDialog.style(message: "Please wait..");
     // });
+    final textColor =
+        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -145,7 +147,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontSize: 22.0,
                               fontWeight: FontWeight.w600,
-                              color: Theme.of(context).colorScheme.primary,
+                              color: textColor,
                             ),
                       ),
                     ),
@@ -180,7 +182,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                         textStyle: Theme.of(context)
                             .textTheme
                             .titleMedium!
-                            .copyWith(color: Theme.of(context).colorScheme.surface, fontWeight: FontWeight.w400, fontSize: 17.0),
+                            .copyWith(color: textColor, fontWeight: FontWeight.w400, fontSize: 17.0),
                       ),
                     ),
                     const SizedBox(
@@ -205,7 +207,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
-                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
+                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: textColor),
                             ),
                             value: choosedlocation,
                             items: location!.map((country) {
@@ -216,7 +218,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
+                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: textColor),
                                 ),
                               );
                             }).toList(),
@@ -242,7 +244,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                         textStyle: Theme.of(context)
                             .textTheme
                             .bodyLarge!
-                            .copyWith(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w400, fontSize: 16.0),
+                            .copyWith(color: textColor, fontWeight: FontWeight.w400, fontSize: 16.0),
                       ),
                     ),
                     PinCodeTextField(
@@ -265,7 +267,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                       onDone: (text) async {},
                       wrapAlignment: WrapAlignment.spaceEvenly,
                       pinBoxDecoration: ProvidedPinBoxDecoration.underlinedPinBoxDecoration,
-                      pinTextStyle: TextStyle(fontSize: 25.0, color: Theme.of(context).colorScheme.onBackground),
+                      pinTextStyle: TextStyle(fontSize: 25.0, color: textColor),
                       pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
                       pinBoxColor: Theme.of(context).colorScheme.secondaryContainer,
                       pinTextAnimatedSwitcherDuration: const Duration(milliseconds: 300),
@@ -295,7 +297,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                     CustomTextView(
                       label: 'Upload Profile Photo',
                       textStyle:
-                          Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.0, color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w400),
+                          Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.0, color: textColor, fontWeight: FontWeight.w400),
                     ),
                     const SizedBox(
                       height: 10.0,
@@ -347,7 +349,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(color: Theme.of(context).colorScheme.primary, fontSize: 16.0, fontWeight: FontWeight.w600),
+                                      .copyWith(color: textColor, fontSize: 16.0, fontWeight: FontWeight.w600),
                                 ),
                               )
                             : Container(),
@@ -367,7 +369,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                             textStyle: Theme.of(context)
                                 .textTheme
                                 .bodyLarge!
-                                .copyWith(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w400, fontSize: 17.0),
+                                .copyWith(color: textColor, fontWeight: FontWeight.w400, fontSize: 17.0),
                           ),
                         ),
                         GestureDetector(
@@ -399,7 +401,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                                 textStyle: Theme.of(context)
                                                     .textTheme
                                                     .titleMedium!
-                                                    .copyWith(color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w400, fontSize: 16.0),
+                                                    .copyWith(color: textColor, fontWeight: FontWeight.w400, fontSize: 16.0),
                                               ),
                                               GestureDetector(
                                                   onTap: () {
@@ -458,7 +460,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                           ),
                                           MyButton(
                                             text: "Submit",
-                                            textcolor: Theme.of(context).colorScheme.onBackground,
+                                            textcolor: textColor,
                                             textsize: 16,
                                             fontWeight: FontWeight.w600,
                                             letterspacing: 0.7,
@@ -531,7 +533,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                             CustomTextView(
                                               label: contactDetailsList[index].Name,
                                               textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                                    color: Theme.of(context).colorScheme.onBackground,
+                                                    color: textColor,
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: 15.0,
                                                   ),
@@ -544,7 +546,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                                 textStyle: Theme.of(context)
                                                     .textTheme
                                                     .bodyLarge!
-                                                    .copyWith(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w400, fontSize: 17.0)),
+                                                    .copyWith(color: textColor, fontWeight: FontWeight.w400, fontSize: 17.0)),
                                             const SizedBox(
                                               height: 5.0,
                                             ),
@@ -573,7 +575,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                               textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                                                     fontSize: 14.0,
                                                     fontWeight: FontWeight.w300,
-                                                    color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
+                                                    color: textColor.withOpacity(0.5),
                                                   ),
                                             ),
                                           ],
@@ -581,7 +583,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                       )
                                     ],
                                   ),
-                                   Divider(
+                                  Divider(
                                     height: 2,
                                     color: Theme.of(context).colorScheme.outline,
                                   )
@@ -609,7 +611,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                     ),
                     MyButtonWithoutBackground(
                         text: "Next",
-                        textcolor: Theme.of(context).colorScheme.secondaryContainer,
+                        textcolor: textColor,
                         textsize: 16,
                         fontWeight: FontWeight.w600,
                         letterspacing: 0.7,
@@ -972,7 +974,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                     CustomTextView(
                       label: 'Contact Details',
                       textStyle:
-                          Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w400, fontSize: 16.0),
+                          Theme.of(context).textTheme.titleMedium!.copyWith(color: textColor, fontWeight: FontWeight.w400, fontSize: 16.0),
                     ),
                     GestureDetector(
                         onTap: () {
@@ -1023,7 +1025,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                 ),
                 MyButton(
                   text: "Submit",
-                  textcolor: Theme.of(context).colorScheme.onBackground,
+                  textcolor: textColor,
                   textsize: 16,
                   fontWeight: FontWeight.w600,
                   letterspacing: 0.7,
