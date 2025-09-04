@@ -152,7 +152,10 @@ class RegisterPageState extends State<RegisterPage> {
         Step(
           title: CustomTextView(
             label: 'Create Account',
-            textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0, color: Theme.of(context).colorScheme.primary),
+            textStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 12.0,
+                color: Theme.of(context).colorScheme.onBackground),
           ),
           content: firstForm(),
           state: _stepState(0),
@@ -161,7 +164,10 @@ class RegisterPageState extends State<RegisterPage> {
         Step(
           title: CustomTextView(
             label: 'Verify',
-            textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0, color: Theme.of(context).colorScheme.primary),
+            textStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 12.0,
+                color: Theme.of(context).colorScheme.onBackground),
           ),
           content: SecondSignupPage(
             phone: phone,
@@ -177,14 +183,18 @@ class RegisterPageState extends State<RegisterPage> {
           state: _stepState(1),
           isActive: _currentStep == 1,
         ),
-        // Step(
-        //   title: CustomTextView(
-        //     label: 'About Yourself',
-        //     textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0, color: Theme.of(context).colorScheme.primary),
-        //   ),
-        //   content: thirdForm(),
-        //   state: _stepState(2),
-        // )
+        Step(
+          title: CustomTextView(
+            label: 'About Yourself',
+            textStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 12.0,
+                color: Theme.of(context).colorScheme.onBackground),
+          ),
+          content: thirdForm(),
+          state: _stepState(2),
+          isActive: _currentStep == 2,
+        ),
       ];
 
   @override
@@ -546,7 +556,14 @@ class RegisterPageState extends State<RegisterPage> {
             Row(
               children: [
                 Expanded(
-                  child: CustomTextFormField(labelText: '', obscureText: false, controller: countryCodeController, read: true),
+                  child: CustomTextFormField(
+                    labelText: '',
+                    obscureText: false,
+                    controller: countryCodeController,
+                    read: true,
+                    fillColor: Theme.of(context).colorScheme.background,
+                    borderColor: Theme.of(context).colorScheme.primaryContainer,
+                  ),
                 ),
                 const SizedBox(
                   width: 8.0,
@@ -632,6 +649,7 @@ class RegisterPageState extends State<RegisterPage> {
               read: false,
               obscureText: false,
               fillColor: Theme.of(context).colorScheme.background,
+              borderColor: Theme.of(context).colorScheme.primaryContainer,
               labelText: 'Referral Code',
               inputformat: [
                 FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
@@ -785,418 +803,47 @@ class RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  // Widget thirdForm() {
-  //   return SingleChildScrollView(
-  //     child: Form(
-  //       key: hp.formKey,
-  //       child: Column(
-  //         crossAxisAlignment: CrossAxisAlignment.start,
-  //         mainAxisSize: MainAxisSize.min,
-  //         children: [
-  //           const SizedBox(
-  //             height: 20,
-  //           ),
-  //           CustomTextFormField(
-  //             controller: icNumber,
-  //             read: false,
-  //             maxlines: 1,
-  //             maxlength: 4,
-  //             obscureText: false,
-  //             inputformat: [
-  //               FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+')),
-  //             ],
-  //             fillColor: OQDOThemeData.backgroundColor,
-  //             labelText: 'IC Number (Last 4 Digits)',
-  //             // validator: Validator.notEmpty,
-  //             keyboardType: TextInputType.text,
-  //           ),
-  //           const SizedBox(
-  //             height: 20,
-  //           ),
-  //           GestureDetector(
-  //             onTap: () async {
-  //               if (selectedFilterData?.isNotEmpty ?? false) {
-  //                 for (var activity in activityListModel) {
-  //                   for (var key in selectedFilterData!.keys) {
-  //                     if (activity.Name == key) {
-  //                       for (var subActivity in activity.SubActivities!) {
-  //                         for (var addedSubActivity in selectedFilterData![key]!) {
-  //                           if (subActivity.SubActivityId == addedSubActivity.subActivityId) {
-  //                             subActivity.selectedValue = true;
-  //                           }
-  //                         }
-  //                       }
-  //                     }
-  //                   }
-  //                 }
-  //               }
-  //
-  //               Map<String, List<SubActivitiesBean>> interestValue = {};
-  //
-  //               for (int i = 0; i < activityListModel.length; i++) {
-  //                 interestValue[activityListModel[i].Name!] = activityListModel[i].SubActivities!;
-  //               }
-  //
-  //               commonPassingArgs.endUserActivitySelection = interestValue;
-  //               var data = await Navigator.pushNamed(context, Constants.activityInterestFilterScreen, arguments: commonPassingArgs);
-  //               debugPrint(data.toString());
-  //               if (data != null) {
-  //                 setState(() {
-  //                   selectedFilterData = data as Map<String, List<SelectedFilterValues>>?;
-  //                   debugPrint(selectedFilterData.toString());
-  //                 });
-  //               }
-  //             },
-  //             child: Row(
-  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //               children: [
-  //                 CustomTextView(
-  //                   label: 'Interests',
-  //                   textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: const Color(0xFF818181), fontSize: 17.0, fontWeight: FontWeight.w400),
-  //                 ),
-  //                 Image.asset(
-  //                   'assets/images/ic_left_nav_arrow.png',
-  //                   height: 20.0,
-  //                   width: 20.0,
-  //                 )
-  //               ],
-  //             ),
-  //           ),
-  //           const SizedBox(
-  //             height: 10.0,
-  //           ),
-  //           selectedFilterData!.isNotEmpty
-  //               ? Row(
-  //                   children: [
-  //                     Expanded(
-  //                       child: ListView.builder(
-  //                         shrinkWrap: true,
-  //                         physics: const NeverScrollableScrollPhysics(),
-  //                         itemCount: selectedFilterData!.length,
-  //                         itemBuilder: (context, index) {
-  //                           String name = selectedFilterData!.keys.elementAt(index);
-  //                           return Column(
-  //                             mainAxisAlignment: MainAxisAlignment.start,
-  //                             children: [
-  //                               Row(
-  //                                 crossAxisAlignment: CrossAxisAlignment.start,
-  //                                 children: [
-  //                                   Padding(
-  //                                     padding: const EdgeInsets.only(top: 8.0),
-  //                                     child: CustomTextView(
-  //                                       label: "$name : ",
-  //                                       textStyle: Theme.of(context)
-  //                                           .textTheme
-  //                                           .titleMedium!
-  //                                           .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.blackColor),
-  //                                     ),
-  //                                   ),
-  //                                   Expanded(
-  //                                     child: Wrap(
-  //                                       spacing: 5.0,
-  //                                       runSpacing: 8.0,
-  //                                       children: [for (var data in selectedFilterData![name]!) chipsWidget(data)],
-  //                                     ),
-  //                                   ),
-  //                                 ],
-  //                               ),
-  //                               const SizedBox(
-  //                                 height: 10.0,
-  //                               ),
-  //                             ],
-  //                           );
-  //                         },
-  //                       ),
-  //                     ),
-  //                   ],
-  //                 )
-  //               : CustomTextView(
-  //                   label: '(Select your interests)',
-  //                   textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: OQDOThemeData.blackColor),
-  //                 ),
-  //           const SizedBox(
-  //             height: 30,
-  //           ),
-  //           CustomTextView(
-  //             label: 'If the sub activity you are interested in is not in our list',
-  //             maxLine: 2,
-  //             textOverFlow: TextOverflow.ellipsis,
-  //             textStyle: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-  //           ),
-  //           const SizedBox(
-  //             height: 15,
-  //           ),
-  //           CustomTextFormField(
-  //             labelText: 'let us know',
-  //             controller: otherTextController,
-  //             read: false,
-  //             obscureText: false,
-  //             maxlines: 1,
-  //             maxlength: 50,
-  //             keyboardType: TextInputType.text,
-  //             inputformat: [
-  //               FilteringTextInputFormatter.allow(RegExp(r'[a-zA-z ]')),
-  //             ],
-  //             fillColor: OQDOThemeData.backgroundColor,
-  //           ),
-  //           const SizedBox(
-  //             height: 30,
-  //           ),
-  //           CustomTextFormField(
-  //             controller: aboutyourself,
-  //             read: false,
-  //             fillColor: OQDOThemeData.backgroundColor,
-  //             obscureText: false,
-  //             maxlength: 250,
-  //             labelText: 'About Yourself',
-  //             keyboardType: TextInputType.text,
-  //             maxlines: 6,
-  //           ),
-  //           const SizedBox(
-  //             height: 30,
-  //           ),
-  //           CustomTextView(
-  //             label: 'Upload Profile Photo',
-  //             textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.0, color: OQDOThemeData.otherTextColor, fontWeight: FontWeight.w400),
-  //           ),
-  //           const SizedBox(
-  //             height: 10.0,
-  //           ),
-  //           Row(
-  //             children: [
-  //               GestureDetector(
-  //                 onTap: () {
-  //                   bottomSheetImage();
-  //                 },
-  //                 child: const CircleAvatar(
-  //                   radius: 50,
-  //                   backgroundColor: Colors.transparent,
-  //                   backgroundImage: AssetImage("assets/images/camera.png"),
-  //                 ),
-  //               ),
-  //               const SizedBox(
-  //                 width: 40.0,
-  //               ),
-  //               croppedFile != null
-  //                   ? SizedBox(
-  //                       width: 110,
-  //                       height: 70,
-  //                       child: Card(
-  //                         clipBehavior: Clip.antiAliasWithSaveLayer,
-  //                         shape: RoundedRectangleBorder(
-  //                           borderRadius: BorderRadius.circular(10.0),
-  //                         ),
-  //                         child: Image.file(
-  //                           File(croppedFile!.path),
-  //                           fit: BoxFit.cover,
-  //                         ),
-  //                       ),
-  //                     )
-  //                   : Container(),
-  //               const SizedBox(
-  //                 width: 20.0,
-  //               ),
-  //               croppedFile != null
-  //                   ? GestureDetector(
-  //                       onTap: () {
-  //                         setState(() {
-  //                           croppedFile = null;
-  //                           uploadedFileId = "";
-  //                         });
-  //                       },
-  //                       child: CustomTextView(
-  //                         label: 'Clear',
-  //                         textStyle: Theme.of(context)
-  //                             .textTheme
-  //                             .titleLarge!
-  //                             .copyWith(color: Theme.of(context).colorScheme.primary, fontSize: 16.0, fontWeight: FontWeight.w600),
-  //                       ),
-  //                     )
-  //                   : Container(),
-  //             ],
-  //           ),
-  //           const SizedBox(
-  //             height: 30.0,
-  //           ),
-  //           ReferralTextField(
-  //             suffixIcon: _isValid
-  //                 ? Container(
-  //                     margin: const EdgeInsets.all(12),
-  //                     decoration: const BoxDecoration(
-  //                       color: Colors.green,
-  //                       shape: BoxShape.circle,
-  //                     ),
-  //                     child: const Icon(
-  //                       Icons.check,
-  //                       color: Colors.white,
-  //                       size: 16,
-  //                     ),
-  //                   )
-  //                 : null,
-  //             controller: referralCode,
-  //             onchanged: (p0) {
-  //               setState(() {
-  //                 _isValid = false; // Reset validation when user types
-  //               });
-  //               return '';
-  //             },
-  //             // Add focus node to the ReferralTextField
-  //             focusNode: _focusNode,
-  //             read: false,
-  //             obscureText: false,
-  //             fillColor: OQDOThemeData.backgroundColor,
-  //             labelText: 'Referral Code',
-  //             inputformat: [
-  //               FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
-  //             ],
-  //             maxlength: 8,
-  //             maxlines: 1,
-  //             keyboardType: TextInputType.text,
-  //           ),
-  //           const SizedBox(
-  //             height: 30.0,
-  //           ),
-  //           Row(
-  //             children: [
-  //               Transform.scale(
-  //                 scale: 1.3,
-  //                 child: Checkbox(
-  //                     fillColor: MaterialStateProperty.resolveWith(getColor),
-  //                     checkColor: Theme.of(context).colorScheme.primaryContainer,
-  //                     value: makeProfilePrivate,
-  //                     onChanged: (value) {
-  //                       setState(() {
-  //                         makeProfilePrivate = value;
-  //                       });
-  //                     }),
-  //               ),
-  //               CustomTextView(
-  //                 label: 'Make your profile private',
-  //                 textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: OQDOThemeData.blackColor, fontSize: 14.0, fontWeight: FontWeight.w400),
-  //               ),
-  //             ],
-  //           ),
-  //           const SizedBox(
-  //             height: 20.0,
-  //           ),
-  //           Row(
-  //             children: [
-  //               Transform.scale(
-  //                 scale: 1.3,
-  //                 child: Checkbox(
-  //                     fillColor: MaterialStateProperty.resolveWith(getColor),
-  //                     checkColor: Theme.of(context).colorScheme.primaryContainer,
-  //                     value: termsAndCondition,
-  //                     onChanged: (value) {
-  //                       if (referralCode.text.isNotEmpty) {
-  //                         _validateReferralCode(referralCode.text.toString().trim());
-  //                       }
-  //                       setState(() {
-  //                         termsAndCondition = value!;
-  //                       });
-  //                     }),
-  //               ),
-  //               Flexible(
-  //                 child: RichText(
-  //                   text: TextSpan(
-  //                     text: 'I have read and accept the ',
-  //                     style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
-  //                     children: [
-  //                       TextSpan(
-  //                         recognizer: TapGestureRecognizer()
-  //                           ..onTap = () async {
-  //                             if (await NetworkConnectionInterceptor().isConnected()) {
-  //                               Map<String, dynamic> model = {};
-  //                               model['url'] = 'https://oqdo.com/terms-of-service/';
-  //                               model['title'] = 'Terms of Service';
-  //                               Navigator.pushNamed(context, Constants.webViewScreens, arguments: model);
-  //                             } else {
-  //                               showSnackBarColor(Constants.internetConnectionErrorMsg, context, true);
-  //                             }
-  //                           },
-  //                         text: 'Terms & Conditions',
-  //                         style: TextStyle(
-  //                             fontWeight: FontWeight.w400,
-  //                             fontSize: 17.0,
-  //                             color: Theme.of(context).colorScheme.primaryContainer,
-  //                             decoration: TextDecoration.underline,
-  //                             decorationThickness: 2),
-  //                       ),
-  //                       TextSpan(
-  //                         text: ', ',
-  //                         style: Theme.of(context)
-  //                             .textTheme
-  //                             .titleLarge!
-  //                             .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
-  //                       ),
-  //                       TextSpan(
-  //                         recognizer: TapGestureRecognizer()
-  //                           ..onTap = () async {
-  //                             if (await NetworkConnectionInterceptor().isConnected()) {
-  //                               Map<String, dynamic> model = {};
-  //                               model['url'] = 'https://oqdo.com/privacy-policy-oqdo/';
-  //                               model['title'] = 'Privacy Policy';
-  //                               Navigator.pushNamed(context, Constants.webViewScreens, arguments: model);
-  //                             } else {
-  //                               showSnackBarColor(Constants.internetConnectionErrorMsg, context, true);
-  //                             }
-  //                           },
-  //                         text: 'Privacy Policy',
-  //                         style: TextStyle(
-  //                             fontWeight: FontWeight.w400,
-  //                             fontSize: 17.0,
-  //                             color: Theme.of(context).colorScheme.primaryContainer,
-  //                             decoration: TextDecoration.underline,
-  //                             decorationThickness: 2),
-  //                       ),
-  //                       TextSpan(
-  //                         text: ' and ',
-  //                         style: Theme.of(context)
-  //                             .textTheme
-  //                             .titleLarge!
-  //                             .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
-  //                       ),
-  //                       TextSpan(
-  //                         recognizer: TapGestureRecognizer()
-  //                           ..onTap = () async {
-  //                             if (await NetworkConnectionInterceptor().isConnected()) {
-  //                               Map<String, dynamic> model = {};
-  //                               model['url'] = 'https://oqdo.com/cancellation-policy/';
-  //                               model['title'] = 'Cancellation Policy';
-  //                               Navigator.pushNamed(context, Constants.webViewScreens, arguments: model);
-  //                             } else {
-  //                               showSnackBarColor(Constants.internetConnectionErrorMsg, context, true);
-  //                             }
-  //                           },
-  //                         text: 'Cancellation Policy',
-  //                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
-  //                             fontSize: 17.0,
-  //                             fontWeight: FontWeight.w400,
-  //                             color: Theme.of(context).colorScheme.primaryContainer,
-  //                             decoration: TextDecoration.underline,
-  //                             decorationThickness: 2),
-  //                       ),
-  //                       TextSpan(
-  //                         text: '.',
-  //                         style: Theme.of(context)
-  //                             .textTheme
-  //                             .titleLarge!
-  //                             .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
-  //                       ),
-  //                     ],
-  //                   ),
-  //                 ),
-  //               )
-  //             ],
-  //           ),
-  //           const SizedBox(
-  //             height: 20.0,
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
+  Widget thirdForm() {
+    return SingleChildScrollView(
+      child: Form(
+        key: hp.formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            CustomTextFormField(
+              controller: icNumber,
+              read: false,
+              obscureText: false,
+              maxlines: 1,
+              maxlength: 4,
+              inputformat: [FilteringTextInputFormatter.digitsOnly],
+              fillColor: Theme.of(context).colorScheme.background,
+              borderColor: Theme.of(context).colorScheme.primaryContainer,
+              labelText: 'IC Number (Last 4 Digits)',
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            CustomTextFormField(
+              controller: aboutyourself,
+              read: false,
+              obscureText: false,
+              maxlines: 3,
+              maxlength: 250,
+              fillColor: Theme.of(context).colorScheme.background,
+              borderColor: Theme.of(context).colorScheme.primaryContainer,
+              labelText: 'About Yourself',
+              keyboardType: TextInputType.text,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   Color getColor(Set<MaterialState> states) {
     const Set<MaterialState> interactiveStates = <MaterialState>{
