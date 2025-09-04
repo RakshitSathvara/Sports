@@ -269,6 +269,9 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                     child: Image.asset(
                                       "assets/images/ic_edit.png",
                                       fit: BoxFit.scaleDown,
+                                      color: Theme.of(context).brightness == Brightness.dark
+                                          ? Colors.white
+                                          : Colors.black,
                                       height: 30,
                                       width: 30,
                                     ),
@@ -321,6 +324,9 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                     child: Image.asset(
                                       "assets/images/ic_edit.png",
                                       fit: BoxFit.scaleDown,
+                                      color: Theme.of(context).brightness == Brightness.dark
+                                          ? Colors.white
+                                          : Colors.black,
                                       height: 30,
                                       width: 30,
                                     ),
@@ -700,6 +706,9 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                     child: Image.asset(
                                       "assets/images/ic_edit.png",
                                       fit: BoxFit.scaleDown,
+                                      color: Theme.of(context).brightness == Brightness.dark
+                                          ? Colors.white
+                                          : Colors.black,
                                       height: 30,
                                       width: 30,
                                     ),
@@ -1094,6 +1103,9 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                                 width: 25,
                                                 fit: BoxFit.fill,
                                                 height: 25,
+                                                color: Theme.of(context).brightness == Brightness.dark
+                                                    ? Colors.white
+                                                    : Colors.black,
                                               ),
                                             ),
                                           ),
