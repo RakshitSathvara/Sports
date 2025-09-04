@@ -132,6 +132,24 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
   bool isCloseAccount = false;
   String currentEffectiveDate = '';
 
+  InputDecoration _inputDecoration(BuildContext context,
+      {String? counterText, TextStyle? errorStyle}) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return InputDecoration(
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+      border: const UnderlineInputBorder(),
+      enabledBorder:
+          UnderlineInputBorder(borderSide: BorderSide(color: colorScheme.onSurface)),
+      focusedBorder:
+          UnderlineInputBorder(borderSide: BorderSide(color: colorScheme.primary)),
+      disabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: colorScheme.onSurface.withOpacity(0.5))),
+      counterText: counterText,
+      errorStyle: errorStyle,
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -475,12 +493,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             maxLines: 1,
                             autofocus: false,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context, counterText: ''),
                           ),
                           //email
                           const SizedBox(
@@ -505,15 +518,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                   fontSize: 16,
                                   color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                                 ),
-                            decoration: InputDecoration(
-                              isDense: true,
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: ColorsUtils.subTitle.withOpacity(0.5),
-                                ),
-                              ),
-                            ),
+                            decoration: _inputDecoration(context),
                           ),
 
                           //phone no.
@@ -544,16 +549,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                   fontSize: 16,
                                   color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                                 ),
-                            decoration: InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: ColorsUtils.subTitle.withOpacity(0.5),
-                                ),
-                              ),
-                            ),
+                            decoration: _inputDecoration(context, counterText: ''),
                           ),
 
                           // mobileNoLength! > 8
@@ -626,13 +622,10 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             validator: Validator.notEmpty,
                             maxLength: 200,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              errorStyle: TextStyle(color: Theme.of(context).colorScheme.error),
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: const UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context,
+                                counterText: '',
+                                errorStyle: TextStyle(
+                                    color: Theme.of(context).colorScheme.error)),
                           ),
                           const SizedBox(
                             height: 16,
@@ -660,12 +653,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             ],
                             maxLength: 6,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context, counterText: ''),
                           ),
                           const SizedBox(
                             height: 16,
@@ -974,13 +962,10 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), FilteringTextInputFormatter.digitsOnly],
                             maxLines: 1,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              errorStyle: TextStyle(color: Theme.of(context).colorScheme.error),
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: const UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context,
+                                counterText: '',
+                                errorStyle: TextStyle(
+                                    color: Theme.of(context).colorScheme.error)),
                           ),
                           // coach id
                           const SizedBox(
@@ -1004,13 +989,10 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             validator: Validator.notEmpty,
                             inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), FilteringTextInputFormatter.digitsOnly],
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              errorStyle: TextStyle(color: Theme.of(context).colorScheme.error),
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: const UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context,
+                                counterText: '',
+                                errorStyle: TextStyle(
+                                    color: Theme.of(context).colorScheme.error)),
                           ),
 
                           //description.
@@ -1037,12 +1019,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             //   FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 _]+')),
                             // ],
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context, counterText: ''),
                           ),
 
                           //certificate.
@@ -1744,7 +1721,8 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             decoration: BoxDecoration(
                               border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                               borderRadius: BorderRadius.circular(15),
-                              color: ColorsUtils.white,
+                              color: Theme.of(context).colorScheme.onBackground,
+
                             ),
                             child: Padding(
                               padding: const EdgeInsets.only(left: 10, right: 10),
@@ -1846,12 +1824,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                     return null;
                                   },
                                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                  decoration: InputDecoration(
-                                      isDense: true,
+                                  decoration: _inputDecoration(context,
                                       counterText: '',
-                                      contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                      border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
+                                      errorStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                                 const SizedBox(
                                   height: 16,
@@ -1884,12 +1862,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                     return null;
                                   },
                                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                  decoration: InputDecoration(
-                                      isDense: true,
+                                  decoration: _inputDecoration(context,
                                       counterText: '',
-                                      contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                      border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
+                                      errorStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                               ],
                             ),
@@ -1933,12 +1911,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                     return null;
                                   },
                                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                  decoration: InputDecoration(
-                                      isDense: true,
+                                  decoration: _inputDecoration(context,
                                       counterText: '',
-                                      contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                      border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
+                                      errorStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                               ],
                             ),
@@ -1979,12 +1957,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                     return null;
                                   },
                                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                  decoration: InputDecoration(
-                                      isDense: true,
+                                  decoration: _inputDecoration(context,
                                       counterText: '',
-                                      contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                      border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
+                                      errorStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                                 const SizedBox(
                                   height: 16,
@@ -2015,12 +1993,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                     return null;
                                   },
                                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                  decoration: InputDecoration(
-                                      isDense: true,
+                                  decoration: _inputDecoration(context,
                                       counterText: '',
-                                      contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                      border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
+                                      errorStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                                 const SizedBox(
                                   height: 16,
@@ -2054,12 +2032,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                     return null;
                                   },
                                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                  decoration: InputDecoration(
-                                      isDense: true,
+                                  decoration: _inputDecoration(context,
                                       counterText: '',
-                                      contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                      border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
+                                      errorStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                                 const SizedBox(
                                   height: 16,
@@ -2092,12 +2070,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                     return null;
                                   },
                                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                  decoration: InputDecoration(
-                                      isDense: true,
+                                  decoration: _inputDecoration(context,
                                       counterText: '',
-                                      contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                      border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
+                                      errorStyle: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                               ],
                             ),
