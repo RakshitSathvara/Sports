@@ -22,7 +22,6 @@ import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/domain/chat_provider.dart';
 import 'package:oqdo_mobile_app/screens/common_widget/view_image_screen.dart';
 import 'package:oqdo_mobile_app/screens/profile/intent/refer_earn_intent.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/close_account_popup.dart';
 import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
@@ -138,6 +137,24 @@ class CoachProfilePageState extends State<CoachProfilePage> {
   String uploadedProfileFilePath = '';
   bool isCloseAccount = false;
   String currentEffectiveDate = '';
+
+  InputDecoration _inputDecoration(BuildContext context,
+      {String? counterText, TextStyle? errorStyle}) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return InputDecoration(
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+      border: const UnderlineInputBorder(),
+      enabledBorder:
+          UnderlineInputBorder(borderSide: BorderSide(color: colorScheme.onSurface)),
+      focusedBorder:
+          UnderlineInputBorder(borderSide: BorderSide(color: colorScheme.primary)),
+      disabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: colorScheme.onSurface.withOpacity(0.5))),
+      counterText: counterText,
+      errorStyle: errorStyle,
+    );
+  }
 
   @override
   void initState() {
@@ -278,7 +295,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
               child: Container(
                 width: width,
                 height: height,
-                color: OQDOThemeData.whiteColor,
+                color: ColorsUtils.white,
                 child: SingleChildScrollView(
                   child: Form(
                     key: formKey,
@@ -489,6 +506,10 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       child: Image.asset(
                                         "assets/images/ic_edit.png",
                                         fit: BoxFit.scaleDown,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black,
                                         height: 22,
                                       ),
                                     ),
@@ -569,6 +590,10 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       child: Image.asset(
                                         "assets/images/ic_edit.png",
                                         fit: BoxFit.scaleDown,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black,
                                         height: 22,
                                       ),
                                     ),
@@ -594,11 +619,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             maxLines: 1,
                             validator: Validator.notEmpty,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context),
                           ),
                           const SizedBox(height: 6),
                           CustomTextView(
@@ -617,11 +638,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             validator: Validator.notEmpty,
                             maxLines: 1,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context),
                           ),
                           //email
                           const SizedBox(
@@ -644,15 +661,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             maxLines: 1,
                             style:
                                 Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary.withOpacity(0.5)),
-                            decoration: InputDecoration(
-                              isDense: true,
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: ColorsUtils.subTitle.withOpacity(0.5),
-                                ),
-                              ),
-                            ),
+                            decoration: _inputDecoration(context),
                           ),
 
                           //phone no.
@@ -679,16 +688,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                   fontSize: 16,
                                   color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                                 ),
-                            decoration: InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: ColorsUtils.subTitle.withOpacity(0.5),
-                                ),
-                              ),
-                            ),
+                            decoration: _inputDecoration(context, counterText: ''),
                           ),
                           const SizedBox(
                             height: 16,
@@ -710,12 +710,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             validator: Validator.notEmpty,
                             maxLines: 3,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context, counterText: ''),
                           ),
                           const SizedBox(
                             height: 16,
@@ -743,12 +738,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             ],
                             maxLength: 6,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context, counterText: ''),
                           ),
                           const SizedBox(
                             height: 26,
@@ -827,6 +817,10 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       child: Image.asset(
                                         "assets/images/ic_edit.png",
                                         fit: BoxFit.scaleDown,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black,
                                         height: 22,
                                       ),
                                     ),
@@ -857,12 +851,9 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                               FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+')),
                             ],
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              errorStyle: TextStyle(color: Colors.red),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context,
+                                errorStyle:
+                                    const TextStyle(color: ColorsUtils.redColor)),
                           ),
 
                           // coach id
@@ -889,12 +880,9 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             textInputAction: TextInputAction.next,
                             maxLines: 1,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              errorStyle: TextStyle(color: Colors.red),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context,
+                                errorStyle:
+                                    const TextStyle(color: ColorsUtils.redColor)),
                           ),
                           const SizedBox(
                             height: 8,
@@ -918,12 +906,9 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             textInputAction: TextInputAction.next,
                             maxLines: 1,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              errorStyle: TextStyle(color: Colors.red),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context,
+                                errorStyle:
+                                    const TextStyle(color: ColorsUtils.redColor)),
                           ),
                           //experience
                           const SizedBox(
@@ -946,13 +931,10 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             validator: Validator.notEmpty,
                             maxLength: 2,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              errorStyle: TextStyle(color: Colors.red),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context,
+                                counterText: '',
+                                errorStyle:
+                                    const TextStyle(color: ColorsUtils.redColor)),
                           ),
                           //description.
                           const SizedBox(
@@ -975,13 +957,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             // validator: Validator.notEmpty,
                             maxLength: 250,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              counterText: '',
-                              // errorStyle: TextStyle(color: Colors.red),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
-                            ),
+                            decoration: _inputDecoration(context, counterText: ''),
                           ),
 
                           //certificate.
@@ -993,7 +969,10 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             textStyle: Theme.of(context)
                                 .textTheme
                                 .titleMedium!
-                                .copyWith(fontSize: 17.0, color: OQDOThemeData.otherTextColor, fontWeight: FontWeight.w400),
+                                .copyWith(
+                                    fontSize: 17.0,
+                                    color: ColorsUtils.greyText,
+                                    fontWeight: FontWeight.w400),
                           ),
                           const SizedBox(
                             height: 10.0,
@@ -1217,7 +1196,10 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                   textStyle: Theme.of(context)
                                                       .textTheme
                                                       .titleMedium!
-                                                      .copyWith(color: const Color(0xFF2B2B2B), fontWeight: FontWeight.w400, fontSize: 18.0),
+                                                      .copyWith(
+                                                          color: ColorsUtils.chipText,
+                                                          fontWeight: FontWeight.w400,
+                                                          fontSize: 18.0),
                                                 ),
                                                 const SizedBox(
                                                   height: 10.0,
@@ -1308,7 +1290,12 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: OQDOThemeData.blackColor),
+                                          .copyWith(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.w400,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onBackground),
                                     ),
                           const SizedBox(
                             height: 26,
@@ -1382,8 +1369,12 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                           child: Image.asset(
                                             "assets/images/ic_edit.png",
                                             fit: BoxFit.fitWidth,
+                                            color: Theme.of(context).brightness ==
+                                                    Brightness.dark
+                                                ? Colors.white
+                                                : Colors.black,
                                             height: 30,
-                                            width: 30,
+        width: 30,
                                           ),
                                         ),
                                       ),
@@ -1499,6 +1490,10 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       child: Image.asset(
                                         "assets/images/ic_edit.png",
                                         fit: BoxFit.scaleDown,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black,
                                         height: 22,
                                       ),
                                     ),
@@ -1719,7 +1714,12 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                           ),
                           CustomTextView(
                             label: 'Current Effective Date: ${currentEffectiveDate.isEmpty ? 'N/A' : currentEffectiveDate}',
-                            textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black),
+                            textStyle: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onBackground),
                           ),
                           const SizedBox(
                             height: 26,
@@ -1803,6 +1803,10 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       child: Image.asset(
                                         "assets/images/ic_edit.png",
                                         fit: BoxFit.scaleDown,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black,
                                         height: 22,
                                       ),
                                     ),
@@ -1816,13 +1820,14 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             decoration: BoxDecoration(
                               border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                               borderRadius: BorderRadius.circular(15),
-                              color: OQDOThemeData.backgroundColor,
+                              color: Theme.of(context).colorScheme.onBackground,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.only(left: 10, right: 10),
                               child: DropdownButton<dynamic>(
                                 isExpanded: true,
-                                icon: const Icon(Icons.keyboard_arrow_down_rounded, color: OQDOThemeData.dividerColor),
+                                icon: Icon(Icons.keyboard_arrow_down_rounded,
+                                    color: Theme.of(context).colorScheme.primary),
                                 dropdownColor: Theme.of(context).colorScheme.onBackground,
                                 underline: const SizedBox(),
                                 borderRadius: BorderRadius.circular(15),
@@ -1831,7 +1836,12 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                      .copyWith(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary),
                                 ),
                                 value: selectedPayoutMethod,
                                 items: payoutMethods.map((method) {
@@ -1842,7 +1852,12 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
-                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                          .copyWith(
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.w400,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .primary),
                                     ),
                                   );
                                 }).toList(),
@@ -1913,12 +1928,14 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                           return null;
                                         },
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                        decoration: InputDecoration(
-                                            isDense: true,
+                                        decoration: _inputDecoration(context,
                                             counterText: '',
-                                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                            border: const UnderlineInputBorder(),
-                                            errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                            errorStyle: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: ColorsUtils.redColor)),
                                       ),
                                       const SizedBox(
                                         height: 16,
@@ -1951,12 +1968,14 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                           return null;
                                         },
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                        decoration: InputDecoration(
-                                            isDense: true,
+                                        decoration: _inputDecoration(context,
                                             counterText: '',
-                                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                            border: const UnderlineInputBorder(),
-                                            errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                            errorStyle: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: ColorsUtils.redColor)),
                                       ),
                                     ],
                                   ),
@@ -2000,12 +2019,14 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                           return null;
                                         },
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                        decoration: InputDecoration(
-                                            isDense: true,
+                                        decoration: _inputDecoration(context,
                                             counterText: '',
-                                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                            border: const UnderlineInputBorder(),
-                                            errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                            errorStyle: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: ColorsUtils.redColor)),
                                       ),
                                     ],
                                   ),
@@ -2046,12 +2067,14 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                           return null;
                                         },
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                        decoration: InputDecoration(
-                                            isDense: true,
+                                        decoration: _inputDecoration(context,
                                             counterText: '',
-                                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                            border: const UnderlineInputBorder(),
-                                            errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+        errorStyle: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: ColorsUtils.redColor)),
                                       ),
                                       const SizedBox(
                                         height: 16,
@@ -2082,12 +2105,14 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                           return null;
                                         },
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                        decoration: InputDecoration(
-                                            isDense: true,
+                                        decoration: _inputDecoration(context,
                                             counterText: '',
-                                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                            border: const UnderlineInputBorder(),
-                                            errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                            errorStyle: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: ColorsUtils.redColor)),
                                       ),
                                       const SizedBox(
                                         height: 16,
@@ -2121,12 +2146,14 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                           return null;
                                         },
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                        decoration: InputDecoration(
-                                            isDense: true,
+                                        decoration: _inputDecoration(context,
                                             counterText: '',
-                                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                            border: const UnderlineInputBorder(),
-                                            errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                            errorStyle: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: ColorsUtils.redColor)),
                                       ),
                                       const SizedBox(
                                         height: 16,
@@ -2159,12 +2186,14 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                           return null;
                                         },
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                                        decoration: InputDecoration(
-                                            isDense: true,
+                                        decoration: _inputDecoration(context,
                                             counterText: '',
-                                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                                            border: const UnderlineInputBorder(),
-                                            errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                            errorStyle: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    fontSize: 12,
+                                                    color: ColorsUtils.redColor)),
                                       ),
                                     ],
                                   ),
@@ -2193,9 +2222,9 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                             content: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
-                                                const Icon(
+                                                Icon(
                                                   Icons.cancel,
-                                                  color: Colors.red,
+                                                  color: ColorsUtils.redColor,
                                                   size: 100.0,
                                                 ),
                                                 const SizedBox(height: 10.0),
@@ -2227,7 +2256,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20.0), // Adjust radius as needed
-                                color: const Color(0xFF006590),
+                                color: ColorsUtils.referEarnColor,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(16.0),
@@ -2247,13 +2276,13 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                           const SizedBox(
                                             width: 10,
                                           ),
-                                          const Align(
+                                          Align(
                                             alignment: Alignment.center,
                                             child: Text(
                                               "Refer and Earn",
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                color: Colors.white,
+                                                color: ColorsUtils.white,
                                                 fontSize: 20.0, // Adjust font size as needed
                                               ),
                                             ),
@@ -2285,16 +2314,16 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20.0), // Adjust radius as needed
-                                      color: const Color(0xFFFC5555),
+                                      color: ColorsUtils.closeAccountColor,
                                     ),
-                                    child: const Center(
+                                    child: Center(
                                       child: Padding(
-                                        padding: EdgeInsets.all(16.0),
+                                        padding: const EdgeInsets.all(16.0),
                                         child: Text(
                                           "Close Account",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.white,
+                                            color: ColorsUtils.white,
                                             fontSize: 18.0, // Adjust font size as needed
                                           ),
                                         ),
@@ -2302,10 +2331,13 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                     ),
                                   ),
                                 )
-                              : const Center(
+                              : Center(
                                   child: Text(
                                     'Account Closure Request in Process',
-                                    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 18),
+                                    style: TextStyle(
+                                        color: ColorsUtils.redColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18),
                                   ),
                                 ),
                           const SizedBox(
@@ -2513,8 +2545,8 @@ class CoachProfilePageState extends State<CoachProfilePage> {
     var mCroppedFile = await ImageCropper().cropImage(sourcePath: pickedFile.path, compressFormat: ImageCompressFormat.jpg, compressQuality: 100, uiSettings: [
       AndroidUiSettings(
           toolbarTitle: 'Cropper',
-          toolbarColor: OQDOThemeData.buttonColor,
-          toolbarWidgetColor: Colors.white,
+          toolbarColor: Theme.of(context).colorScheme.primary,
+          toolbarWidgetColor: Theme.of(context).colorScheme.onPrimary,
           initAspectRatio: CropAspectRatioPreset.square,
           lockAspectRatio: false),
       IOSUiSettings(
@@ -3066,13 +3098,25 @@ class CoachProfilePageState extends State<CoachProfilePage> {
               padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
               child: CustomTextView(
                 label: 'Training Address',
-                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.blackColor, fontSize: 14, fontWeight: FontWeight.w600),
+                textStyle: Theme.of(context)
+                    .textTheme
+                    .titleSmall!
+                    .copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600),
               ),
             ),
             content: CustomTextView(
               label: 'Are you sure you want to delete Training Address?',
               maxLine: 2,
-              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: OQDOThemeData.blackColor, fontSize: 18, fontWeight: FontWeight.w400),
+              textStyle: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400),
             ),
             actions: [
               CupertinoDialogAction(
@@ -3263,11 +3307,11 @@ class CoachProfilePageState extends State<CoachProfilePage> {
           data: ThemeData.dark().copyWith(
             colorScheme: ColorScheme.light(
               primary: Theme.of(context).colorScheme.primary,
-              onPrimary: Colors.white,
-              surface: Colors.white,
-              onSurface: Colors.black,
+              onPrimary: Theme.of(context).colorScheme.onPrimary,
+              surface: Theme.of(context).colorScheme.surface,
+              onSurface: Theme.of(context).colorScheme.onSurface,
             ),
-            dialogBackgroundColor: Colors.white,
+            dialogBackgroundColor: Theme.of(context).colorScheme.surface,
           ),
           child: child!,
         );
@@ -3326,9 +3370,12 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                               isCloseAccount = true;
                             });
                           },
-                          child: const Text(
+                          child: Text(
                             'Close',
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.onBackground,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
                           ),
                         ),
                       ],
