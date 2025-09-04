@@ -61,6 +61,8 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
   @override
   Widget build(BuildContext context) {
     var ph = MediaQuery.of(context).size.height;
+    final textColor =
+        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
     phone.text = _commonPassingArgs.mobileNo!;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
@@ -89,7 +91,7 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                   label: 'An OTP is sent to your number via SMS.',
                   type: styleSubTitle,
                   textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
+                        color: textColor,
                         fontSize: 17.0,
                         fontWeight: FontWeight.w600,
                       ),
@@ -105,7 +107,7 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                         .textTheme
                         .titleMedium!
                         .copyWith(
-                          color: Theme.of(context).colorScheme.onBackground,
+                          color: textColor,
                           fontWeight: FontWeight.w400,
                           fontSize: 17.0,
                         ),
@@ -136,7 +138,7 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                         .textTheme
                         .bodyLarge!
                         .copyWith(
-                          color: Theme.of(context).colorScheme.onBackground,
+                          color: textColor,
                           fontWeight: FontWeight.w400,
                           fontSize: 17.0,
                         ),
@@ -163,7 +165,7 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                   pinBoxDecoration: ProvidedPinBoxDecoration.underlinedPinBoxDecoration,
                   pinTextStyle: TextStyle(
                     fontSize: 25.0,
-                    color: Theme.of(context).colorScheme.onBackground,
+                    color: textColor,
                   ),
                   pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
                   pinBoxColor: Theme.of(context).colorScheme.primary,
@@ -179,7 +181,7 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                 ),
                 MyButton(
                     text: "Verify",
-                    textcolor: Theme.of(context).colorScheme.onBackground,
+                    textcolor: textColor,
                     textsize: 16.0,
                     fontWeight: FontWeight.w600,
                     letterspacing: 0.7,
@@ -201,7 +203,7 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                       label: 'Didn’t receive an OTP? ',
                       type: styleSubTitle,
                       textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            color: Theme.of(context).colorScheme.onBackground,
+                            color: textColor,
                             fontWeight: FontWeight.w400,
                             fontSize: 18.0,
                           ),
@@ -215,7 +217,7 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                         label: 'Resend OTP',
                         type: styleSubTitle,
                         textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                              color: Theme.of(context).colorScheme.primary,
+                              color: textColor,
                               fontWeight: FontWeight.w400,
                               fontSize: 18.0,
                             ),

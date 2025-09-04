@@ -135,6 +135,8 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
 
   @override
   Widget build(BuildContext context) {
+    final textColor =
+        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -169,7 +171,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontSize: 22.0,
                               fontWeight: FontWeight.w600,
-                              color: Theme.of(context).colorScheme.primary,
+                              color: textColor,
                             ),
                       ),
                     ),
@@ -217,7 +219,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                           CustomTextView(
                             label: 'Activities',
                             textStyle:
-                                Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.shadow, fontSize: 17.0, fontWeight: FontWeight.w400),
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(color: textColor, fontSize: 17.0, fontWeight: FontWeight.w400),
                           ),
                           Image.asset(
                             'assets/images/ic_left_nav_arrow.png',
@@ -253,7 +255,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                                 textStyle: Theme.of(context)
                                                     .textTheme
                                                     .titleMedium!
-                                                    .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onBackground),
+                                                    .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: textColor),
                                               ),
                                             ),
                                             Expanded(
@@ -278,7 +280,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                         : CustomTextView(
                             label: '(Select your interests)',
                             textStyle:
-                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onBackground),
+                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: textColor),
                           ),
                     const SizedBox(
                       height: 30,
@@ -287,7 +289,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       label: 'If the sub activity you are interested in is not in our list',
                       maxLine: 2,
                       textOverFlow: TextOverflow.ellipsis,
-                      textStyle: TextStyle(fontSize: 16, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w500),
+                      textStyle: TextStyle(fontSize: 16, color: textColor, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(
                       height: 15,
@@ -311,7 +313,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                     CustomTextView(
                       label: 'Upload Certification Photo(s)',
                       textStyle:
-                          Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.0, color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w400),
+                          Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.0, color: textColor, fontWeight: FontWeight.w400),
                     ),
                     const SizedBox(
                       height: 10.0,
@@ -440,7 +442,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
-                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
+                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: textColor),
                             ),
                             value: selectedPayoutMethod,
                             items: payoutMethods.map((method) {
@@ -451,7 +453,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
+                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: textColor),
                                 ),
                               );
                             }).toList(),
@@ -746,7 +748,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge!
-                                  .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.shadow),
+                                  .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: textColor),
                               children: [
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
@@ -764,7 +766,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 17.0,
-                                      color: Theme.of(context).colorScheme.primaryContainer,
+                                      color: textColor,
                                       decoration: TextDecoration.underline,
                                       decorationThickness: 2),
                                 ),
@@ -773,7 +775,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.shadow),
+                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: textColor),
                                 ),
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
@@ -791,7 +793,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 17.0,
-                                      color: Theme.of(context).colorScheme.primaryContainer,
+                                      color: textColor,
                                       decoration: TextDecoration.underline,
                                       decorationThickness: 2),
                                 ),
@@ -800,7 +802,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.shadow),
+                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: textColor),
                                 ),
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
@@ -818,7 +820,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                       fontSize: 17.0,
                                       fontWeight: FontWeight.w400,
-                                      color: Theme.of(context).colorScheme.primaryContainer,
+                                      color: textColor,
                                       decoration: TextDecoration.underline,
                                       decorationThickness: 2),
                                 ),
@@ -827,7 +829,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.shadow),
+                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: textColor),
                                 ),
                               ],
                             ),
@@ -840,7 +842,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                     ),
                     MyButton(
                         text: "Register",
-                        textcolor: Theme.of(context).colorScheme.onBackground,
+                    textcolor: textColor,
                         textsize: 16,
                         fontWeight: FontWeight.w600,
                         letterspacing: 0.7,
@@ -967,7 +969,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
       ),
       padding: const EdgeInsets.fromLTRB(24, 10, 24, 10),
       child: CustomTextView(
-          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.shadow, fontSize: 13.0, fontWeight: FontWeight.w400),
+        textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: textColor, fontSize: 13.0, fontWeight: FontWeight.w400),
           label: item.activityName),
     );
   }
@@ -1485,14 +1487,14 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       title: CustomTextView(
                         label: 'Account- Pending Approval',
                         textStyle:
-                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18.0, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onBackground),
+                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18.0, fontWeight: FontWeight.bold, color: textColor),
                       ),
                       content: CustomTextView(
                         label:
                             'Your account is presently under review. Upon completion of the approval process, you will receive an email. If you have any questions, please visit our website to contact us.',
                         maxLine: 6,
                         textStyle:
-                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onBackground),
+                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: textColor),
                       ),
                       actions: <Widget>[
                         TextButton(
@@ -1501,7 +1503,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                           },
                           child:  Text(
                             'Ok',
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onBackground),
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: textColor),
                           ),
                         ),
                       ],
