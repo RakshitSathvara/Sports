@@ -853,7 +853,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                             decoration: _inputDecoration(context,
                                 errorStyle:
-                                    const TextStyle(color: ColorsUtils.redColor)),
+                                    TextStyle(color: ColorsUtils.redColor)),
 
                           ),
 
@@ -883,7 +883,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                             decoration: _inputDecoration(context,
                                 errorStyle:
-                                    const TextStyle(color: ColorsUtils.redColor)),
+                                    TextStyle(color: ColorsUtils.redColor)),
                    
                           ),
                           const SizedBox(
@@ -910,7 +910,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                             decoration: _inputDecoration(context,
                                 errorStyle:
-                                    const TextStyle(color: ColorsUtils.redColor)),
+                                    TextStyle(color: ColorsUtils.redColor)),
 
                           ),
                           //experience
@@ -937,7 +937,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             decoration: _inputDecoration(context,
                                 counterText: '',
                                 errorStyle:
-                                    const TextStyle(color: ColorsUtils.redColor)),
+                                    TextStyle(color: ColorsUtils.redColor)),
 
                           ),
                           //description.
