@@ -76,7 +76,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
                   color: textColor,
                 ),
                 Expanded(child: filterView()),
-                bottomBtnView(),
+                bottomBtnView(textColor),
               ],
             ),
           ),
@@ -85,7 +85,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
     );
   }
 
-  Widget bottomBtnView() {
+  Widget bottomBtnView(Color textColor) {
     return Row(
       children: [
         Expanded(

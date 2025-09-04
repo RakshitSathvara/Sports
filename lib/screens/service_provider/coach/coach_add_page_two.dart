@@ -250,7 +250,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                               child: Wrap(
                                                 spacing: 5.0,
                                                 runSpacing: 8.0,
-                                                children: [for (var data in selectedFilterData![name]!) chipsWidget(data)],
+                                                children: [for (var data in selectedFilterData![name]!) chipsWidget(data,textColor)],
                                               ),
                                             ),
                                           ],
@@ -846,7 +846,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                       radius: 15,
                       onTap: () async {
                         hideKeyboard();
-                        checkForValidation();
+                        checkForValidation(textColor);
                       },
                     ),
                     const SizedBox(
@@ -952,7 +952,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
     return isValid;
   }
 
-  chipsWidget(SelectedFilterValues item) {
+  chipsWidget(SelectedFilterValues item,Color textColor) {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
@@ -964,9 +964,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
       padding: const EdgeInsets.fromLTRB(24, 10, 24, 10),
       child: CustomTextView(
         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
-            color: Theme.of(context).brightness == Brightness.dark
-                ? OQDOThemeData.darkChipColor
-                : OQDOThemeData.chipColor,
+            color: textColor,
             fontSize: 13.0,
             fontWeight: FontWeight.w400),
         label: item.activityName,
@@ -1320,7 +1318,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
     }
   }
 
-  void checkForValidation() {
+  void checkForValidation(Color textColor) {
     if (selectedFilterData!.isEmpty) {
       showSnackBar('Select any Activity', context);
     } else if (selectedPayoutMethod == null) {
@@ -1330,11 +1328,11 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
     } else if (!termsAndCondition) {
       showSnackBar('Please Accept Terms & Conditions', context);
     } else {
-      coachRegistration();
+      coachRegistration(textColor);
     }
   }
 
-  Future<void> coachRegistration() async {
+  Future<void> coachRegistration(Color textColor) async {
     await _progressDialog.show();
     Map coachProviderRequest = {};
     coachProviderRequest['CoachId'] = null;
