@@ -20,8 +20,8 @@ class ReferralTextField extends StatelessWidget {
   final int? maxlines;
   final int? maxlength;
   final List<TextInputFormatter>? inputformat;
-  final Color fillColor;
-  final Color borderColor;
+  final Color? fillColor;
+  final Color? borderColor;
   final double borderRadius;
   final double fontSize;
   final bool centerText;
@@ -47,8 +47,8 @@ class ReferralTextField extends StatelessWidget {
     this.maxlines,
     this.maxlength,
     this.inputformat,
-    this.fillColor = Colors.white,
-    this.borderColor = const Color(0xFF006590),
+    this.fillColor,
+    this.borderColor,
     this.borderRadius = 10,
     this.fontSize = 20.0,
     this.centerText = false,
@@ -58,6 +58,11 @@ class ReferralTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color effectiveFillColor =
+        fillColor ?? Theme.of(context).colorScheme.background;
+    final Color effectiveBorderColor =
+        borderColor ?? Theme.of(context).colorScheme.primaryContainer;
+
     return TextFormField(
       focusNode: focusNode,
       autofillHints: autofillHints,
@@ -78,17 +83,19 @@ class ReferralTextField extends StatelessWidget {
       enabled: enabled,
       textAlign: centerText ? TextAlign.center : TextAlign.start,
       decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(borderRadius), borderSide: BorderSide(color: borderColor, width: 1)),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(borderRadius),
+              borderSide: BorderSide(color: effectiveBorderColor, width: 1)),
           filled: true,
-          fillColor: fillColor,
+          fillColor: effectiveFillColor,
           errorStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.w400),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius),
-            borderSide: BorderSide(color: borderColor, width: 1),
+            borderSide: BorderSide(color: effectiveBorderColor, width: 1),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius),
-            borderSide: BorderSide(color: borderColor, width: 1),
+            borderSide: BorderSide(color: effectiveBorderColor, width: 1),
           ),
           prefixIcon: preffixIcon,
           suffixIcon: suffixIcon,
@@ -98,15 +105,19 @@ class ReferralTextField extends StatelessWidget {
             borderSide: const BorderSide(color: OQDOThemeData.filterDividerColor, width: 1),
           ),
           labelText: labelText,
-          labelStyle:
-              Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.shadow, fontSize: 20.0, fontWeight: FontWeight.w400),
+          labelStyle: Theme.of(context)
+              .textTheme
+              .titleSmall!
+              .copyWith(color: Theme.of(context).colorScheme.onBackground, fontSize: 20.0, fontWeight: FontWeight.w400),
           hintText: hintText,
           hintStyle:
               Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w400, fontSize: fontSize),
           contentPadding: const EdgeInsets.all(15),
           counterText: ''),
-      style:
-          Theme.of(context).textTheme.titleSmall?.copyWith(color: OQDOThemeData.lightColorScheme.onSecondary, fontSize: fontSize, fontWeight: FontWeight.w400),
+      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+          color: Theme.of(context).colorScheme.onBackground,
+          fontSize: fontSize,
+          fontWeight: FontWeight.w400),
     );
   }
 }
