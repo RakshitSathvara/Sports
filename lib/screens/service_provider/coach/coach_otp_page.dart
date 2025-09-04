@@ -59,8 +59,9 @@ class _CoachOTPPageState extends State<CoachOTPPage> {
 
   @override
   Widget build(BuildContext context) {
-    final textColor =
-        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
+    final textColor = Theme.of(context).colorScheme.onSurface;
+    final secondaryTextColor =
+        Theme.of(context).colorScheme.onSurface.withOpacity(0.6);
     phone.text = widget.commonPassingArgs.mobileNo!;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
@@ -101,21 +102,21 @@ class _CoachOTPPageState extends State<CoachOTPPage> {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleMedium!
-                        .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w400, fontSize: 17.0),
+                        .copyWith(color: secondaryTextColor, fontWeight: FontWeight.w400, fontSize: 17.0),
                   ),
                 ),
                 CustomEditText(
                   controller: phone,
                   isReadOnly: true,
                   autoFocus: false,
-                  decoration: const InputDecoration(
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color.fromRGBO(0, 101, 144, 0.53)),
+                    decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.53)),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.53)),
+                      ),
                     ),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color.fromRGBO(0, 101, 144, 0.53)),
-                    ),
-                  ),
                 ),
                 const SizedBox(
                   height: 30,
@@ -128,7 +129,7 @@ class _CoachOTPPageState extends State<CoachOTPPage> {
                     textStyle: Theme.of(context)
                         .textTheme
                         .bodyLarge!
-                        .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w400, fontSize: 17.0),
+                        .copyWith(color: secondaryTextColor, fontWeight: FontWeight.w400, fontSize: 17.0),
                   ),
                 ),
                 PinCodeTextField(
@@ -139,9 +140,9 @@ class _CoachOTPPageState extends State<CoachOTPPage> {
                   controller: otp,
                   hideCharacter: false,
                   highlight: true,
-                  highlightColor: const Color.fromRGBO(0, 101, 144, 1),
-                  defaultBorderColor: const Color.fromRGBO(0, 101, 144, 1),
-                  hasTextBorderColor: const Color.fromRGBO(0, 101, 144, 1),
+                  highlightColor: Theme.of(context).colorScheme.primary,
+                  defaultBorderColor: Theme.of(context).colorScheme.primary,
+                  hasTextBorderColor: Theme.of(context).colorScheme.primary,
                   errorBorderColor: Colors.red,
                   maxLength: 6,
                   hasError: false,
@@ -150,13 +151,13 @@ class _CoachOTPPageState extends State<CoachOTPPage> {
                   onDone: (text) async {},
                   wrapAlignment: WrapAlignment.spaceEvenly,
                   pinBoxDecoration: ProvidedPinBoxDecoration.underlinedPinBoxDecoration,
-                  pinTextStyle: const TextStyle(fontSize: 25.0, color: Colors.black),
+                  pinTextStyle: TextStyle(fontSize: 25.0, color: textColor),
                   pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
                   pinBoxColor: Theme.of(context).colorScheme.primary,
                   pinTextAnimatedSwitcherDuration: const Duration(milliseconds: 300),
                   //                    highlightAnimation: true,
                   //highlightPinBoxColor: Colors.red,
-                  highlightAnimationBeginColor: Colors.black,
+                  highlightAnimationBeginColor: textColor,
                   highlightAnimationEndColor: Colors.white12,
                   keyboardType: TextInputType.number,
                 ),
@@ -189,7 +190,7 @@ class _CoachOTPPageState extends State<CoachOTPPage> {
                       textStyle: Theme.of(context)
                           .textTheme
                           .bodyLarge!
-                          .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w400, fontSize: 18.0),
+                          .copyWith(color: secondaryTextColor, fontWeight: FontWeight.w400, fontSize: 18.0),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -202,7 +203,7 @@ class _CoachOTPPageState extends State<CoachOTPPage> {
                         textStyle: Theme.of(context)
                             .textTheme
                             .bodyLarge!
-                            .copyWith(color: const Color.fromRGBO(0, 101, 144, 1), fontWeight: FontWeight.w400, fontSize: 18.0),
+                            .copyWith(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w400, fontSize: 18.0),
                       ),
                     ),
                   ],

@@ -42,8 +42,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
 
   @override
   Widget build(BuildContext context) {
-    final textColor =
-        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
+    final textColor = Theme.of(context).colorScheme.onSurface;
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pop(context);
@@ -94,13 +93,15 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
             height: 70.0,
             child: ElevatedButton(
               style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(const Color(0xFFCECECE)),
-                backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFCECECE)),
+                foregroundColor: MaterialStateProperty.all<Color>(
+                    Theme.of(context).colorScheme.surfaceVariant),
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    Theme.of(context).colorScheme.surfaceVariant),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  const RoundedRectangleBorder(
+                  RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                     side: BorderSide(
-                      color: Color(0xFFCECECE),
+                      color: Theme.of(context).colorScheme.surfaceVariant,
                     ),
                   ),
                 ),
@@ -128,7 +129,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
                 textStyle: Theme.of(context)
                     .textTheme
                     .titleMedium!
-                    .copyWith(fontWeight: FontWeight.w400, fontSize: 16.0, decoration: TextDecoration.underline, color: OQDOThemeData.blackColor),
+                    .copyWith(fontWeight: FontWeight.w400, fontSize: 16.0, decoration: TextDecoration.underline, color: textColor),
               ),
             ),
           ),
@@ -138,13 +139,15 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
             height: 70.0,
             child: ElevatedButton(
               style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(const Color(0xFF006590)),
-                backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF006590)),
+                foregroundColor: MaterialStateProperty.all<Color>(
+                    Theme.of(context).colorScheme.primary),
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    Theme.of(context).colorScheme.primary),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  const RoundedRectangleBorder(
+                  RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                     side: BorderSide(
-                      color: Color(0xFF006590),
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ),
@@ -280,7 +283,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
             ),
           ),
           Container(
-            color: const Color.fromRGBO(227, 227, 227, 1.0),
+            color: Theme.of(context).colorScheme.outline,
             width: 1,
             height: double.infinity,
           ),
