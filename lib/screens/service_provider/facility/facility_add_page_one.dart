@@ -950,110 +950,110 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
     Navigator.of(context).pushNamed(Constants.FACILITYADDTWO, arguments: _commonPassingArgs);
   }
 
-  Future<void> showContactBottomSheet() => showModalBottomSheet(
-      isDismissible: false,
-      enableDrag: false,
-      isScrollControlled: true,
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0))),
-      context: context,
-      builder: (context) {
-        return Padding(
-          padding: MediaQuery.of(context).viewInsets,
-          child: Container(
-            padding: const EdgeInsets.only(top: 20.0, left: 30.0, right: 30.0, bottom: 30.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CustomTextView(
-                      label: 'Contact Details',
-                      textStyle:
-                          Theme.of(context).textTheme.titleMedium!.copyWith(color: textColor, fontWeight: FontWeight.w400, fontSize: 16.0),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).pop(context);
-                        },
-                        child: const Icon(Icons.close, size: 30.0)),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15.0,
-                ),
-                CustomTextFormField(
-                  controller: contactPersonController,
-                  read: true,
-                  obscureText: false,
-                  maxlines: 1,
-                  inputformat: [
-                    FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
-                  ],
-                  maxlength: 50,
-                  labelText: 'Person Name',
-                  keyboardType: TextInputType.text,
-                ),
-                const SizedBox(
-                  height: 30.0,
-                ),
-                mobileNoLength! > 0
-                    ? CustomTextFormField(
-                        controller: mobileNumberController,
-                        read: false,
-                        obscureText: false,
-                        maxlines: 1,
-                        maxlength: mobileNoLength,
-                        labelText: 'Mobile Number',
-                        keyboardType: TextInputType.number,
-                      )
-                    : CustomTextFormField(
-                        controller: mobileNumberController,
-                        read: false,
-                        obscureText: false,
-                        maxlines: 1,
-                        maxlength: 12,
-                        labelText: 'Mobile Number',
-                        keyboardType: TextInputType.number,
-                      ),
-                const SizedBox(
-                  height: 30.0,
-                ),
-                MyButton(
-                  text: "Submit",
-                  textcolor: textColor,
-                  textsize: 16,
-                  fontWeight: FontWeight.w600,
-                  letterspacing: 0.7,
-                  buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
-                  buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
-                  buttonheight: 60,
-                  buttonwidth: width,
-                  radius: 15,
-                  onTap: () async {
-                    if (contactPersonController.text.toString().trim().isEmpty) {
-                      showSnackBar('Person name required', context);
-                    } else if (mobileNumberController.text.trim().isEmpty) {
-                      showSnackBar('Mobile number required', context);
-                    } else if (mobileNumberController.text.toString().trim().length < mobileNoLength!) {
-                      showSnackBar('Invalid mobile number', context);
-                    } else {
-                      ContactDetails contactDetails = ContactDetails();
-                      contactDetails.MobCountryCode = selectedCityCountryCode!;
-                      contactDetails.MobileNumber = mobileNumberController.text.toString().trim();
-                      contactDetails.Name = contactPersonController.text.toString().trim();
-                      Navigator.of(context).pop(contactDetails);
-                      debugPrint(mobileNumberController.text.toString().trim());
-                    }
-                  },
-                ),
-              ],
-            ),
-          ),
-        );
-      });
+  // Future<void> showContactBottomSheet() => showModalBottomSheet(
+  //     isDismissible: false,
+  //     enableDrag: false,
+  //     isScrollControlled: true,
+  //     backgroundColor: Theme.of(context).colorScheme.surface,
+  //     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0))),
+  //     context: context,
+  //     builder: (context) {
+  //       return Padding(
+  //         padding: MediaQuery.of(context).viewInsets,
+  //         child: Container(
+  //           padding: const EdgeInsets.only(top: 20.0, left: 30.0, right: 30.0, bottom: 30.0),
+  //           child: Column(
+  //             mainAxisSize: MainAxisSize.min,
+  //             children: [
+  //               const SizedBox(
+  //                 height: 10.0,
+  //               ),
+  //               Row(
+  //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                 children: [
+  //                   CustomTextView(
+  //                     label: 'Contact Details',
+  //                     textStyle:
+  //                         Theme.of(context).textTheme.titleMedium!.copyWith(color: textColor, fontWeight: FontWeight.w400, fontSize: 16.0),
+  //                   ),
+  //                   GestureDetector(
+  //                       onTap: () {
+  //                         Navigator.of(context).pop(context);
+  //                       },
+  //                       child: const Icon(Icons.close, size: 30.0)),
+  //                 ],
+  //               ),
+  //               const SizedBox(
+  //                 height: 15.0,
+  //               ),
+  //               CustomTextFormField(
+  //                 controller: contactPersonController,
+  //                 read: true,
+  //                 obscureText: false,
+  //                 maxlines: 1,
+  //                 inputformat: [
+  //                   FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
+  //                 ],
+  //                 maxlength: 50,
+  //                 labelText: 'Person Name',
+  //                 keyboardType: TextInputType.text,
+  //               ),
+  //               const SizedBox(
+  //                 height: 30.0,
+  //               ),
+  //               mobileNoLength! > 0
+  //                   ? CustomTextFormField(
+  //                       controller: mobileNumberController,
+  //                       read: false,
+  //                       obscureText: false,
+  //                       maxlines: 1,
+  //                       maxlength: mobileNoLength,
+  //                       labelText: 'Mobile Number',
+  //                       keyboardType: TextInputType.number,
+  //                     )
+  //                   : CustomTextFormField(
+  //                       controller: mobileNumberController,
+  //                       read: false,
+  //                       obscureText: false,
+  //                       maxlines: 1,
+  //                       maxlength: 12,
+  //                       labelText: 'Mobile Number',
+  //                       keyboardType: TextInputType.number,
+  //                     ),
+  //               const SizedBox(
+  //                 height: 30.0,
+  //               ),
+  //               MyButton(
+  //                 text: "Submit",
+  //                 textcolor: textColor,
+  //                 textsize: 16,
+  //                 fontWeight: FontWeight.w600,
+  //                 letterspacing: 0.7,
+  //                 buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
+  //                 buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
+  //                 buttonheight: 60,
+  //                 buttonwidth: width,
+  //                 radius: 15,
+  //                 onTap: () async {
+  //                   if (contactPersonController.text.toString().trim().isEmpty) {
+  //                     showSnackBar('Person name required', context);
+  //                   } else if (mobileNumberController.text.trim().isEmpty) {
+  //                     showSnackBar('Mobile number required', context);
+  //                   } else if (mobileNumberController.text.toString().trim().length < mobileNoLength!) {
+  //                     showSnackBar('Invalid mobile number', context);
+  //                   } else {
+  //                     ContactDetails contactDetails = ContactDetails();
+  //                     contactDetails.MobCountryCode = selectedCityCountryCode!;
+  //                     contactDetails.MobileNumber = mobileNumberController.text.toString().trim();
+  //                     contactDetails.Name = contactPersonController.text.toString().trim();
+  //                     Navigator.of(context).pop(contactDetails);
+  //                     debugPrint(mobileNumberController.text.toString().trim());
+  //                   }
+  //                 },
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //       );
+  //     });
 }

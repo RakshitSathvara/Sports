@@ -262,7 +262,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                               child: Wrap(
                                                 spacing: 5.0,
                                                 runSpacing: 8.0,
-                                                children: [for (var data in selectedFilterData![name]!) chipsWidget(data)],
+                                                children: [for (var data in selectedFilterData![name]!) chipsWidget(data,textColor)],
                                               ),
                                             ),
                                           ],
@@ -854,7 +854,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                         onTap: () async {
                           hideKeyboard();
                           if (formKey.currentState!.validate()) {
-                            facilityRegistration();
+                            facilityRegistration(textColor);
                           }
                         }),
                     const SizedBox(
@@ -958,7 +958,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
     return isValid;
   }
 
-  chipsWidget(SelectedFilterValues item) {
+  chipsWidget(SelectedFilterValues item,Color textColor) {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
@@ -1373,7 +1373,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
     }
   }
 
-  Future<void> facilityRegistration() async {
+  Future<void> facilityRegistration(Color textColor) async {
     if (selectedFilterData!.isEmpty) {
       showSnackBar('Select Interest', context);
     } else if (selectedPayoutMethod == null) {
