@@ -158,7 +158,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
               child: Container(
                 width: width,
                 height: height,
-                color: OQDOThemeData.whiteColor,
+                color: Theme.of(context).colorScheme.background,
                 child: SingleChildScrollView(
                   child: Form(
                     key: formKey,
@@ -619,12 +619,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             validator: Validator.notEmpty,
                             maxLength: 200,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               isDense: true,
                               counterText: '',
-                              errorStyle: TextStyle(color: Colors.red),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
+                              errorStyle: TextStyle(color: Theme.of(context).colorScheme.error),
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                              border: const UnderlineInputBorder(),
                             ),
                           ),
                           const SizedBox(
@@ -682,7 +682,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                         isDismissible: false,
                                         enableDrag: false,
                                         isScrollControlled: true,
-                                        backgroundColor: OQDOThemeData.whiteColor,
+                                        backgroundColor: Theme.of(context).colorScheme.surface,
                                         shape: const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0))),
                                         context: context,
@@ -958,12 +958,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), FilteringTextInputFormatter.digitsOnly],
                             maxLines: 1,
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               isDense: true,
                               counterText: '',
-                              errorStyle: TextStyle(color: Colors.red),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
+                              errorStyle: TextStyle(color: Theme.of(context).colorScheme.error),
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                              border: const UnderlineInputBorder(),
                             ),
                           ),
                           // coach id
@@ -988,12 +988,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             validator: Validator.notEmpty,
                             inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), FilteringTextInputFormatter.digitsOnly],
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               isDense: true,
                               counterText: '',
-                              errorStyle: TextStyle(color: Colors.red),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                              border: UnderlineInputBorder(),
+                              errorStyle: TextStyle(color: Theme.of(context).colorScheme.error),
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                              border: const UnderlineInputBorder(),
                             ),
                           ),
 
@@ -1241,7 +1241,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                                   textStyle: Theme.of(context)
                                                       .textTheme
                                                       .titleMedium!
-                                                      .copyWith(color: const Color(0xFF2B2B2B), fontWeight: FontWeight.w400, fontSize: 18.0),
+                                                      .copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400, fontSize: 18.0),
                                                 ),
                                                 const SizedBox(
                                                   height: 10.0,
@@ -1620,7 +1620,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                           ),
                           CustomTextView(
                             label: 'Current Effective Date: ${currentEffectiveDate.isEmpty ? 'N/A' : currentEffectiveDate}',
-                            textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black),
+                            textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                           ),
                           const SizedBox(
                             height: 26,
@@ -1808,7 +1808,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       counterText: '',
                                       contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                                       border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                                 const SizedBox(
                                   height: 16,
@@ -1846,7 +1846,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       counterText: '',
                                       contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                                       border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                               ],
                             ),
@@ -1895,7 +1895,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       counterText: '',
                                       contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                                       border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                               ],
                             ),
@@ -1941,7 +1941,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       counterText: '',
                                       contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                                       border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                                 const SizedBox(
                                   height: 16,
@@ -1977,7 +1977,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       counterText: '',
                                       contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                                       border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                                 const SizedBox(
                                   height: 16,
@@ -2016,7 +2016,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       counterText: '',
                                       contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                                       border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                                 const SizedBox(
                                   height: 16,
@@ -2054,7 +2054,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       counterText: '',
                                       contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                                       border: const UnderlineInputBorder(),
-                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Colors.red)),
+                                      errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 12, color: Theme.of(context).colorScheme.error)),
                                 ),
                               ],
                             ),
@@ -2080,9 +2080,9 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                             content: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
-                                                const Icon(
+                                                Icon(
                                                   Icons.cancel,
-                                                  color: Colors.red,
+                                                  color: Theme.of(context).colorScheme.error,
                                                   size: 100.0,
                                                 ),
                                                 const SizedBox(height: 10.0),
@@ -2114,7 +2114,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20.0), // Adjust radius as needed
-                                color: const Color(0xFF006590),
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(16.0),
@@ -2134,13 +2134,13 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                           const SizedBox(
                                             width: 10,
                                           ),
-                                          const Align(
+                                          Align(
                                             alignment: Alignment.center,
                                             child: Text(
                                               "Refer and Earn",
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                color: Colors.white,
+                                                color: Theme.of(context).colorScheme.onPrimary,
                                                 fontSize: 20.0, // Adjust font size as needed
                                               ),
                                             ),
@@ -2172,16 +2172,16 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20.0), // Adjust radius as needed
-                                      color: const Color(0xFFFC5555),
+                                      color: ColorsUtils.closeAccountColor,
                                     ),
-                                    child: const Center(
+                                    child: Center(
                                       child: Padding(
-                                        padding: EdgeInsets.all(16.0),
+                                        padding: const EdgeInsets.all(16.0),
                                         child: Text(
                                           "Close Account",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.white,
+                                            color: Theme.of(context).colorScheme.onPrimary,
                                             fontSize: 18.0, // Adjust font size as needed
                                           ),
                                         ),
@@ -2189,10 +2189,10 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                     ),
                                   ),
                                 )
-                              : const Center(
+                              : Center(
                                   child: Text(
                                     'Account Closure Request in Process',
-                                    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 18),
+                                    style: TextStyle(color: Theme.of(context).colorScheme.error, fontWeight: FontWeight.bold, fontSize: 18),
                                   ),
                                 ),
                           const SizedBox(
@@ -2629,7 +2629,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
       AndroidUiSettings(
           toolbarTitle: 'Cropper',
           toolbarColor: OQDOThemeData.buttonColor,
-          toolbarWidgetColor: Colors.white,
+          toolbarWidgetColor: Theme.of(context).colorScheme.onPrimary,
           initAspectRatio: CropAspectRatioPreset.square,
           lockAspectRatio: false),
       IOSUiSettings(
@@ -3038,13 +3038,8 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.dark().copyWith(
-            colorScheme: ColorScheme.light(
-              primary: Theme.of(context).colorScheme.primary,
-              onPrimary: Colors.white,
-              surface: Colors.white,
-              onSurface: Colors.black,
-            ),
-            dialogBackgroundColor: Colors.white,
+            colorScheme: Theme.of(context).colorScheme,
+            dialogBackgroundColor: Theme.of(context).colorScheme.surface,
           ),
           child: child!,
         );
@@ -3103,9 +3098,9 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                               isCloseAccount = true;
                             });
                           },
-                          child: const Text(
+                          child: Text(
                             'Close',
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+                            style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold, fontSize: 18),
                           ),
                         ),
                       ],
