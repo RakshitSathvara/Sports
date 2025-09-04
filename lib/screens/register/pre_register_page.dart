@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:oqdo_mobile_app/components/my_button.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 
@@ -37,7 +36,7 @@ class _PreRegisterPageState extends State<PreRegisterPage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: OQDOThemeData.backgroundColor,
+        color: Theme.of(context).colorScheme.background,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +84,13 @@ class _PreRegisterPageState extends State<PreRegisterPage> {
                     CustomTextView(
                       label: 'Register As:',
                       type: styleSubTitle,
-                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: const Color(0xFF3A3A3A), fontWeight: FontWeight.w400, fontSize: 20.0),
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(
+                              color: Theme.of(context).colorScheme.onBackground,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20.0),
                     ),
                     const SizedBox(
                       height: 60,
@@ -119,7 +124,7 @@ class _PreRegisterPageState extends State<PreRegisterPage> {
                         textsize: 16,
                         fontWeight: FontWeight.w600,
                         letterspacing: 0.7,
-                        buttoncolor: OQDOThemeData.backgroundColor,
+                        buttoncolor: Theme.of(context).colorScheme.background,
                         buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
                         buttonheight: 60,
                         buttonwidth: width,

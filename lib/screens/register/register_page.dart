@@ -19,7 +19,6 @@ import 'package:oqdo_mobile_app/model/location_selection_response_model.dart';
 import 'package:oqdo_mobile_app/model/otp_verification_response.dart';
 import 'package:oqdo_mobile_app/model/upload_file_response.dart';
 import 'package:oqdo_mobile_app/request_models/end_user_registration_temp_req_model.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_edit_text.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
@@ -194,12 +193,12 @@ class RegisterPageState extends State<RegisterPage> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        color: OQDOThemeData.backgroundColor,
+        color: Theme.of(context).colorScheme.background,
         padding: const EdgeInsets.only(top: 30, left: 0, right: 0),
         child: Theme(
           data: ThemeData(
-            canvasColor: OQDOThemeData.backgroundColor,
-            colorScheme: Theme.of(context).colorScheme.copyWith(primary: OQDOThemeData.dividerColor, secondary: OQDOThemeData.backgroundColor),
+            canvasColor: Theme.of(context).colorScheme.background,
+            colorScheme: Theme.of(context).colorScheme,
           ),
           child: Stepper(
             elevation: 0,
@@ -235,7 +234,9 @@ class RegisterPageState extends State<RegisterPage> {
                           textsize: 16,
                           fontWeight: FontWeight.w600,
                           letterspacing: 0.7,
-                          buttoncolor: _currentStep == 0 ? OQDOThemeData.backgroundColor : Theme.of(context).colorScheme.secondaryContainer,
+                          buttoncolor: _currentStep == 0
+                              ? Theme.of(context).colorScheme.background
+                              : Theme.of(context).colorScheme.secondaryContainer,
                           buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
                           buttonheight: 60,
                           imagePath: _currentStep == 0 ? 'assets/images/ic_btn_arrow.png' : 'assets/images/ic_btn.png',
@@ -275,7 +276,7 @@ class RegisterPageState extends State<RegisterPage> {
               controller: firstNameController,
               read: false,
               obscureText: false,
-              fillColor: OQDOThemeData.backgroundColor,
+              fillColor: Theme.of(context).colorScheme.background,
               labelText: 'First Name',
               inputformat: [
                 FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
@@ -292,7 +293,7 @@ class RegisterPageState extends State<RegisterPage> {
               controller: lastNameController,
               read: false,
               obscureText: false,
-              fillColor: OQDOThemeData.backgroundColor,
+              fillColor: Theme.of(context).colorScheme.background,
               labelText: 'Last Name',
               maxlines: 1,
               inputformat: [
@@ -428,7 +429,7 @@ class RegisterPageState extends State<RegisterPage> {
               //   return "";
               //   }
               // },
-              fillColor: OQDOThemeData.backgroundColor,
+              fillColor: Theme.of(context).colorScheme.background,
               validator: Validator.notEmpty,
               keyboardType: TextInputType.visiblePassword,
             ),
@@ -448,7 +449,7 @@ class RegisterPageState extends State<RegisterPage> {
                 }
               },
               labelText: 'Email Address',
-              fillColor: OQDOThemeData.backgroundColor,
+              fillColor: Theme.of(context).colorScheme.background,
               validator: Validator.validateEmail,
               keyboardType: TextInputType.emailAddress,
             ),
@@ -461,7 +462,7 @@ class RegisterPageState extends State<RegisterPage> {
               obscureText: hidePassword1,
               maxlines: 1,
               maxlength: 32,
-              fillColor: OQDOThemeData.backgroundColor,
+              fillColor: Theme.of(context).colorScheme.background,
               labelText: 'Password',
               validator: Validator.validatePassword,
               keyboardType: TextInputType.text,
@@ -500,7 +501,7 @@ class RegisterPageState extends State<RegisterPage> {
               read: false,
               maxlines: 1,
               maxlength: 32,
-              fillColor: OQDOThemeData.backgroundColor,
+              fillColor: Theme.of(context).colorScheme.background,
               obscureText: hidePassword2,
               labelText: 'Confirm Password',
               validator: (val) {
@@ -566,7 +567,7 @@ class RegisterPageState extends State<RegisterPage> {
                             }
                           },
                           labelText: 'Phone Number',
-                          fillColor: OQDOThemeData.backgroundColor,
+                          fillColor: Theme.of(context).colorScheme.background,
                           validator: Validator.validateMobile,
                           inputformat: [
                             FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
@@ -590,7 +591,7 @@ class RegisterPageState extends State<RegisterPage> {
                             }
                           },
                           labelText: 'Phone Number',
-                          fillColor: OQDOThemeData.backgroundColor,
+                          fillColor: Theme.of(context).colorScheme.background,
                           validator: Validator.validateMobile,
                           inputformat: [
                             FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
@@ -612,9 +613,9 @@ class RegisterPageState extends State<RegisterPage> {
                         color: Colors.green,
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.check,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.onPrimary,
                         size: 16,
                       ),
                     )
@@ -630,7 +631,7 @@ class RegisterPageState extends State<RegisterPage> {
               focusNode: _focusNode,
               read: false,
               obscureText: false,
-              fillColor: OQDOThemeData.backgroundColor,
+              fillColor: Theme.of(context).colorScheme.background,
               labelText: 'Referral Code',
               inputformat: [
                 FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
@@ -663,7 +664,15 @@ class RegisterPageState extends State<RegisterPage> {
                   child: RichText(
                     text: TextSpan(
                       text: 'I have read and accept the ',
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(
+                              fontSize: 17.0,
+                              fontWeight: FontWeight.w400,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onBackground),
                       children: [
                         TextSpan(
                           recognizer: TapGestureRecognizer()
@@ -690,7 +699,12 @@ class RegisterPageState extends State<RegisterPage> {
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!
-                              .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                              .copyWith(
+                                  fontSize: 17.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onBackground),
                         ),
                         TextSpan(
                           recognizer: TapGestureRecognizer()
@@ -717,7 +731,12 @@ class RegisterPageState extends State<RegisterPage> {
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!
-                              .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                              .copyWith(
+                                  fontSize: 17.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onBackground),
                         ),
                         TextSpan(
                           recognizer: TapGestureRecognizer()
@@ -744,7 +763,12 @@ class RegisterPageState extends State<RegisterPage> {
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!
-                              .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                              .copyWith(
+                                  fontSize: 17.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onBackground),
                         ),
                       ],
                     ),
@@ -1189,15 +1213,24 @@ class RegisterPageState extends State<RegisterPage> {
   chipsWidget(SelectedFilterValues item) {
     return Container(
       decoration: BoxDecoration(
-        color: OQDOThemeData.whiteColor,
-        border: Border.all(color: OQDOThemeData.blackColor),
+        color: Theme.of(context).colorScheme.background,
+        border: Border.all(color: Theme.of(context).colorScheme.onBackground),
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
         ),
       ),
       padding: const EdgeInsets.fromLTRB(24, 10, 24, 10),
       child: CustomTextView(
-          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: OQDOThemeData.chipColor, fontSize: 13.0, fontWeight: FontWeight.w400),
+          textStyle: Theme.of(context)
+              .textTheme
+              .titleMedium!
+              .copyWith(
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onBackground
+                      .withOpacity(0.7),
+                  fontSize: 13.0,
+                  fontWeight: FontWeight.w400),
           label: item.activityName),
     );
   }
@@ -1304,8 +1337,8 @@ class RegisterPageState extends State<RegisterPage> {
     var mCroppedFile = await ImageCropper().cropImage(sourcePath: pickedFile.path, compressFormat: ImageCompressFormat.jpg, compressQuality: 100, uiSettings: [
       AndroidUiSettings(
           toolbarTitle: 'Cropper',
-          toolbarColor: OQDOThemeData.buttonColor,
-          toolbarWidgetColor: Colors.white,
+          toolbarColor: Theme.of(context).colorScheme.primary,
+          toolbarWidgetColor: Theme.of(context).colorScheme.onPrimary,
           initAspectRatio: CropAspectRatioPreset.square,
           lockAspectRatio: false),
       IOSUiSettings(
@@ -2088,7 +2121,13 @@ class SecondSignupPage extends StatelessWidget {
           CustomTextView(
             label: 'An OTP is sent to your number via SMS.',
             type: styleSubTitle,
-            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.dividerColor, fontSize: 17.0, fontWeight: FontWeight.w600),
+            textStyle: Theme.of(context)
+                .textTheme
+                .titleSmall!
+                .copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontSize: 17.0,
+                    fontWeight: FontWeight.w600),
           ),
           const SizedBox(
             height: 40,
@@ -2148,14 +2187,18 @@ class SecondSignupPage extends StatelessWidget {
             },
             wrapAlignment: WrapAlignment.spaceEvenly,
             pinBoxDecoration: ProvidedPinBoxDecoration.underlinedPinBoxDecoration,
-            pinTextStyle: const TextStyle(fontSize: 25.0, color: Colors.black),
+            pinTextStyle: TextStyle(
+                fontSize: 25.0,
+                color: Theme.of(context).colorScheme.onBackground),
             pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
             pinBoxColor: Theme.of(context).colorScheme.primary,
             pinTextAnimatedSwitcherDuration: const Duration(milliseconds: 100),
             //                    highlightAnimation: true,
             //highlightPinBoxColor: Colors.red,
-            highlightAnimationBeginColor: Colors.black,
-            highlightAnimationEndColor: Colors.white12,
+            highlightAnimationBeginColor:
+                Theme.of(context).colorScheme.onBackground,
+            highlightAnimationEndColor:
+                Theme.of(context).colorScheme.onBackground.withOpacity(0.07),
             keyboardType: TextInputType.number,
           ),
           const SizedBox(
