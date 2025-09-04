@@ -434,7 +434,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                         child: DropdownButton<dynamic>(
                             isExpanded: true,
                             icon:  Icon(Icons.keyboard_arrow_down_rounded, color: Theme.of(context).colorScheme.primary),
-                            dropdownColor: Theme.of(context).colorScheme.onBackground,
+                            dropdownColor: Theme.of(context).colorScheme.surface,
                             underline: const SizedBox(),
                             borderRadius: BorderRadius.circular(15),
                             hint: CustomTextView(
