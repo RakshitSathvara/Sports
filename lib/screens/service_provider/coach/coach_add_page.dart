@@ -97,12 +97,14 @@ class CoachAddPageState extends State<CoachAddPage> {
 
   @override
   Widget build(BuildContext context) {
+    final textColor =
+        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
     return Scaffold(
       body: SafeArea(
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: OQDOThemeData.backgroundColor,
+          color: Theme.of(context).colorScheme.surface,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.only(left: 25.0, right: 25.0),
@@ -131,13 +133,13 @@ class CoachAddPageState extends State<CoachAddPage> {
                         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontSize: 22.0,
                               fontWeight: FontWeight.w600,
-                              color: const Color(0xFF006590),
+                              color: textColor,
                             ),
                       ),
                     ),
-                    const Divider(
+                    Divider(
                       thickness: 3,
-                      color: Color.fromRGBO(0, 101, 144, 0.78),
+                      color: Theme.of(context).colorScheme.primary.withOpacity(0.78),
                     ),
                     const SizedBox(
                       height: 30,
@@ -146,7 +148,7 @@ class CoachAddPageState extends State<CoachAddPage> {
                       controller: firstNameController,
                       read: false,
                       obscureText: false,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       labelText: 'First Name',
                       maxlines: 1,
                       maxlength: 50,
@@ -163,7 +165,7 @@ class CoachAddPageState extends State<CoachAddPage> {
                       controller: lastNameController,
                       read: false,
                       obscureText: false,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       labelText: 'Last Name',
                       maxlines: 1,
                       maxlength: 50,
@@ -182,7 +184,7 @@ class CoachAddPageState extends State<CoachAddPage> {
                       textStyle: Theme.of(context)
                           .textTheme
                           .titleMedium!
-                          .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w600, fontSize: 17.0),
+                          .copyWith(color: textColor, fontWeight: FontWeight.w600, fontSize: 17.0),
                     ),
                     const SizedBox(
                       height: 20,
@@ -191,14 +193,14 @@ class CoachAddPageState extends State<CoachAddPage> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                         borderRadius: BorderRadius.circular(15),
-                        color: OQDOThemeData.backgroundColor,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: DropdownButton<dynamic>(
                             isExpanded: true,
-                            icon: const Icon(Icons.keyboard_arrow_down_rounded, color: OQDOThemeData.dividerColor),
-                            dropdownColor: Theme.of(context).colorScheme.onBackground,
+                            icon: Icon(Icons.keyboard_arrow_down_rounded, color: Theme.of(context).colorScheme.primary),
+                            dropdownColor: Theme.of(context).colorScheme.surface,
                             underline: const SizedBox(),
                             borderRadius: BorderRadius.circular(15),
                             hint: CustomTextView(
@@ -206,7 +208,7 @@ class CoachAddPageState extends State<CoachAddPage> {
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
-                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: textColor),
                             ),
                             value: choosedlocation,
                             items: location!.map((country) {
@@ -217,7 +219,7 @@ class CoachAddPageState extends State<CoachAddPage> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: textColor),
                                 ),
                               );
                             }).toList(),
@@ -293,7 +295,7 @@ class CoachAddPageState extends State<CoachAddPage> {
                           checkForUsername();
                         }
                       },
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       validator: Validator.notEmpty,
                       keyboardType: TextInputType.visiblePassword,
                     ),
@@ -313,7 +315,7 @@ class CoachAddPageState extends State<CoachAddPage> {
                         }
                       },
                       labelText: 'Email Address',
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       validator: Validator.validateEmail,
                       keyboardType: TextInputType.emailAddress,
                     ),
@@ -325,7 +327,7 @@ class CoachAddPageState extends State<CoachAddPage> {
                       read: false,
                       maxlines: 1,
                       maxlength: 32,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       obscureText: hidePassword1,
                       labelText: 'Password',
                       validator: Validator.validatePassword,
@@ -365,7 +367,7 @@ class CoachAddPageState extends State<CoachAddPage> {
                       read: false,
                       maxlines: 1,
                       maxlength: 32,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       obscureText: hidePassword2,
                       labelText: 'Confirm Password',
                       validator: (val) {
@@ -440,7 +442,7 @@ class CoachAddPageState extends State<CoachAddPage> {
                                     return null;
                                   },
                                   labelText: 'Phone Number',
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   // validator: Validator.validateMobile,
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
@@ -472,7 +474,7 @@ class CoachAddPageState extends State<CoachAddPage> {
                                     return null;
                                   },
                                   labelText: 'Phone Number',
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   //  validator: Validator.validateMobile,
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
@@ -488,7 +490,7 @@ class CoachAddPageState extends State<CoachAddPage> {
                     ),
                     MyButton(
                       text: "Continue",
-                      textcolor: Theme.of(context).colorScheme.onBackground,
+                      textcolor: textColor,
                       textsize: 16,
                       fontWeight: FontWeight.w600,
                       letterspacing: 0.7,

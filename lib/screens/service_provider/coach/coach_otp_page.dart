@@ -59,9 +59,11 @@ class _CoachOTPPageState extends State<CoachOTPPage> {
 
   @override
   Widget build(BuildContext context) {
+    final textColor =
+        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
     phone.text = widget.commonPassingArgs.mobileNo!;
     return Scaffold(
-      backgroundColor: OQDOThemeData.backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       resizeToAvoidBottomInset: true,
       key: _scaffoldKey,
       body: Padding(
@@ -87,7 +89,7 @@ class _CoachOTPPageState extends State<CoachOTPPage> {
                 CustomTextView(
                   label: 'An OTP is sent to your number via SMS.',
                   type: styleSubTitle,
-                  textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.dividerColor, fontSize: 17.0, fontWeight: FontWeight.w600),
+                  textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: textColor, fontSize: 17.0, fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(
                   height: 40,

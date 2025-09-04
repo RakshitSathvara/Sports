@@ -128,12 +128,14 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
 
   @override
   Widget build(BuildContext context) {
+    final textColor =
+        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
     return Scaffold(
       body: SafeArea(
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: OQDOThemeData.backgroundColor,
+          color: Theme.of(context).colorScheme.surface,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -289,7 +291,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                       inputformat: [
                         FilteringTextInputFormatter.allow(RegExp(r'[a-zA-z ]')),
                       ],
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                     ),
                     const SizedBox(
                       height: 40,
@@ -396,7 +398,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                     CustomTextFormField(
                       controller: description,
                       read: false,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       obscureText: false,
                       maxlength: 250,
                       // inputformat: [
@@ -489,7 +491,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                                     FilteringTextInputFormatter.digitsOnly,
                                   ],
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'Mobile number {Linked to PayNow}',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -513,7 +515,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+')),
                                   ],
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'PayNow ID (UEN Number)',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -548,7 +550,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                                     FilteringTextInputFormatter.digitsOnly,
                                   ],
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'Mobile number {Linked to PayLah}',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -579,7 +581,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                   obscureText: false,
                                   maxlines: 1,
                                   maxlength: 50,
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'Beneficiary name',
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
@@ -604,7 +606,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z ]+')),
                                   ],
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'Bank name',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -627,7 +629,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                                     FilteringTextInputFormatter.digitsOnly,
                                   ],
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'Bank account number',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -651,7 +653,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+')),
                                   ],
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'IFSC/Swift code',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -698,7 +700,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                       focusNode: _focusNode,
                       read: false,
                       obscureText: false,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       labelText: 'Referral Code',
                       inputformat: [
                         FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),

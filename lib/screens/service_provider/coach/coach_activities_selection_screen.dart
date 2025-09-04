@@ -42,6 +42,8 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
 
   @override
   Widget build(BuildContext context) {
+    final textColor =
+        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pop(context);
@@ -50,7 +52,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
       child: Scaffold(
         body: SafeArea(
           child: Container(
-            color: OQDOThemeData.backgroundColor,
+            color: Theme.of(context).colorScheme.surface,
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Column(
@@ -66,13 +68,13 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
                     width: 200.0,
                   ),
                 ),
-                topView(),
+                topView(textColor),
                 const SizedBox(
                   height: 50.0,
                 ),
-                const Divider(
+                 Divider(
                   height: 1.0,
-                  color: OQDOThemeData.blackColor,
+                  color: textColor,
                 ),
                 Expanded(child: filterView()),
                 bottomBtnView(),
@@ -212,7 +214,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
               },
               child: CustomTextView(
                 label: 'Apply',
-                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, fontSize: 16.0, color: OQDOThemeData.whiteColor),
+                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, fontSize: 16.0, color: Theme.of(context).colorScheme.surface),
               ),
             ),
           ),
@@ -221,7 +223,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
     );
   }
 
-  Widget topView() {
+  Widget topView(Color textColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -232,7 +234,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
             children: [
               CustomTextView(
                 label: 'Activities',
-                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400, fontSize: 18.0, color: OQDOThemeData.otherTextColor),
+                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400, fontSize: 18.0, color: textColor),
               ),
               // const Icon(
               //   Icons.keyboard_arrow_down_rounded,
@@ -248,7 +250,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
           padding: const EdgeInsets.only(left: 30.0),
           child: CustomTextView(
             label: '(Select 4 sub activities you would like to add)',
-            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: OQDOThemeData.blackColor, fontWeight: FontWeight.w400, fontSize: 16.0),
+            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: textColor, fontWeight: FontWeight.w400, fontSize: 16.0),
           ),
         ),
       ],
@@ -283,7 +285,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
             height: double.infinity,
           ),
           // const VerticalDivider(
-          //   color: OQDOThemeData.blackColor,
+          //   color: textColor,
           //   thickness: 1.0, //thickness of divider line
           // ),
           selectedValue != ""
@@ -331,13 +333,13 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
                         builder: (BuildContext context) => CupertinoAlertDialog(
                           title: CustomTextView(
                             label: '',
-                            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400, fontSize: 18.0, color: OQDOThemeData.greyColor),
+                            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400, fontSize: 18.0, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
                           ),
                           content: Center(
                             child: CustomTextView(
                               label: 'Are you sure you want to change activity?',
                               maxLine: 2,
-                              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
                             ),
                           ),
                           actions: [
@@ -348,7 +350,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
                               },
                               child: CustomTextView(
                                 label: 'No',
-                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dialogActionColor),
+                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             CupertinoDialogAction(
@@ -372,7 +374,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
                               },
                               child: CustomTextView(
                                 label: 'Yes',
-                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dialogActionColor),
+                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
                               ),
                             )
                           ],
@@ -397,7 +399,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
             child: CustomTextView(
               label: selectedValuesFromKey[index].Name,
               maxLine: 3,
-              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
             ),
           )
         ],
@@ -439,11 +441,11 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
           child: Container(
             height: 80.0,
             width: double.infinity,
-            color: selectedValue == key ? OQDOThemeData.filterDividerColor : OQDOThemeData.whiteColor,
+            color: selectedValue == key ? Theme.of(context).colorScheme.primaryContainer : Theme.of(context).colorScheme.surface,
             child: Center(
               child: CustomTextView(
                 label: key,
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontWeight: FontWeight.w500),
               ),
             ),
           ),
@@ -451,7 +453,7 @@ class _CoachActivitiesSelectionScreenState extends State<CoachActivitiesSelectio
         SizedBox(
           height: 1.0,
           child: Container(
-            color: OQDOThemeData.filterDividerColor,
+            color: Theme.of(context).colorScheme.primaryContainer,
           ),
         ),
       ],

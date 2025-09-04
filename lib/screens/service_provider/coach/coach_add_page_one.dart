@@ -94,6 +94,8 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
 
   @override
   Widget build(BuildContext context) {
+    final textColor =
+        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
     // var ph = MediaQuery.of(context).size.height;
     // TODO: implement build
     return Scaffold(
@@ -101,7 +103,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: OQDOThemeData.backgroundColor,
+          color: Theme.of(context).colorScheme.surface,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.only(left: 25, right: 25),
@@ -130,13 +132,13 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontSize: 22.0,
                               fontWeight: FontWeight.w600,
-                              color: const Color(0xFF006590),
+                              color: textColor,
                             ),
                       ),
                     ),
-                    const Divider(
+                    Divider(
                       thickness: 3,
-                      color: Color.fromRGBO(0, 101, 144, 0.78),
+                      color: Theme.of(context).colorScheme.primary.withOpacity(0.78),
                     ),
                     const SizedBox(
                       height: 30,
@@ -146,7 +148,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                       read: false,
                       maxlines: 1,
                       obscureText: false,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       maxlength: 4,
                       inputformat: [
                         FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+')),
@@ -165,7 +167,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                         textStyle: Theme.of(context)
                             .textTheme
                             .titleMedium!
-                            .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w400, fontSize: 17.0),
+                            .copyWith(color: textColor, fontWeight: FontWeight.w400, fontSize: 17.0),
                       ),
                     ),
                     const SizedBox(
@@ -175,14 +177,14 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                         borderRadius: BorderRadius.circular(15),
-                        color: OQDOThemeData.backgroundColor,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: DropdownButton<dynamic>(
                             isExpanded: true,
-                            icon: const Icon(Icons.keyboard_arrow_down_rounded, color: OQDOThemeData.dividerColor),
-                            dropdownColor: Theme.of(context).colorScheme.onBackground,
+                            icon: Icon(Icons.keyboard_arrow_down_rounded, color: Theme.of(context).colorScheme.primary),
+                            dropdownColor: Theme.of(context).colorScheme.surface,
                             underline: const SizedBox(),
                             borderRadius: BorderRadius.circular(15),
                             hint: CustomTextView(
@@ -190,7 +192,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
-                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: textColor),
                             ),
                             value: choosedlocation,
                             items: location!.map((country) {
@@ -201,7 +203,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: textColor),
                                 ),
                               );
                             }).toList(),
@@ -227,7 +229,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                         textStyle: Theme.of(context)
                             .textTheme
                             .bodyLarge!
-                            .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w400, fontSize: 16.0),
+                            .copyWith(color: textColor, fontWeight: FontWeight.w400, fontSize: 16.0),
                       ),
                     ),
                     PinCodeTextField(
@@ -267,7 +269,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                       controller: address,
                       read: false,
                       obscureText: false,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       labelText: 'Address',
                       maxlength: 200,
                       validator: Validator.notEmpty,
@@ -280,7 +282,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                     CustomTextView(
                       label: 'Upload Profile Photo',
                       textStyle:
-                          Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.0, color: OQDOThemeData.otherTextColor, fontWeight: FontWeight.w400),
+                          Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.0, color: textColor, fontWeight: FontWeight.w400),
                     ),
                     const SizedBox(
                       height: 10.0,
@@ -344,7 +346,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                     CustomTextFormField(
                       controller: regNum,
                       read: false,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       maxlines: 1,
                       maxlength: 30,
                       inputformat: [
@@ -362,7 +364,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                       controller: estabSince,
                       read: false,
                       maxlines: 1,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       obscureText: false,
                       maxlength: 2,
                       inputformat: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), FilteringTextInputFormatter.digitsOnly],
@@ -377,7 +379,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                       controller: uenNumberController,
                       read: false,
                       maxlines: 1,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       obscureText: false,
                       maxlength: 12,
                       inputformat: [
