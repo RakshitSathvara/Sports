@@ -436,7 +436,10 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
-                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
+                                  .copyWith(
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w400,
+                                      color: textColor),
                             ),
                             value: selectedPayoutMethod,
                             items: payoutMethods.map((method) {
@@ -447,7 +450,10 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
+                                      .copyWith(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                          color: textColor),
                                 ),
                               );
                             }).toList(),

@@ -135,8 +135,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
 
   @override
   Widget build(BuildContext context) {
-    final textColor =
-        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
+    final textColor = Theme.of(context).colorScheme.onSurface;
     return Scaffold(
       body: SafeArea(
         child: Container(

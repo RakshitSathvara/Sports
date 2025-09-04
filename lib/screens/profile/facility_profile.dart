@@ -168,6 +168,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final textColor = Theme.of(context).colorScheme.onSurface;
     return facilityProfileResponseModel.facilityName != null
         ? Scaffold(
             key: scaffoldKey,
@@ -1721,8 +1722,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             decoration: BoxDecoration(
                               border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                               borderRadius: BorderRadius.circular(15),
-                              color: Theme.of(context).colorScheme.onBackground,
-
+                              color: Theme.of(context).colorScheme.surface,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.only(left: 10, right: 10),
@@ -1730,7 +1730,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                 isExpanded: true,
                                 icon: Icon(Icons.keyboard_arrow_down_rounded,
                                     color: Theme.of(context).colorScheme.primary),
-                                dropdownColor: Theme.of(context).colorScheme.onBackground,
+                                dropdownColor: Theme.of(context).colorScheme.surface,
                                 underline: const SizedBox(),
                                 borderRadius: BorderRadius.circular(15),
                                 hint: CustomTextView(
@@ -1741,9 +1741,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       .copyWith(
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.w400,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary),
+                                          color: textColor),
                                 ),
                                 value: selectedPayoutMethod,
                                 items: payoutMethods.map((method) {
@@ -1757,9 +1755,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                           .copyWith(
                                               fontSize: 16.0,
                                               fontWeight: FontWeight.w400,
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .primary),
+                                              color: textColor),
                                     ),
                                   );
                                 }).toList(),
