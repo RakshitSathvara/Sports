@@ -42,4 +42,12 @@ class ColorsUtils {
       _isDark ? const Color(0xFFFFA726) : const Color(0xFFB59800);
   static Color get yellowStatus =>
       _isDark ? const Color(0xFFFFD54F) : const Color(0xFFE1B000);
+
+  /// Background color for the refer and earn section
+  static Color get referEarnColor =>
+      _isDark ? const Color(0xFF4FC3F7) : const Color(0xFF006590);
+
+  /// Background color for the close account button
+  static Color get closeAccountColor =>
+      _isDark ? const Color(0xFFFF5252) : const Color(0xFFFC5555);
 }

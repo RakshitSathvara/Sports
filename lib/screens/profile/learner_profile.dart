@@ -120,7 +120,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
             ? Container(
                 width: width,
                 height: height,
-                color: OQDOThemeData.whiteColor,
+                color: ColorsUtils.white,
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -555,7 +555,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                             CustomTextView(
                               label: 'Make your profile private',
                               textStyle:
-                                  Theme.of(context).textTheme.bodyLarge!.copyWith(color: OQDOThemeData.blackColor, fontSize: 14.0, fontWeight: FontWeight.w400),
+                                  Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.onBackground, fontSize: 14.0, fontWeight: FontWeight.w400),
                             ),
                           ],
                         ),
@@ -758,7 +758,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                                 textStyle: Theme.of(context)
                                                     .textTheme
                                                     .titleMedium!
-                                                    .copyWith(color: const Color(0xFF2B2B2B), fontWeight: FontWeight.w400, fontSize: 18.0),
+                                                    .copyWith(color: ColorsUtils.chipText, fontWeight: FontWeight.w400, fontSize: 18.0),
                                               ),
                                               const SizedBox(
                                                 height: 10.0,
@@ -849,7 +849,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleMedium!
-                                        .copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: OQDOThemeData.blackColor),
+                                        .copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onBackground),
                                   ),
                         //description.
                         const SizedBox(
@@ -1038,9 +1038,9 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                           content: Column(
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
-                                              const Icon(
+                                              Icon(
                                                 Icons.cancel,
-                                                color: Colors.red,
+                                                color: ColorsUtils.redColor,
                                                 size: 100.0,
                                               ),
                                               const SizedBox(height: 10.0),
@@ -1072,7 +1072,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20.0), // Adjust radius as needed
-                              color: const Color(0xFF006590),
+                              color: ColorsUtils.referEarnColor,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
@@ -1092,13 +1092,13 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                         const SizedBox(
                                           width: 10,
                                         ),
-                                        const Align(
+                                        Align(
                                           alignment: Alignment.center,
                                           child: Text(
                                             "Refer and Earn",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.white,
+                                              color: ColorsUtils.white,
                                               fontSize: 20.0, // Adjust font size as needed
                                             ),
                                           ),
@@ -1130,7 +1130,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                   width: double.infinity,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20.0), // Adjust radius as needed
-                                    color: const Color(0xFFFC5555),
+                                    color: ColorsUtils.closeAccountColor,
                                   ),
                                   child: const Center(
                                     child: Padding(
@@ -1147,10 +1147,10 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                   ),
                                 ),
                               )
-                            : const Center(
+                            : Center(
                                 child: Text(
                                   'Account Closure Request in Process',
-                                  style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 18),
+                                  style: TextStyle(color: ColorsUtils.redColor, fontWeight: FontWeight.bold, fontSize: 18),
                                 ),
                               ),
                         const SizedBox(
@@ -1167,7 +1167,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                     : CustomTextView(
                         label: 'User not found',
                         textStyle:
-                            Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor, fontSize: 16.0),
+                            Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground, fontSize: 16.0),
                       ),
               ),
       ),
@@ -1382,14 +1382,14 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
               padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
               child: CustomTextView(
                 label: 'Training Address',
-                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.blackColor, fontSize: 14, fontWeight: FontWeight.w600),
+                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.onBackground, fontSize: 14, fontWeight: FontWeight.w600),
               ),
             ),
             content: CustomTextView(
               label: 'Are you sure you want to delete Training Address?',
               maxLine: 2,
               textOverFlow: TextOverflow.ellipsis,
-              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: OQDOThemeData.blackColor, fontSize: 16, fontWeight: FontWeight.w400),
+              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.onBackground, fontSize: 16, fontWeight: FontWeight.w400),
             ),
             actions: [
               CupertinoDialogAction(
@@ -1878,10 +1878,10 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                               isCloseAccount = true;
                             });
                           },
-                          child: const Text(
-                            'Close',
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
+                            child: Text(
+                              'Close',
+                              style: TextStyle(color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
                         ),
                       ],
                     ),
