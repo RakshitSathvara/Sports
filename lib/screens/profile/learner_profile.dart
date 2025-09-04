@@ -169,10 +169,14 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                           errorBuilder: (context, error, trace) {
                                             return ClipRRect(
                                               borderRadius: BorderRadius.circular(10.0),
-                                              child: const SizedBox(
+                                              child: SizedBox(
                                                 height: 70,
                                                 width: 70,
-                                                child: Icon(Icons.account_circle_rounded, size: 70),
+                                                child: Icon(
+                                                  Icons.account_circle_rounded,
+                                                  size: 70,
+                                                  color: Theme.of(context).colorScheme.onBackground,
+                                                ),
                                               ),
                                             );
                                           },
@@ -1168,7 +1172,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                             children: [
                                               Icon(
                                                 Icons.cancel,
-                                                color: ColorsUtils.redColor,
+                                                color: Theme.of(context).colorScheme.error,
                                                 size: 100.0,
                                               ),
                                               const SizedBox(height: 10.0),
@@ -1725,7 +1729,10 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
             child: Wrap(
               children: <Widget>[
                 ListTile(
-                    leading: const Icon(Icons.photo_library),
+                    leading: Icon(
+                      Icons.photo_library,
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
                     title: const Text(
                       'Photo Library',
                       style: TextStyle(
@@ -1748,7 +1755,10 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                       }
                     }),
                 ListTile(
-                    leading: const Icon(Icons.photo_camera),
+                    leading: Icon(
+                      Icons.photo_camera,
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
                     title: const Text(
                       'Camera',
                       style: TextStyle(
