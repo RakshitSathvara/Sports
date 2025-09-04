@@ -1844,7 +1844,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
     var mCroppedFile = await ImageCropper().cropImage(sourcePath: pickedFile.path, compressFormat: ImageCompressFormat.jpg, compressQuality: 100, uiSettings: [
       AndroidUiSettings(
           toolbarTitle: 'Cropper',
-          toolbarColor: OQDOThemeData.buttonColor,
+          toolbarColor: Theme.of(context).colorScheme.primary,
           toolbarWidgetColor: Theme.of(context).colorScheme.onPrimary,
           initAspectRatio: CropAspectRatioPreset.square,
           lockAspectRatio: false),

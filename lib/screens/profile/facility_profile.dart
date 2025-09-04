@@ -18,7 +18,6 @@ import 'package:oqdo_mobile_app/helper/helpers.dart';
 import 'package:oqdo_mobile_app/model/common_passing_args.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/domain/chat_provider.dart';
 import 'package:oqdo_mobile_app/screens/profile/intent/refer_earn_intent.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/close_account_popup.dart';
 import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
@@ -355,6 +354,10 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       child: Image.asset(
                                         "assets/images/ic_edit.png",
                                         fit: BoxFit.scaleDown,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black,
                                         height: 22,
                                       ),
                                     ),
@@ -438,6 +441,10 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       child: Image.asset(
                                         "assets/images/ic_edit.png",
                                         fit: BoxFit.scaleDown,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black,
                                         height: 22,
                                       ),
                                     )
@@ -705,7 +712,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                                         textStyle: Theme.of(context)
                                                             .textTheme
                                                             .titleMedium!
-                                                            .copyWith(color: OQDOThemeData.blackColor, fontWeight: FontWeight.w400, fontSize: 16.0),
+                                                            .copyWith(
+                                                                color: Theme.of(context)
+                                                                    .colorScheme
+                                                                    .onBackground,
+                                                                fontWeight: FontWeight.w400,
+                                                                fontSize: 16.0),
                                                       ),
                                                       GestureDetector(
                                                           onTap: () {
@@ -929,6 +941,10 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       child: Image.asset(
                                         "assets/images/ic_edit.png",
                                         fit: BoxFit.scaleDown,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black,
                                         height: 22,
                                       ),
                                     ),
@@ -1038,7 +1054,10 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             textStyle: Theme.of(context)
                                 .textTheme
                                 .titleMedium!
-                                .copyWith(fontSize: 17.0, color: OQDOThemeData.otherTextColor, fontWeight: FontWeight.w400),
+                                .copyWith(
+                                    fontSize: 17.0,
+                                    color: ColorsUtils.greyText,
+                                    fontWeight: FontWeight.w400),
                           ),
                           const SizedBox(
                             height: 10.0,
@@ -1332,7 +1351,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: OQDOThemeData.blackColor),
+                                          .copyWith(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.w400,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onBackground),
                                     ),
                           const SizedBox(
                             height: 26,
@@ -1398,6 +1422,10 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       child: Image.asset(
                                         "assets/images/ic_edit.png",
                                         fit: BoxFit.scaleDown,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black,
                                         height: 22,
                                       ),
                                     ),
@@ -1699,6 +1727,10 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       child: Image.asset(
                                         "assets/images/ic_edit.png",
                                         fit: BoxFit.scaleDown,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black,
                                         height: 22,
                                       ),
                                     ),
@@ -1712,13 +1744,14 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             decoration: BoxDecoration(
                               border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                               borderRadius: BorderRadius.circular(15),
-                              color: OQDOThemeData.backgroundColor,
+                              color: ColorsUtils.white,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.only(left: 10, right: 10),
                               child: DropdownButton<dynamic>(
                                 isExpanded: true,
-                                icon: const Icon(Icons.keyboard_arrow_down_rounded, color: OQDOThemeData.dividerColor),
+                                icon: Icon(Icons.keyboard_arrow_down_rounded,
+                                    color: Theme.of(context).colorScheme.primary),
                                 dropdownColor: Theme.of(context).colorScheme.onBackground,
                                 underline: const SizedBox(),
                                 borderRadius: BorderRadius.circular(15),
@@ -1727,7 +1760,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                      .copyWith(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary),
                                 ),
                                 value: selectedPayoutMethod,
                                 items: payoutMethods.map((method) {
@@ -1738,7 +1776,12 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
-                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                          .copyWith(
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.w400,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .primary),
                                     ),
                                   );
                                 }).toList(),
@@ -2628,7 +2671,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
     var mCroppedFile = await ImageCropper().cropImage(sourcePath: pickedFile.path, compressFormat: ImageCompressFormat.jpg, compressQuality: 100, uiSettings: [
       AndroidUiSettings(
           toolbarTitle: 'Cropper',
-          toolbarColor: OQDOThemeData.buttonColor,
+          toolbarColor: Theme.of(context).colorScheme.primary,
           toolbarWidgetColor: Theme.of(context).colorScheme.onPrimary,
           initAspectRatio: CropAspectRatioPreset.square,
           lockAspectRatio: false),

@@ -17,6 +17,7 @@ import 'package:oqdo_mobile_app/utils/validator.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 
 import '../../model/coach_profile_response.dart';
 import '../../model/get_all_activity_and_sub_activity_response.dart';
@@ -256,7 +257,7 @@ class AddTrainingAddressPageState extends State<AddTrainingAddressPage> {
                         highlightColor: Theme.of(context).colorScheme.secondaryContainer,
                         defaultBorderColor: Theme.of(context).colorScheme.secondaryContainer,
                         hasTextBorderColor: Theme.of(context).colorScheme.secondaryContainer,
-                        errorBorderColor: Colors.red,
+                        errorBorderColor: ColorsUtils.redColor,
                         maxLength: 6,
                         hasError: false,
                         maskCharacter: "*",
@@ -265,14 +266,20 @@ class AddTrainingAddressPageState extends State<AddTrainingAddressPage> {
                         onDone: (text) async {},
                         wrapAlignment: WrapAlignment.spaceEvenly,
                         pinBoxDecoration: ProvidedPinBoxDecoration.underlinedPinBoxDecoration,
-                        pinTextStyle: const TextStyle(fontSize: 25.0, color: Colors.black),
+                        pinTextStyle: TextStyle(
+                            fontSize: 25.0,
+                            color: Theme.of(context).colorScheme.onBackground),
                         pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
                         pinBoxColor: Theme.of(context).colorScheme.secondaryContainer,
                         pinTextAnimatedSwitcherDuration: const Duration(milliseconds: 300),
                         //                    highlightAnimation: true,
                         //highlightPinBoxColor: Colors.red,
-                        highlightAnimationBeginColor: Colors.black,
-                        highlightAnimationEndColor: Colors.white12,
+                        highlightAnimationBeginColor:
+                            Theme.of(context).colorScheme.onBackground,
+                        highlightAnimationEndColor: Theme.of(context)
+                            .colorScheme
+                            .onBackground
+                            .withOpacity(0.07),
                         keyboardType: TextInputType.number,
                       ),
                     ),
