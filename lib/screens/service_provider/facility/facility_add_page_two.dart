@@ -140,7 +140,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: Theme.of(context).colorScheme.background,
+          color: Theme.of(context).colorScheme.surface,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -186,7 +186,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       inputformat: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), FilteringTextInputFormatter.digitsOnly],
                       maxlines: 1,
                       maxlength: 4,
-                      fillColor: Theme.of(context).colorScheme.background,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       obscureText: false,
                       labelText: 'Establishment Since',
                       validator: Validator.notEmpty,
@@ -303,7 +303,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       inputformat: [
                         FilteringTextInputFormatter.allow(RegExp(r'[a-zA-z ]')),
                       ],
-                      fillColor: Theme.of(context).colorScheme.background,
+                      fillColor: Theme.of(context).colorScheme.surface,
                     ),
                     const SizedBox(
                       height: 40,
@@ -407,7 +407,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                     CustomTextFormField(
                       controller: description,
                       read: false,
-                      fillColor: Theme.of(context).colorScheme.background,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       obscureText: false,
                       maxlength: 250,
                       // inputformat: [
@@ -425,13 +425,13 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                         borderRadius: BorderRadius.circular(15),
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: DropdownButton<dynamic>(
                             isExpanded: true,
-                            icon: const Icon(Icons.keyboard_arrow_down_rounded, color: Theme.of(context).colorScheme.primary),
+                            icon:  Icon(Icons.keyboard_arrow_down_rounded, color: Theme.of(context).colorScheme.primary),
                             dropdownColor: Theme.of(context).colorScheme.onBackground,
                             underline: const SizedBox(),
                             borderRadius: BorderRadius.circular(15),
@@ -500,7 +500,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                                     FilteringTextInputFormatter.digitsOnly,
                                   ],
-                                  fillColor: Theme.of(context).colorScheme.background,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'Mobile number {Linked to PayNow}',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -524,7 +524,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+')),
                                   ],
-                                  fillColor: Theme.of(context).colorScheme.background,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'PayNow ID (UEN Number)',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -559,7 +559,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                                     FilteringTextInputFormatter.digitsOnly,
                                   ],
-                                  fillColor: Theme.of(context).colorScheme.background,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'Mobile number {Linked to PayLah}',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -590,7 +590,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   obscureText: false,
                                   maxlines: 1,
                                   maxlength: 50,
-                                  fillColor: Theme.of(context).colorScheme.background,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'Beneficiary name',
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
@@ -615,7 +615,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z ]+')),
                                   ],
                                   maxlength: 50,
-                                  fillColor: Theme.of(context).colorScheme.background,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'Bank name',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -639,7 +639,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                                     FilteringTextInputFormatter.digitsOnly,
                                   ],
-                                  fillColor: Theme.of(context).colorScheme.background,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'Bank account number',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -663,7 +663,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+')),
                                   ],
-                                  fillColor: Theme.of(context).colorScheme.background,
+                                  fillColor: Theme.of(context).colorScheme.surface,
                                   labelText: 'IFSC/Swift code',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -710,7 +710,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       focusNode: _focusNode,
                       read: false,
                       obscureText: false,
-                      fillColor: Theme.of(context).colorScheme.background,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       labelText: 'Referral Code',
                       inputformat: [
                         FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
@@ -959,7 +959,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
   chipsWidget(SelectedFilterValues item) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.surface,
         border: Border.all(color: Theme.of(context).colorScheme.onBackground),
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
@@ -1499,7 +1499,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                           onPressed: () async {
                             await Navigator.pushNamedAndRemoveUntil(context, Constants.LOGIN, (r) => false);
                           },
-                          child: const Text(
+                          child:  Text(
                             'Ok',
                             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onBackground),
                           ),

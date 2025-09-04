@@ -116,7 +116,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: Theme.of(context).colorScheme.background,
+          color: Theme.of(context).colorScheme.surface,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -180,7 +180,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                         textStyle: Theme.of(context)
                             .textTheme
                             .titleMedium!
-                            .copyWith(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w400, fontSize: 17.0),
+                            .copyWith(color: Theme.of(context).colorScheme.surface, fontWeight: FontWeight.w400, fontSize: 17.0),
                       ),
                     ),
                     const SizedBox(
@@ -190,7 +190,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                         borderRadius: BorderRadius.circular(15),
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
@@ -283,7 +283,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                       read: false,
                       obscureText: false,
                       maxlength: 200,
-                      fillColor: Theme.of(context).colorScheme.background,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       labelText: 'Address',
                       validator: Validator.notEmpty,
                       keyboardType: TextInputType.text,
@@ -376,7 +376,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                 isDismissible: false,
                                 enableDrag: false,
                                 isScrollControlled: true,
-                                backgroundColor: Theme.of(context).colorScheme.background,
+                                backgroundColor: Theme.of(context).colorScheme.surface,
                                 shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0))),
                                 context: context,
@@ -499,7 +499,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                           child: Container(
                             height: 50.0,
                             width: 50.0,
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.surface,
                             child: Image.asset(
                               'assets/images/ic_add.png',
                               fit: BoxFit.contain,
@@ -581,7 +581,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                       )
                                     ],
                                   ),
-                                  const Divider(
+                                   Divider(
                                     height: 2,
                                     color: Theme.of(context).colorScheme.outline,
                                   )
@@ -599,7 +599,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                       maxlines: 1,
                       maxlength: 4,
                       inputformat: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), FilteringTextInputFormatter.digitsOnly],
-                      fillColor: Theme.of(context).colorScheme.background,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       labelText: 'Registration Number (UEN)',
                       validator: Validator.notEmpty,
                       keyboardType: TextInputType.number,
@@ -613,7 +613,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                         textsize: 16,
                         fontWeight: FontWeight.w600,
                         letterspacing: 0.7,
-                        buttoncolor: Theme.of(context).colorScheme.background,
+                        buttoncolor: Theme.of(context).colorScheme.surface,
                         buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
                         buttonheight: 60,
                         buttonwidth: width,
@@ -952,7 +952,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
       isDismissible: false,
       enableDrag: false,
       isScrollControlled: true,
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0))),
       context: context,
       builder: (context) {
