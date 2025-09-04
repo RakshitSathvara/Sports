@@ -1722,6 +1722,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                               border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                               borderRadius: BorderRadius.circular(15),
                               color: Theme.of(context).colorScheme.onBackground,
+
                             ),
                             child: Padding(
                               padding: const EdgeInsets.only(left: 10, right: 10),

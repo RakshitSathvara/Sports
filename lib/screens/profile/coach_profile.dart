@@ -854,6 +854,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             decoration: _inputDecoration(context,
                                 errorStyle:
                                     const TextStyle(color: ColorsUtils.redColor)),
+
                           ),
 
                           // coach id
@@ -883,6 +884,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             decoration: _inputDecoration(context,
                                 errorStyle:
                                     const TextStyle(color: ColorsUtils.redColor)),
+                   
                           ),
                           const SizedBox(
                             height: 8,
@@ -909,6 +911,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             decoration: _inputDecoration(context,
                                 errorStyle:
                                     const TextStyle(color: ColorsUtils.redColor)),
+
                           ),
                           //experience
                           const SizedBox(
@@ -935,6 +938,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                 counterText: '',
                                 errorStyle:
                                     const TextStyle(color: ColorsUtils.redColor)),
+
                           ),
                           //description.
                           const SizedBox(
@@ -1821,6 +1825,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                               border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                               borderRadius: BorderRadius.circular(15),
                               color: Theme.of(context).colorScheme.onBackground,
+
                             ),
                             child: Padding(
                               padding: const EdgeInsets.only(left: 10, right: 10),
@@ -1930,6 +1935,8 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                                         decoration: _inputDecoration(context,
                                             counterText: '',
+
+
                                             errorStyle: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium!
@@ -1970,6 +1977,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                                         decoration: _inputDecoration(context,
                                             counterText: '',
+
                                             errorStyle: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium!
@@ -2021,6 +2029,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                                         decoration: _inputDecoration(context,
                                             counterText: '',
+
                                             errorStyle: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium!
@@ -2070,6 +2079,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                         decoration: _inputDecoration(context,
                                             counterText: '',
         errorStyle: Theme.of(context)
+
                                                 .textTheme
                                                 .bodyMedium!
                                                 .copyWith(
@@ -2107,6 +2117,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                                         decoration: _inputDecoration(context,
                                             counterText: '',
+
                                             errorStyle: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium!
@@ -2148,6 +2159,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                                         decoration: _inputDecoration(context,
                                             counterText: '',
+
                                             errorStyle: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium!
@@ -2188,6 +2200,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                                         decoration: _inputDecoration(context,
                                             counterText: '',
+
                                             errorStyle: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium!
