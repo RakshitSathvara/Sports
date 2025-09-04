@@ -128,8 +128,10 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
 
   @override
   Widget build(BuildContext context) {
-    final textColor =
-        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
+    final textColor = Theme.of(context).colorScheme.onSurface;
+    final secondaryTextColor = Theme.of(context).brightness == Brightness.dark
+        ? OQDOThemeData.darkOtherTextColor
+        : OQDOThemeData.otherTextColor;
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -164,13 +166,13 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontSize: 22.0,
                               fontWeight: FontWeight.w600,
-                              color: const Color(0xFF006590),
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                       ),
                     ),
-                    const Divider(
+                    Divider(
                       thickness: 3,
-                      color: Color.fromRGBO(0, 101, 144, 0.78),
+                      color: Theme.of(context).colorScheme.primary.withOpacity(0.78),
                     ),
                     const SizedBox(
                       height: 30,
@@ -241,7 +243,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                                 textStyle: Theme.of(context)
                                                     .textTheme
                                                     .titleMedium!
-                                                    .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.blackColor),
+                                                    .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: textColor),
                                               ),
                                             ),
                                             Expanded(
@@ -266,7 +268,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                         : CustomTextView(
                             label: '(Select the activities you would like to add)',
                             textStyle:
-                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: OQDOThemeData.blackColor),
+                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: textColor),
                           ),
                     const SizedBox(
                       height: 30,
@@ -275,7 +277,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                       label: 'If the sub activity you are interested in is not in our list',
                       maxLine: 2,
                       textOverFlow: TextOverflow.ellipsis,
-                      textStyle: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                      textStyle: TextStyle(fontSize: 16, color: textColor, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(
                       height: 15,
@@ -298,8 +300,10 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                     ),
                     CustomTextView(
                       label: 'Upload Certification Photo(s)',
-                      textStyle:
-                          Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.0, color: OQDOThemeData.otherTextColor, fontWeight: FontWeight.w400),
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(fontSize: 17.0, color: secondaryTextColor, fontWeight: FontWeight.w400),
                     ),
                     const SizedBox(
                       height: 8.0,
@@ -416,14 +420,15 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                         borderRadius: BorderRadius.circular(15),
-                        color: OQDOThemeData.backgroundColor,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: DropdownButton<dynamic>(
                             isExpanded: true,
-                            icon: const Icon(Icons.keyboard_arrow_down_rounded, color: OQDOThemeData.dividerColor),
-                            dropdownColor: Theme.of(context).colorScheme.onBackground,
+                            icon: Icon(Icons.keyboard_arrow_down_rounded,
+                                color: Theme.of(context).colorScheme.primary),
+                            dropdownColor: Theme.of(context).colorScheme.surface,
                             underline: const SizedBox(),
                             borderRadius: BorderRadius.circular(15),
                             hint: CustomTextView(
@@ -431,7 +436,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
-                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
                             ),
                             value: selectedPayoutMethod,
                             items: payoutMethods.map((method) {
@@ -442,7 +447,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
                                 ),
                               );
                             }).toList(),
@@ -736,7 +741,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge!
-                                  .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                                  .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: secondaryTextColor),
                               children: [
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
@@ -763,7 +768,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: secondaryTextColor),
                                 ),
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
@@ -790,7 +795,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: secondaryTextColor),
                                 ),
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
@@ -817,7 +822,7 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: secondaryTextColor),
                                 ),
                               ],
                             ),
@@ -950,15 +955,20 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
   chipsWidget(SelectedFilterValues item) {
     return Container(
       decoration: BoxDecoration(
-        color: OQDOThemeData.whiteColor,
-        border: Border.all(color: OQDOThemeData.blackColor),
+        color: Theme.of(context).colorScheme.surface,
+        border: Border.all(color: Theme.of(context).colorScheme.onSurface),
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
         ),
       ),
       padding: const EdgeInsets.fromLTRB(24, 10, 24, 10),
       child: CustomTextView(
-        textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: OQDOThemeData.chipColor, fontSize: 13.0, fontWeight: FontWeight.w400),
+        textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? OQDOThemeData.darkChipColor
+                : OQDOThemeData.chipColor,
+            fontSize: 13.0,
+            fontWeight: FontWeight.w400),
         label: item.activityName,
       ),
     );
@@ -1423,22 +1433,22 @@ class CoachAddPageTwoState extends State<CoachAddPageTwo> {
                   child: AlertDialog(
                     title: CustomTextView(
                       label: 'Account- Pending Approval',
-                      textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18.0, fontWeight: FontWeight.bold, color: OQDOThemeData.blackColor),
+                      textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18.0, fontWeight: FontWeight.bold, color: textColor),
                     ),
                     content: CustomTextView(
                       label:
                           'Your account is presently under review. Upon completion of the approval process, you will receive an email. If you have any questions, please visit our website to contact us.',
                       maxLine: 6,
-                      textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: OQDOThemeData.blackColor),
+                      textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: textColor),
                     ),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () async {
                           await Navigator.pushNamedAndRemoveUntil(context, Constants.LOGIN, (r) => false);
                         },
-                        child: const Text(
+                        child: Text(
                           'Ok',
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: OQDOThemeData.blackColor),
+                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: textColor),
                         ),
                       ),
                     ],

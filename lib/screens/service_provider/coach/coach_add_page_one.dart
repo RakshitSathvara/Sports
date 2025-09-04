@@ -94,8 +94,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
 
   @override
   Widget build(BuildContext context) {
-    final textColor =
-        Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black;
+    final textColor = Theme.of(context).colorScheme.onSurface;
     // var ph = MediaQuery.of(context).size.height;
     // TODO: implement build
     return Scaffold(
@@ -241,8 +240,8 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                       hideCharacter: false,
                       highlight: true,
                       highlightColor: Theme.of(context).colorScheme.secondaryContainer,
-                      defaultBorderColor: const Color.fromRGBO(0, 101, 144, 0.53),
-                      hasTextBorderColor: const Color.fromRGBO(0, 101, 144, 0.53),
+                      defaultBorderColor: Theme.of(context).colorScheme.primary.withOpacity(0.53),
+                      hasTextBorderColor: Theme.of(context).colorScheme.primary.withOpacity(0.53),
                       errorBorderColor: Colors.red,
                       maxLength: 6,
                       hasError: false,
@@ -252,13 +251,13 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                       onDone: (text) async {},
                       wrapAlignment: WrapAlignment.spaceEvenly,
                       pinBoxDecoration: ProvidedPinBoxDecoration.underlinedPinBoxDecoration,
-                      pinTextStyle: const TextStyle(fontSize: 25.0, color: Colors.black),
+                      pinTextStyle: TextStyle(fontSize: 25.0, color: textColor),
                       pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
                       pinBoxColor: Theme.of(context).colorScheme.secondaryContainer,
                       pinTextAnimatedSwitcherDuration: const Duration(milliseconds: 300),
                       //                    highlightAnimation: true,
                       //highlightPinBoxColor: Colors.red,
-                      highlightAnimationBeginColor: Colors.black,
+                      highlightAnimationBeginColor: textColor,
                       highlightAnimationEndColor: Colors.white12,
                       keyboardType: TextInputType.number,
                     ),
@@ -397,7 +396,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
                       textsize: 16,
                       fontWeight: FontWeight.w600,
                       letterspacing: 0.7,
-                      buttoncolor: OQDOThemeData.backgroundColor,
+                      buttoncolor: Theme.of(context).colorScheme.surface,
                       buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
                       buttonheight: 60,
                       buttonwidth: width,
@@ -542,7 +541,7 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
     var mCroppedFile = await ImageCropper().cropImage(sourcePath: pickedFile.path, compressFormat: ImageCompressFormat.jpg, compressQuality: 100, uiSettings: [
       AndroidUiSettings(
           toolbarTitle: 'Cropper',
-          toolbarColor: OQDOThemeData.buttonColor,
+          toolbarColor: Theme.of(context).colorScheme.primary,
           toolbarWidgetColor: Colors.white,
           initAspectRatio: CropAspectRatioPreset.square,
           lockAspectRatio: false),
