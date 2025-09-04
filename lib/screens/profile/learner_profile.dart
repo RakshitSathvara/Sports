@@ -345,11 +345,29 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
                           ],
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                          decoration: const InputDecoration(
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              fontSize: 16, color: Theme.of(context).colorScheme.primary),
+                          decoration: InputDecoration(
                             isDense: true,
-                            contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                            border: UnderlineInputBorder(),
+                            filled: false,
+                            contentPadding:
+                                const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                            border: const UnderlineInputBorder(),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.onSurface),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                            ),
+                            disabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withOpacity(0.5)),
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -372,11 +390,29 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
                           ],
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                          decoration: const InputDecoration(
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              fontSize: 16, color: Theme.of(context).colorScheme.primary),
+                          decoration: InputDecoration(
                             isDense: true,
-                            contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                            border: UnderlineInputBorder(),
+                            filled: false,
+                            contentPadding:
+                                const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                            border: const UnderlineInputBorder(),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.onSurface),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                            ),
+                            disabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withOpacity(0.5)),
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -398,15 +434,34 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           maxLines: 1,
                           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                                 fontSize: 16,
-                                color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primary
+                                    .withOpacity(0.5),
                               ),
                           decoration: InputDecoration(
                             isDense: true,
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                            border: UnderlineInputBorder(
+                            filled: false,
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 0, vertical: 4),
+                            border: const UnderlineInputBorder(),
+                            enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: ColorsUtils.subTitle.withOpacity(0.5),
-                              ),
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withOpacity(0.5)),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                            ),
+                            disabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withOpacity(0.5)),
                             ),
                           ),
                         ),
@@ -438,16 +493,35 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           ],
                           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                                 fontSize: 16,
-                                color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primary
+                                    .withOpacity(0.5),
                               ),
                           decoration: InputDecoration(
                             isDense: true,
+                            filled: false,
                             counterText: '',
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                            border: UnderlineInputBorder(
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 0, vertical: 4),
+                            border: const UnderlineInputBorder(),
+                            enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: ColorsUtils.subTitle.withOpacity(0.5),
-                              ),
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withOpacity(0.5)),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                            ),
+                            disabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withOpacity(0.5)),
                             ),
                           ),
                         ),
@@ -525,12 +599,30 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                             FilteringTextInputFormatter.digitsOnly,
                           ],
                           maxLength: 6,
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                          decoration: const InputDecoration(
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              fontSize: 16, color: Theme.of(context).colorScheme.primary),
+                          decoration: InputDecoration(
                             isDense: true,
+                            filled: false,
                             counterText: '',
-                            contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                            border: UnderlineInputBorder(),
+                            contentPadding:
+                                const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                            border: const UnderlineInputBorder(),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.onSurface),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                            ),
+                            disabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withOpacity(0.5)),
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -636,11 +728,29 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+')),
                           ],
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                          decoration: const InputDecoration(
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              fontSize: 16, color: Theme.of(context).colorScheme.primary),
+                          decoration: InputDecoration(
                             isDense: true,
-                            contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                            border: UnderlineInputBorder(),
+                            filled: false,
+                            contentPadding:
+                                const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                            border: const UnderlineInputBorder(),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.onSurface),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                            ),
+                            disabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withOpacity(0.5)),
+                            ),
                           ),
                         ),
 
@@ -869,12 +979,30 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           minLines: 1,
                           maxLines: 3,
                           controller: descriptionController,
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
-                          decoration: const InputDecoration(
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              fontSize: 16, color: Theme.of(context).colorScheme.primary),
+                          decoration: InputDecoration(
                             isDense: true,
+                            filled: false,
                             counterText: '',
-                            contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                            border: UnderlineInputBorder(),
+                            contentPadding:
+                                const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                            border: const UnderlineInputBorder(),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.onSurface),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                            ),
+                            disabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSurface
+                                      .withOpacity(0.5)),
+                            ),
                           ),
                         ),
 
@@ -1126,26 +1254,28 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                 onTap: () {
                                   openCloseAccountDialog();
                                 },
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20.0), // Adjust radius as needed
-                                    color: ColorsUtils.closeAccountColor,
-                                  ),
-                                  child: const Center(
-                                    child: Padding(
-                                      padding: EdgeInsets.all(16.0),
-                                      child: Text(
-                                        "Close Account",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontSize: 18.0, // Adjust font size as needed
-                                        ),
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  color: ColorsUtils.closeAccountColor,
+                                ),
+                                child: Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Text(
+                                      "Close Account",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary,
+                                        fontSize: 18.0,
                                       ),
                                     ),
                                   ),
                                 ),
+                              ),
                               )
                             : Center(
                                 child: Text(
@@ -1693,7 +1823,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
       AndroidUiSettings(
           toolbarTitle: 'Cropper',
           toolbarColor: OQDOThemeData.buttonColor,
-          toolbarWidgetColor: Colors.white,
+          toolbarWidgetColor: Theme.of(context).colorScheme.onPrimary,
           initAspectRatio: CropAspectRatioPreset.square,
           lockAspectRatio: false),
       IOSUiSettings(
