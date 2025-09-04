@@ -11,7 +11,6 @@ import 'package:http/http.dart';
 import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/helper/helpers.dart';
 import 'package:oqdo_mobile_app/model/common_passing_args.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -100,7 +99,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: OQDOThemeData.backgroundColor,
+          color: Theme.of(context).colorScheme.background,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -129,13 +128,13 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontSize: 22.0,
                               fontWeight: FontWeight.w600,
-                              color: const Color(0xFF006590),
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                       ),
                     ),
-                    const Divider(
+                    Divider(
                       thickness: 3,
-                      color: Color.fromRGBO(0, 101, 144, 0.78),
+                      color: Theme.of(context).colorScheme.primary.withOpacity(0.78),
                     ),
                     const SizedBox(
                       height: 30,
@@ -149,7 +148,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                       inputformat: [
                         FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9_ ]+')),
                       ],
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.background,
                       labelText: 'Facility Name',
                       validator: Validator.notEmpty,
                       keyboardType: TextInputType.text,
@@ -164,7 +163,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                         textStyle: Theme.of(context)
                             .textTheme
                             .titleMedium!
-                            .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w600, fontSize: 17.0),
+                            .copyWith(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w600, fontSize: 17.0),
                         color: Theme.of(context).colorScheme.primaryContainer,
                       ),
                     ),
@@ -175,13 +174,13 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                         borderRadius: BorderRadius.circular(15),
-                        color: OQDOThemeData.backgroundColor,
+                        color: Theme.of(context).colorScheme.background,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: DropdownButton<dynamic>(
                             isExpanded: true,
-                            icon: const Icon(Icons.keyboard_arrow_down_rounded, color: OQDOThemeData.dividerColor),
+                            icon: Icon(Icons.keyboard_arrow_down_rounded, color: Theme.of(context).colorScheme.primary),
                             dropdownColor: Theme.of(context).colorScheme.onBackground,
                             underline: const SizedBox(),
                             borderRadius: BorderRadius.circular(15),
@@ -190,7 +189,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
-                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
                             ),
                             value: choosedlocation,
                             items: location!.map((country) {
@@ -201,7 +200,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
                                 ),
                               );
                             }).toList(),
@@ -276,7 +275,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                           checkForUsername();
                         }
                       },
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.background,
                       validator: Validator.notEmpty,
                       keyboardType: TextInputType.visiblePassword,
                     ),
@@ -295,7 +294,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                           checkForEmail();
                         }
                       },
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.background,
                       labelText: 'Email Address',
                       validator: Validator.validateEmail,
                       keyboardType: TextInputType.emailAddress,
@@ -310,7 +309,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                       labelText: 'Password',
                       maxlines: 1,
                       maxlength: 32,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.background,
                       validator: Validator.validatePassword,
                       keyboardType: TextInputType.text,
                       onchanged: (p0) {
@@ -349,7 +348,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                       obscureText: hidePassword2,
                       maxlines: 1,
                       maxlength: 32,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.background,
                       labelText: 'Confirm Password',
                       validator: (val) {
                         if (val!.trim().isEmpty) {
@@ -423,7 +422,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                                     return null;
                                   },
                                   labelText: 'Phone Number',
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.background,
                                   // validator: Validator.validateMobile,
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
@@ -455,7 +454,7 @@ class FacilityAddPageState extends State<FacilityAddPage> {
                                     return null;
                                   },
                                   labelText: 'Phone Number',
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.background,
                                   // validator: Validator.validateMobile,
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),

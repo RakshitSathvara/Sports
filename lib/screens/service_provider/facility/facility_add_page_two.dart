@@ -30,7 +30,6 @@ import '../../../helper/helpers.dart';
 import '../../../model/common_passing_args.dart';
 import '../../../model/get_all_activity_and_sub_activity_response.dart';
 import '../../../model/upload_file_response.dart';
-import '../../../theme/oqdo_theme_data.dart';
 import '../../../viewmodels/end_user_resgistration_view_model.dart';
 
 class FacilityAddPageTwo extends StatefulWidget {
@@ -141,7 +140,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: OQDOThemeData.backgroundColor,
+          color: Theme.of(context).colorScheme.background,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -170,13 +169,13 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontSize: 22.0,
                               fontWeight: FontWeight.w600,
-                              color: const Color(0xFF006590),
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                       ),
                     ),
-                    const Divider(
+                    Divider(
                       thickness: 3,
-                      color: Color.fromRGBO(0, 101, 144, 0.78),
+                      color: Theme.of(context).colorScheme.primary.withOpacity(0.78),
                     ),
                     const SizedBox(
                       height: 30,
@@ -187,7 +186,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       inputformat: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), FilteringTextInputFormatter.digitsOnly],
                       maxlines: 1,
                       maxlength: 4,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.background,
                       obscureText: false,
                       labelText: 'Establishment Since',
                       validator: Validator.notEmpty,
@@ -218,7 +217,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                           CustomTextView(
                             label: 'Activities',
                             textStyle:
-                                Theme.of(context).textTheme.bodyLarge!.copyWith(color: const Color(0xFF818181), fontSize: 17.0, fontWeight: FontWeight.w400),
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.shadow, fontSize: 17.0, fontWeight: FontWeight.w400),
                           ),
                           Image.asset(
                             'assets/images/ic_left_nav_arrow.png',
@@ -254,7 +253,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                                 textStyle: Theme.of(context)
                                                     .textTheme
                                                     .titleMedium!
-                                                    .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.blackColor),
+                                                    .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onBackground),
                                               ),
                                             ),
                                             Expanded(
@@ -279,7 +278,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                         : CustomTextView(
                             label: '(Select your interests)',
                             textStyle:
-                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: OQDOThemeData.blackColor),
+                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onBackground),
                           ),
                     const SizedBox(
                       height: 30,
@@ -288,7 +287,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       label: 'If the sub activity you are interested in is not in our list',
                       maxLine: 2,
                       textOverFlow: TextOverflow.ellipsis,
-                      textStyle: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                      textStyle: TextStyle(fontSize: 16, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(
                       height: 15,
@@ -304,7 +303,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       inputformat: [
                         FilteringTextInputFormatter.allow(RegExp(r'[a-zA-z ]')),
                       ],
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.background,
                     ),
                     const SizedBox(
                       height: 40,
@@ -312,7 +311,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                     CustomTextView(
                       label: 'Upload Certification Photo(s)',
                       textStyle:
-                          Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.0, color: OQDOThemeData.otherTextColor, fontWeight: FontWeight.w400),
+                          Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.0, color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w400),
                     ),
                     const SizedBox(
                       height: 10.0,
@@ -408,7 +407,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                     CustomTextFormField(
                       controller: description,
                       read: false,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.background,
                       obscureText: false,
                       maxlength: 250,
                       // inputformat: [
@@ -426,13 +425,13 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                         borderRadius: BorderRadius.circular(15),
-                        color: OQDOThemeData.backgroundColor,
+                        color: Theme.of(context).colorScheme.background,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: DropdownButton<dynamic>(
                             isExpanded: true,
-                            icon: const Icon(Icons.keyboard_arrow_down_rounded, color: OQDOThemeData.dividerColor),
+                            icon: const Icon(Icons.keyboard_arrow_down_rounded, color: Theme.of(context).colorScheme.primary),
                             dropdownColor: Theme.of(context).colorScheme.onBackground,
                             underline: const SizedBox(),
                             borderRadius: BorderRadius.circular(15),
@@ -441,7 +440,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
-                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
                             ),
                             value: selectedPayoutMethod,
                             items: payoutMethods.map((method) {
@@ -452,7 +451,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
                                 ),
                               );
                             }).toList(),
@@ -501,7 +500,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                                     FilteringTextInputFormatter.digitsOnly,
                                   ],
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.background,
                                   labelText: 'Mobile number {Linked to PayNow}',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -525,7 +524,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+')),
                                   ],
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.background,
                                   labelText: 'PayNow ID (UEN Number)',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -560,7 +559,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                                     FilteringTextInputFormatter.digitsOnly,
                                   ],
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.background,
                                   labelText: 'Mobile number {Linked to PayLah}',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -591,7 +590,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   obscureText: false,
                                   maxlines: 1,
                                   maxlength: 50,
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.background,
                                   labelText: 'Beneficiary name',
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
@@ -616,7 +615,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z ]+')),
                                   ],
                                   maxlength: 50,
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.background,
                                   labelText: 'Bank name',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -640,7 +639,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                                     FilteringTextInputFormatter.digitsOnly,
                                   ],
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.background,
                                   labelText: 'Bank account number',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -664,7 +663,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   inputformat: [
                                     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+')),
                                   ],
-                                  fillColor: OQDOThemeData.backgroundColor,
+                                  fillColor: Theme.of(context).colorScheme.background,
                                   labelText: 'IFSC/Swift code',
                                   validator: (value) {
                                     if (value?.isEmpty ?? false) {
@@ -689,13 +688,13 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       suffixIcon: _isValid
                           ? Container(
                               margin: const EdgeInsets.all(12),
-                              decoration: const BoxDecoration(
-                                color: Colors.green,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.primary,
                                 shape: BoxShape.circle,
                               ),
-                              child: const Icon(
+                              child: Icon(
                                 Icons.check,
-                                color: Colors.white,
+                                color: Theme.of(context).colorScheme.onPrimary,
                                 size: 16,
                               ),
                             )
@@ -711,7 +710,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       focusNode: _focusNode,
                       read: false,
                       obscureText: false,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.background,
                       labelText: 'Referral Code',
                       inputformat: [
                         FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
@@ -747,7 +746,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge!
-                                  .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                                  .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.shadow),
                               children: [
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
@@ -774,7 +773,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.shadow),
                                 ),
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
@@ -801,7 +800,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.shadow),
                                 ),
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
@@ -828,7 +827,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: OQDOThemeData.otherTextColor),
+                                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.shadow),
                                 ),
                               ],
                             ),
@@ -888,9 +887,9 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
           if (mounted) {
             await _progressDialog.hide();
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Error validating referral code. Please try again.'),
-                backgroundColor: Colors.red,
+              SnackBar(
+                content: const Text('Error validating referral code. Please try again.'),
+                backgroundColor: Theme.of(context).colorScheme.error,
               ),
             );
           }
@@ -960,15 +959,15 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
   chipsWidget(SelectedFilterValues item) {
     return Container(
       decoration: BoxDecoration(
-        color: OQDOThemeData.whiteColor,
-        border: Border.all(color: OQDOThemeData.blackColor),
+        color: Theme.of(context).colorScheme.background,
+        border: Border.all(color: Theme.of(context).colorScheme.onBackground),
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
         ),
       ),
       padding: const EdgeInsets.fromLTRB(24, 10, 24, 10),
       child: CustomTextView(
-          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: OQDOThemeData.chipColor, fontSize: 13.0, fontWeight: FontWeight.w400),
+          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.shadow, fontSize: 13.0, fontWeight: FontWeight.w400),
           label: item.activityName),
     );
   }
@@ -1486,14 +1485,14 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                       title: CustomTextView(
                         label: 'Account- Pending Approval',
                         textStyle:
-                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18.0, fontWeight: FontWeight.bold, color: OQDOThemeData.blackColor),
+                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18.0, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onBackground),
                       ),
                       content: CustomTextView(
                         label:
                             'Your account is presently under review. Upon completion of the approval process, you will receive an email. If you have any questions, please visit our website to contact us.',
                         maxLine: 6,
                         textStyle:
-                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: OQDOThemeData.blackColor),
+                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 15.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onBackground),
                       ),
                       actions: <Widget>[
                         TextButton(
@@ -1502,7 +1501,7 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
                           },
                           child: const Text(
                             'Ok',
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: OQDOThemeData.blackColor),
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onBackground),
                           ),
                         ),
                       ],

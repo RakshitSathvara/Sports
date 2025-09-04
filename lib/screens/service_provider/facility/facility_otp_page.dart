@@ -17,7 +17,6 @@ import 'package:provider/provider.dart';
 
 import '../../../helper/helpers.dart';
 import '../../../model/common_passing_args.dart';
-import '../../../theme/oqdo_theme_data.dart';
 import '../../../viewmodels/end_user_resgistration_view_model.dart';
 
 class FacilityOTPPage extends StatefulWidget {
@@ -154,7 +153,7 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                   highlightColor: Theme.of(context).colorScheme.primary,
                   defaultBorderColor: Theme.of(context).colorScheme.primary,
                   hasTextBorderColor: Theme.of(context).colorScheme.primary,
-                  errorBorderColor: Colors.red,
+                  errorBorderColor: Theme.of(context).colorScheme.error,
                   maxLength: 6,
                   hasError: false,
                   maskCharacter: "*",
@@ -171,8 +170,8 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                   pinTextAnimatedSwitcherDuration: const Duration(milliseconds: 300),
                   //                    highlightAnimation: true,
                   //highlightPinBoxColor: Colors.red,
-                  highlightAnimationBeginColor: Colors.black,
-                  highlightAnimationEndColor: Colors.white12,
+                  highlightAnimationBeginColor: Theme.of(context).colorScheme.onBackground,
+                  highlightAnimationEndColor: Theme.of(context).colorScheme.background.withOpacity(0.12),
                   keyboardType: TextInputType.number,
                 ),
                 const SizedBox(
