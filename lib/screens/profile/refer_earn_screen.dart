@@ -4,7 +4,7 @@ import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/screens/profile/intent/refer_earn_intent.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 
 class ReferEarnScreen extends StatefulWidget {
   final ReferEarnIntent intent;
@@ -59,7 +59,7 @@ Download the app here: https://oqdo.com/#download-app
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorsUtils.white,
       appBar: CustomAppBar(
         title: 'Refer and Earn',
         onBack: () {
@@ -82,11 +82,11 @@ Download the app here: https://oqdo.com/#download-app
               ),
               const SizedBox(height: 24),
               // Refer and Earn Title
-              const Text(
+              Text(
                 'Refer and Earn',
                 style: TextStyle(
                   fontSize: 24,
-                  color: Color(0xFF3A3A3A),
+                  color: ColorsUtils.subTitle,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Montserrat',
                 ),
@@ -101,16 +101,16 @@ Download the app here: https://oqdo.com/#download-app
               Container(
                 padding: const EdgeInsets.all(15),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF006590).withOpacity(0.2),
+                  color: ColorsUtils.referEarnColor.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
                   children: [
                     Text(
                       widget.intent.referCode ?? '',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
-                        color: Color(0xFF006590),
+                        color: ColorsUtils.referEarnColor,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -122,6 +122,9 @@ Download the app here: https://oqdo.com/#download-app
                         width: 30,
                         height: 30,
                         fit: BoxFit.cover,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -132,6 +135,9 @@ Download the app here: https://oqdo.com/#download-app
                         width: 30,
                         height: 30,
                         fit: BoxFit.cover,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -153,15 +159,15 @@ Download the app here: https://oqdo.com/#download-app
           Container(
             height: 24,
             width: 24,
-            decoration: const BoxDecoration(
-              color: OQDOThemeData.dividerColor,
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
               shape: BoxShape.circle,
             ),
             child: Center(
               child: Text(
                 number.toString(),
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: ColorsUtils.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -170,7 +176,7 @@ Download the app here: https://oqdo.com/#download-app
           const SizedBox(width: 12),
           Text(
             text,
-            style: const TextStyle(fontSize: 16, fontFamily: 'Montserrat', color: OQDOThemeData.greyColor),
+            style: TextStyle(fontSize: 16, fontFamily: 'Montserrat', color: ColorsUtils.chipText),
           ),
         ],
       ),
