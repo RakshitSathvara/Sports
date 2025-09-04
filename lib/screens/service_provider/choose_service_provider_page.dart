@@ -36,7 +36,7 @@ class _ChooseServiceProviderPageState extends State<ChooseServiceProviderPage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: OQDOThemeData.backgroundColor,
+        color: Theme.of(context).colorScheme.background,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +84,11 @@ class _ChooseServiceProviderPageState extends State<ChooseServiceProviderPage> {
                     CustomTextView(
                       label: 'Type of Service Provider',
                       type: styleSubTitle,
-                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: const Color(0xFF3A3A3A), fontWeight: FontWeight.w400, fontSize: 20.0),
+                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Theme.of(context).colorScheme.onBackground,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20.0,
+                          ),
                     ),
                     const SizedBox(
                       height: 60,
@@ -97,7 +101,7 @@ class _ChooseServiceProviderPageState extends State<ChooseServiceProviderPage> {
                         textsize: 16.0,
                         fontWeight: FontWeight.w600,
                         letterspacing: 1.0,
-                        buttoncolor: OQDOThemeData.backgroundColor,
+                        buttoncolor: Theme.of(context).colorScheme.background,
                         buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
                         buttonheight: 60,
                         buttonwidth: width,
@@ -118,7 +122,7 @@ class _ChooseServiceProviderPageState extends State<ChooseServiceProviderPage> {
                         textsize: 16,
                         fontWeight: FontWeight.w600,
                         letterspacing: 1.0,
-                        buttoncolor: OQDOThemeData.backgroundColor,
+                        buttoncolor: Theme.of(context).colorScheme.background,
                         buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
                         buttonheight: 60,
                         buttonwidth: width,

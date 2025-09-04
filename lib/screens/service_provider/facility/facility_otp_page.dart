@@ -17,7 +17,6 @@ import 'package:provider/provider.dart';
 
 import '../../../helper/helpers.dart';
 import '../../../model/common_passing_args.dart';
-import '../../../theme/oqdo_theme_data.dart';
 import '../../../viewmodels/end_user_resgistration_view_model.dart';
 
 class FacilityOTPPage extends StatefulWidget {
@@ -64,7 +63,7 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
     var ph = MediaQuery.of(context).size.height;
     phone.text = _commonPassingArgs.mobileNo!;
     return Scaffold(
-      backgroundColor: OQDOThemeData.backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       resizeToAvoidBottomInset: true,
       body: Padding(
         padding: const EdgeInsets.only(top: 30.0, left: 30, right: 30, bottom: 0.0),
@@ -89,7 +88,11 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                 CustomTextView(
                   label: 'An OTP is sent to your number via SMS.',
                   type: styleSubTitle,
-                  textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.dividerColor, fontSize: 17.0, fontWeight: FontWeight.w600),
+                  textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.w600,
+                      ),
                 ),
                 const SizedBox(
                   height: 40,
@@ -101,19 +104,23 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleMedium!
-                        .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w400, fontSize: 17.0),
+                        .copyWith(
+                          color: Theme.of(context).colorScheme.onBackground,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 17.0,
+                        ),
                   ),
                 ),
                 CustomEditText(
                   controller: phone,
                   isReadOnly: true,
                   autoFocus: false,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color.fromRGBO(0, 101, 144, 0.53)),
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.53)),
                     ),
                     enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color.fromRGBO(0, 101, 144, 0.53)),
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.53)),
                     ),
                   ),
                 ),
@@ -128,7 +135,11 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                     textStyle: Theme.of(context)
                         .textTheme
                         .bodyLarge!
-                        .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w400, fontSize: 17.0),
+                        .copyWith(
+                          color: Theme.of(context).colorScheme.onBackground,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 17.0,
+                        ),
                   ),
                 ),
                 PinCodeTextField(
@@ -139,10 +150,10 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                   controller: otp,
                   hideCharacter: false,
                   highlight: true,
-                  highlightColor: const Color.fromRGBO(0, 101, 144, 1),
-                  defaultBorderColor: const Color.fromRGBO(0, 101, 144, 1),
-                  hasTextBorderColor: const Color.fromRGBO(0, 101, 144, 1),
-                  errorBorderColor: Colors.red,
+                  highlightColor: Theme.of(context).colorScheme.primary,
+                  defaultBorderColor: Theme.of(context).colorScheme.primary,
+                  hasTextBorderColor: Theme.of(context).colorScheme.primary,
+                  errorBorderColor: Theme.of(context).colorScheme.error,
                   maxLength: 6,
                   hasError: false,
                   maskCharacter: "*",
@@ -150,14 +161,17 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                   onDone: (text) async {},
                   wrapAlignment: WrapAlignment.spaceEvenly,
                   pinBoxDecoration: ProvidedPinBoxDecoration.underlinedPinBoxDecoration,
-                  pinTextStyle: const TextStyle(fontSize: 25.0, color: Colors.black),
+                  pinTextStyle: TextStyle(
+                    fontSize: 25.0,
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
                   pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
                   pinBoxColor: Theme.of(context).colorScheme.primary,
                   pinTextAnimatedSwitcherDuration: const Duration(milliseconds: 300),
                   //                    highlightAnimation: true,
                   //highlightPinBoxColor: Colors.red,
-                  highlightAnimationBeginColor: Colors.black,
-                  highlightAnimationEndColor: Colors.white12,
+                  highlightAnimationBeginColor: Theme.of(context).colorScheme.onBackground,
+                  highlightAnimationEndColor: Theme.of(context).colorScheme.background.withOpacity(0.12),
                   keyboardType: TextInputType.number,
                 ),
                 const SizedBox(
@@ -186,10 +200,11 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                     CustomTextView(
                       label: 'Didn’t receive an OTP? ',
                       type: styleSubTitle,
-                      textStyle: Theme.of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w400, fontSize: 18.0),
+                      textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.onBackground,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18.0,
+                          ),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -199,10 +214,11 @@ class _FacilityOTPPageState extends State<FacilityOTPPage> {
                       child: CustomTextView(
                         label: 'Resend OTP',
                         type: styleSubTitle,
-                        textStyle: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(color: const Color.fromRGBO(0, 101, 144, 1), fontWeight: FontWeight.w400, fontSize: 18.0),
+                        textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 18.0,
+                            ),
                       ),
                     ),
                   ],

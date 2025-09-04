@@ -12,7 +12,6 @@ import 'package:http/http.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:oqdo_mobile_app/components/my_button.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -117,7 +116,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: OQDOThemeData.backgroundColor,
+          color: Theme.of(context).colorScheme.background,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -146,13 +145,13 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontSize: 22.0,
                               fontWeight: FontWeight.w600,
-                              color: const Color(0xFF006590),
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                       ),
                     ),
-                    const Divider(
+                    Divider(
                       thickness: 3,
-                      color: Color.fromRGBO(0, 101, 144, 0.78),
+                      color: Theme.of(context).colorScheme.primary.withOpacity(0.78),
                     ),
                     const SizedBox(
                       height: 30,
@@ -166,7 +165,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                     //   inputformat: [
                     //     FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9_ ]+')),
                     //   ],
-                    //   fillColor: OQDOThemeData.backgroundColor,
+                    //   fillColor: Theme.of(context).colorScheme.background,
                     //   labelText: 'Facility Name',
                     //   validator: Validator.notEmpty,
                     //   keyboardType: TextInputType.text,
@@ -181,7 +180,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                         textStyle: Theme.of(context)
                             .textTheme
                             .titleMedium!
-                            .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w400, fontSize: 17.0),
+                            .copyWith(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w400, fontSize: 17.0),
                       ),
                     ),
                     const SizedBox(
@@ -191,13 +190,13 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
                         borderRadius: BorderRadius.circular(15),
-                        color: OQDOThemeData.backgroundColor,
+                        color: Theme.of(context).colorScheme.background,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: DropdownButton<dynamic>(
                             isExpanded: true,
-                            icon: const Icon(Icons.keyboard_arrow_down_rounded, color: OQDOThemeData.dividerColor),
+                            icon: Icon(Icons.keyboard_arrow_down_rounded, color: Theme.of(context).colorScheme.primary),
                             dropdownColor: Theme.of(context).colorScheme.onBackground,
                             underline: const SizedBox(),
                             borderRadius: BorderRadius.circular(15),
@@ -206,7 +205,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
-                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                  .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
                             ),
                             value: choosedlocation,
                             items: location!.map((country) {
@@ -217,7 +216,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dividerColor),
+                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
                                 ),
                               );
                             }).toList(),
@@ -243,7 +242,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                         textStyle: Theme.of(context)
                             .textTheme
                             .bodyLarge!
-                            .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w400, fontSize: 16.0),
+                            .copyWith(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w400, fontSize: 16.0),
                       ),
                     ),
                     PinCodeTextField(
@@ -255,9 +254,9 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                       hideCharacter: false,
                       highlight: true,
                       highlightColor: Theme.of(context).colorScheme.secondaryContainer,
-                      defaultBorderColor: const Color.fromRGBO(0, 101, 144, 0.53),
-                      hasTextBorderColor: const Color.fromRGBO(0, 101, 144, 0.53),
-                      errorBorderColor: Colors.red,
+                      defaultBorderColor: Theme.of(context).colorScheme.primary.withOpacity(0.53),
+                      hasTextBorderColor: Theme.of(context).colorScheme.primary.withOpacity(0.53),
+                      errorBorderColor: Theme.of(context).colorScheme.error,
                       maxLength: 6,
                       hasError: false,
                       maskCharacter: "*",
@@ -266,14 +265,14 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                       onDone: (text) async {},
                       wrapAlignment: WrapAlignment.spaceEvenly,
                       pinBoxDecoration: ProvidedPinBoxDecoration.underlinedPinBoxDecoration,
-                      pinTextStyle: const TextStyle(fontSize: 25.0, color: Colors.black),
+                      pinTextStyle: TextStyle(fontSize: 25.0, color: Theme.of(context).colorScheme.onBackground),
                       pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
                       pinBoxColor: Theme.of(context).colorScheme.secondaryContainer,
                       pinTextAnimatedSwitcherDuration: const Duration(milliseconds: 300),
                       //                    highlightAnimation: true,
                       //highlightPinBoxColor: Colors.red,
-                      highlightAnimationBeginColor: Colors.black,
-                      highlightAnimationEndColor: Colors.white12,
+                      highlightAnimationBeginColor: Theme.of(context).colorScheme.onBackground,
+                      highlightAnimationEndColor: Theme.of(context).colorScheme.background.withOpacity(0.12),
                       keyboardType: TextInputType.number,
                     ),
                     const SizedBox(
@@ -284,7 +283,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                       read: false,
                       obscureText: false,
                       maxlength: 200,
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.background,
                       labelText: 'Address',
                       validator: Validator.notEmpty,
                       keyboardType: TextInputType.text,
@@ -296,7 +295,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                     CustomTextView(
                       label: 'Upload Profile Photo',
                       textStyle:
-                          Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.0, color: OQDOThemeData.otherTextColor, fontWeight: FontWeight.w400),
+                          Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.0, color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w400),
                     ),
                     const SizedBox(
                       height: 10.0,
@@ -368,7 +367,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                             textStyle: Theme.of(context)
                                 .textTheme
                                 .bodyLarge!
-                                .copyWith(color: const Color.fromRGBO(129, 129, 129, 1), fontWeight: FontWeight.w400, fontSize: 17.0),
+                                .copyWith(color: Theme.of(context).colorScheme.shadow, fontWeight: FontWeight.w400, fontSize: 17.0),
                           ),
                         ),
                         GestureDetector(
@@ -377,7 +376,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                 isDismissible: false,
                                 enableDrag: false,
                                 isScrollControlled: true,
-                                backgroundColor: OQDOThemeData.whiteColor,
+                                backgroundColor: Theme.of(context).colorScheme.background,
                                 shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0))),
                                 context: context,
@@ -400,7 +399,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                                 textStyle: Theme.of(context)
                                                     .textTheme
                                                     .titleMedium!
-                                                    .copyWith(color: OQDOThemeData.blackColor, fontWeight: FontWeight.w400, fontSize: 16.0),
+                                                    .copyWith(color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w400, fontSize: 16.0),
                                               ),
                                               GestureDetector(
                                                   onTap: () {
@@ -500,7 +499,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                           child: Container(
                             height: 50.0,
                             width: 50.0,
-                            color: OQDOThemeData.backgroundColor,
+                            color: Theme.of(context).colorScheme.background,
                             child: Image.asset(
                               'assets/images/ic_add.png',
                               fit: BoxFit.contain,
@@ -532,7 +531,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                             CustomTextView(
                                               label: contactDetailsList[index].Name,
                                               textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                                    color: OQDOThemeData.blackColor,
+                                                    color: Theme.of(context).colorScheme.onBackground,
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: 15.0,
                                                   ),
@@ -545,7 +544,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                                 textStyle: Theme.of(context)
                                                     .textTheme
                                                     .bodyLarge!
-                                                    .copyWith(color: const Color.fromRGBO(0, 101, 144, 1), fontWeight: FontWeight.w400, fontSize: 17.0)),
+                                                    .copyWith(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w400, fontSize: 17.0)),
                                             const SizedBox(
                                               height: 5.0,
                                             ),
@@ -574,7 +573,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                               textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                                                     fontSize: 14.0,
                                                     fontWeight: FontWeight.w300,
-                                                    color: OQDOThemeData.blackColor.withOpacity(0.5),
+                                                    color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
                                                   ),
                                             ),
                                           ],
@@ -584,7 +583,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                                   ),
                                   const Divider(
                                     height: 2,
-                                    color: Color.fromRGBO(239, 239, 239, 1),
+                                    color: Theme.of(context).colorScheme.outline,
                                   )
                                 ],
                               );
@@ -600,7 +599,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                       maxlines: 1,
                       maxlength: 4,
                       inputformat: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), FilteringTextInputFormatter.digitsOnly],
-                      fillColor: OQDOThemeData.backgroundColor,
+                      fillColor: Theme.of(context).colorScheme.background,
                       labelText: 'Registration Number (UEN)',
                       validator: Validator.notEmpty,
                       keyboardType: TextInputType.number,
@@ -614,7 +613,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                         textsize: 16,
                         fontWeight: FontWeight.w600,
                         letterspacing: 0.7,
-                        buttoncolor: OQDOThemeData.backgroundColor,
+                        buttoncolor: Theme.of(context).colorScheme.background,
                         buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
                         buttonheight: 60,
                         buttonwidth: width,
@@ -758,8 +757,8 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
     var mCroppedFile = await ImageCropper().cropImage(sourcePath: pickedFile.path, compressFormat: ImageCompressFormat.jpg, compressQuality: 100, uiSettings: [
       AndroidUiSettings(
           toolbarTitle: 'Cropper',
-          toolbarColor: OQDOThemeData.buttonColor,
-          toolbarWidgetColor: Colors.white,
+          toolbarColor: Theme.of(context).colorScheme.primary,
+          toolbarWidgetColor: Theme.of(context).colorScheme.onPrimary,
           initAspectRatio: CropAspectRatioPreset.square,
           lockAspectRatio: false),
       IOSUiSettings(
@@ -953,7 +952,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
       isDismissible: false,
       enableDrag: false,
       isScrollControlled: true,
-      backgroundColor: OQDOThemeData.whiteColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0))),
       context: context,
       builder: (context) {
@@ -973,7 +972,7 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
                     CustomTextView(
                       label: 'Contact Details',
                       textStyle:
-                          Theme.of(context).textTheme.titleMedium!.copyWith(color: OQDOThemeData.blackColor, fontWeight: FontWeight.w400, fontSize: 16.0),
+                          Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w400, fontSize: 16.0),
                     ),
                     GestureDetector(
                         onTap: () {
