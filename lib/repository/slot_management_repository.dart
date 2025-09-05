@@ -14,7 +14,7 @@ import 'package:oqdo_mobile_app/model/freeze_coach_response_model.dart';
 import 'package:oqdo_mobile_app/model/freeze_facility_response_model.dart';
 import 'package:oqdo_mobile_app/model/get_21_days_slot_response_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
-import 'package:oqdo_mobile_app/screens/appointment/response/referral_coupon_response_model.dart';
+import 'package:oqdo_mobile_app/features/appointment/presentation/response/referral_coupon_response_model.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/utilities.dart';

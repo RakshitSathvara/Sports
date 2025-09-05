@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
-import 'package:oqdo_mobile_app/screens/appointment/intent/selected_coupon_intent.dart';
-import 'package:oqdo_mobile_app/screens/appointment/response/referral_coupon_response_model.dart';
-import 'package:oqdo_mobile_app/screens/appointment/views/discount_coupon.dart';
+import 'package:oqdo_mobile_app/features/appointment/presentation/intent/selected_coupon_intent.dart';
+import 'package:oqdo_mobile_app/features/appointment/presentation/response/referral_coupon_response_model.dart';
+import 'package:oqdo_mobile_app/features/appointment/presentation/views/discount_coupon.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';

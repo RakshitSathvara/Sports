@@ -10,7 +10,7 @@ import 'package:oqdo_mobile_app/model/freeze_coach_response_model.dart';
 import 'package:oqdo_mobile_app/model/freeze_facility_response_model.dart';
 import 'package:oqdo_mobile_app/model/get_21_days_slot_response_model.dart';
 import 'package:oqdo_mobile_app/repository/slot_management_repository.dart';
-import 'package:oqdo_mobile_app/screens/appointment/response/referral_coupon_response_model.dart';
+import 'package:oqdo_mobile_app/features/appointment/presentation/response/referral_coupon_response_model.dart';
 
 class SlotManagementViewModel extends ChangeNotifier {
   final SlotManagementRepository _slotManagementRepository = SlotManagementRepository();
