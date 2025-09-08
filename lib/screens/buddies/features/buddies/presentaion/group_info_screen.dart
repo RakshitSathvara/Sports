@@ -96,7 +96,7 @@ class _GroupInfoScreenState extends State<GroupInfoScreen> {
               const SizedBox(
                 height: 6,
               ),
-              const Divider(
+              Divider(
                 color: ColorsUtils.greyCircle,
               ),
               const SizedBox(

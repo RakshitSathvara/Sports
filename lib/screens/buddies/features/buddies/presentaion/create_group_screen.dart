@@ -95,7 +95,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
               // print(jsonEncode(createGroupRequest.toJson()));
             }
           },
-          child: const RotatedBox(
+          child:  RotatedBox(
             quarterTurns: 3,
             child: Icon(
               Icons.arrow_downward,

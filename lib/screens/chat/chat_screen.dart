@@ -173,7 +173,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              child: const Text(
+              child: Text(
                 'Offer Price',
                 style: TextStyle(
                   color: ColorsUtils.white,
@@ -194,7 +194,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              child: const Text(
+              child: Text(
                 'Ok, Done',
                 style: TextStyle(
                   color: ColorsUtils.white,

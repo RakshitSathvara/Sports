@@ -87,7 +87,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                               child: Container(
                                 height: 95,
                                 width: 95,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: ColorsUtils.white, // You can set your desired background color
                                 ),
@@ -292,7 +292,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const Icon(
+                                    Icon(
                                       Icons.close,
                                       size: 20,
                                       color: ColorsUtils.chipText,
@@ -343,7 +343,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        const Icon(
+                                        Icon(
                                           Icons.close,
                                           size: 20,
                                           color: ColorsUtils.chipText,
@@ -395,7 +395,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const Icon(
+                                      Icon(
                                       Icons.close,
                                       size: 20,
                                       color: ColorsUtils.chipText,
@@ -433,7 +433,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const Icon(
+                                    Icon(
                                       Icons.check,
                                       size: 20,
                                       color: ColorsUtils.profileBlue,

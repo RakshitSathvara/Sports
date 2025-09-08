@@ -551,7 +551,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
               ),
             ],
           ),
-          const Divider(
+          Divider(
             color: ColorsUtils.buddiesBorder,
           )
         ],

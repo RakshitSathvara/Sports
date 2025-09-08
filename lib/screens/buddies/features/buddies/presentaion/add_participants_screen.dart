@@ -88,7 +88,7 @@ class _AddParticipantsScreenState extends State<AddParticipantsScreen> {
               Navigator.pop(context, selectedList);
             }
           },
-          child: const Icon(
+          child: Icon(
             Icons.done_rounded,
             color: ColorsUtils.white,
           )),

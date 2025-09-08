@@ -95,7 +95,7 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
                     showSnackBar('Please enter group name', context);
                   }
                 },
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.only(right: 12.0, top: 15, bottom: 15),
                   child: Icon(
                     Icons.done_rounded,
@@ -151,7 +151,7 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
               const SizedBox(
                 height: 6,
               ),
-              const Divider(
+              Divider(
                 color: ColorsUtils.greyCircle,
               ),
               const SizedBox(

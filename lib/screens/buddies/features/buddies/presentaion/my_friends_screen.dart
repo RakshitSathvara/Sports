@@ -93,7 +93,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
                             })
                         : const SizedBox(height: 0),
                 allPendingFriendsList.isNotEmpty
-                    ? const Divider(
+                    ? Divider(
                         height: 1,
                         color: ColorsUtils.chipText,
                       )
