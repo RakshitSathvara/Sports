@@ -132,7 +132,7 @@ class _CoachListPageState extends State<CoachListPage> {
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Theme.of(context).colorScheme.onBackground,
+          color: Theme.of(context).colorScheme.background,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -152,13 +152,13 @@ class _CoachListPageState extends State<CoachListPage> {
                           DropdownButton<dynamic>(
                             isExpanded: false,
                             underline: const SizedBox(),
-                            dropdownColor: Theme.of(context).colorScheme.onBackground,
+                            dropdownColor: Theme.of(context).colorScheme.background,
                             hint: CustomTextView(
                               label: filterList![0],
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
-                                  .copyWith(color: OQDOThemeData.greyColor, fontSize: 20.0, fontWeight: FontWeight.w300),
+                                  .copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 20.0, fontWeight: FontWeight.w300),
                             ),
                             value: selectedTypeValue,
                             items: filterList!.map((interest) {
@@ -169,7 +169,7 @@ class _CoachListPageState extends State<CoachListPage> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(color: OQDOThemeData.greyColor, fontSize: 20.0, fontWeight: FontWeight.w300),
+                                      .copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 20.0, fontWeight: FontWeight.w300),
                                 ),
                               );
                             }).toList(),
@@ -206,15 +206,15 @@ class _CoachListPageState extends State<CoachListPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(8.0),
-                    border: Border.all(color: Color(0xFFB5B5B5)),
+                    border: Border.all(color: Theme.of(context).colorScheme.outline),
                   ),
                   child: TextField(
                     controller: _searchController,
                     decoration: InputDecoration(
                       hintText: 'Search',
-                      hintStyle: TextStyle(color: Color(0xFF2B2B2B), fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'Montserrat'),
+                      hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'Montserrat'),
                       icon: Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Image.asset(
@@ -262,7 +262,7 @@ class _CoachListPageState extends State<CoachListPage> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                CircularProgressIndicator(color: OQDOThemeData.lightColorScheme.primary),
+                                CircularProgressIndicator(color: Theme.of(context).colorScheme.primary),
                               ],
                             ),
                           )
@@ -306,7 +306,7 @@ class _CoachListPageState extends State<CoachListPage> {
                                   label: 'Coaches not found',
                                   textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                                         fontWeight: FontWeight.w600,
-                                        color: OQDOThemeData.blackColor,
+                                        color: Theme.of(context).colorScheme.onSurface,
                                         fontSize: 16.0,
                                       ),
                                 ),
@@ -330,7 +330,7 @@ class _CoachListPageState extends State<CoachListPage> {
           width: MediaQuery.of(context).size.width,
           height: 180,
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          color: Theme.of(context).colorScheme.onBackground,
+          color: Theme.of(context).colorScheme.background,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -340,7 +340,7 @@ class _CoachListPageState extends State<CoachListPage> {
                   clipper: ShapeBorderClipper(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
                   child: Container(
                     height: 160,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Theme.of(context).colorScheme.onBackground),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Theme.of(context).colorScheme.background),
                     child: Image.network(
                       coachesModel.profileImagePath!,
                       fit: BoxFit.fill,
@@ -369,7 +369,7 @@ class _CoachListPageState extends State<CoachListPage> {
                               maxLine: 1,
                               textOverFlow: TextOverflow.ellipsis,
                               textStyle:
-                                  Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.greyColor, fontSize: 18, fontWeight: FontWeight.w600),
+                                  Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 18, fontWeight: FontWeight.w600),
                             ),
                           ),
                           const SizedBox(
@@ -406,7 +406,7 @@ class _CoachListPageState extends State<CoachListPage> {
                               maxLine: 2,
                               textOverFlow: TextOverflow.ellipsis,
                               textStyle:
-                                  Theme.of(context).textTheme.bodyMedium!.copyWith(color: OQDOThemeData.greyColor, fontWeight: FontWeight.w400, fontSize: 15),
+                                  Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400, fontSize: 15),
                             ),
                           ),
                         ],
@@ -440,7 +440,7 @@ class _CoachListPageState extends State<CoachListPage> {
                           CustomTextView(
                             label: 'Availability: ',
                             textStyle:
-                                Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 13, fontWeight: FontWeight.w400, color: const Color(0xFF8A8A8A)),
+                                Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 13, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
                           ),
                           const SizedBox(
                             width: 10,
@@ -448,7 +448,7 @@ class _CoachListPageState extends State<CoachListPage> {
                           CustomTextView(
                             label: '${coachesModel.startTime} : ${coachesModel.endTime}',
                             textStyle:
-                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                           )
                         ],
                       ),
@@ -463,7 +463,7 @@ class _CoachListPageState extends State<CoachListPage> {
                               label: 'Singapore',
                               maxLine: 3,
                               textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: OQDOThemeData.greyColor,
+                                    color: Theme.of(context).colorScheme.onSurface,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 10,
                                   ),
@@ -476,7 +476,7 @@ class _CoachListPageState extends State<CoachListPage> {
                             padding: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                  color: const Color(0xFFE1E1E1),
+                                  color: Theme.of(context).colorScheme.outline,
                                 ),
                                 borderRadius: const BorderRadius.all(Radius.circular(8))),
                             child: Row(
@@ -487,7 +487,7 @@ class _CoachListPageState extends State<CoachListPage> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                                      .copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                                 ),
                                 const SizedBox(
                                   width: 3,
@@ -805,7 +805,7 @@ class _CoachListPageState extends State<CoachListPage> {
           textStyle: Theme.of(context)
               .textTheme
               .titleLarge!
-              .copyWith(fontWeight: FontWeight.bold, fontSize: 20.0, color: OQDOThemeData.greyColor, fontStyle: FontStyle.normal),
+              .copyWith(fontWeight: FontWeight.bold, fontSize: 20.0, color: Theme.of(context).colorScheme.onSurface, fontStyle: FontStyle.normal),
         ),
         InkWell(
           onTap: () async {
@@ -907,7 +907,7 @@ class _CoachListPageState extends State<CoachListPage> {
         return false;
       },
       child: Container(
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.background,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
@@ -940,13 +940,15 @@ class _CoachListPageState extends State<CoachListPage> {
             height: 70.0,
             child: ElevatedButton(
                 style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(const Color(0xFFCECECE)),
-                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFCECECE)),
+                  foregroundColor: MaterialStateProperty.all<Color>(
+                      Theme.of(context).colorScheme.onSurface),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Theme.of(context).colorScheme.surfaceVariant),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    const RoundedRectangleBorder(
+                    RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero,
                       side: BorderSide(
-                        color: Color(0xFFCECECE),
+                        color: Theme.of(context).colorScheme.surfaceVariant,
                       ),
                     ),
                   ),
@@ -976,7 +978,7 @@ class _CoachListPageState extends State<CoachListPage> {
                   textStyle: Theme.of(context)
                       .textTheme
                       .titleMedium!
-                      .copyWith(fontWeight: FontWeight.w400, fontSize: 16.0, decoration: TextDecoration.underline, color: OQDOThemeData.blackColor),
+                      .copyWith(fontWeight: FontWeight.w400, fontSize: 16.0, decoration: TextDecoration.underline, color: Theme.of(context).colorScheme.onSurface),
                 )),
           ),
         ),
@@ -985,13 +987,15 @@ class _CoachListPageState extends State<CoachListPage> {
             height: 70.0,
             child: ElevatedButton(
                 style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(const Color(0xFF006590)),
-                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF006590)),
+                  foregroundColor: MaterialStateProperty.all<Color>(
+                      Theme.of(context).colorScheme.onPrimary),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Theme.of(context).colorScheme.primary),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    const RoundedRectangleBorder(
+                    RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero,
                       side: BorderSide(
-                        color: Color(0xFF006590),
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),
@@ -1020,7 +1024,7 @@ class _CoachListPageState extends State<CoachListPage> {
                 },
                 child: CustomTextView(
                   label: 'Apply',
-                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, fontSize: 16.0, color: OQDOThemeData.whiteColor),
+                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, fontSize: 16.0, color: Theme.of(context).colorScheme.onPrimary),
                 )),
           ),
         )
@@ -1036,7 +1040,7 @@ class _CoachListPageState extends State<CoachListPage> {
         children: [
           CustomTextView(
             label: 'Filter By',
-            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, fontSize: 18.0, color: OQDOThemeData.greyColor),
+            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, fontSize: 18.0, color: Theme.of(context).colorScheme.onSurface),
           ),
           Row(
             children: [
@@ -1061,7 +1065,7 @@ class _CoachListPageState extends State<CoachListPage> {
                   textStyle: Theme.of(context)
                       .textTheme
                       .titleSmall!
-                      .copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, decoration: TextDecoration.underline, color: OQDOThemeData.otherTextColor),
+                      .copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, decoration: TextDecoration.underline, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
                 ),
               ),
               ElevatedButton(
@@ -1081,7 +1085,7 @@ class _CoachListPageState extends State<CoachListPage> {
                     }
                   }
                 },
-                style: ElevatedButton.styleFrom(shape: const CircleBorder(), backgroundColor: OQDOThemeData.backgroundColor),
+                style: ElevatedButton.styleFrom(shape: const CircleBorder(), backgroundColor: Theme.of(context).colorScheme.background),
                 child: Image.asset(
                   'assets/images/ic_filter.png',
                   height: 20.0,
@@ -1106,13 +1110,13 @@ class _CoachListPageState extends State<CoachListPage> {
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      border: Border.all(width: 5.0, color: OQDOThemeData.backgroundColor),
+                      border: Border.all(width: 5.0, color: Theme.of(context).colorScheme.background),
                     ),
                     child: SizedBox(
                       height: 100.0,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: isGroupBookingSelected ? OQDOThemeData.dividerColor : OQDOThemeData.backgroundColor,
+                          color: isGroupBookingSelected ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.background,
                           shape: BoxShape.rectangle,
                           borderRadius: const BorderRadius.all(Radius.circular(2.0)),
                         ),
@@ -1122,7 +1126,7 @@ class _CoachListPageState extends State<CoachListPage> {
                             textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 15.0,
-                                color: isGroupBookingSelected ? OQDOThemeData.whiteColor : OQDOThemeData.blackColor),
+                                color: isGroupBookingSelected ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.onSurface),
                           ),
                         ),
                       ),
@@ -1140,7 +1144,7 @@ class _CoachListPageState extends State<CoachListPage> {
                     child: Container(
                       height: 100.0,
                       decoration: BoxDecoration(
-                        color: OQDOThemeData.whiteColor,
+                        color: Theme.of(context).colorScheme.onPrimary,
                         border: Border.all(
                           color: Colors.black,
                           width: 1,
@@ -1151,7 +1155,7 @@ class _CoachListPageState extends State<CoachListPage> {
                         child: CustomTextView(
                           label: 'Group Booking',
                           textStyle:
-                              Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.greyColor, fontSize: 15.0, fontWeight: FontWeight.w500),
+                              Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 15.0, fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -1165,13 +1169,13 @@ class _CoachListPageState extends State<CoachListPage> {
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      border: Border.all(width: 5.0, color: OQDOThemeData.backgroundColor),
+                      border: Border.all(width: 5.0, color: Theme.of(context).colorScheme.background),
                     ),
                     child: SizedBox(
                       height: 100.0,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: isIndividualBookingSelected ? OQDOThemeData.dividerColor : OQDOThemeData.backgroundColor,
+                          color: isIndividualBookingSelected ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.background,
                           shape: BoxShape.rectangle,
                           borderRadius: const BorderRadius.all(Radius.circular(2.0)),
                         ),
@@ -1181,7 +1185,7 @@ class _CoachListPageState extends State<CoachListPage> {
                             textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 15.0,
-                                color: isIndividualBookingSelected ? OQDOThemeData.whiteColor : OQDOThemeData.blackColor),
+                                color: isIndividualBookingSelected ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.onSurface),
                           ),
                         ),
                       ),
@@ -1199,7 +1203,7 @@ class _CoachListPageState extends State<CoachListPage> {
                     child: Container(
                       height: 100.0,
                       decoration: BoxDecoration(
-                        color: OQDOThemeData.whiteColor,
+                        color: Theme.of(context).colorScheme.onPrimary,
                         border: Border.all(
                           color: Colors.black,
                           width: 1,
@@ -1210,7 +1214,7 @@ class _CoachListPageState extends State<CoachListPage> {
                         child: CustomTextView(
                           label: 'Individual Booking',
                           textStyle:
-                              Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.greyColor, fontSize: 15.0, fontWeight: FontWeight.w500),
+                              Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 15.0, fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -1299,7 +1303,7 @@ class _CoachListPageState extends State<CoachListPage> {
               maxLine: 3,
               textOverFlow: TextOverflow.ellipsis,
               label: selectedValuesFromKey[index].Name,
-              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
             ),
           )
         ],
@@ -1327,11 +1331,11 @@ class _CoachListPageState extends State<CoachListPage> {
           },
           child: Container(
             height: 80.0,
-            color: selectedValue == key ? OQDOThemeData.filterDividerColor : OQDOThemeData.whiteColor,
+            color: selectedValue == key ? Theme.of(context).colorScheme.outline : Theme.of(context).colorScheme.onPrimary,
             child: Center(
               child: CustomTextView(
                 label: key,
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w700),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w700),
               ),
             ),
           ),
@@ -1339,7 +1343,7 @@ class _CoachListPageState extends State<CoachListPage> {
         SizedBox(
           height: 1.0,
           child: Container(
-            color: OQDOThemeData.filterDividerColor,
+            color: Theme.of(context).colorScheme.outline,
           ),
         ),
       ],
