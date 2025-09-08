@@ -10,7 +10,7 @@ class ThemeProvider extends ChangeNotifier {
 
   static const String _themeKey = 'theme_mode';
 
-  ThemeType _themeType = ThemeType.system;
+  ThemeType _themeType = ThemeType.dark;
 
   ThemeType get themeType => _themeType;
 
@@ -34,7 +34,7 @@ class ThemeProvider extends ChangeNotifier {
 
   Future<void> loadTheme() async {
     final prefs = await SharedPreferences.getInstance();
-    final themeIndex = prefs.getInt(_themeKey) ?? ThemeType.system.index;
+    final themeIndex = prefs.getInt(_themeKey) ?? ThemeType.dark.index;
     _themeType = ThemeType.values[themeIndex];
     notifyListeners();
   }
