@@ -1,10 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/helper/helpers.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 
 class CancellationRequestPage extends StatefulWidget {
@@ -138,18 +138,18 @@ class _CancellationRequestPageState extends State<CancellationRequestPage> {
                     CustomTextView(
                       label: '14:00 - 15:00',
                       type: styleSubTitle,
-                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.chipText, fontSize: 12),
+                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 12),
                     ),
                     const SizedBox(height: 6.0),
                     CustomTextView(
                       label: 'Initiated On - 18-04-2022, 09:30',
                       type: styleSubTitle,
-                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.chipText, fontSize: 12),
+                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 12),
                     ),
                     CustomTextView(
                       label: 'Time Left to Reject 02:30:00',
                       type: styleSubTitle,
-                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.chipText, fontSize: 12),
+                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 12),
                     ),
                   ],
                 ),

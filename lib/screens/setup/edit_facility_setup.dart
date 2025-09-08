@@ -7,6 +7,7 @@ import 'dart:io';
 import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -28,7 +29,6 @@ import '../../model/get_all_activity_and_sub_activity_response.dart';
 import '../../model/upload_file_response.dart';
 import '../../oqdo_application.dart';
 import '../../theme/oqdo_theme_data.dart';
-import '../../utils/colorsUtils.dart';
 import '../../utils/constants.dart';
 import '../../utils/custom_text_view.dart';
 import '../../utils/textfields_widget.dart';
@@ -397,7 +397,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                                           effect: SlideEffect(
                                               dotHeight: 12,
                                               dotWidth: 12,
-                                              dotColor: ColorsUtils.greyButton,
+                                              dotColor: Theme.of(context).extension<CustomColors>()!.greyButton,
                                               activeDotColor: Theme.of(context).colorScheme.primary
                                               // strokeWidth: 5,
                                               ),
@@ -452,7 +452,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                                           effect: SlideEffect(
                                               dotHeight: 12,
                                               dotWidth: 12,
-                                              dotColor: ColorsUtils.greyButton,
+                                              dotColor: Theme.of(context).extension<CustomColors>()!.greyButton,
                                               activeDotColor: Theme.of(context).colorScheme.primary
                                               // strokeWidth: 5,
                                               ),
@@ -1226,7 +1226,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                           children: [
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.sunday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.sunday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'S',
                                 style: TextStyle(
@@ -1240,7 +1240,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.monday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.monday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'M',
                                 style: TextStyle(
@@ -1254,7 +1254,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.tuesday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.tuesday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'T',
                                 style: TextStyle(
@@ -1268,7 +1268,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.wednesday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.wednesday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'W',
                                 style: TextStyle(
@@ -1283,7 +1283,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.thursday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.thursday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'T',
                                 style: TextStyle(
@@ -1297,7 +1297,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.friday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.friday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'F',
                                 style: TextStyle(
@@ -1311,7 +1311,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.saturday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.saturday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'S',
                                 style: TextStyle(
@@ -1338,7 +1338,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                         },
                         icon: ImageIcon(
                           const AssetImage("assets/images/ic_delete.png"),
-                          color: ColorsUtils.redDeleteColor,
+                          color: Theme.of(context).extension<CustomColors>()!.redDeleteColor,
                         ),
                       ),
                     ),
@@ -1671,7 +1671,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Add Slot", style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 20, color: ColorsUtils.redColor)),
+                      Text("Add Slot", style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 20, color: Theme.of(context).extension<CustomColors>()!.redColor)),
                     ],
                   ),
                 ),
@@ -1687,7 +1687,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                           label: "Days Capacity",
                           textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 14)),
                       CustomTextView(
-                          label: "Select Days", textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: ColorsUtils.greyText, fontSize: 12)),
+                          label: "Select Days", textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 12)),
                     ],
                   ),
                 ),
@@ -1714,7 +1714,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _sunday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _sunday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'S',
                             style: TextStyle(
@@ -1742,7 +1742,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _monday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _monday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'M',
                             style: TextStyle(
@@ -1771,7 +1771,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _tuesday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _tuesday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'T',
                             style: TextStyle(
@@ -1799,7 +1799,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _wednesday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _wednesday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'W',
                             style: TextStyle(
@@ -1827,7 +1827,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _thurday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _thurday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'T',
                             style: TextStyle(
@@ -1855,7 +1855,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _friday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _friday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'F',
                             style: TextStyle(
@@ -1883,7 +1883,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _saturday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _saturday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'S',
                             style: TextStyle(
@@ -1928,7 +1928,7 @@ class _EditFacilitySetupScreenState extends State<EditFacilitySetupScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 26.0),
-                  child: CustomTextView(label: "Time", textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: ColorsUtils.greyText, fontSize: 16)),
+                  child: CustomTextView(label: "Time", textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 16)),
                 ),
                 const SizedBox(
                   height: 8,

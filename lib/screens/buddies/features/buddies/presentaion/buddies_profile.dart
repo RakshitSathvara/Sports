@@ -3,13 +3,13 @@ import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/model/get_all_buddies_response_model.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/model/get_conversation_list_response.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -64,7 +64,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
           child: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        color: ColorsUtils.white,
+        color: Theme.of(context).extension<CustomColors>()!.white,
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -81,7 +81,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                     widget.allBuddiesModel!.profileImage!.isNotEmpty
                         ? CircleAvatar(
                             radius: 70,
-                            backgroundColor: ColorsUtils.white,
+                            backgroundColor: Theme.of(context).extension<CustomColors>()!.white,
                             backgroundImage: const AssetImage('assets/images/ic_profile_outer_ring.png'),
                             child: Center(
                               child: Container(
@@ -89,7 +89,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                 width: 95,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: ColorsUtils.white, // You can set your desired background color
+                                  color: Theme.of(context).extension<CustomColors>()!.white, // You can set your desired background color
                                 ),
                                 child: ClipOval(
                                   child: CachedNetworkImage(
@@ -108,7 +108,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                               ),
                               // child: CircleAvatar(
                               //   radius: 42,
-                              //   backgroundColor: ColorsUtils.white,
+                              //   backgroundColor: Theme.of(context).extension<CustomColors>()!.white,
                               //   backgroundImage: CachedNetworkImageProvider(widget.allBuddiesModel!.profileImage!),
                               // ),
                             ),
@@ -135,7 +135,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                             maxLine: 2,
                             textOverFlow: TextOverflow.ellipsis,
                             textStyle:
-                                Theme.of(context).textTheme.titleSmall!.copyWith(color: ColorsUtils.chipText, fontSize: 16.0, fontWeight: FontWeight.w600),
+                                Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 16.0, fontWeight: FontWeight.w600),
                           ),
                           const SizedBox(
                             height: 8,
@@ -145,14 +145,14 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                               label: 'About: ',
                               type: styleSubTitle,
                               textStyle:
-                                  Theme.of(context).textTheme.titleSmall!.copyWith(color: ColorsUtils.chipText, fontSize: 15.0, fontWeight: FontWeight.w600),
+                                  Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 15.0, fontWeight: FontWeight.w600),
                             ),
                           if (widget.allBuddiesModel!.status != "Friend" && widget.allBuddiesModel!.isProfilePrivate == false)
                             CustomTextView(
                               label: 'About: ',
                               type: styleSubTitle,
                               textStyle:
-                                  Theme.of(context).textTheme.titleSmall!.copyWith(color: ColorsUtils.chipText, fontSize: 15.0, fontWeight: FontWeight.w600),
+                                  Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 15.0, fontWeight: FontWeight.w600),
                             ),
 
                           // widget.allBuddiesModel!.status == "Friend" || widget.allBuddiesModel!.isProfilePrivate!
@@ -161,7 +161,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                           //         label: 'About: ',
                           //         type: styleSubTitle,
                           //         textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          //             color: ColorsUtils.chipText, fontSize: 12.0, fontWeight: FontWeight.w600),
+                          //             color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 12.0, fontWeight: FontWeight.w600),
                           //       ),
 
                           if (widget.allBuddiesModel!.status == "Friend")
@@ -181,7 +181,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                 textStyle: Theme.of(context)
                                     .textTheme
                                     .titleSmall!
-                                    .copyWith(color: ColorsUtils.chipText, fontSize: 11.0, fontWeight: FontWeight.w400),
+                                    .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 11.0, fontWeight: FontWeight.w400),
                               ),
                             ),
                           if (widget.allBuddiesModel!.status != "Friend" && widget.allBuddiesModel!.isProfilePrivate == false)
@@ -193,7 +193,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                 textStyle: Theme.of(context)
                                     .textTheme
                                     .titleSmall!
-                                    .copyWith(color: ColorsUtils.chipText, fontSize: 11.0, fontWeight: FontWeight.w400),
+                                    .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 11.0, fontWeight: FontWeight.w400),
                               ),
                             ),
                         ],
@@ -287,15 +287,15 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                         bottomLeft: Radius.circular(10),
                                         bottomRight: Radius.circular(10),
                                         topRight: Radius.circular(10)),
-                                    border: Border.all(color: ColorsUtils.buddiesCard),
-                                    color: ColorsUtils.buddiesCard.withOpacity(0.5)),
+                                    border: Border.all(color: Theme.of(context).extension<CustomColors>()!.buddiesCard),
+                                    color: Theme.of(context).extension<CustomColors>()!.buddiesCard.withOpacity(0.5)),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Icon(
                                       Icons.close,
                                       size: 20,
-                                      color: ColorsUtils.chipText,
+                                      color: Theme.of(context).extension<CustomColors>()!.chipText,
                                     ),
                                     const SizedBox(
                                       width: 10,
@@ -306,7 +306,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
-                                          .copyWith(color: ColorsUtils.chipText, fontSize: 11.0, fontWeight: FontWeight.w500),
+                                          .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 11.0, fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
@@ -338,15 +338,15 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                             bottomLeft: Radius.circular(10),
                                             bottomRight: Radius.circular(10),
                                             topRight: Radius.circular(10)),
-                                        border: Border.all(color: ColorsUtils.buddiesCard),
-                                        color: ColorsUtils.buddiesCard.withOpacity(0.5)),
+                                        border: Border.all(color: Theme.of(context).extension<CustomColors>()!.buddiesCard),
+                                        color: Theme.of(context).extension<CustomColors>()!.buddiesCard.withOpacity(0.5)),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Icon(
                                           Icons.close,
                                           size: 20,
-                                          color: ColorsUtils.chipText,
+                                          color: Theme.of(context).extension<CustomColors>()!.chipText,
                                         ),
                                         const SizedBox(
                                           width: 10,
@@ -357,7 +357,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                           textStyle: Theme.of(context)
                                               .textTheme
                                               .titleSmall!
-                                              .copyWith(color: ColorsUtils.chipText, fontSize: 11.0, fontWeight: FontWeight.w500),
+                                              .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 11.0, fontWeight: FontWeight.w500),
                                         ),
                                       ],
                                     ),
@@ -390,15 +390,15 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                 height: 50,
                                 decoration: BoxDecoration(
                                     borderRadius: const BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
-                                    border: Border.all(color: ColorsUtils.buddiesCard),
-                                    color: ColorsUtils.buddiesCard.withOpacity(0.5)),
+                                    border: Border.all(color: Theme.of(context).extension<CustomColors>()!.buddiesCard),
+                                    color: Theme.of(context).extension<CustomColors>()!.buddiesCard.withOpacity(0.5)),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                       Icon(
                                       Icons.close,
                                       size: 20,
-                                      color: ColorsUtils.chipText,
+                                      color: Theme.of(context).extension<CustomColors>()!.chipText,
                                     ),
                                     const SizedBox(
                                       width: 10,
@@ -409,7 +409,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
-                                          .copyWith(color: ColorsUtils.chipText, fontSize: 11.0, fontWeight: FontWeight.w500),
+                                          .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 11.0, fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
@@ -428,15 +428,15 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                 height: 50,
                                 decoration: BoxDecoration(
                                     borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
-                                    border: Border.all(color: ColorsUtils.buddiesCard),
-                                    color: ColorsUtils.buddiesCard.withOpacity(0.5)),
+                                    border: Border.all(color: Theme.of(context).extension<CustomColors>()!.buddiesCard),
+                                    color: Theme.of(context).extension<CustomColors>()!.buddiesCard.withOpacity(0.5)),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Icon(
                                       Icons.check,
                                       size: 20,
-                                      color: ColorsUtils.profileBlue,
+                                      color: Theme.of(context).extension<CustomColors>()!.profileBlue,
                                     ),
                                     const SizedBox(
                                       width: 10,
@@ -447,7 +447,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
-                                          .copyWith(color: ColorsUtils.profileBlue, fontSize: 11.0, fontWeight: FontWeight.w500),
+                                          .copyWith(color: Theme.of(context).extension<CustomColors>()!.profileBlue, fontSize: 11.0, fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
@@ -478,7 +478,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                         label: 'Interests',
                         type: styleSubTitle,
                         textStyle:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(color: ColorsUtils.chipText, fontSize: 16.0, fontWeight: FontWeight.w600),
+                            Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 16.0, fontWeight: FontWeight.w600),
                       ),
                       const SizedBox(
                         height: 8,
@@ -500,7 +500,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                           textStyle: Theme.of(context)
                                               .textTheme
                                               .titleMedium!
-                                              .copyWith(color: ColorsUtils.chipText, fontWeight: FontWeight.w400, fontSize: 18.0),
+                                              .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontWeight: FontWeight.w400, fontSize: 18.0),
                                         ),
                                         const SizedBox(
                                           height: 10.0,
@@ -516,8 +516,8 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                                 children: [
                                                   Container(
                                                     decoration: BoxDecoration(
-                                                      color: ColorsUtils.chipBackground,
-                                                      border: Border.all(color: ColorsUtils.chipBackground),
+                                                      color: Theme.of(context).extension<CustomColors>()!.chipBackground,
+                                                      border: Border.all(color: Theme.of(context).extension<CustomColors>()!.chipBackground),
                                                       borderRadius: const BorderRadius.all(
                                                         Radius.circular(20),
                                                       ),
@@ -527,7 +527,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                                         textStyle: Theme.of(context)
                                                             .textTheme
                                                             .titleMedium!
-                                                            .copyWith(color: ColorsUtils.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
+                                                            .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
                                                         label: sectionInterest[sectionInterest.keys.toList()[index]]![indexInterest].subActivitiesName),
                                                   ),
                                                   const SizedBox(
@@ -557,7 +557,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                         label: 'Interests',
                         type: styleSubTitle,
                         textStyle:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(color: ColorsUtils.chipText, fontSize: 16.0, fontWeight: FontWeight.w600),
+                            Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 16.0, fontWeight: FontWeight.w600),
                       ),
                       const SizedBox(
                         height: 8,
@@ -579,7 +579,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                           textStyle: Theme.of(context)
                                               .textTheme
                                               .titleMedium!
-                                              .copyWith(color: ColorsUtils.chipText, fontWeight: FontWeight.w400, fontSize: 18.0),
+                                              .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontWeight: FontWeight.w400, fontSize: 18.0),
                                         ),
                                         const SizedBox(
                                           height: 10.0,
@@ -595,8 +595,8 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                                 children: [
                                                   Container(
                                                     decoration: BoxDecoration(
-                                                      color: ColorsUtils.chipBackground,
-                                                      border: Border.all(color: ColorsUtils.chipBackground),
+                                                      color: Theme.of(context).extension<CustomColors>()!.chipBackground,
+                                                      border: Border.all(color: Theme.of(context).extension<CustomColors>()!.chipBackground),
                                                       borderRadius: const BorderRadius.all(
                                                         Radius.circular(20),
                                                       ),
@@ -606,7 +606,7 @@ class _BuddiesProfilePageState extends State<BuddiesProfilePage> {
                                                         textStyle: Theme.of(context)
                                                             .textTheme
                                                             .titleMedium!
-                                                            .copyWith(color: ColorsUtils.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
+                                                            .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
                                                         label: sectionInterest[sectionInterest.keys.toList()[index]]![indexInterest].subActivitiesName),
                                                   ),
                                                   const SizedBox(

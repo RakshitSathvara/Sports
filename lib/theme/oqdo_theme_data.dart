@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class OQDOThemeData {
   static const _lightFillColor = Colors.black;
@@ -8,8 +9,8 @@ class OQDOThemeData {
   static final Color _lightFocusColor = Colors.black.withOpacity(0.12);
   static final Color _darkFocusColor = Colors.white.withOpacity(0.12);
 
-  static ThemeData lightThemeData = themeData(lightColorScheme, _lightFocusColor);
-  static ThemeData darkThemeData = themeData(darkColorScheme, _darkFocusColor);
+  static ThemeData lightThemeData = themeData(lightColorScheme, _lightFocusColor, CustomColors.light);
+  static ThemeData darkThemeData = themeData(darkColorScheme, _darkFocusColor, CustomColors.dark);
 
   // Existing light theme colors
   static const Color blackColor = Colors.black;
@@ -43,7 +44,7 @@ class OQDOThemeData {
   static const Color darkWellnessListing = Color(0xFF3E2A2A);
   static const Color darkSportsListing = Color(0xFF2A3E2F);
 
-  static ThemeData themeData(ColorScheme colorScheme, Color focusColor) {
+  static ThemeData themeData(ColorScheme colorScheme, Color focusColor, CustomColors customColors) {
     return ThemeData(
       useMaterial3: false,
       colorScheme: colorScheme,
@@ -63,6 +64,9 @@ class OQDOThemeData {
       scaffoldBackgroundColor: colorScheme.background,
       highlightColor: Colors.transparent,
       focusColor: focusColor,
+      extensions: <ThemeExtension<dynamic>>[
+        customColors,
+      ],
       cardTheme: CardTheme(
         color: colorScheme.surface,
         elevation: 2,

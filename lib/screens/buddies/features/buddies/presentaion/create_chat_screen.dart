@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/get_all_buddies_repository.dart';
@@ -79,7 +79,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            color: ColorsUtils.white,
+            color: Theme.of(context).extension<CustomColors>()!.white,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
@@ -91,9 +91,9 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
                       padding: const EdgeInsets.all(8),
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                          color: ColorsUtils.buddiesBackground,
+                          color: Theme.of(context).extension<CustomColors>()!.buddiesBackground,
                           border: Border.all(
-                            color: ColorsUtils.buddiesBackground,
+                            color: Theme.of(context).extension<CustomColors>()!.buddiesBackground,
                           ),
                           borderRadius: const BorderRadius.all(Radius.circular(10))),
                     child: SizedBox(
@@ -101,7 +101,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
                       child: TextFormField(
                         autocorrect: false,
                         autofocus: false,
-                        cursorColor: ColorsUtils.greyText,
+                        cursorColor: Theme.of(context).extension<CustomColors>()!.greyText,
                         minLines: 1,
                         controller: _searchActivityController,
                         style: TextStyle(
@@ -120,7 +120,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
                                 : Colors.black,
                           ),
                           hintText: 'Search your friends...',
-                          hintStyle: TextStyle(color: ColorsUtils.greyText),
+                          hintStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.greyText),
                         ),
                         maxLines: 1,
                       ),

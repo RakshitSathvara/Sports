@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:http/http.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
@@ -16,7 +17,6 @@ import 'package:oqdo_mobile_app/model/calendar_view_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/common_widget/facility_coach_reviews_screen.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
@@ -1003,7 +1003,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                           children: [
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.sunday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.sunday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'S',
                                 style: TextStyle(
@@ -1017,7 +1017,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.monday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.monday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'M',
                                 style: TextStyle(
@@ -1031,7 +1031,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.tuesday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.tuesday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'T',
                                 style: TextStyle(
@@ -1045,7 +1045,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.wednesday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.wednesday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'W',
                                 style: TextStyle(
@@ -1060,7 +1060,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.thursday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.thursday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'T',
                                 style: TextStyle(
@@ -1074,7 +1074,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.friday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.friday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'F',
                                 style: TextStyle(
@@ -1088,7 +1088,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.saturday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.saturday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'S',
                                 style: TextStyle(

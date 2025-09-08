@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/meetups/data/meet_up_repository.dart';
@@ -239,7 +239,7 @@ class _MeetupListScreenState extends State<MeetupListScreen> {
         children: [
           CustomTextView(
             label: monthStr,
-            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: ColorsUtils.chipText),
+            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: Theme.of(context).extension<CustomColors>()!.chipText),
           ),
           const Spacer(),
           // GestureDetector(
@@ -265,13 +265,13 @@ class _MeetupListScreenState extends State<MeetupListScreen> {
             headerVisible: false,
             daysOfWeekVisible: true,
               daysOfWeekStyle: DaysOfWeekStyle(
-                  weekdayStyle: TextStyle(color: ColorsUtils.accentBlue, fontWeight: FontWeight.w500),
-                  weekendStyle: TextStyle(color: ColorsUtils.accentBlue, fontWeight: FontWeight.w500)),
+                  weekdayStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.accentBlue, fontWeight: FontWeight.w500),
+                  weekendStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.accentBlue, fontWeight: FontWeight.w500)),
             calendarStyle: CalendarStyle(
               isTodayHighlighted: false,
               outsideDaysVisible: false,
               selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-              defaultTextStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: ColorsUtils.chipText),
+              defaultTextStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).extension<CustomColors>()!.chipText),
             ),
             onDaySelected: _onDaySelected,
             selectedDayPredicate: (DateTime date) {

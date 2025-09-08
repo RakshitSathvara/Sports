@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 
 class EndUserEditAddressScreen extends StatefulWidget {
   const EndUserEditAddressScreen({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class _EndUserEditAddressScreenState extends State<EndUserEditAddressScreen> {
           Navigator.pop(context);
         },
       ),
-      backgroundColor: ColorsUtils.white,
+      backgroundColor: Theme.of(context).extension<CustomColors>()!.white,
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 40),

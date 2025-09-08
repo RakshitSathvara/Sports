@@ -7,6 +7,7 @@ import 'dart:math';
 import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
@@ -14,7 +15,6 @@ import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/helper/helpers.dart';
 import 'package:oqdo_mobile_app/model/coach_training_address.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
@@ -257,7 +257,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                             child: CustomTextView(
                               label: "Activity Type - ${activityListModel[0].Name}",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText),
                             ),
                           ),
                           const SizedBox(
@@ -608,7 +608,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                                             label: "Slot Time",
                                             type: styleSubTitle,
                                             textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                                  color: ColorsUtils.greyText,
+                                                  color: Theme.of(context).extension<CustomColors>()!.greyText,
                                                 ),
                                           ),
                                           GestureDetector(
@@ -878,7 +878,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                             child: CustomTextView(
                               label: "Training Venue",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText),
                             ),
                           ),
                           Padding(
@@ -1258,7 +1258,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                           children: [
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.sunday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.sunday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'S',
                                 style: TextStyle(
@@ -1272,7 +1272,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.monday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.monday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'M',
                                 style: TextStyle(
@@ -1286,7 +1286,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.tuesday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.tuesday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'T',
                                 style: TextStyle(
@@ -1300,7 +1300,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.wednesday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.wednesday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'W',
                                 style: TextStyle(
@@ -1315,7 +1315,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.thursday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.thursday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'T',
                                 style: TextStyle(
@@ -1329,7 +1329,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.friday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.friday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'F',
                                 style: TextStyle(
@@ -1343,7 +1343,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.saturday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.saturday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'S',
                                 style: TextStyle(
@@ -1368,7 +1368,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                         },
                         icon: ImageIcon(
                           const AssetImage("assets/images/ic_delete.png"),
-                          color: ColorsUtils.redDeleteColor,
+                          color: Theme.of(context).extension<CustomColors>()!.redDeleteColor,
                         ),
                       ),
                     ),
@@ -1532,7 +1532,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Add Slot", style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 20, color: ColorsUtils.redColor)),
+                      Text("Add Slot", style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 20, color: Theme.of(context).extension<CustomColors>()!.redColor)),
                     ],
                   ),
                 ),
@@ -1548,7 +1548,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                           label: "Days Capacity",
                           textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 14)),
                       CustomTextView(
-                          label: "Select Days", textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: ColorsUtils.greyText, fontSize: 12)),
+                          label: "Select Days", textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 12)),
                     ],
                   ),
                 ),
@@ -1575,7 +1575,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _sunday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _sunday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'S',
                             style: TextStyle(
@@ -1603,7 +1603,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _monday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _monday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'M',
                             style: TextStyle(
@@ -1632,7 +1632,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _tuesday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _tuesday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'T',
                             style: TextStyle(
@@ -1660,7 +1660,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _wednesday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _wednesday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'W',
                             style: TextStyle(
@@ -1688,7 +1688,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _thurday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _thurday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'T',
                             style: TextStyle(
@@ -1716,7 +1716,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _friday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _friday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'F',
                             style: TextStyle(
@@ -1744,7 +1744,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                         },
                         child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: _saturday ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                          backgroundColor: _saturday ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                           child: Text(
                             'S',
                             style: TextStyle(
@@ -1789,7 +1789,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 26.0),
-                  child: CustomTextView(label: "Time", textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: ColorsUtils.greyText, fontSize: 16)),
+                  child: CustomTextView(label: "Time", textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 16)),
                 ),
                 const SizedBox(
                   height: 8,
@@ -2280,7 +2280,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                       style: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface),
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: ColorsUtils.greyButton,
+                        fillColor: Theme.of(context).extension<CustomColors>()!.greyButton,
                         hintText: 'Address Title',
                         contentPadding: const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
                         enabledBorder: OutlineInputBorder(
@@ -2305,7 +2305,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                       style: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface),
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: ColorsUtils.greyButton,
+                        fillColor: Theme.of(context).extension<CustomColors>()!.greyButton,
                         hintText: 'Enter Address 1',
                         contentPadding: const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
                         enabledBorder: OutlineInputBorder(
@@ -2330,7 +2330,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                       style: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface),
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: ColorsUtils.greyButton,
+                        fillColor: Theme.of(context).extension<CustomColors>()!.greyButton,
                         hintText: 'Enter Address 2',
                         contentPadding: const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
                         enabledBorder: OutlineInputBorder(
@@ -2356,7 +2356,7 @@ class AddBatchSetupPageState extends State<AddBatchSetupPage> {
                       decoration: InputDecoration(
                         filled: true,
                         counterText: '',
-                        fillColor: ColorsUtils.greyButton,
+                        fillColor: Theme.of(context).extension<CustomColors>()!.greyButton,
                         hintText: 'Postal Code',
                         contentPadding: const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
                         enabledBorder: OutlineInputBorder(
