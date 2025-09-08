@@ -65,10 +65,10 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Container(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
-        color: Theme.of(context).colorScheme.onBackground,
         child: SingleChildScrollView(
           child: Form(
             key: hp.formKey,
@@ -254,7 +254,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       ),
                       MyButton(
                         text: "Update Password",
-                        textcolor: Theme.of(context).colorScheme.onBackground,
+                        textcolor: Theme.of(context).colorScheme.onPrimary,
                         textsize: 16,
                         fontWeight: FontWeight.w600,
                         letterspacing: 0.7,
