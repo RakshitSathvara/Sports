@@ -41,7 +41,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
 
   double get radius => sqrt(pow(width, 2) + pow(height, 2));
   late Helper hp;
-  final TextEditingController _searchActivityController = TextEditingController();
+  final TextEditingController _searchActivityController =
+      TextEditingController();
   List<Conversation> allConversationList = [];
   List<Conversation> searchList = [];
   bool mainLoader = true;
@@ -74,7 +75,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
         }
 
         for (var buddies in allConversationList) {
-          if (buddies.firstName!.toLowerCase().contains(_searchActivityController.text.toLowerCase())) {
+          if (buddies.firstName!
+              .toLowerCase()
+              .contains(_searchActivityController.text.toLowerCase())) {
             searchList.add(buddies);
           }
         }
@@ -95,7 +98,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
         elevation: 0.0,
         backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () async {
-          var isChange = await Navigator.of(context).pushNamed(Constants.createChatScreen);
+          var isChange =
+              await Navigator.of(context).pushNamed(Constants.createChatScreen);
           if (isChange != null && isChange == true) {
             pageCount = 0;
             totalCount = 0;
@@ -142,17 +146,18 @@ class _ConversationScreenState extends State<ConversationScreen> {
                   child: const SizedBox.shrink(),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 18, right: 18, bottom: 4),
+                  padding: const EdgeInsets.only(
+                      top: 10, left: 18, right: 18, bottom: 4),
                   child: Container(
                     padding: const EdgeInsets.all(8),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         color: ColorsUtils.buddiesBackground,
-
                         border: Border.all(
                           color: ColorsUtils.buddiesBackground,
-
-                        borderRadius: const BorderRadius.all(Radius.circular(10))),
+                        ),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10))),
                     child: SizedBox(
                       height: 38,
                       child: TextFormField(
@@ -162,8 +167,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                         minLines: 1,
                         controller: _searchActivityController,
                         style: TextStyle(
-                            color:
-                                Theme.of(context).colorScheme.onBackground),
+                            color: Theme.of(context).colorScheme.onBackground),
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -173,13 +177,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
                             height: 20,
                             width: 20,
                             fit: BoxFit.fill,
-
-
-                            color: Theme.of(context).brightness ==
-                                    Brightness.dark
-
-                                ? Colors.white
-                                : Colors.black,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.white
+                                    : Colors.black,
                           ),
                           hintText: 'Search...',
                           hintStyle: TextStyle(color: ColorsUtils.greyText),
@@ -201,7 +202,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                 physics: const AlwaysScrollableScrollPhysics(),
                                 itemCount: searchList.length,
                                 // controller: mScrollController,
-                                padding: const EdgeInsets.symmetric(horizontal: 16),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
                                 scrollDirection: Axis.vertical,
                                 itemBuilder: (context, index) {
                                   Conversation conversation = searchList[index];
@@ -251,7 +253,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
 
           conversation.isBold = false;
           if (conversation.chatType == "F") {
-            var isChange = await Navigator.pushNamed(context, Constants.friendChatScreen, arguments: conversation);
+            var isChange = await Navigator.pushNamed(
+                context, Constants.friendChatScreen,
+                arguments: conversation);
 
             if (isChange != null && isChange == true) {
               setState(() {
@@ -262,7 +266,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
               });
             }
           } else {
-            var isChange = await Navigator.pushNamed(context, Constants.groupChatScreen, arguments: conversation);
+            var isChange = await Navigator.pushNamed(
+                context, Constants.groupChatScreen,
+                arguments: conversation);
 
             if (isChange != null && isChange == true) {
               setState(() {
@@ -284,14 +290,19 @@ class _ConversationScreenState extends State<ConversationScreen> {
                   : ColorsUtils.greyCircle,
               elevation: 0,
               child: ClipPath(
-                clipper: ShapeBorderClipper(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                clipper: ShapeBorderClipper(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10))),
                 child: Opacity(
                   opacity: 1,
                   child: Container(
                     width: 55,
                     height: 55,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Theme.of(context).colorScheme.onBackground),
-                    child: conversation.profileImage != null && conversation.profileImage!.isNotEmpty
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Theme.of(context).colorScheme.onBackground),
+                    child: conversation.profileImage != null &&
+                            conversation.profileImage!.isNotEmpty
                         ? CachedNetworkImage(
                             imageUrl: conversation.profileImage!,
                             fit: BoxFit.fill,
@@ -360,7 +371,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
                 child: Container(
                   height: 10,
                   width: 10,
-                  decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.circular(100)
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      borderRadius: BorderRadius.circular(100)
                       //more than 50% of width makes circle
                       ),
                 ),
@@ -392,7 +405,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
       requestStr =
           'FilterParamsDto.PageStart=$pageCount&FilterParamsDto.ResultPerPage=$resultPerPage&FilterParamsDto.EndUserId=${OQDOApplication.instance.endUserID}';
       GetConversationListResponse getConversationListResponse =
-          await Provider.of<GetAllBuddiesReposotory>(context, listen: false).getConversationList(requestStr);
+          await Provider.of<GetAllBuddiesReposotory>(context, listen: false)
+              .getConversationList(requestStr);
       if (!mounted) return;
       if (getConversationListResponse.data!.isNotEmpty) {
         showLog('Response -> ${getConversationListResponse.data!.length}');
@@ -423,15 +437,27 @@ class _ConversationScreenState extends State<ConversationScreen> {
           if (modelState.containsKey('ErrorMessage')) {
             showSnackBarColor(modelState['ErrorMessage'][0], context, true);
           } else {
-            showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+            showSnackBarColor(
+                'We\'re unable to connect to server. Please contact administrator or try after some time',
+                context,
+                true);
           }
         } else {
-          showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+          showSnackBarColor(
+              'We\'re unable to connect to server. Please contact administrator or try after some time',
+              context,
+              true);
         }
       } else if (error.code == 500) {
-        showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+        showSnackBarColor(
+            'We\'re unable to connect to server. Please contact administrator or try after some time',
+            context,
+            true);
       } else if (error.code == 404) {
-        showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+        showSnackBarColor(
+            'We\'re unable to connect to server. Please contact administrator or try after some time',
+            context,
+            true);
       }
     } on NoConnectivityException catch (_) {
       setState(() {
@@ -445,15 +471,21 @@ class _ConversationScreenState extends State<ConversationScreen> {
       });
       if (!mounted) return;
       showLog(e.toString());
-      showSnackBarErrorColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+      showSnackBarErrorColor(
+          'We\'re unable to connect to server. Please contact administrator or try after some time',
+          context,
+          true);
     }
   }
 
   Future<void> openChatConnection() async {
     var logger = _logger;
     if (_hubConnection == null) {
-      var httpConnectionOptions =
-          HttpConnectionOptions(logger: logger, skipNegotiation: true, transport: HttpTransportType.WebSockets, logMessageContent: true);
+      var httpConnectionOptions = HttpConnectionOptions(
+          logger: logger,
+          skipNegotiation: true,
+          transport: HttpTransportType.WebSockets,
+          logMessageContent: true);
 
       _hubConnection = HubConnectionBuilder()
           .withUrl('${Constants.SOCKET_BASE_URL}/ChatHub',
@@ -488,7 +520,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
       // final result2 = await _hubConnection?.invoke("SendTokenInfo", args: <Object>["admin","RecupeId"]);
       // // print(result2);
 
-      var result = await _hubConnection?.invoke("EndUserConnected", args: <Object>[OQDOApplication.instance.endUserID.toString()]);
+      var result = await _hubConnection?.invoke("EndUserConnected",
+          args: <Object>[OQDOApplication.instance.endUserID.toString()]);
       connectionIsOpen = true;
     }
   }
@@ -531,8 +564,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
       context.read<ChatProvider>().receivedNewMsgFromFriend(friend);
 
       for (var i = 0; i < searchList.length; i++) {
-        if (searchList[i].fromEndUserId == friend.fromEndUserId || searchList[i].fromEndUserId == friend.toEndUserId) {
-          if (searchList[i].toEndUserId == friend.fromEndUserId || searchList[i].toEndUserId == friend.toEndUserId) {
+        if (searchList[i].fromEndUserId == friend.fromEndUserId ||
+            searchList[i].fromEndUserId == friend.toEndUserId) {
+          if (searchList[i].toEndUserId == friend.fromEndUserId ||
+              searchList[i].toEndUserId == friend.toEndUserId) {
             searchList[i].lastMessage = friend.message.toString();
             searchList[i].isBold = true;
             if (i > 0) {
@@ -554,7 +589,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
   void sendMsgFriend(List<Object> msg) async {
     if (_hubConnection!.state == HubConnectionState.Connected) {
       // print(msg);
-      var result = await _hubConnection?.invoke("EndUserConnected", args: <Object>[OQDOApplication.instance.endUserID.toString()]);
+      var result = await _hubConnection?.invoke("EndUserConnected",
+          args: <Object>[OQDOApplication.instance.endUserID.toString()]);
       // print(result);
       var result2 = await _hubConnection?.invoke("SendMessage", args: msg);
       // print(result2);
@@ -571,7 +607,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
         if (!mounted) return;
         context.read<ChatProvider>().isSending = false;
         context.read<ChatProvider>().notifyChanges();
-        showSnackBarErrorColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+        showSnackBarErrorColor(
+            'We\'re unable to connect to server. Please contact administrator or try after some time',
+            context,
+            true);
       }
     } else {
       await _hubConnection!.start();
@@ -581,9 +620,11 @@ class _ConversationScreenState extends State<ConversationScreen> {
   void sendMsgGroup(List<Object> msg) async {
     if (_hubConnection!.state == HubConnectionState.Connected) {
       // print("call group");
-      var result = await _hubConnection?.invoke("EndUserConnected", args: <Object>[OQDOApplication.instance.endUserID.toString()]);
+      var result = await _hubConnection?.invoke("EndUserConnected",
+          args: <Object>[OQDOApplication.instance.endUserID.toString()]);
       // print(result);
-      var result2 = await _hubConnection?.invoke("SendMessageToGroup", args: msg);
+      var result2 =
+          await _hubConnection?.invoke("SendMessageToGroup", args: msg);
       // print(result2);
       if (result2 != null) {
         var encodedString = jsonEncode(result2);
@@ -598,7 +639,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
         if (!mounted) return;
         context.read<ChatProvider>().isSending = false;
         context.read<ChatProvider>().notifyChanges();
-        showSnackBarErrorColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+        showSnackBarErrorColor(
+            'We\'re unable to connect to server. Please contact administrator or try after some time',
+            context,
+            true);
       }
     } else {
       await _hubConnection!.start();
