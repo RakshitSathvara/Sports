@@ -41,6 +41,16 @@ class MyButton extends StatelessWidget {
     return SizedBox(
       height: buttonheight,
       child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: buttoncolor,
+          textStyle: TextStyle(color: textcolor),
+          elevation: elevation ?? 6.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(radius),
+            side: BorderSide(color: buttonbordercolor),
+          ),
+        ),
+        onPressed: onTap,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -58,16 +68,6 @@ class MyButton extends StatelessWidget {
             ).visible(!(hideImage ?? false)),
           ],
         ),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: buttoncolor,
-          textStyle: TextStyle(color: textcolor),
-          elevation: elevation ?? 6.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radius),
-            side: BorderSide(color: buttonbordercolor),
-          ),
-        ),
-        onPressed: onTap,
       ),
     );
   }

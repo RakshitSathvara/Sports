@@ -117,10 +117,10 @@ class OQDOThemeData {
   );
 
   static const ColorScheme darkColorScheme = ColorScheme(
-    primary: Color(0xFF4FC3F7),
+    primary: Color(0xFF006590),
     primaryContainer: Color(0xFF00658F),
     secondary: Color(0xFF2A2A2A),
-    secondaryContainer: Color(0xFF4FC3F7),
+    secondaryContainer: Color(0xFF006590),
     background: Color(0xFF121212),
     surface: Color(0xFF1E1E1E),
     surfaceVariant: Color(0xFF2A2A2A),

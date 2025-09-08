@@ -16,7 +16,6 @@ import 'package:oqdo_mobile_app/model/add_facility_slot_model.dart';
 import 'package:oqdo_mobile_app/model/calendar_view_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/common_widget/facility_coach_reviews_screen.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
@@ -440,8 +439,8 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                               textsize: 16,
                               fontWeight: FontWeight.w600,
                               letterspacing: 0.7,
-                              buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
-                              buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
+                              buttoncolor: Theme.of(context).extension<CustomColors>()!.myButtonBgColor,
+                              buttonbordercolor: Theme.of(context).extension<CustomColors>()!.myButtonBgColor,
                               buttonheight: 50,
                               buttonwidth: width,
                               radius: 15,

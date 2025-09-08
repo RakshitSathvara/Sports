@@ -30,6 +30,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.buddiesBackground,
     required this.buddiesCard,
     required this.buddiesBorder,
+    required this.myButtonBgColor,
   });
 
   final Color greyButton;
@@ -60,6 +61,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color buddiesBackground;
   final Color buddiesCard;
   final Color buddiesBorder;
+  final Color myButtonBgColor;
 
   static const CustomColors light = CustomColors(
     greyButton: Color(0xFFEFEFEF),
@@ -90,6 +92,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     buddiesBackground: Color(0xFFF5F5F5),
     buddiesCard: Color(0xFFF1F1F1),
     buddiesBorder: Color(0xFFCFCFCF),
+    myButtonBgColor: Color(0xFF006590),
   );
 
   static const CustomColors dark = CustomColors(
@@ -121,6 +124,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     buddiesBackground: Color(0xFF2A2A2A),
     buddiesCard: Color(0xFF333333),
     buddiesBorder: Color(0xFF404040),
+    myButtonBgColor : Color(0xFF006590),
   );
 
   @override
@@ -153,6 +157,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? buddiesBackground,
     Color? buddiesCard,
     Color? buddiesBorder,
+    Color? myButtonBgColor,
   }) {
     return CustomColors(
       greyButton: greyButton ?? this.greyButton,
@@ -183,6 +188,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       buddiesBackground: buddiesBackground ?? this.buddiesBackground,
       buddiesCard: buddiesCard ?? this.buddiesCard,
       buddiesBorder: buddiesBorder ?? this.buddiesBorder,
+      myButtonBgColor: myButtonBgColor ?? this.myButtonBgColor,
     );
   }
 
@@ -218,6 +224,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       buddiesBackground: Color.lerp(buddiesBackground, other.buddiesBackground, t)!,
       buddiesCard: Color.lerp(buddiesCard, other.buddiesCard, t)!,
       buddiesBorder: Color.lerp(buddiesBorder, other.buddiesBorder, t)!,
+      myButtonBgColor: Color.lerp(myButtonBgColor, other.myButtonBgColor, t)!,
     );
   }
 }
