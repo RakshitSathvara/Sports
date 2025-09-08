@@ -3,12 +3,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/model/coach_vacation_response_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -46,7 +46,7 @@ class _CoachVacationListScreenState extends State<CoachVacationListScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         // isExtended: true,
-        backgroundColor: ColorsUtils.greyButton,
+        backgroundColor: Theme.of(context).extension<CustomColors>()!.greyButton,
         onPressed: () async {
           await Navigator.pushNamed(context, Constants.coachVacationScreen).then((value) {
             if (value != null) {
@@ -124,7 +124,7 @@ class _CoachVacationListScreenState extends State<CoachVacationListScreen> {
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  border: Border.all(width: 7.0, color: ColorsUtils.vacationList),
+                  border: Border.all(width: 7.0, color: Theme.of(context).extension<CustomColors>()!.vacationList),
                 ),
               ),
               const SizedBox(width: 20.0),

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:logging/logging.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
@@ -9,7 +10,6 @@ import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/get_all_bu
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/model/get_conversation_list_response.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/model/group_chat_response.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -90,7 +90,7 @@ class _DirectGroupChatScreenState extends State<DirectGroupChatScreen> {
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: ColorsUtils.white,
+          color: Theme.of(context).extension<CustomColors>()!.white,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -105,7 +105,7 @@ class _DirectGroupChatScreenState extends State<DirectGroupChatScreen> {
                     //crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Card(
-                        color: ColorsUtils.white,
+                        color: Theme.of(context).extension<CustomColors>()!.white,
                         elevation: 0,
                         child: ClipPath(
                           clipper: ShapeBorderClipper(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
@@ -139,7 +139,7 @@ class _DirectGroupChatScreenState extends State<DirectGroupChatScreen> {
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
-                                  .copyWith(color: ColorsUtils.chipText, fontSize: 16.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
+                                  .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 16.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
                             ),
                             const SizedBox(
                               height: 8,
@@ -168,9 +168,9 @@ class _DirectGroupChatScreenState extends State<DirectGroupChatScreen> {
                       padding: const EdgeInsets.all(8),
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                          color: ColorsUtils.buddiesBackground,
+                          color: Theme.of(context).extension<CustomColors>()!.buddiesBackground,
                           border: Border.all(
-                            color: ColorsUtils.buddiesBackground,
+                            color: Theme.of(context).extension<CustomColors>()!.buddiesBackground,
                           ),
                           borderRadius: const BorderRadius.all(Radius.circular(10))),
                       child: Row(
@@ -293,7 +293,7 @@ class _DirectGroupChatScreenState extends State<DirectGroupChatScreen> {
                     child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
-                          color: (messageList[index].isSentFromMe == false ? ColorsUtils.messageLeft : ColorsUtils.messageRight),
+                          color: (messageList[index].isSentFromMe == false ? Theme.of(context).extension<CustomColors>()!.messageLeft : Theme.of(context).extension<CustomColors>()!.messageRight),
                         ),
                         padding: const EdgeInsets.all(16),
                         child: Column(
@@ -305,7 +305,7 @@ class _DirectGroupChatScreenState extends State<DirectGroupChatScreen> {
                               child: CustomTextView(
                                 label: "${messageList[index].firstName} ${messageList[index].lastName}",
                                 maxLine: 1,
-                                textStyle: TextStyle(fontSize: 15, color: ColorsUtils.chipText, fontWeight: FontWeight.w500),
+                                textStyle: TextStyle(fontSize: 15, color: Theme.of(context).extension<CustomColors>()!.chipText, fontWeight: FontWeight.w500),
                               ),
                             ),
                             Visibility(
@@ -316,7 +316,7 @@ class _DirectGroupChatScreenState extends State<DirectGroupChatScreen> {
                             CustomTextView(
                               maxLine: 10,
                               label: messageList[index].message.toString(),
-                              textStyle: TextStyle(fontSize: 15, color: ColorsUtils.chipText),
+                              textStyle: TextStyle(fontSize: 15, color: Theme.of(context).extension<CustomColors>()!.chipText),
                             ),
                           ],
                         )),
@@ -332,7 +332,7 @@ class _DirectGroupChatScreenState extends State<DirectGroupChatScreen> {
                       children: [
                         CustomTextView(
                           label: formattedDate.toString(),
-                          textStyle: TextStyle(fontSize: 15, color: ColorsUtils.greyText),
+                          textStyle: TextStyle(fontSize: 15, color: Theme.of(context).extension<CustomColors>()!.greyText),
                         ),
                       ],
                     ),
@@ -355,7 +355,7 @@ class _DirectGroupChatScreenState extends State<DirectGroupChatScreen> {
             alignment: Alignment.center,
             child: CustomTextView(
               label: "No history found",
-              textStyle: TextStyle(fontSize: 16, color: ColorsUtils.chipText),
+              textStyle: TextStyle(fontSize: 16, color: Theme.of(context).extension<CustomColors>()!.chipText),
             ),
           )
         ],

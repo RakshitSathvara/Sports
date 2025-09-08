@@ -8,6 +8,7 @@ import 'dart:math';
 
 import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -19,7 +20,6 @@ import 'package:oqdo_mobile_app/model/common_passing_args.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/domain/chat_provider.dart';
 import 'package:oqdo_mobile_app/screens/profile/intent/refer_earn_intent.dart';
 import 'package:oqdo_mobile_app/utils/close_account_popup.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/enums.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -477,7 +477,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                           CustomTextView(
                               label: "Facility Name",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -503,7 +503,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                           CustomTextView(
                               label: "Email ID",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle.withOpacity(0.5), fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle.withOpacity(0.5), fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -529,7 +529,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                           CustomTextView(
                               label: "Phone Number",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle.withOpacity(0.5), fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle.withOpacity(0.5), fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -608,7 +608,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                           CustomTextView(
                               label: "Address",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -635,7 +635,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             label: "Postal Code",
                             type: styleSubTitle,
                             textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                  color: ColorsUtils.subTitle,
+                                  color: Theme.of(context).extension<CustomColors>()!.subTitle,
                                   fontSize: 14,
                                 ),
                           ),
@@ -834,7 +834,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold, color: ColorsUtils.subTitle),
+                                          .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                     ),
                                     const SizedBox(
                                       height: 8.0,
@@ -948,7 +948,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                           CustomTextView(
                               label: "Registration Number",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -975,7 +975,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                           CustomTextView(
                               label: "Established Since",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -1003,7 +1003,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                           CustomTextView(
                               label: "Description",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -1034,7 +1034,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                 .titleMedium!
                                 .copyWith(
                                     fontSize: 17.0,
-                                    color: ColorsUtils.greyText,
+                                    color: Theme.of(context).extension<CustomColors>()!.greyText,
                                     fontWeight: FontWeight.w400),
                           ),
                           const SizedBox(
@@ -1141,7 +1141,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                           //     textStyle: Theme.of(context)
                           //         .textTheme
                           //         .bodyMedium!
-                          //         .copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                          //         .copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           // const SizedBox(
                           //   height: 8,
                           // ),
@@ -1254,8 +1254,8 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                                         children: [
                                                           Container(
                                                             decoration: BoxDecoration(
-                                                              color: ColorsUtils.chipBackground,
-                                                              border: Border.all(color: ColorsUtils.chipBackground),
+                                                              color: Theme.of(context).extension<CustomColors>()!.chipBackground,
+                                                              border: Border.all(color: Theme.of(context).extension<CustomColors>()!.chipBackground),
                                                               borderRadius: const BorderRadius.all(
                                                                 Radius.circular(20),
                                                               ),
@@ -1265,7 +1265,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                                                 textStyle: Theme.of(context)
                                                                     .textTheme
                                                                     .titleMedium!
-                                                                    .copyWith(color: ColorsUtils.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
+                                                                    .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
                                                                 label: sectionInterest[sectionInterest.keys.toList()[index]]![indexInterest].subActivityName),
                                                           ),
                                                           const SizedBox(
@@ -1299,7 +1299,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                                     textStyle: Theme.of(context)
                                                         .textTheme
                                                         .titleMedium!
-                                                        .copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: ColorsUtils.subTitle),
+                                                        .copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                   ),
                                                 ),
                                                 const SizedBox(
@@ -1417,7 +1417,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                             children: [
                               CustomTextView(
                                 label: 'Refundable if cancelled before click here to read more. ',
-                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: ColorsUtils.subTitle),
+                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                               ),
                               const SizedBox(
                                 height: 10,
@@ -1425,7 +1425,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                               CustomTextView(
                                 label:
                                     'Cancellation Policy time should be max ${maxAllowedCancellationTime.inDays} days\n(${convertMinutesToValidationText(maxAllowedCancellationTime.inMinutes)})',
-                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: ColorsUtils.subTitle),
+                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                 maxLine: 2,
                               ),
                               const SizedBox(
@@ -1445,14 +1445,14 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                               children: [
                                                 // Container(
                                                 //   decoration: BoxDecoration(
-                                                //     color: ColorsUtils.edittextBackProfile,
+                                                //     color: Theme.of(context).extension<CustomColors>()!.edittextBackProfile,
                                                 //   ),
                                                 //   width: 35,
                                                 //   height: 35,
                                                 //   child: Center(
                                                 //     child: Text(
                                                 //       selectedHour,
-                                                //       style: TextStyle(fontSize: 14, color: ColorsUtils.subTitle),
+                                                //       style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                 //     ),
                                                 //   ),
                                                 // ),
@@ -1461,7 +1461,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                                   width: 60,
                                                   child: CustomTextFormField(
                                                     controller: cancellationHoursController,
-                                                    fillColor: ColorsUtils.edittextBackProfile,
+                                                    fillColor: Theme.of(context).extension<CustomColors>()!.edittextBackProfile,
                                                     fontSize: 14,
                                                     centerText: true,
                                                     hintText: '00',
@@ -1479,7 +1479,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                                 CustomTextView(
                                                   label: 'hours',
                                                   textAlign: TextAlign.center,
-                                                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, color: ColorsUtils.subTitle),
+                                                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                 ),
                                               ],
                                             ),
@@ -1490,14 +1490,14 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                               children: [
                                                 // Container(
                                                 //     decoration: BoxDecoration(
-                                                //       color: ColorsUtils.edittextBackProfile,
+                                                //       color: Theme.of(context).extension<CustomColors>()!.edittextBackProfile,
                                                 //     ),
                                                 //     width: 35,
                                                 //     height: 35,
                                                 //     child: Center(
                                                 //       child: Text(
                                                 //         selectedMinute,
-                                                //         style: TextStyle(fontSize: 14, color: ColorsUtils.subTitle),
+                                                //         style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                 //       ),
                                                 //     )),
                                                 SizedBox(
@@ -1505,7 +1505,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                                   width: 60,
                                                   child: CustomTextFormField(
                                                     controller: cancellationMinutesController,
-                                                    fillColor: ColorsUtils.edittextBackProfile,
+                                                    fillColor: Theme.of(context).extension<CustomColors>()!.edittextBackProfile,
                                                     fontSize: 14,
                                                     centerText: true,
                                                     hintText: '00',
@@ -1522,7 +1522,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                                 ),
                                                 CustomTextView(
                                                   label: 'minutes',
-                                                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, color: ColorsUtils.subTitle),
+                                                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                 ),
                                               ],
                                             ),
@@ -1794,7 +1794,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                 CustomTextView(
                                     label: "Mobile number {Linked to PayNow}",
                                     type: styleSubTitle,
-                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                 const SizedBox(
                                   height: 8,
                                 ),
@@ -1833,7 +1833,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                 CustomTextView(
                                     label: "PayNow ID (UEN Number)",
                                     type: styleSubTitle,
-                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                 const SizedBox(
                                   height: 8,
                                 ),
@@ -1881,7 +1881,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                 CustomTextView(
                                     label: "Mobile number {Linked to PayLah}",
                                     type: styleSubTitle,
-                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                 const SizedBox(
                                   height: 8,
                                 ),
@@ -1930,7 +1930,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                 CustomTextView(
                                     label: "Beneficiary name",
                                     type: styleSubTitle,
-                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                 const SizedBox(
                                   height: 8,
                                 ),
@@ -1966,7 +1966,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                 CustomTextView(
                                     label: "Bank name",
                                     type: styleSubTitle,
-                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                 const SizedBox(
                                   height: 8,
                                 ),
@@ -2002,7 +2002,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                 CustomTextView(
                                     label: "Bank account number",
                                     type: styleSubTitle,
-                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                 const SizedBox(
                                   height: 8,
                                 ),
@@ -2041,7 +2041,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                 CustomTextView(
                                     label: "IFSC/Swift code",
                                     type: styleSubTitle,
-                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                 const SizedBox(
                                   height: 8,
                                 ),
@@ -2189,7 +2189,7 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20.0), // Adjust radius as needed
-                                      color: ColorsUtils.closeAccountColor,
+                                      color: Theme.of(context).extension<CustomColors>()!.closeAccountColor,
                                     ),
                                     child: Center(
                                       child: Padding(
@@ -2245,15 +2245,15 @@ class FacilityProfilePageState extends State<FacilityProfilePage> {
   chipsWidget(SelectedFilterValues item) {
     return Container(
       decoration: BoxDecoration(
-        color: ColorsUtils.chipBackground,
-        border: Border.all(color: ColorsUtils.chipBackground),
+        color: Theme.of(context).extension<CustomColors>()!.chipBackground,
+        border: Border.all(color: Theme.of(context).extension<CustomColors>()!.chipBackground),
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
         ),
       ),
       padding: const EdgeInsets.fromLTRB(24, 10, 24, 10),
       child: CustomTextView(
-          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: ColorsUtils.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
+          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
           label: item.activityName),
     );
   }

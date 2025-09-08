@@ -1,12 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/model/transaction_list_response.dart';
 import 'package:oqdo_mobile_app/screens/home/all_transaction_list.dart';
 import 'package:oqdo_mobile_app/screens/home/refund_transaction_list.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 
 import '../../helper/helpers.dart';
@@ -69,7 +69,7 @@ class _TransactionHistoryPageState extends State<TransactionHistoryPage> with Si
                 child: Container(
                   decoration: BoxDecoration(
                     // shape: BoxShape.circle,
-                    color: ColorsUtils.greyTab,
+                    color: Theme.of(context).extension<CustomColors>()!.greyTab,
                     borderRadius: const BorderRadius.all(Radius.circular(30)),
                   ),
                   child: SizedBox(

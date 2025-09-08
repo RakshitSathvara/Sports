@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:logging/logging.dart';
 import 'package:oqdo_mobile_app/helper/helpers.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
@@ -11,7 +12,6 @@ import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/model/frie
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/model/get_conversation_list_response.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/model/group_chat_response.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/domain/chat_provider.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -152,9 +152,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
                     padding: const EdgeInsets.only(left: 12, right: 12,bottom: 4,top: 12),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                        color: ColorsUtils.buddiesBackground,
+                        color: Theme.of(context).extension<CustomColors>()!.buddiesBackground,
                         border: Border.all(
-                          color: ColorsUtils.buddiesBackground,
+                          color: Theme.of(context).extension<CustomColors>()!.buddiesBackground,
                         ),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10))),
@@ -163,7 +163,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                       child: TextFormField(
                         autocorrect: false,
                         autofocus: false,
-                        cursorColor: ColorsUtils.greyText,
+                        cursorColor: Theme.of(context).extension<CustomColors>()!.greyText,
                         minLines: 1,
                         controller: _searchActivityController,
                         style: TextStyle(
@@ -188,7 +188,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                     : Colors.black,
                           ),
                           hintText: 'Search...',
-                          hintStyle: TextStyle(color: ColorsUtils.greyText),
+                          hintStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.greyText),
                         ),
                         maxLines: 1,
                       ),
@@ -234,7 +234,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                             .titleMedium!
                                             .copyWith(
                                                 fontSize: 16,
-                                                color: ColorsUtils.greyText,
+                                                color: Theme.of(context).extension<CustomColors>()!.greyText,
                                                 fontWeight: FontWeight.w500),
                                       ),
                                     ],
@@ -291,8 +291,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
           children: [
             Card(
               color: conversation.profileImage != null
-                  ? ColorsUtils.white
-                  : ColorsUtils.greyCircle,
+                  ? Theme.of(context).extension<CustomColors>()!.white
+                  : Theme.of(context).extension<CustomColors>()!.greyCircle,
               elevation: 0,
               child: ClipPath(
                 clipper: ShapeBorderClipper(
@@ -343,7 +343,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                           .textTheme
                           .titleSmall!
                           .copyWith(
-                              color: ColorsUtils.chipText,
+                              color: Theme.of(context).extension<CustomColors>()!.chipText,
                               fontSize: 14.0,
                               fontWeight: FontWeight.w600,
                               overflow: TextOverflow.ellipsis),
@@ -360,7 +360,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                           .textTheme
                           .titleSmall!
                           .copyWith(
-                              color: ColorsUtils.greyText,
+                              color: Theme.of(context).extension<CustomColors>()!.greyText,
                               fontSize: 12.0,
                               fontWeight: FontWeight.w400,
                               overflow: TextOverflow.ellipsis),

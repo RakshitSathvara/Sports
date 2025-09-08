@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/helper/helpers.dart';
@@ -16,7 +17,6 @@ import 'package:oqdo_mobile_app/utils/validator.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 
 import '../../model/coach_profile_response.dart';
 import '../../model/coach_training_address.dart';
@@ -247,7 +247,7 @@ class CoachTrainingAddressPageState extends State<CoachTrainingAddressPage> {
                         highlightColor: Theme.of(context).colorScheme.secondaryContainer,
                         defaultBorderColor: Theme.of(context).colorScheme.secondaryContainer,
                         hasTextBorderColor: Theme.of(context).colorScheme.secondaryContainer,
-                        errorBorderColor: ColorsUtils.redColor,
+                        errorBorderColor: Theme.of(context).extension<CustomColors>()!.redColor,
                         maxLength: 6,
                         hasError: false,
                         maskCharacter: "*",

@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/helper/helpers.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -98,7 +98,7 @@ class _CalendarEndUserPageState extends State<CalendarEndUserPage> {
                                   Theme.of(context).colorScheme.onBackground,
                                 ),
                                 backgroundColor: MaterialStateProperty.all<Color>(
-                                  ColorsUtils.greyButton,
+                                  Theme.of(context).extension<CustomColors>()!.greyButton,
                                 )),
                             label: Text(
                               "Add Vacation",

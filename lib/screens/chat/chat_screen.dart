@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -32,17 +32,17 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget _buildHeader() {
     return Container(
       padding: const EdgeInsets.all(16),
-      color: ColorsUtils.chatPrimary,
+      color: Theme.of(context).extension<CustomColors>()!.chatPrimary,
       child: Row(
         children: [
           IconButton(
-            icon: Icon(Icons.arrow_back, color: ColorsUtils.white),
+            icon: Icon(Icons.arrow_back, color: Theme.of(context).extension<CustomColors>()!.white),
             onPressed: () => Navigator.pop(context),
           ),
           CircleAvatar(
             radius: 20,
-            backgroundColor: ColorsUtils.greyCircle,
-            child: Icon(Icons.person, color: ColorsUtils.white),
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.greyCircle,
+            child: Icon(Icons.person, color: Theme.of(context).extension<CustomColors>()!.white),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -52,7 +52,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 Text(
                   'Josh John',
                   style: TextStyle(
-                    color: ColorsUtils.white,
+                    color: Theme.of(context).extension<CustomColors>()!.white,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
@@ -70,7 +70,7 @@ class _ChatScreenState extends State<ChatScreen> {
           Text(
             'S\$ 50',
             style: TextStyle(
-              color: ColorsUtils.white,
+              color: Theme.of(context).extension<CustomColors>()!.white,
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
@@ -115,7 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
           color: isSentByMe
-              ? ColorsUtils.chatPrimary
+              ? Theme.of(context).extension<CustomColors>()!.chatPrimary
               : Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
@@ -132,7 +132,7 @@ class _ChatScreenState extends State<ChatScreen> {
               Text(
                 message,
                 style: TextStyle(
-                color: isSentByMe ? Colors.white : ColorsUtils.chipText,
+                color: isSentByMe ? Colors.white : Theme.of(context).extension<CustomColors>()!.chipText,
                 fontSize: 16,
               ),
               ),
@@ -140,7 +140,7 @@ class _ChatScreenState extends State<ChatScreen> {
               Text(
                 time,
               style: TextStyle(
-                color: isSentByMe ? Colors.white70 : ColorsUtils.greyText,
+                color: isSentByMe ? Colors.white70 : Theme.of(context).extension<CustomColors>()!.greyText,
                 fontSize: 12,
               ),
             ),
@@ -169,7 +169,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorsUtils.chatPrimary,
+                  backgroundColor: Theme.of(context).extension<CustomColors>()!.chatPrimary,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -190,7 +190,7 @@ class _ChatScreenState extends State<ChatScreen> {
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: ColorsUtils.chatPrimary,
+                backgroundColor: Theme.of(context).extension<CustomColors>()!.chatPrimary,
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -218,17 +218,17 @@ class _ChatScreenState extends State<ChatScreen> {
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(25),
-                    border: Border.all(color: ColorsUtils.buddiesBorder),
+                    border: Border.all(color: Theme.of(context).extension<CustomColors>()!.buddiesBorder),
                   ),
                   child: TextFormField(
                     controller: _messageController,
-                    cursorColor: ColorsUtils.greyText,
+                    cursorColor: Theme.of(context).extension<CustomColors>()!.greyText,
                     style: TextStyle(
                         color:
                             Theme.of(context).colorScheme.onBackground),
                     decoration: InputDecoration(
                       hintText: 'Message',
-                      hintStyle: TextStyle(color: ColorsUtils.greyText),
+                      hintStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.greyText),
                       border: InputBorder.none,
                     ),
                   ),
@@ -236,7 +236,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               IconButton(
                 icon: const Icon(Icons.send),
-                color: ColorsUtils.chatPrimary,
+                color: Theme.of(context).extension<CustomColors>()!.chatPrimary,
                 onPressed: () {
                   if (_messageController.text.isNotEmpty) {
                     // Handle send message

@@ -4,12 +4,12 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/model/CoachDetailsResponseModel.dart';
 import 'package:oqdo_mobile_app/model/GetCoachBySetupIDModel.dart';
 import 'package:oqdo_mobile_app/model/calendar_view_model.dart';
 import 'package:oqdo_mobile_app/model/get_coach_batch_model/datum.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -52,7 +52,7 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
       ),
       floatingActionButton: FloatingActionButton(
         // isExtended: true,
-        backgroundColor: ColorsUtils.greyButton,
+        backgroundColor: Theme.of(context).extension<CustomColors>()!.greyButton,
         onPressed: () async {
           await Navigator.pushNamed(context, Constants.ADDBATCHSETUPPAGE).then((value) {
             if (value != null) {
@@ -220,7 +220,7 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
                       Theme.of(context).colorScheme.onBackground,
                     ),
                     backgroundColor: MaterialStateProperty.all<Color>(
-                      ColorsUtils.greyButton,
+                      Theme.of(context).extension<CustomColors>()!.greyButton,
                     ),
                   ),
                   child: Text(

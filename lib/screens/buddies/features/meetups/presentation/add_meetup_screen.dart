@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
@@ -131,7 +131,7 @@ class _AddMeetupScreenState extends State<AddMeetupScreen> {
                 ),
                 CustomTextView(
                   label: 'Start Time',
-                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: ColorsUtils.greyText, fontWeight: FontWeight.w400),
+                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(
                   height: 10,
@@ -333,7 +333,7 @@ class _AddMeetupScreenState extends State<AddMeetupScreen> {
                 ),
                 CustomTextView(
                   label: 'End Time',
-                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: ColorsUtils.greyText, fontWeight: FontWeight.w400),
+                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(
                   height: 10,
@@ -502,7 +502,7 @@ class _AddMeetupScreenState extends State<AddMeetupScreen> {
                 ),
                 CustomTextView(
                   label: 'Add Friends',
-                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: ColorsUtils.greyText, fontWeight: FontWeight.w400),
+                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(
                   height: 10,
@@ -617,11 +617,11 @@ class _AddMeetupScreenState extends State<AddMeetupScreen> {
           data: ThemeData.dark().copyWith(
             colorScheme: ColorScheme.light(
               primary: Theme.of(context).colorScheme.primary,
-              onPrimary: ColorsUtils.white,
-              surface: ColorsUtils.white,
-              onSurface: ColorsUtils.chipText,
+              onPrimary: Theme.of(context).extension<CustomColors>()!.white,
+              surface: Theme.of(context).extension<CustomColors>()!.white,
+              onSurface: Theme.of(context).extension<CustomColors>()!.chipText,
             ),
-            dialogBackgroundColor: ColorsUtils.white,
+            dialogBackgroundColor: Theme.of(context).extension<CustomColors>()!.white,
           ),
           child: child!,
         );

@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/model/coach_appointment_details_response_model.dart' as model;
@@ -14,7 +15,6 @@ import 'package:oqdo_mobile_app/viewmodels/appointment_view_model.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
 
-import '../../utils/colorsUtils.dart';
 
 class CoachDetailAppointmentScreen extends StatefulWidget {
   String? bookingId;
@@ -653,7 +653,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                           Expanded(
                             child: Text(
                               "$formattedDate $time",
-                              style: TextStyle(fontWeight: FontWeight.w600, color: ColorsUtils.greyText, fontSize: 15),
+                              style: TextStyle(fontWeight: FontWeight.w600, color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 15),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -665,7 +665,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                           //   maxLines: 3,
                           //   style: TextStyle(
                           //       fontSize: 15,
-                          //       color: ColorsUtils.greyAmount,
+                          //       color: Theme.of(context).extension<CustomColors>()!.greyAmount,
                           //       fontWeight: FontWeight.w600),
                           //   overflow: TextOverflow.ellipsis,
                           // ),
@@ -676,7 +676,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                               maxLines: 3,
                               style: TextStyle(
                                   fontSize: 15,
-                                  color: paymentTransaction[index].isRefund == false ? ColorsUtils.greenAmount : ColorsUtils.redAmount,
+                                  color: paymentTransaction[index].isRefund == false ? Theme.of(context).extension<CustomColors>()!.greenAmount : Theme.of(context).extension<CustomColors>()!.redAmount,
                                   fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -695,7 +695,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                             child: Text(
                               paymentTransaction[index].setupName ?? "",
                               maxLines: 3,
-                              style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                              style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -706,7 +706,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                         child: Text(
                           'Transaction ID : ${paymentTransaction[index].trasactionId.toString()}',
                           maxLines: 3,
-                          style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                          style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
@@ -724,7 +724,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                               child: Text(
                                 'Rate : S\$ ${paymentTransaction[index].ratePerHour?.toStringAsFixed(2) ?? 0.0}/hour',
                                 maxLines: 3,
-                                style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                                style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -742,7 +742,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                               child: Text(
                                 "Slot Date : ${bookFormatDate.toString()},",
                                 maxLines: 3,
-                                style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                                style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -751,7 +751,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                               child: Text(
                                 "${paymentTransaction[index].startTime.toString()} - ${paymentTransaction[index].endTime.toString()}",
                                 maxLines: 3,
-                                style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w600),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -763,7 +763,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                         child: Text(
                           'Amount : S\$ ${paymentTransaction[index].amount?.toStringAsFixed(2) ?? 0.0} ( Order fees )',
                           maxLines: 3,
-                          style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                          style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
@@ -777,7 +777,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                             Text(
                               'Payment Status : ',
                               maxLines: 3,
-                              style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                              style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
                             ),
                             Text(
@@ -790,10 +790,10 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                               style: TextStyle(
                                   fontSize: 14,
                                   color: paymentTransaction[index].status == 'A'
-                                      ? ColorsUtils.greenAmount
+                                      ? Theme.of(context).extension<CustomColors>()!.greenAmount
                                       : paymentTransaction[index].status == 'P'
                                           ? Colors.yellow
-                                          : ColorsUtils.redAmount,
+                                          : Theme.of(context).extension<CustomColors>()!.redAmount,
                                   fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -808,7 +808,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                         child: Text(
                           'Amount : S\$ ${payLaterAmount.toStringAsFixed(2)} ( Balance Amount Pay Later )',
                           maxLines: 3,
-                          style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                          style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
@@ -822,7 +822,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                             Text(
                               'Payment Status : ',
                               maxLines: 3,
-                              style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                              style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
                             ),
                             Text(
@@ -830,7 +830,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                               maxLines: 3,
                               style: TextStyle(
                                 fontSize: 14,
-                                color: ColorsUtils.yellowStatus,
+                                color: Theme.of(context).extension<CustomColors>()!.yellowStatus,
                                 fontWeight: FontWeight.w500,
                               ),
                               overflow: TextOverflow.ellipsis,
@@ -859,7 +859,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                                   child: Text(
                                     "Reason: ",
                                     maxLines: 3,
-                                    style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w600),
+                                    style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w600),
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
@@ -868,7 +868,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                                   child: Text(
                                     "${paymentTransaction[index].cancelreason != null && paymentTransaction[index].cancelreason!.isNotEmpty ? paymentTransaction[index].cancelreason : paymentTransaction[index].otherReason ?? ""}",
                                     maxLines: 3,
-                                    style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                                    style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
@@ -893,7 +893,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                 //           Expanded(
                 //             child: Text(
                 //               "$formattedDate   $time",
-                //               style: TextStyle(fontWeight: FontWeight.w600, color: ColorsUtils.greyText, fontSize: 15),
+                //               style: TextStyle(fontWeight: FontWeight.w600, color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 15),
                 //               overflow: TextOverflow.ellipsis,
                 //             ),
                 //           ),
@@ -905,7 +905,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                 //           //   maxLines: 3,
                 //           //   style: TextStyle(
                 //           //       fontSize: 15,
-                //           //       color: ColorsUtils.greyAmount,
+                //           //       color: Theme.of(context).extension<CustomColors>()!.greyAmount,
                 //           //       fontWeight: FontWeight.w600),
                 //           //   overflow: TextOverflow.ellipsis,
                 //           // ),
@@ -916,7 +916,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                 //               maxLines: 3,
                 //               style: TextStyle(
                 //                   fontSize: 15,
-                //                   color: paymentTransaction[index].isRefund == false ? ColorsUtils.greenAmount : ColorsUtils.redAmount,
+                //                   color: paymentTransaction[index].isRefund == false ? Theme.of(context).extension<CustomColors>()!.greenAmount : Theme.of(context).extension<CustomColors>()!.redAmount,
                 //                   fontWeight: FontWeight.w500),
                 //               overflow: TextOverflow.ellipsis,
                 //             ),
@@ -935,7 +935,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                 //             child: Text(
                 //               paymentTransaction[index].setupName.toString(),
                 //               maxLines: 3,
-                //               style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                //               style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                 //               overflow: TextOverflow.ellipsis,
                 //             ),
                 //           ),
@@ -946,7 +946,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                 //         child: Text(
                 //           'Transaction ID : ${paymentTransaction[index].trasactionId.toString()}',
                 //           maxLines: 3,
-                //           style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                //           style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                 //           overflow: TextOverflow.ellipsis,
                 //         ),
                 //       ),
@@ -958,7 +958,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                 //         child: Text(
                 //           'Amount : S\$${paymentTransaction[index].amount.toString()}',
                 //           maxLines: 3,
-                //           style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                //           style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                 //           overflow: TextOverflow.ellipsis,
                 //         ),
                 //       ),
@@ -976,7 +976,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                 //                       ? 'Payment Status : '
                 //                       : 'Payment Status : ',
                 //               maxLines: 3,
-                //               style: TextStyle(fontSize: 14, color: ColorsUtils.greyAmount, fontWeight: FontWeight.w500),
+                //               style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyAmount, fontWeight: FontWeight.w500),
                 //               overflow: TextOverflow.ellipsis,
                 //             ),
                 //             Text(
@@ -989,10 +989,10 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                 //               style: TextStyle(
                 //                   fontSize: 14,
                 //                   color: paymentTransaction[index].status == 'A'
-                //                       ? ColorsUtils.greenAmount
+                //                       ? Theme.of(context).extension<CustomColors>()!.greenAmount
                 //                       : paymentTransaction[index].status == 'P'
                 //                           ? Colors.yellow
-                //                           : ColorsUtils.redAmount,
+                //                           : Theme.of(context).extension<CustomColors>()!.redAmount,
                 //                   fontWeight: FontWeight.w500),
                 //               overflow: TextOverflow.ellipsis,
                 //             ),
@@ -1013,7 +1013,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                 //               child: Text(
                 //                 "Slot Date : ${bookFormatDate.toString()},",
                 //                 maxLines: 3,
-                //                 style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w500),
+                //                 style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w500),
                 //                 overflow: TextOverflow.ellipsis,
                 //               ),
                 //             ),
@@ -1022,7 +1022,7 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
                 //               child: Text(
                 //                 "${paymentTransaction[index].startTime.toString()} - ${paymentTransaction[index].endTime.toString()}",
                 //                 maxLines: 3,
-                //                 style: TextStyle(fontSize: 14, color: ColorsUtils.greyText, fontWeight: FontWeight.w600),
+                //                 style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w600),
                 //                 overflow: TextOverflow.ellipsis,
                 //               ),
                 //             ),

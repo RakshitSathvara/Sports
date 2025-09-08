@@ -9,6 +9,7 @@ import 'dart:math';
 import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -23,7 +24,6 @@ import 'package:oqdo_mobile_app/screens/buddies/features/buddies/domain/chat_pro
 import 'package:oqdo_mobile_app/screens/common_widget/view_image_screen.dart';
 import 'package:oqdo_mobile_app/screens/profile/intent/refer_earn_intent.dart';
 import 'package:oqdo_mobile_app/utils/close_account_popup.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/enums.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -296,7 +296,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
               child: Container(
                 width: width,
                 height: height,
-                color: ColorsUtils.white,
+                color: Theme.of(context).extension<CustomColors>()!.white,
                 child: SingleChildScrollView(
                   child: Form(
                     key: formKey,
@@ -440,7 +440,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                               //       ),
                               //       Text(
                               //         '',
-                              //         style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14),
+                              //         style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14),
                               //       ),
                               //     ],
                               //   ),
@@ -607,7 +607,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                           CustomTextView(
                               label: "Name",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -626,7 +626,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                           CustomTextView(
                               label: "Last Name",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -648,7 +648,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                           CustomTextView(
                               label: "Email",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle.withOpacity(0.5), fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle.withOpacity(0.5), fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -672,7 +672,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                           CustomTextView(
                             label: "Phone Number",
                             type: styleSubTitle,
-                            textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle.withOpacity(0.5), fontSize: 14),
+                            textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle.withOpacity(0.5), fontSize: 14),
                           ),
                           const SizedBox(
                             height: 8,
@@ -697,7 +697,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                           CustomTextView(
                               label: "Address",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -720,7 +720,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             label: "Postal Code",
                             type: styleSubTitle,
                             textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                  color: ColorsUtils.subTitle,
+                                  color: Theme.of(context).extension<CustomColors>()!.subTitle,
                                   fontSize: 14,
                                 ),
                           ),
@@ -835,7 +835,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                           CustomTextView(
                               label: "IC Number (Last 4 Digits)",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -854,7 +854,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                             decoration: _inputDecoration(context,
                                 errorStyle:
-                                    TextStyle(color: ColorsUtils.redColor)),
+                                    TextStyle(color: Theme.of(context).extension<CustomColors>()!.redColor)),
 
                           ),
 
@@ -865,7 +865,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                           CustomTextView(
                               label: "Coach Registry Number",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -884,7 +884,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                             decoration: _inputDecoration(context,
                                 errorStyle:
-                                    TextStyle(color: ColorsUtils.redColor)),
+                                    TextStyle(color: Theme.of(context).extension<CustomColors>()!.redColor)),
                    
                           ),
                           const SizedBox(
@@ -893,7 +893,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                           CustomTextView(
                               label: "UEN Number",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -911,7 +911,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                             decoration: _inputDecoration(context,
                                 errorStyle:
-                                    TextStyle(color: ColorsUtils.redColor)),
+                                    TextStyle(color: Theme.of(context).extension<CustomColors>()!.redColor)),
 
                           ),
                           //experience
@@ -921,7 +921,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                           CustomTextView(
                               label: "Experience (year(s))",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -938,7 +938,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             decoration: _inputDecoration(context,
                                 counterText: '',
                                 errorStyle:
-                                    TextStyle(color: ColorsUtils.redColor)),
+                                    TextStyle(color: Theme.of(context).extension<CustomColors>()!.redColor)),
 
                           ),
                           //description.
@@ -948,7 +948,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                           CustomTextView(
                               label: "Description",
                               type: styleSubTitle,
-                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           const SizedBox(
                             height: 8,
                           ),
@@ -976,7 +976,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                 .titleMedium!
                                 .copyWith(
                                     fontSize: 17.0,
-                                    color: ColorsUtils.greyText,
+                                    color: Theme.of(context).extension<CustomColors>()!.greyText,
                                     fontWeight: FontWeight.w400),
                           ),
                           const SizedBox(
@@ -1080,7 +1080,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                           // CustomTextView(
                           //     label: "Certificate",
                           //     type: styleSubTitle,
-                          //     textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                          //     textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                           // const SizedBox(
                           //   height: 8,
                           // ),
@@ -1202,7 +1202,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                       .textTheme
                                                       .titleMedium!
                                                       .copyWith(
-                                                          color: ColorsUtils.chipText,
+                                                          color: Theme.of(context).extension<CustomColors>()!.chipText,
                                                           fontWeight: FontWeight.w400,
                                                           fontSize: 18.0),
                                                 ),
@@ -1220,8 +1220,8 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                         children: [
                                                           Container(
                                                             decoration: BoxDecoration(
-                                                              color: ColorsUtils.chipBackground,
-                                                              border: Border.all(color: ColorsUtils.chipBackground),
+                                                              color: Theme.of(context).extension<CustomColors>()!.chipBackground,
+                                                              border: Border.all(color: Theme.of(context).extension<CustomColors>()!.chipBackground),
                                                               borderRadius: const BorderRadius.all(
                                                                 Radius.circular(20),
                                                               ),
@@ -1231,7 +1231,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                                 textStyle: Theme.of(context)
                                                                     .textTheme
                                                                     .titleMedium!
-                                                                    .copyWith(color: ColorsUtils.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
+                                                                    .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
                                                                 label: sectionInterest[sectionInterest.keys.toList()[index]]![indexInterest].subActivityName),
                                                           ),
                                                           const SizedBox(
@@ -1265,7 +1265,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                     textStyle: Theme.of(context)
                                                         .textTheme
                                                         .titleMedium!
-                                                        .copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: ColorsUtils.subTitle),
+                                                        .copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                   ),
                                                 ),
                                                 const SizedBox(
@@ -1394,7 +1394,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                             textStyle: Theme.of(context)
                                                 .textTheme
                                                 .titleMedium!
-                                                .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold, color: ColorsUtils.subTitle),
+                                                .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                           ),
                                           const SizedBox(
                                             height: 8.0,
@@ -1402,7 +1402,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                           CustomTextView(
                                             label:
                                                 "${coachTrainingAddressList![index].address1 ?? ""} ${coachTrainingAddressList![index].address2 ?? ""} ${coachTrainingAddressList![index].pinCode ?? ""} ${coachTrainingAddressList![index].cityName ?? ""}",
-                                            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: ColorsUtils.subTitle),
+                                            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                           ),
                                         ],
                                       ),
@@ -1512,7 +1512,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                             children: [
                               CustomTextView(
                                 label: 'Refundable if cancelled before click here to read more. ',
-                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: ColorsUtils.subTitle),
+                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                               ),
                               const SizedBox(
                                 height: 10,
@@ -1520,7 +1520,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                               CustomTextView(
                                 label:
                                     'Cancellation Policy time should be max ${maxAllowedCancellationTime.inDays} days\n(${convertMinutesToValidationText(maxAllowedCancellationTime.inMinutes)})',
-                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: ColorsUtils.subTitle),
+                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                 maxLine: 2,
                               ),
                               const SizedBox(
@@ -1541,14 +1541,14 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                               children: [
                                                 // Container(
                                                 //   decoration: BoxDecoration(
-                                                //     color: ColorsUtils.edittextBackProfile,
+                                                //     color: Theme.of(context).extension<CustomColors>()!.edittextBackProfile,
                                                 //   ),
                                                 //   height: 35,
                                                 //   width: 35,
                                                 //   child: Center(
                                                 //     child: Text(
                                                 //       selectedHour,
-                                                //       style: TextStyle(fontSize: 14, color: ColorsUtils.subTitle),
+                                                //       style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                 //     ),
                                                 //   ),
                                                 // ),
@@ -1558,7 +1558,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                   child: CustomTextFormField(
                                                     controller: cancellationHoursController,
                                                     hintText: '00',
-                                                    fillColor: ColorsUtils.edittextBackProfile,
+                                                    fillColor: Theme.of(context).extension<CustomColors>()!.edittextBackProfile,
                                                     fontSize: 14,
                                                     centerText: true,
                                                     keyboardType: TextInputType.number,
@@ -1575,7 +1575,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                 CustomTextView(
                                                   label: 'hours',
                                                   textAlign: TextAlign.center,
-                                                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, color: ColorsUtils.subTitle),
+                                                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                 ),
                                               ],
                                             ),
@@ -1586,14 +1586,14 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                               children: [
                                                 // Container(
                                                 //   decoration: BoxDecoration(
-                                                //     color: ColorsUtils.edittextBackProfile,
+                                                //     color: Theme.of(context).extension<CustomColors>()!.edittextBackProfile,
                                                 //   ),
                                                 //   width: 35,
                                                 //   height: 35,
                                                 //   child: Center(
                                                 //     child: Text(
                                                 //       selectedMinute,
-                                                //       style: TextStyle(fontSize: 14, color: ColorsUtils.subTitle),
+                                                //       style: TextStyle(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                 //     ),
                                                 //   ),
                                                 // ),
@@ -1602,7 +1602,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                   width: 60,
                                                   child: CustomTextFormField(
                                                     controller: cancellationMinutesController,
-                                                    fillColor: ColorsUtils.edittextBackProfile,
+                                                    fillColor: Theme.of(context).extension<CustomColors>()!.edittextBackProfile,
                                                     hintText: '00',
                                                     fontSize: 14,
                                                     centerText: true,
@@ -1619,7 +1619,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                 ),
                                                 CustomTextView(
                                                   label: 'minutes',
-                                                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, color: ColorsUtils.subTitle),
+                                                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                 ),
                                               ],
                                             ),
@@ -1903,7 +1903,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       CustomTextView(
                                           label: "Mobile number {Linked to PayNow}",
                                           type: styleSubTitle,
-                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                       const SizedBox(
                                         height: 8,
                                       ),
@@ -1938,7 +1938,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                 .bodyMedium!
                                                 .copyWith(
                                                     fontSize: 12,
-                                                    color: ColorsUtils.redColor)),
+                                                    color: Theme.of(context).extension<CustomColors>()!.redColor)),
                                       ),
                                       const SizedBox(
                                         height: 16,
@@ -1946,7 +1946,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       CustomTextView(
                                           label: "PayNow ID (UEN Number)",
                                           type: styleSubTitle,
-                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                       const SizedBox(
                                         height: 8,
                                       ),
@@ -1979,7 +1979,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                 .bodyMedium!
                                                 .copyWith(
                                                     fontSize: 12,
-                                                    color: ColorsUtils.redColor)),
+                                                    color: Theme.of(context).extension<CustomColors>()!.redColor)),
                                       ),
                                     ],
                                   ),
@@ -1997,7 +1997,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       CustomTextView(
                                           label: "Mobile number {Linked to PayLah}",
                                           type: styleSubTitle,
-                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                       const SizedBox(
                                         height: 8,
                                       ),
@@ -2031,7 +2031,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                 .bodyMedium!
                                                 .copyWith(
                                                     fontSize: 12,
-                                                    color: ColorsUtils.redColor)),
+                                                    color: Theme.of(context).extension<CustomColors>()!.redColor)),
                                       ),
                                     ],
                                   ),
@@ -2049,7 +2049,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       CustomTextView(
                                           label: "Beneficiary name",
                                           type: styleSubTitle,
-                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                       const SizedBox(
                                         height: 8,
                                       ),
@@ -2080,7 +2080,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                 .bodyMedium!
                                                 .copyWith(
                                                     fontSize: 12,
-                                                    color: ColorsUtils.redColor)),
+                                                    color: Theme.of(context).extension<CustomColors>()!.redColor)),
                                       ),
                                       const SizedBox(
                                         height: 16,
@@ -2088,7 +2088,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       CustomTextView(
                                           label: "Bank name",
                                           type: styleSubTitle,
-                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                       const SizedBox(
                                         height: 8,
                                       ),
@@ -2119,7 +2119,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                 .bodyMedium!
                                                 .copyWith(
                                                     fontSize: 12,
-                                                    color: ColorsUtils.redColor)),
+                                                    color: Theme.of(context).extension<CustomColors>()!.redColor)),
                                       ),
                                       const SizedBox(
                                         height: 16,
@@ -2127,7 +2127,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       CustomTextView(
                                           label: "Bank account number",
                                           type: styleSubTitle,
-                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                       const SizedBox(
                                         height: 8,
                                       ),
@@ -2161,7 +2161,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                 .bodyMedium!
                                                 .copyWith(
                                                     fontSize: 12,
-                                                    color: ColorsUtils.redColor)),
+                                                    color: Theme.of(context).extension<CustomColors>()!.redColor)),
                                       ),
                                       const SizedBox(
                                         height: 16,
@@ -2169,7 +2169,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                       CustomTextView(
                                           label: "IFSC/Swift code",
                                           type: styleSubTitle,
-                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                                       const SizedBox(
                                         height: 8,
                                       ),
@@ -2202,7 +2202,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                                 .bodyMedium!
                                                 .copyWith(
                                                     fontSize: 12,
-                                                    color: ColorsUtils.redColor)),
+                                                    color: Theme.of(context).extension<CustomColors>()!.redColor)),
                                       ),
                                     ],
                                   ),
@@ -2233,7 +2233,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                               children: [
                                                 Icon(
                                                   Icons.cancel,
-                                                  color: ColorsUtils.redColor,
+                                                  color: Theme.of(context).extension<CustomColors>()!.redColor,
                                                   size: 100.0,
                                                 ),
                                                 const SizedBox(height: 10.0),
@@ -2265,7 +2265,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20.0), // Adjust radius as needed
-                                color: ColorsUtils.referEarnColor,
+                                color: Theme.of(context).extension<CustomColors>()!.referEarnColor,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(16.0),
@@ -2291,7 +2291,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                               "Refer and Earn",
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                color: ColorsUtils.white,
+                                                color: Theme.of(context).extension<CustomColors>()!.white,
                                                 fontSize: 20.0, // Adjust font size as needed
                                               ),
                                             ),
@@ -2323,7 +2323,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20.0), // Adjust radius as needed
-                                      color: ColorsUtils.closeAccountColor,
+                                      color: Theme.of(context).extension<CustomColors>()!.closeAccountColor,
                                     ),
                                     child: Center(
                                       child: Padding(
@@ -2332,7 +2332,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                           "Close Account",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            color: ColorsUtils.white,
+                                            color: Theme.of(context).extension<CustomColors>()!.white,
                                             fontSize: 18.0, // Adjust font size as needed
                                           ),
                                         ),
@@ -2344,7 +2344,7 @@ class CoachProfilePageState extends State<CoachProfilePage> {
                                   child: Text(
                                     'Account Closure Request in Process',
                                     style: TextStyle(
-                                        color: ColorsUtils.redColor,
+                                        color: Theme.of(context).extension<CustomColors>()!.redColor,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18),
                                   ),
@@ -2382,15 +2382,15 @@ class CoachProfilePageState extends State<CoachProfilePage> {
   chipsWidget(SelectedFilterValues item) {
     return Container(
       decoration: BoxDecoration(
-        color: ColorsUtils.chipBackground,
-        border: Border.all(color: ColorsUtils.chipBackground),
+        color: Theme.of(context).extension<CustomColors>()!.chipBackground,
+        border: Border.all(color: Theme.of(context).extension<CustomColors>()!.chipBackground),
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
         ),
       ),
       padding: const EdgeInsets.fromLTRB(24, 10, 24, 10),
       child: CustomTextView(
-          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: ColorsUtils.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
+          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
           label: item.activityName),
     );
   }

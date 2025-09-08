@@ -2,13 +2,13 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/helper/helpers.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/sell/models/edit_view_equipment_intent_model.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/sell/viewmodel/sell_viewmodel.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
@@ -152,17 +152,17 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
                               label: Text(
                                 activity.name,
                                 style: TextStyle(
-                                  color: selectedActivities.contains(activity.name) ? Colors.white : ColorsUtils.chipText,
+                                  color: selectedActivities.contains(activity.name) ? Colors.white : Theme.of(context).extension<CustomColors>()!.chipText,
                                   fontSize: 13.0,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
-                              backgroundColor: ColorsUtils.chipBackground,
+                              backgroundColor: Theme.of(context).extension<CustomColors>()!.chipBackground,
                               selectedColor: Theme.of(context).primaryColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 side: BorderSide(
-                                  color: selectedActivities.contains(activity.name) ? Theme.of(context).primaryColor : ColorsUtils.chipBackground,
+                                  color: selectedActivities.contains(activity.name) ? Theme.of(context).primaryColor : Theme.of(context).extension<CustomColors>()!.chipBackground,
                                 ),
                               ),
                               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

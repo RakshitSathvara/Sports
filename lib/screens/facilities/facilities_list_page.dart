@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:http/http.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/components/favorite_toggle_button.dart';
@@ -19,7 +20,6 @@ import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
 import 'package:oqdo_mobile_app/utils/utilities.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/viewmodels/BookingViewModel.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
@@ -189,7 +189,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                                 textStyle: Theme.of(context)
                                     .textTheme
                                     .titleMedium!
-                                    .copyWith(color: ColorsUtils.greyText, fontSize: 20.0, fontWeight: FontWeight.w300),
+                                    .copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 20.0, fontWeight: FontWeight.w300),
                               ),
                               value: selectedTypeValue,
                               items: filterList!.map((interest) {
@@ -200,7 +200,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleMedium!
-                                        .copyWith(color: ColorsUtils.greyText, fontSize: 20.0, fontWeight: FontWeight.w300),
+                                        .copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 20.0, fontWeight: FontWeight.w300),
                                   ),
                                 );
                               }).toList(),
@@ -237,16 +237,16 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: ColorsUtils.white,
+                    color: Theme.of(context).extension<CustomColors>()!.white,
                     borderRadius: BorderRadius.circular(8.0),
-                    border: Border.all(color: ColorsUtils.filterDivider),
+                    border: Border.all(color: Theme.of(context).extension<CustomColors>()!.filterDivider),
                   ),
                   child: TextField(
                     controller: _searchController,
                     decoration: InputDecoration(
                       hintText: 'Search',
                       hintStyle: TextStyle(
-                          color: ColorsUtils.greyText,
+                          color: Theme.of(context).extension<CustomColors>()!.greyText,
                           fontSize: 18.0,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Montserrat'),
@@ -429,7 +429,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
               maxLine: 2,
               textOverFlow: TextOverflow.ellipsis,
               type: styleSubTitle,
-              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontWeight: FontWeight.w400, fontSize: 16),
+              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400, fontSize: 16),
             ),
             const SizedBox(
               height: 6,
@@ -450,14 +450,14 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                     label: 'From S\$ ${model.minimumHrRate?.toStringAsFixed(2) ?? 0.00} / hour',
                     type: styleSubTitle,
                     textOverFlow: TextOverflow.ellipsis,
-                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontWeight: FontWeight.w400, fontSize: 14.0),
+                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400, fontSize: 14.0),
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: ColorsUtils.filterDivider,
+                        color: Theme.of(context).extension<CustomColors>()!.filterDivider,
                       ),
                       borderRadius: const BorderRadius.all(Radius.circular(8))),
                   child: Row(
@@ -466,7 +466,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                         label: model.avgProviderRating!.toStringAsFixed(1),
                         textOverFlow: TextOverflow.ellipsis,
                         textStyle:
-                            Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: ColorsUtils.greyText),
+                            Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: Theme.of(context).extension<CustomColors>()!.greyText),
                       ),
                       const SizedBox(
                         width: 3,
@@ -497,7 +497,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
           textStyle: Theme.of(context)
               .textTheme
               .titleLarge!
-              .copyWith(fontWeight: FontWeight.bold, fontSize: 20.0, color: ColorsUtils.greyText, fontStyle: FontStyle.normal),
+              .copyWith(fontWeight: FontWeight.bold, fontSize: 20.0, color: Theme.of(context).extension<CustomColors>()!.greyText, fontStyle: FontStyle.normal),
         ),
         InkWell(
           onTap: () async {
@@ -1056,7 +1056,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                   textStyle: Theme.of(context)
                       .textTheme
                       .titleSmall!
-                      .copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, decoration: TextDecoration.underline, color: ColorsUtils.greyText),
+                      .copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, decoration: TextDecoration.underline, color: Theme.of(context).extension<CustomColors>()!.greyText),
                 ),
               ),
               ElevatedButton(
@@ -1145,7 +1145,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                         child: CustomTextView(
                           label: 'Group Booking',
                           textStyle:
-                              Theme.of(context).textTheme.titleSmall!.copyWith(color: ColorsUtils.greyText, fontSize: 15.0, fontWeight: FontWeight.w500),
+                              Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 15.0, fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -1203,7 +1203,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                         child: CustomTextView(
                           label: 'Individual Booking',
                           textStyle:
-                              Theme.of(context).textTheme.titleSmall!.copyWith(color: ColorsUtils.greyText, fontSize: 15.0, fontWeight: FontWeight.w500),
+                              Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 15.0, fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -1298,7 +1298,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                     maxLine: 3,
                     textOverFlow: TextOverflow.ellipsis,
                     label: selectedValuesFromKey[index].Name,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: ColorsUtils.greyText),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).extension<CustomColors>()!.greyText),
                   ),
                 ),
               ],
@@ -1330,11 +1330,11 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
           child: Container(
             height: 80.0,
             width: double.infinity,
-            color: selectedValue == key ? ColorsUtils.filterDivider : Theme.of(context).colorScheme.background,
+            color: selectedValue == key ? Theme.of(context).extension<CustomColors>()!.filterDivider : Theme.of(context).colorScheme.background,
             child: Center(
               child: CustomTextView(
                 label: key,
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14.0, color: ColorsUtils.greyText, fontWeight: FontWeight.w700),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14.0, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w700),
               ),
             ),
           ),
@@ -1342,7 +1342,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
         SizedBox(
           height: 1.0,
           child: Container(
-            color: ColorsUtils.filterDivider,
+            color: Theme.of(context).extension<CustomColors>()!.filterDivider,
           ),
         ),
       ],

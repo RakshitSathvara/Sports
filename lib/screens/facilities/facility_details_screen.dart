@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:http/http.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
@@ -14,7 +15,6 @@ import 'package:oqdo_mobile_app/model/add_facility_slot_model.dart';
 import 'package:oqdo_mobile_app/model/calendar_view_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/common_widget/facility_review_screen.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
@@ -231,7 +231,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
             label: '${widget.getFacilityByIdModel!.subTitle}',
             maxLine: 3,
             textOverFlow: TextOverflow.ellipsis,
-            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w400, fontSize: 18.0, color: ColorsUtils.greyText),
+            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w400, fontSize: 18.0, color: Theme.of(context).extension<CustomColors>()!.greyText),
           ),
           const SizedBox(
             height: 8.0,
@@ -241,7 +241,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
             children: [
               CustomTextView(
                 label: 'From S\$ ${widget.getFacilityByIdModel?.ratePerHour?.toStringAsFixed(2) ?? 0.00} / hour',
-                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: ColorsUtils.greyText),
+                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: Theme.of(context).extension<CustomColors>()!.greyText),
               ),
               Row(
                 children: [
@@ -280,7 +280,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                       textStyle: Theme.of(context)
                           .textTheme
                           .titleSmall!
-                          .copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: ColorsUtils.greyText, decoration: TextDecoration.underline),
+                          .copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: Theme.of(context).extension<CustomColors>()!.greyText, decoration: TextDecoration.underline),
                     ),
                   )
                 ],
@@ -389,7 +389,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
           label: widget.getFacilityByIdModel!.description,
           maxLine: 10,
           textOverFlow: TextOverflow.ellipsis,
-          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: ColorsUtils.greyText),
+          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: Theme.of(context).extension<CustomColors>()!.greyText),
         ),
         const SizedBox(
           height: 25.0,
@@ -406,7 +406,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
           maxLine: 3,
           textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
             fontSize: 16.0,
-            color: ColorsUtils.greyText,
+            color: Theme.of(context).extension<CustomColors>()!.greyText,
           ),
         ),
         const SizedBox(
@@ -436,7 +436,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
               flex: 1,
               child: CustomTextView(
                 label: 'Facility Available for',
-                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontSize: 14.0),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 14.0),
               ),
             ),
             Flexible(
@@ -447,7 +447,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                     alignment: Alignment.topLeft,
                     child: CustomTextView(
                       label: widget.getFacilityByIdModel!.bookingType == 'I' ? 'Individual Booking' : 'Group Booking',
-                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: ColorsUtils.greyText, fontWeight: FontWeight.bold),
+                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.bold),
                     ),
                   ),
                   const SizedBox(
@@ -477,7 +477,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
               flex: 1,
               child: CustomTextView(
                 label: 'Slot time',
-                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontSize: 14.0),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 14.0),
               ),
             ),
             Flexible(
@@ -486,7 +486,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                 alignment: Alignment.topLeft,
                 child: CustomTextView(
                   label: '${widget.getFacilityByIdModel!.slotTimeHour} Hours',
-                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: ColorsUtils.greyText, fontWeight: FontWeight.bold),
+                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -502,7 +502,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
               flex: 1,
               child: CustomTextView(
                 label: 'Capacity',
-                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontSize: 14.0),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 14.0),
               ),
             ),
             Flexible(
@@ -511,7 +511,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                 alignment: Alignment.topLeft,
                 child: CustomTextView(
                   label: widget.getFacilityByIdModel!.facilityCapacity.toString(),
-                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: ColorsUtils.greyText, fontWeight: FontWeight.bold),
+                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -572,7 +572,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                 label: widget.getFacilityByIdModel!.address,
                 maxLine: 8,
                 textOverFlow: TextOverflow.ellipsis,
-                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontSize: 16.0),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 16.0),
               ),
             ),
           ],
@@ -591,7 +591,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
             Expanded(
               child: CustomTextView(
                 label: widget.getFacilityByIdModel!.mobileNumber,
-                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontSize: 16.0),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontSize: 16.0),
               ),
             ),
           ],
@@ -639,7 +639,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                           children: [
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.sunday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.sunday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'S',
                                 style: TextStyle(
@@ -655,7 +655,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.monday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.monday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'M',
                                 style: TextStyle(
@@ -671,7 +671,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.tuesday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.tuesday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'T',
                                 style: TextStyle(
@@ -687,7 +687,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.wednesday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.wednesday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'W',
                                 style: TextStyle(
@@ -703,7 +703,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.thursday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.thursday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'T',
                                 style: TextStyle(
@@ -719,7 +719,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.friday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.friday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'F',
                                 style: TextStyle(
@@ -735,7 +735,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                             ),
                             CircleAvatar(
                               radius: 14,
-                              backgroundColor: addFacilitySlotModel.saturday! ? Theme.of(context).colorScheme.primary : ColorsUtils.greyCircle,
+                              backgroundColor: addFacilitySlotModel.saturday! ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyCircle,
                               child: Text(
                                 'S',
                                 style: TextStyle(

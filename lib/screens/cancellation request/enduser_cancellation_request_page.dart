@@ -4,12 +4,12 @@ import 'dart:convert';
 
 import 'package:custom_timer/custom_timer.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/model/cancellation_request_list_response_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/viewmodels/service_providers_cancellation_view_model.dart';
@@ -261,10 +261,10 @@ class _EnduserCancellationRequestPageState extends State<EnduserCancellationRequ
                       textStyle: TextStyle(
                         fontSize: 14,
                         color: cancellationRequest.status == 'A'
-                            ? ColorsUtils.greenAmount
+                            ? Theme.of(context).extension<CustomColors>()!.greenAmount
                             : cancellationRequest.status == 'R'
-                                ? ColorsUtils.redAmount
-                                : ColorsUtils.yellowStatus,
+                                ? Theme.of(context).extension<CustomColors>()!.redAmount
+                                : Theme.of(context).extension<CustomColors>()!.yellowStatus,
                         fontWeight: FontWeight.w500,
                       ),
                     )

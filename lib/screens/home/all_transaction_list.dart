@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/model/transaction_list_response.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
@@ -99,7 +99,7 @@ class _AllTransactionListState extends State<AllTransactionList> with AutomaticK
                                 Text(
                                   '\$ ${transactions[index].totalAmt}',
                                   maxLines: 3,
-                                  style: TextStyle(fontSize: 15, color: ColorsUtils.greyAmount, fontWeight: FontWeight.w600),
+                                  style: TextStyle(fontSize: 15, color: Theme.of(context).extension<CustomColors>()!.greyAmount, fontWeight: FontWeight.w600),
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ],
@@ -142,10 +142,10 @@ class _AllTransactionListState extends State<AllTransactionList> with AutomaticK
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: transactions[index].paymentStatus == null || transactions[index].paymentStatus == "P"
-                                        ? ColorsUtils.pendingAmount
+                                        ? Theme.of(context).extension<CustomColors>()!.pendingAmount
                                         : transactions[index].paymentStatus == "A"
-                                            ? ColorsUtils.greenAmount
-                                            : ColorsUtils.redAmount,
+                                            ? Theme.of(context).extension<CustomColors>()!.greenAmount
+                                            : Theme.of(context).extension<CustomColors>()!.redAmount,
                                     fontWeight: FontWeight.w500),
                                 overflow: TextOverflow.ellipsis,
                               ),

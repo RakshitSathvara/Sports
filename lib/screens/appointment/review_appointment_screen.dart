@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:flutter_fgbg/flutter_fgbg.dart';
 import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
 import 'package:intl/intl.dart';
@@ -15,7 +16,6 @@ import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/appointment/intent/selected_coupon_intent.dart';
 import 'package:oqdo_mobile_app/screens/appointment/views/appointment_btn_view.dart';
 import 'package:oqdo_mobile_app/screens/appointment/views/selected_discount_view.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/extentions.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -245,7 +245,7 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleMedium!
-                                        .copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: ColorsUtils.redColor),
+                                        .copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: Theme.of(context).extension<CustomColors>()!.redColor),
                                   ),
                                 ),
                                 const SizedBox(height: 6.0),

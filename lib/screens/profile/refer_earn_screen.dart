@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/screens/profile/intent/refer_earn_intent.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 
 class ReferEarnScreen extends StatefulWidget {
   final ReferEarnIntent intent;
@@ -59,7 +59,7 @@ Download the app here: https://oqdo.com/#download-app
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsUtils.white,
+      backgroundColor: Theme.of(context).extension<CustomColors>()!.white,
       appBar: CustomAppBar(
         title: 'Refer and Earn',
         onBack: () {
@@ -86,7 +86,7 @@ Download the app here: https://oqdo.com/#download-app
                 'Refer and Earn',
                 style: TextStyle(
                   fontSize: 24,
-                  color: ColorsUtils.subTitle,
+                  color: Theme.of(context).extension<CustomColors>()!.subTitle,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Montserrat',
                 ),
@@ -101,7 +101,7 @@ Download the app here: https://oqdo.com/#download-app
               Container(
                 padding: const EdgeInsets.all(15),
                 decoration: BoxDecoration(
-                  color: ColorsUtils.referEarnColor.withOpacity(0.2),
+                  color: Theme.of(context).extension<CustomColors>()!.referEarnColor.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
@@ -110,7 +110,7 @@ Download the app here: https://oqdo.com/#download-app
                       widget.intent.referCode ?? '',
                       style: TextStyle(
                         fontSize: 16,
-                        color: ColorsUtils.referEarnColor,
+                        color: Theme.of(context).extension<CustomColors>()!.referEarnColor,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -167,7 +167,7 @@ Download the app here: https://oqdo.com/#download-app
               child: Text(
                 number.toString(),
                 style: TextStyle(
-                  color: ColorsUtils.white,
+                  color: Theme.of(context).extension<CustomColors>()!.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -176,7 +176,7 @@ Download the app here: https://oqdo.com/#download-app
           const SizedBox(width: 12),
           Text(
             text,
-            style: TextStyle(fontSize: 16, fontFamily: 'Montserrat', color: ColorsUtils.chipText),
+            style: TextStyle(fontSize: 16, fontFamily: 'Montserrat', color: Theme.of(context).extension<CustomColors>()!.chipText),
           ),
         ],
       ),

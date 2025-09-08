@@ -8,6 +8,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -24,7 +25,6 @@ import 'package:oqdo_mobile_app/screens/buddies/features/buddies/domain/chat_pro
 import 'package:oqdo_mobile_app/screens/profile/intent/refer_earn_intent.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/close_account_popup.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -120,7 +120,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
             ? Container(
                 width: width,
                 height: height,
-                color: ColorsUtils.white,
+                color: Theme.of(context).extension<CustomColors>()!.white,
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -341,7 +341,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                         CustomTextView(
                             label: "Name",
                             type: styleSubTitle,
-                            textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                            textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                         const SizedBox(
                           height: 8,
                         ),
@@ -386,7 +386,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                         CustomTextView(
                             label: "Last Name",
                             type: styleSubTitle,
-                            textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                            textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                         const SizedBox(
                           height: 8,
                         ),
@@ -431,7 +431,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                         CustomTextView(
                           label: "Email",
                           type: styleSubTitle,
-                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle.withOpacity(0.5), fontSize: 14),
+                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle.withOpacity(0.5), fontSize: 14),
                         ),
                         const SizedBox(
                           height: 8,
@@ -483,7 +483,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                         CustomTextView(
                           label: "Phone Number",
                           type: styleSubTitle,
-                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle.withOpacity(0.5), fontSize: 14),
+                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle.withOpacity(0.5), fontSize: 14),
                         ),
                         const SizedBox(
                           height: 8,
@@ -591,7 +591,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           label: "Postal Code",
                           type: styleSubTitle,
                           textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                color: ColorsUtils.subTitle,
+                                color: Theme.of(context).extension<CustomColors>()!.subTitle,
                                 fontSize: 14,
                               ),
                         ),
@@ -724,7 +724,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           label: "IC Number",
                           type: styleSubTitle,
                           textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                color: ColorsUtils.subTitle,
+                                color: Theme.of(context).extension<CustomColors>()!.subTitle,
                                 fontSize: 14,
                               ),
                         ),
@@ -881,7 +881,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                                 textStyle: Theme.of(context)
                                                     .textTheme
                                                     .titleMedium!
-                                                    .copyWith(color: ColorsUtils.chipText, fontWeight: FontWeight.w400, fontSize: 18.0),
+                                                    .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontWeight: FontWeight.w400, fontSize: 18.0),
                                               ),
                                               const SizedBox(
                                                 height: 10.0,
@@ -897,8 +897,8 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                                       children: [
                                                         Container(
                                                           decoration: BoxDecoration(
-                                                            color: ColorsUtils.chipBackground,
-                                                            border: Border.all(color: ColorsUtils.chipBackground),
+                                                            color: Theme.of(context).extension<CustomColors>()!.chipBackground,
+                                                            border: Border.all(color: Theme.of(context).extension<CustomColors>()!.chipBackground),
                                                             borderRadius: const BorderRadius.all(
                                                               Radius.circular(20),
                                                             ),
@@ -908,7 +908,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                                               textStyle: Theme.of(context)
                                                                   .textTheme
                                                                   .titleMedium!
-                                                                  .copyWith(color: ColorsUtils.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
+                                                                  .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
                                                               label: sectionInterest[sectionInterest.keys.toList()[index]]![indexInterest].subActivityName),
                                                         ),
                                                         const SizedBox(
@@ -942,7 +942,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                                   textStyle: Theme.of(context)
                                                       .textTheme
                                                       .titleMedium!
-                                                      .copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: ColorsUtils.subTitle),
+                                                      .copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                 ),
                                               ),
                                               const SizedBox(
@@ -981,7 +981,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                         CustomTextView(
                             label: "About Yourself",
                             type: styleSubTitle,
-                            textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.subTitle, fontSize: 14)),
+                            textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.subTitle, fontSize: 14)),
                         const SizedBox(
                           height: 8,
                         ),
@@ -1122,7 +1122,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                                 textStyle: Theme.of(context)
                                                     .textTheme
                                                     .titleMedium!
-                                                    .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold, color: ColorsUtils.subTitle),
+                                                    .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                               ),
                                               const SizedBox(
                                                 height: 8.0,
@@ -1130,7 +1130,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                               CustomTextView(
                                                 label:
                                                     '${endUserAddressList[index].address1!},${endUserAddressList[index].address2!},${endUserAddressList[index].cityName!} - ${endUserAddressList[index].pinCode!}',
-                                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: ColorsUtils.subTitle),
+                                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                 maxLine: 2,
                                                 textOverFlow: TextOverflow.ellipsis,
                                               ),
@@ -1216,7 +1216,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20.0), // Adjust radius as needed
-                              color: ColorsUtils.referEarnColor,
+                              color: Theme.of(context).extension<CustomColors>()!.referEarnColor,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
@@ -1242,7 +1242,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                             "Refer and Earn",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              color: ColorsUtils.white,
+                                              color: Theme.of(context).extension<CustomColors>()!.white,
                                               fontSize: 20.0, // Adjust font size as needed
                                             ),
                                           ),
@@ -1274,7 +1274,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                 width: double.infinity,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20.0),
-                                  color: ColorsUtils.closeAccountColor,
+                                  color: Theme.of(context).extension<CustomColors>()!.closeAccountColor,
                                 ),
                                 child: Center(
                                   child: Padding(
@@ -1296,7 +1296,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                             : Center(
                                 child: Text(
                                   'Account Closure Request in Process',
-                                  style: TextStyle(color: ColorsUtils.redColor, fontWeight: FontWeight.bold, fontSize: 18),
+                                  style: TextStyle(color: Theme.of(context).extension<CustomColors>()!.redColor, fontWeight: FontWeight.bold, fontSize: 18),
                                 ),
                               ),
                         const SizedBox(
@@ -1323,15 +1323,15 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
   chipsWidget(SelectedFilterValues item) {
     return Container(
       decoration: BoxDecoration(
-        color: ColorsUtils.chipBackground,
-        border: Border.all(color: ColorsUtils.chipBackground),
+        color: Theme.of(context).extension<CustomColors>()!.chipBackground,
+        border: Border.all(color: Theme.of(context).extension<CustomColors>()!.chipBackground),
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
         ),
       ),
       padding: const EdgeInsets.fromLTRB(24, 10, 24, 10),
       child: CustomTextView(
-          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: ColorsUtils.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
+          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
           label: item.activityName),
     );
   }
