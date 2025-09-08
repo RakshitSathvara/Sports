@@ -54,10 +54,9 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
-        color: Theme.of(context).colorScheme.background,
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
