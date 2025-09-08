@@ -155,7 +155,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
         body: SafeArea(
           child: Container(
             padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-            color: Theme.of(context).colorScheme.onBackground,
+            color: Theme.of(context).colorScheme.background,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -193,7 +193,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                           textStyle: Theme.of(context)
                                               .textTheme
                                               .titleMedium!
-                                              .copyWith(fontSize: 18, fontWeight: FontWeight.w600, color: OQDOThemeData.greyColor),
+                                              .copyWith(fontSize: 18, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
                                         ),
                                         GestureDetector(
                                           onTap: () {
@@ -236,7 +236,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                           textStyle: Theme.of(context)
                                               .textTheme
                                               .titleMedium!
-                                              .copyWith(fontSize: 16, fontWeight: FontWeight.w600, color: OQDOThemeData.greyColor),
+                                              .copyWith(fontSize: 16, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
                                         ),
                                         const SizedBox(
                                           height: 10,
@@ -257,7 +257,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 18, fontWeight: FontWeight.w600, color: OQDOThemeData.greyColor),
+                                          .copyWith(fontSize: 18, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
                                     ),
                                     const SizedBox(
                                       height: 10,
@@ -274,7 +274,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                           textStyle: Theme.of(context)
                                               .textTheme
                                               .titleMedium!
-                                              .copyWith(fontSize: 18, fontWeight: FontWeight.w600, color: OQDOThemeData.greyColor),
+                                              .copyWith(fontSize: 18, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
                                         ),
                                         GestureDetector(
                                           onTap: () {
@@ -301,7 +301,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 18, fontWeight: FontWeight.w600, color: OQDOThemeData.greyColor),
+                                          .copyWith(fontSize: 18, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
                                     )
                           : Container(),
                       const SizedBox(
@@ -328,7 +328,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                   children: [
                                     CustomTextView(
                                       label: 'Address ',
-                                      textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+                                      textStyle: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
                                     ),
                                     const SizedBox(
                                       width: 10,
@@ -339,7 +339,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                         textOverFlow: TextOverflow.ellipsis,
                                         label:
                                             '${selectedAddress!.address1},${selectedAddress!.address2},${selectedAddress!.cityName} - ${selectedAddress!.pinCode}',
-                                        textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 15.0),
+                                        textStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 15.0),
                                       ),
                                     ),
                                   ],
@@ -349,7 +349,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                       children: [
                                         CustomTextView(
                                           label: 'Address ',
-                                          textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+                                          textStyle: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
                                         ),
                                         const SizedBox(
                                           width: 10,
@@ -359,7 +359,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                             maxLine: 8,
                                             textOverFlow: TextOverflow.ellipsis,
                                             label: '${coachAddress!.address1},${coachAddress!.address2} - ${coachAddress!.pinCode}',
-                                            textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 15.0),
+                                            textStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 15.0),
                                           ),
                                         ),
                                       ],
@@ -374,13 +374,13 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                       //     Expanded(
                       //       child: CustomTextView(
                       //         label: 'Contact Number',
-                      //         textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+                      //         textStyle: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
                       //       ),
                       //     ),
                       //     Expanded(
                       //       child: CustomTextView(
                       //         label: widget.coachDetailsResponseModel!.mobileNumber,
-                      //         textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 15.0),
+                      //         textStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 15.0),
                       //       ),
                       //     ),
                       //     Container()
@@ -397,13 +397,13 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                           Expanded(
                             child: CustomTextView(
                               label: 'Minimum Slot',
-                              textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+                              textStyle: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
                             ),
                           ),
                           Expanded(
                             child: CustomTextView(
                               label: '${widget.coachDetailsResponseModel!.minumumSlot}',
-                              textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 14.0),
+                              textStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 14.0),
                             ),
                           ),
                           Container()
@@ -417,14 +417,14 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                           Expanded(
                             child: CustomTextView(
                               label: 'Experience',
-                              textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+                              textStyle: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
                             ),
                           ),
                           Expanded(
                             child: CustomTextView(
                               label:
                                   '${widget.coachDetailsResponseModel!.experienceYear == null ? "0" : widget.coachDetailsResponseModel!.experienceYear.toString()} years',
-                              textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 14.0),
+                              textStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 14.0),
                             ),
                           ),
                           Container()
@@ -436,7 +436,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                       isLogin == '1' && OQDOApplication.instance.userType == Constants.endUserType
                           ? MyButton(
                               text: 'Book Appointment',
-                              textcolor: Theme.of(context).colorScheme.onBackground,
+                              textcolor: Theme.of(context).colorScheme.onSecondaryContainer,
                               textsize: 16,
                               fontWeight: FontWeight.w600,
                               letterspacing: 0.7,
@@ -503,7 +503,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                           : isLogin == '' || isLogin == null || isLogin == '0'
                               ? MyButton(
                                   text: 'Book Appointment',
-                                  textcolor: Theme.of(context).colorScheme.onBackground,
+                                  textcolor: Theme.of(context).colorScheme.onSecondaryContainer,
                                   textsize: 16,
                                   fontWeight: FontWeight.w600,
                                   letterspacing: 0.7,
@@ -598,7 +598,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                   maxLine: 2,
                   textOverFlow: TextOverflow.ellipsis,
                   label: '${widget.coachDetailsResponseModel!.coachName!} - ${widget.coachDetailsResponseModel!.name!}',
-                  textStyle: const TextStyle(fontSize: 18.0, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+                  textStyle: TextStyle(fontSize: 18.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
                 ),
               ),
               // CustomTextView(
@@ -606,7 +606,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
               //   textOverFlow: TextOverflow.ellipsis,
               //   label: 'Registration id: ${widget.coachDetailsResponseModel!.coachRegistoryNumber}',
               //   textStyle:
-              //       const TextStyle(fontSize: 12.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.normal),
+              //       TextStyle(fontSize: 12.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.normal),
               // ),
             ],
           ),
@@ -615,7 +615,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
           ),
           CustomTextView(
             label: 'Activities: ${widget.coachDetailsResponseModel!.activities!.name} - ${widget.coachDetailsResponseModel!.subActivities!.name}',
-            textStyle: const TextStyle(fontSize: 17.0, color: OQDOThemeData.greyColor),
+            textStyle: TextStyle(fontSize: 17.0, color: Theme.of(context).colorScheme.onSurface),
           ),
           const SizedBox(
             height: 8.0,
@@ -625,7 +625,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
             children: [
               CustomTextView(
                 label: 'From S\$ ${widget.coachDetailsResponseModel?.ratePerHour?.toStringAsFixed(2) ?? 0.00} / hour',
-                textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.greyColor),
+                textStyle: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface),
               ),
               Row(
                 children: [
@@ -665,7 +665,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                     },
                     child: CustomTextView(
                       label: 'Reviews',
-                      textStyle: const TextStyle(fontSize: 14.0, color: OQDOThemeData.greyColor, decoration: TextDecoration.underline),
+                      textStyle: TextStyle(fontSize: 14.0, color: Theme.of(context).colorScheme.onSurface, decoration: TextDecoration.underline),
                     ),
                   )
                 ],
@@ -699,7 +699,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
           children: [
             CustomTextView(
               label: 'Description',
-              textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+              textStyle: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               width: 10,
@@ -731,14 +731,14 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
               widget.coachDetailsResponseModel!.otherDescription.toString().length > 2 ? widget.coachDetailsResponseModel!.otherDescription : 'No description',
           maxLine: 10,
           textOverFlow: TextOverflow.ellipsis,
-          textStyle: const TextStyle(fontSize: 18.0, color: OQDOThemeData.greyColor),
+          textStyle: TextStyle(fontSize: 18.0, color: Theme.of(context).colorScheme.onSurface),
         ),
         const SizedBox(
           height: 25.0,
         ),
         CustomTextView(
           label: 'Note',
-          textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+          textStyle: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
         ),
         const SizedBox(
           height: 10.0,
@@ -746,9 +746,9 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
         CustomTextView(
           label: "If your preferred time slot is not available here, please feel free to reach out to the Service Provider directly.",
           maxLine: 3,
-          textStyle: const TextStyle(
+          textStyle: TextStyle(
             fontSize: 16.0,
-            color: OQDOThemeData.greyColor,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
       ],
@@ -843,7 +843,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
               flex: 1,
               child: CustomTextView(
                 label: 'Coach Available for',
-                textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 14.0),
+                textStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 14.0),
               ),
             ),
             Flexible(
@@ -854,7 +854,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                     alignment: Alignment.topLeft,
                     child: CustomTextView(
                       label: widget.coachDetailsResponseModel!.bookingType == 'I' ? 'Individual Booking' : 'Group Booking',
-                      textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.bold),
+                      textStyle: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
                     ),
                   ),
                   const SizedBox(
@@ -884,7 +884,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
               flex: 1,
               child: CustomTextView(
                 label: 'Slot time',
-                textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 14.0),
+                textStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 14.0),
               ),
             ),
             Flexible(
@@ -893,7 +893,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                 alignment: Alignment.topLeft,
                 child: CustomTextView(
                   label: '${widget.coachDetailsResponseModel!.slotTimeHour} Hours',
-                  textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.bold),
+                  textStyle: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -909,7 +909,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
               flex: 1,
               child: CustomTextView(
                 label: 'Capacity',
-                textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 14.0),
+                textStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 14.0),
               ),
             ),
             Flexible(
@@ -918,7 +918,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                 alignment: Alignment.topLeft,
                 child: CustomTextView(
                   label: widget.coachDetailsResponseModel!.batchCapacity.toString(),
-                  textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.bold),
+                  textStyle: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -959,7 +959,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
         ),
         CustomTextView(
           label: 'Slots',
-          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: OQDOThemeData.greyColor, fontWeight: FontWeight.bold, fontSize: 16),
+          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold, fontSize: 16),
         ),
         const SizedBox(height: 8),
         slotListView(),
@@ -1009,7 +1009,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.sunday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.sunday! ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -1023,7 +1023,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.monday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.monday! ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -1037,7 +1037,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.tuesday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.tuesday! ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -1052,7 +1052,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
                                     color:
-                                        addFacilitySlotModel.wednesday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                        addFacilitySlotModel.wednesday! ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -1066,7 +1066,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.thursday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.thursday! ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -1080,7 +1080,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.friday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.friday! ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -1094,7 +1094,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.saturday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.saturday! ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                           ],
@@ -1285,7 +1285,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
             decoration: BoxDecoration(
               border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
               borderRadius: BorderRadius.circular(15),
-              color: Theme.of(context).colorScheme.onBackground,
+              color: Theme.of(context).colorScheme.background,
             ),
             child: Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
@@ -1293,7 +1293,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                   isExpanded: true,
                   underline: const SizedBox(),
                   borderRadius: BorderRadius.circular(15),
-                  dropdownColor: Theme.of(context).colorScheme.onBackground,
+                  dropdownColor: Theme.of(context).colorScheme.background,
                   hint: Text(
                     "Select One",
                     style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.primaryContainer),
@@ -1316,7 +1316,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
           )
         : CustomTextView(
             label: 'Address not available',
-            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w400),
+            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
           );
   }
 
@@ -1326,7 +1326,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
             decoration: BoxDecoration(
               border: Border.all(color: Theme.of(context).colorScheme.primaryContainer),
               borderRadius: BorderRadius.circular(15),
-              color: Theme.of(context).colorScheme.onBackground,
+              color: Theme.of(context).colorScheme.background,
             ),
             child: Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
@@ -1334,7 +1334,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
                   isExpanded: true,
                   underline: const SizedBox(),
                   borderRadius: BorderRadius.circular(15),
-                  dropdownColor: Theme.of(context).colorScheme.onBackground,
+                  dropdownColor: Theme.of(context).colorScheme.background,
                   hint: Text(
                     "Select One",
                     style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.primaryContainer),
@@ -1357,7 +1357,7 @@ class _CoachDetailsScreenState extends State<CoachDetailsScreen> {
           )
         : CustomTextView(
             label: 'Address not available',
-            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w400),
+            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
           );
   }
 }
