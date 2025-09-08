@@ -53,10 +53,11 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.background,
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -94,7 +95,7 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       CustomTextView(
                         label: 'Forgot Password',
                         type: styleSubTitle,
-                        textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+                        textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                       const SizedBox(
                         height: 15,
@@ -102,7 +103,7 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       CustomTextView(
                         label: 'Please enter your email for OTP.',
                         type: styleSubTitle,
-                        textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.shadow),
+                        textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.onBackground),
                       ),
                       const SizedBox(
                         height: 20,
