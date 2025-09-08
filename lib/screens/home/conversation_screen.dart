@@ -149,7 +149,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                   padding: const EdgeInsets.only(
                       top: 10, left: 18, right: 18, bottom: 4),
                   child: Container(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.only(left: 12, right: 12,bottom: 4,top: 12),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         color: ColorsUtils.buddiesBackground,
@@ -173,22 +173,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
                           filled: false,
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                          border: const UnderlineInputBorder(),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.onSurface),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Theme.of(context).colorScheme.primary),
-                          ),
-                          disabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onSurface
-                                    .withOpacity(0.5)),
-                          ),
+                          border: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
                           icon: Image.asset(
                             'assets/images/ic_search_home.png',
                             height: 20,
