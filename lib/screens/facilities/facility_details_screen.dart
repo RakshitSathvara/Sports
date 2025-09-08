@@ -25,7 +25,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
 
 import '../../components/my_button.dart';
-import '../../theme/oqdo_theme_data.dart';
 import '../../utils/custom_text_view.dart';
 
 class FacilityDetailsScreen extends StatefulWidget {
@@ -130,7 +129,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
         body: SafeArea(
           child: Container(
             padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-            color: Theme.of(context).colorScheme.onBackground,
+            color: Theme.of(context).colorScheme.background,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -223,7 +222,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
             label: widget.getFacilityByIdModel!.title,
             maxLine: 2,
             textOverFlow: TextOverflow.ellipsis,
-            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w800),
+            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w800),
           ),
           const SizedBox(
             height: 8.0,
@@ -232,7 +231,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
             label: '${widget.getFacilityByIdModel!.subTitle}',
             maxLine: 3,
             textOverFlow: TextOverflow.ellipsis,
-            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w400, fontSize: 18.0, color: OQDOThemeData.greyColor),
+            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w400, fontSize: 18.0, color: ColorsUtils.greyText),
           ),
           const SizedBox(
             height: 8.0,
@@ -242,7 +241,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
             children: [
               CustomTextView(
                 label: 'From S\$ ${widget.getFacilityByIdModel?.ratePerHour?.toStringAsFixed(2) ?? 0.00} / hour',
-                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: ColorsUtils.greyText),
               ),
               Row(
                 children: [
@@ -281,7 +280,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                       textStyle: Theme.of(context)
                           .textTheme
                           .titleSmall!
-                          .copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor, decoration: TextDecoration.underline),
+                          .copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: ColorsUtils.greyText, decoration: TextDecoration.underline),
                     ),
                   )
                 ],
@@ -340,7 +339,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color:
-                          (Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black).withOpacity(_currentIndex == entry.key ? 0.9 : 0.4)),
+                          Theme.of(context).colorScheme.onSurface.withOpacity(_currentIndex == entry.key ? 0.9 : 0.4)),
                 ),
               );
             }).toList(),
@@ -359,7 +358,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
           children: [
             CustomTextView(
               label: 'Description',
-              textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               width: 10,
@@ -390,14 +389,14 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
           label: widget.getFacilityByIdModel!.description,
           maxLine: 10,
           textOverFlow: TextOverflow.ellipsis,
-          textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.greyColor),
+          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: ColorsUtils.greyText),
         ),
         const SizedBox(
           height: 25.0,
         ),
         CustomTextView(
           label: 'Note',
-          textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
         ),
         const SizedBox(
           height: 10.0,
@@ -405,9 +404,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
         CustomTextView(
           label: "If your preferred time slot is not available here, please feel free to reach out to the Service Provider directly.",
           maxLine: 3,
-          textStyle: const TextStyle(
+          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
             fontSize: 16.0,
-            color: OQDOThemeData.greyColor,
+            color: ColorsUtils.greyText,
           ),
         ),
         const SizedBox(
@@ -415,7 +414,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
         ),
         CustomTextView(
           label: 'Availability',
-          textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.bold),
+          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
         ),
         const SizedBox(
           height: 20.0,
@@ -437,7 +436,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
               flex: 1,
               child: CustomTextView(
                 label: 'Facility Available for',
-                textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 14.0),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontSize: 14.0),
               ),
             ),
             Flexible(
@@ -448,7 +447,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                     alignment: Alignment.topLeft,
                     child: CustomTextView(
                       label: widget.getFacilityByIdModel!.bookingType == 'I' ? 'Individual Booking' : 'Group Booking',
-                      textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.bold),
+                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: ColorsUtils.greyText, fontWeight: FontWeight.bold),
                     ),
                   ),
                   const SizedBox(
@@ -478,7 +477,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
               flex: 1,
               child: CustomTextView(
                 label: 'Slot time',
-                textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 14.0),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontSize: 14.0),
               ),
             ),
             Flexible(
@@ -487,7 +486,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                 alignment: Alignment.topLeft,
                 child: CustomTextView(
                   label: '${widget.getFacilityByIdModel!.slotTimeHour} Hours',
-                  textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.bold),
+                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: ColorsUtils.greyText, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -503,7 +502,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
               flex: 1,
               child: CustomTextView(
                 label: 'Capacity',
-                textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 14.0),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontSize: 14.0),
               ),
             ),
             Flexible(
@@ -512,7 +511,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                 alignment: Alignment.topLeft,
                 child: CustomTextView(
                   label: widget.getFacilityByIdModel!.facilityCapacity.toString(),
-                  textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.bold),
+                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16.0, color: ColorsUtils.greyText, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -553,7 +552,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
         ),
         CustomTextView(
           label: 'Slots',
-          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: OQDOThemeData.greyColor, fontWeight: FontWeight.bold, fontSize: 16),
+          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold, fontSize: 16),
         ),
         const SizedBox(height: 8),
         slotListView(),
@@ -565,7 +564,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
             Expanded(
               child: CustomTextView(
                 label: 'Address',
-                textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
               ),
             ),
             Expanded(
@@ -573,7 +572,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                 label: widget.getFacilityByIdModel!.address,
                 maxLine: 8,
                 textOverFlow: TextOverflow.ellipsis,
-                textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 16.0),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontSize: 16.0),
               ),
             ),
           ],
@@ -586,13 +585,13 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
             Expanded(
               child: CustomTextView(
                 label: 'Contact Number',
-                textStyle: const TextStyle(fontSize: 16.0, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
               ),
             ),
             Expanded(
               child: CustomTextView(
                 label: widget.getFacilityByIdModel!.mobileNumber,
-                textStyle: const TextStyle(color: OQDOThemeData.greyColor, fontSize: 16.0),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontSize: 16.0),
               ),
             ),
           ],
@@ -646,7 +645,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.sunday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.sunday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -660,7 +661,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.monday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.monday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -674,7 +677,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.tuesday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.tuesday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -688,8 +693,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color:
-                                        addFacilitySlotModel.wednesday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.wednesday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -703,7 +709,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.thursday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.thursday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -717,7 +725,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.friday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.friday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -731,7 +741,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.saturday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.saturday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                           ],

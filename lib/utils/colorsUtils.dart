@@ -43,6 +43,10 @@ class ColorsUtils {
   static Color get yellowStatus =>
       _isDark ? const Color(0xFFFFD54F) : const Color(0xFFE1B000);
 
+  /// Divider color used across filter sections
+  static Color get filterDivider =>
+      _isDark ? const Color(0xFF404040) : const Color(0xFFE3E3E3);
+
   /// Background color for the refer and earn section
   static Color get referEarnColor =>
       _isDark ? const Color(0xFF4FC3F7) : const Color(0xFF006590);
