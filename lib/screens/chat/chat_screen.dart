@@ -220,10 +220,15 @@ class _ChatScreenState extends State<ChatScreen> {
                     borderRadius: BorderRadius.circular(25),
                     border: Border.all(color: ColorsUtils.buddiesBorder),
                   ),
-                  child: TextField(
+                  child: TextFormField(
                     controller: _messageController,
-                    decoration: const InputDecoration(
+                    cursorColor: ColorsUtils.greyText,
+                    style: TextStyle(
+                        color:
+                            Theme.of(context).colorScheme.onBackground),
+                    decoration: InputDecoration(
                       hintText: 'Message',
+                      hintStyle: TextStyle(color: ColorsUtils.greyText),
                       border: InputBorder.none,
                     ),
                   ),

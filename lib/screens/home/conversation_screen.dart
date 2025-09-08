@@ -160,6 +160,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
                         cursorColor: ColorsUtils.greyText,
                         minLines: 1,
                         controller: _searchActivityController,
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).colorScheme.onBackground),
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           icon: Image.asset(
@@ -167,11 +170,15 @@ class _ConversationScreenState extends State<ConversationScreen> {
                             height: 20,
                             width: 20,
                             fit: BoxFit.fill,
-                            color: Theme.of(context).brightness == Brightness.dark
+
+                            color: Theme.of(context).brightness ==
+                                    Brightness.dark
+
                                 ? Colors.white
                                 : Colors.black,
                           ),
                           hintText: 'Search...',
+                          hintStyle: TextStyle(color: ColorsUtils.greyText),
                         ),
                         maxLines: 1,
                       ),

@@ -134,9 +134,12 @@ class _GroupListScreenState extends State<GroupListScreen> {
                       child: TextFormField(
                         autocorrect: false,
                         autofocus: false,
-                        cursorColor: OQDOThemeData.greyColor,
+                        cursorColor: ColorsUtils.greyText,
                         minLines: 1,
                         controller: _searchActivityController,
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).colorScheme.onBackground),
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           icon: Image.asset(
@@ -144,8 +147,13 @@ class _GroupListScreenState extends State<GroupListScreen> {
                             height: 20,
                             width: 20,
                             fit: BoxFit.fill,
+                            color: Theme.of(context).brightness ==
+                                    Brightness.dark
+                                ? Colors.white
+                                : Colors.black,
                           ),
                           hintText: 'Search your group... ',
+                          hintStyle: TextStyle(color: ColorsUtils.greyText),
                         ),
                         maxLines: 1,
                       ),
