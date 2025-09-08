@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
@@ -130,7 +131,7 @@ class _AddMeetupScreenState extends State<AddMeetupScreen> {
                 ),
                 CustomTextView(
                   label: 'Start Time',
-                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: ColorsUtils.greyText, fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(
                   height: 10,
@@ -332,7 +333,7 @@ class _AddMeetupScreenState extends State<AddMeetupScreen> {
                 ),
                 CustomTextView(
                   label: 'End Time',
-                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: ColorsUtils.greyText, fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(
                   height: 10,
@@ -501,7 +502,7 @@ class _AddMeetupScreenState extends State<AddMeetupScreen> {
                 ),
                 CustomTextView(
                   label: 'Add Friends',
-                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: ColorsUtils.greyText, fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(
                   height: 10,
@@ -616,11 +617,11 @@ class _AddMeetupScreenState extends State<AddMeetupScreen> {
           data: ThemeData.dark().copyWith(
             colorScheme: ColorScheme.light(
               primary: Theme.of(context).colorScheme.primary,
-              onPrimary: Colors.white,
-              surface: Colors.white,
-              onSurface: Colors.black,
+              onPrimary: ColorsUtils.white,
+              surface: ColorsUtils.white,
+              onSurface: ColorsUtils.chipText,
             ),
-            dialogBackgroundColor: Colors.white,
+            dialogBackgroundColor: ColorsUtils.white,
           ),
           child: child!,
         );

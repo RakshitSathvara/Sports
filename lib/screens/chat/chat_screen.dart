@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -13,7 +14,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: ColorsUtils.buddiesBackground,
       body: SafeArea(
         child: Column(
           children: [
@@ -31,27 +32,27 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget _buildHeader() {
     return Container(
       padding: const EdgeInsets.all(16),
-      color: const Color(0xFF2B5278),
+      color: ColorsUtils.chatPrimary,
       child: Row(
         children: [
           IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            icon: Icon(Icons.arrow_back, color: ColorsUtils.white),
             onPressed: () => Navigator.pop(context),
           ),
-          const CircleAvatar(
+          CircleAvatar(
             radius: 20,
-            backgroundColor: Colors.grey,
-            child: Icon(Icons.person, color: Colors.white),
+            backgroundColor: ColorsUtils.greyCircle,
+            child: Icon(Icons.person, color: ColorsUtils.white),
           ),
           const SizedBox(width: 12),
-          const Expanded(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Josh John',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: ColorsUtils.white,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
@@ -66,10 +67,10 @@ class _ChatScreenState extends State<ChatScreen> {
               ],
             ),
           ),
-          const Text(
+          Text(
             'S\$ 50',
             style: TextStyle(
-              color: Colors.white,
+              color: ColorsUtils.white,
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
@@ -113,7 +114,7 @@ class _ChatScreenState extends State<ChatScreen> {
         margin: const EdgeInsets.only(bottom: 16),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: isSentByMe ? const Color(0xFF2B5278) : Colors.white,
+          color: isSentByMe ? ColorsUtils.chatPrimary : ColorsUtils.white,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
@@ -129,7 +130,7 @@ class _ChatScreenState extends State<ChatScreen> {
             Text(
               message,
               style: TextStyle(
-                color: isSentByMe ? Colors.white : Colors.black87,
+                color: isSentByMe ? ColorsUtils.white : ColorsUtils.chipText,
                 fontSize: 16,
               ),
             ),
@@ -137,7 +138,7 @@ class _ChatScreenState extends State<ChatScreen> {
             Text(
               time,
               style: TextStyle(
-                color: isSentByMe ? Colors.white70 : Colors.black54,
+                color: isSentByMe ? Colors.white70 : ColorsUtils.greyText,
                 fontSize: 12,
               ),
             ),
@@ -151,7 +152,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorsUtils.white,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -166,7 +167,7 @@ class _ChatScreenState extends State<ChatScreen> {
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF2B5278),
+                backgroundColor: ColorsUtils.chatPrimary,
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -175,7 +176,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: const Text(
                 'Offer Price',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: ColorsUtils.white,
                   fontSize: 16,
                 ),
               ),
@@ -187,7 +188,7 @@ class _ChatScreenState extends State<ChatScreen> {
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF2B5278),
+                backgroundColor: ColorsUtils.chatPrimary,
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -196,7 +197,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: const Text(
                 'Ok, Done',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: ColorsUtils.white,
                   fontSize: 16,
                 ),
               ),
@@ -213,9 +214,9 @@ class _ChatScreenState extends State<ChatScreen> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: ColorsUtils.white,
                     borderRadius: BorderRadius.circular(25),
-                    border: Border.all(color: Colors.grey[300]!),
+                    border: Border.all(color: ColorsUtils.buddiesBorder),
                   ),
                   child: TextField(
                     controller: _messageController,
@@ -228,7 +229,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               IconButton(
                 icon: const Icon(Icons.send),
-                color: const Color(0xFF2B5278),
+                color: ColorsUtils.chatPrimary,
                 onPressed: () {
                   if (_messageController.text.isNotEmpty) {
                     // Handle send message

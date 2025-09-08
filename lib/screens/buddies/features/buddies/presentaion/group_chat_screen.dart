@@ -77,7 +77,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Colors.white,
+          color: ColorsUtils.white,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -125,7 +125,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                     //crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Card(
-                        color: Colors.white,
+                        color: ColorsUtils.white,
                         elevation: 0,
                         child: ClipPath(
                           clipper: ShapeBorderClipper(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
@@ -159,7 +159,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
-                                  .copyWith(color: const Color(0xFF2B2B2B), fontSize: 16.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
+                                  .copyWith(color: ColorsUtils.chipText, fontSize: 16.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
                             ),
                             const SizedBox(
                               height: 8,
@@ -188,9 +188,9 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                       padding: const EdgeInsets.all(8),
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                          color: const Color(0xFFF5F5F5),
+                          color: ColorsUtils.buddiesBackground,
                           border: Border.all(
-                            color: const Color(0xFFF5F5F5),
+                            color: ColorsUtils.buddiesBackground,
                           ),
                           borderRadius: const BorderRadius.all(Radius.circular(10))),
                       child: Row(
@@ -288,7 +288,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                               child: CustomTextView(
                                 label: "${messageList[index].firstName} ${messageList[index].lastName}",
                                 maxLine: 1,
-                                textStyle: const TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.w500),
+                                textStyle: TextStyle(fontSize: 15, color: ColorsUtils.chipText, fontWeight: FontWeight.w500),
                               ),
                             ),
                             Visibility(
@@ -299,7 +299,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                             CustomTextView(
                               label: messageList[index].message.toString(),
                               maxLine: 10,
-                              textStyle: const TextStyle(fontSize: 15, color: Colors.black),
+                              textStyle: TextStyle(fontSize: 15, color: ColorsUtils.chipText),
                             ),
                           ],
                         )),
@@ -315,7 +315,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                       children: [
                         CustomTextView(
                           label: formattedDate.toString(),
-                          textStyle: const TextStyle(fontSize: 15, color: Colors.black54),
+                          textStyle: TextStyle(fontSize: 15, color: ColorsUtils.greyText),
                         ),
                       ],
                     ),
@@ -338,7 +338,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
             alignment: Alignment.center,
             child: CustomTextView(
               label: "No history found",
-              textStyle: const TextStyle(fontSize: 16, color: Colors.black),
+              textStyle: TextStyle(fontSize: 16, color: ColorsUtils.chipText),
             ),
           )
         ],

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/get_all_buddies_repository.dart';
@@ -56,7 +57,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            color: Colors.white,
+            color: ColorsUtils.white,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -94,7 +95,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
                 allPendingFriendsList.isNotEmpty
                     ? const Divider(
                         height: 1,
-                        color: Colors.black87,
+                        color: ColorsUtils.chipText,
                       )
                     : const SizedBox(
                         height: 0,
@@ -226,7 +227,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleSmall!
-                        .copyWith(color: const Color(0xFF2B2B2B), fontSize: 13.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
+                        .copyWith(color: ColorsUtils.chipText, fontSize: 13.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
                   ),
                   const SizedBox(
                     height: 8,
@@ -239,7 +240,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleSmall!
-                        .copyWith(color: const Color(0xFF2B2B2B), fontSize: 11.0, fontWeight: FontWeight.w400, overflow: TextOverflow.ellipsis),
+                        .copyWith(color: ColorsUtils.chipText, fontSize: 11.0, fontWeight: FontWeight.w400, overflow: TextOverflow.ellipsis),
                   ),
                 ],
               ),
@@ -336,7 +337,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleSmall!
-                        .copyWith(color: const Color(0xFF2B2B2B), fontSize: 13.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
+                        .copyWith(color: ColorsUtils.chipText, fontSize: 13.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
                   ),
                   const SizedBox(
                     height: 8,
@@ -349,7 +350,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleSmall!
-                        .copyWith(color: const Color(0xFF2B2B2B), fontSize: 11.0, fontWeight: FontWeight.w400, overflow: TextOverflow.ellipsis),
+                        .copyWith(color: ColorsUtils.chipText, fontSize: 11.0, fontWeight: FontWeight.w400, overflow: TextOverflow.ellipsis),
                   ),
                 ],
               ),
@@ -363,7 +364,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
                 children: [
                   TextButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.white,
+                        backgroundColor: ColorsUtils.white,
                         shape: RoundedRectangleBorder(
                             side: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1, style: BorderStyle.solid),
                             borderRadius: const BorderRadius.all(Radius.zero))),

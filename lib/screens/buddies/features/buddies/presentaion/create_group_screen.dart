@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/get_all_buddies_repository.dart';
@@ -98,7 +99,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
             quarterTurns: 3,
             child: Icon(
               Icons.arrow_downward,
-              color: Colors.white,
+              color: ColorsUtils.white,
             ),
           )),
       appBar: CustomAppBar(
@@ -110,7 +111,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Colors.white,
+          color: ColorsUtils.white,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Column(
@@ -165,9 +166,9 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
                     padding: const EdgeInsets.all(8),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                        color: const Color(0xFFF5F5F5),
+                        color: ColorsUtils.buddiesBackground,
                         border: Border.all(
-                          color: const Color(0xFFF5F5F5),
+                          color: ColorsUtils.buddiesBackground,
                         ),
                         borderRadius: const BorderRadius.all(Radius.circular(10))),
                     child: SizedBox(
@@ -352,7 +353,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
             }
           });
         },
-        backgroundColor: Colors.white);
+        backgroundColor: ColorsUtils.white);
   }
 
   Widget singleBuddyView(AllBuddiesModel allBuddiesModel) {
@@ -381,14 +382,14 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
               children: [
                 Container(
                   padding: const EdgeInsets.only(top: 10, bottom: 10, left: 4, right: 4),
-                  decoration: BoxDecoration(color: allBuddiesModel.isSelected ? OQDOThemeData.buttonColor : Colors.white),
+                  decoration: BoxDecoration(color: allBuddiesModel.isSelected ? OQDOThemeData.buttonColor : ColorsUtils.white),
                   child: CustomTextView(
                     label: '${allBuddiesModel.firstName} ${allBuddiesModel.lastName}',
                     maxLine: 3,
                     textOverFlow: TextOverflow.ellipsis,
                     type: styleSubTitle,
                     textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        color: allBuddiesModel.isSelected ? Colors.white : Colors.black,
+                        color: allBuddiesModel.isSelected ? ColorsUtils.white : ColorsUtils.chipText,
                         fontSize: 15.0,
                         fontWeight: FontWeight.w500,
                         overflow: TextOverflow.ellipsis),
