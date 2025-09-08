@@ -19,11 +19,10 @@ import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
 import 'package:oqdo_mobile_app/utils/utilities.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/viewmodels/BookingViewModel.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
-
-import '../../theme/oqdo_theme_data.dart';
 
 class FacilitiesListPage extends StatefulWidget {
   SelectedHomeModel? selectedHomeModel;
@@ -190,7 +189,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                                 textStyle: Theme.of(context)
                                     .textTheme
                                     .titleMedium!
-                                    .copyWith(color: OQDOThemeData.greyColor, fontSize: 20.0, fontWeight: FontWeight.w300),
+                                    .copyWith(color: ColorsUtils.greyText, fontSize: 20.0, fontWeight: FontWeight.w300),
                               ),
                               value: selectedTypeValue,
                               items: filterList!.map((interest) {
@@ -201,7 +200,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleMedium!
-                                        .copyWith(color: OQDOThemeData.greyColor, fontSize: 20.0, fontWeight: FontWeight.w300),
+                                        .copyWith(color: ColorsUtils.greyText, fontSize: 20.0, fontWeight: FontWeight.w300),
                                   ),
                                 );
                               }).toList(),
@@ -293,7 +292,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                         ? Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [CircularProgressIndicator(color: OQDOThemeData.lightColorScheme.primary)],
+                              children: [CircularProgressIndicator(color: Theme.of(context).colorScheme.primary)],
                             ),
                           )
                         : facilitiesList.isNotEmpty
@@ -326,7 +325,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                                   label: 'Facilities not found',
                                   textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                                         fontWeight: FontWeight.w600,
-                                        color: OQDOThemeData.blackColor,
+                                        color: Theme.of(context).colorScheme.onSurface,
                                         fontSize: 16.0,
                                       ),
                                 ),
@@ -389,7 +388,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                     textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
                           fontWeight: FontWeight.w600,
                           fontSize: 18.0,
-                          color: OQDOThemeData.greyColor,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                   ),
                 ),
@@ -424,7 +423,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
               maxLine: 2,
               textOverFlow: TextOverflow.ellipsis,
               type: styleSubTitle,
-              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: OQDOThemeData.greyColor, fontWeight: FontWeight.w400, fontSize: 16),
+              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontWeight: FontWeight.w400, fontSize: 16),
             ),
             const SizedBox(
               height: 6,
@@ -445,14 +444,14 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                     label: 'From S\$ ${model.minimumHrRate?.toStringAsFixed(2) ?? 0.00} / hour',
                     type: styleSubTitle,
                     textOverFlow: TextOverflow.ellipsis,
-                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: OQDOThemeData.greyColor, fontWeight: FontWeight.w400, fontSize: 14.0),
+                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorsUtils.greyText, fontWeight: FontWeight.w400, fontSize: 14.0),
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: const Color(0xFFE1E1E1),
+                        color: ColorsUtils.filterDivider,
                       ),
                       borderRadius: const BorderRadius.all(Radius.circular(8))),
                   child: Row(
@@ -461,7 +460,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                         label: model.avgProviderRating!.toStringAsFixed(1),
                         textOverFlow: TextOverflow.ellipsis,
                         textStyle:
-                            Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                            Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: ColorsUtils.greyText),
                       ),
                       const SizedBox(
                         width: 3,
@@ -492,7 +491,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
           textStyle: Theme.of(context)
               .textTheme
               .titleLarge!
-              .copyWith(fontWeight: FontWeight.bold, fontSize: 20.0, color: OQDOThemeData.greyColor, fontStyle: FontStyle.normal),
+              .copyWith(fontWeight: FontWeight.bold, fontSize: 20.0, color: ColorsUtils.greyText, fontStyle: FontStyle.normal),
         ),
         InkWell(
           onTap: () async {
@@ -966,7 +965,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                   textStyle: Theme.of(context)
                       .textTheme
                       .titleMedium!
-                      .copyWith(fontWeight: FontWeight.w400, fontSize: 16.0, decoration: TextDecoration.underline, color: OQDOThemeData.blackColor),
+                      .copyWith(fontWeight: FontWeight.w400, fontSize: 16.0, decoration: TextDecoration.underline, color: Theme.of(context).colorScheme.onSurface),
                 )),
           ),
         ),
@@ -1010,7 +1009,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                 },
                 child: CustomTextView(
                   label: 'Apply',
-                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, fontSize: 16.0, color: OQDOThemeData.whiteColor),
+                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, fontSize: 16.0, color: Theme.of(context).colorScheme.onPrimary),
                 )),
           ),
         )
@@ -1026,7 +1025,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
         children: [
           CustomTextView(
             label: 'Filter By',
-            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, fontSize: 18.0, color: OQDOThemeData.greyColor),
+            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, fontSize: 18.0, color: Theme.of(context).colorScheme.onSurface),
           ),
           Row(
             children: [
@@ -1051,7 +1050,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                   textStyle: Theme.of(context)
                       .textTheme
                       .titleSmall!
-                      .copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, decoration: TextDecoration.underline, color: OQDOThemeData.otherTextColor),
+                      .copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, decoration: TextDecoration.underline, color: ColorsUtils.greyText),
                 ),
               ),
               ElevatedButton(
@@ -1070,7 +1069,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                     }
                   }
                 },
-                style: ElevatedButton.styleFrom(shape: const CircleBorder(), backgroundColor: OQDOThemeData.backgroundColor),
+                style: ElevatedButton.styleFrom(shape: const CircleBorder(), backgroundColor: Theme.of(context).colorScheme.background),
                 child: Image.asset(
                   'assets/images/ic_filter.png',
                   height: 20.0,
@@ -1095,13 +1094,13 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      border: Border.all(width: 5.0, color: OQDOThemeData.backgroundColor),
+                      border: Border.all(width: 5.0, color: Theme.of(context).colorScheme.background),
                     ),
                     child: SizedBox(
                       height: 100.0,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: isGroupBookingSelected ? OQDOThemeData.dividerColor : OQDOThemeData.backgroundColor,
+                          color: isGroupBookingSelected ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.background,
                           shape: BoxShape.rectangle,
                           borderRadius: const BorderRadius.all(Radius.circular(2.0)),
                         ),
@@ -1111,7 +1110,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                             textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 15.0,
-                                color: isGroupBookingSelected ? OQDOThemeData.whiteColor : OQDOThemeData.blackColor),
+                                color: isGroupBookingSelected ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.onSurface),
                           ),
                         ),
                       ),
@@ -1129,9 +1128,9 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                     child: Container(
                       height: 100.0,
                       decoration: BoxDecoration(
-                        color: OQDOThemeData.whiteColor,
+                        color: Theme.of(context).colorScheme.background,
                         border: Border.all(
-                          color: Colors.black,
+                          color: Theme.of(context).colorScheme.onSurface,
                           width: 1,
                         ),
                         borderRadius: BorderRadius.circular(2),
@@ -1140,7 +1139,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                         child: CustomTextView(
                           label: 'Group Booking',
                           textStyle:
-                              Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.greyColor, fontSize: 15.0, fontWeight: FontWeight.w500),
+                              Theme.of(context).textTheme.titleSmall!.copyWith(color: ColorsUtils.greyText, fontSize: 15.0, fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -1154,13 +1153,13 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      border: Border.all(width: 5.0, color: OQDOThemeData.backgroundColor),
+                      border: Border.all(width: 5.0, color: Theme.of(context).colorScheme.background),
                     ),
                     child: SizedBox(
                       height: 100.0,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: isIndividualBookingSelected ? OQDOThemeData.dividerColor : OQDOThemeData.backgroundColor,
+                          color: isIndividualBookingSelected ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.background,
                           shape: BoxShape.rectangle,
                           borderRadius: const BorderRadius.all(Radius.circular(2.0)),
                         ),
@@ -1170,7 +1169,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                           textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
                               fontWeight: FontWeight.w500,
                               fontSize: 15.0,
-                              color: isIndividualBookingSelected ? OQDOThemeData.whiteColor : OQDOThemeData.blackColor),
+                              color: isIndividualBookingSelected ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.onSurface),
                         )),
                       ),
                     ),
@@ -1187,9 +1186,9 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                     child: Container(
                       height: 100.0,
                       decoration: BoxDecoration(
-                        color: OQDOThemeData.whiteColor,
+                        color: Theme.of(context).colorScheme.background,
                         border: Border.all(
-                          color: Colors.black,
+                          color: Theme.of(context).colorScheme.onSurface,
                           width: 1,
                         ),
                         borderRadius: BorderRadius.circular(2),
@@ -1198,7 +1197,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                         child: CustomTextView(
                           label: 'Individual Booking',
                           textStyle:
-                              Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.greyColor, fontSize: 15.0, fontWeight: FontWeight.w500),
+                              Theme.of(context).textTheme.titleSmall!.copyWith(color: ColorsUtils.greyText, fontSize: 15.0, fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -1293,7 +1292,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                     maxLine: 3,
                     textOverFlow: TextOverflow.ellipsis,
                     label: selectedValuesFromKey[index].Name,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: ColorsUtils.greyText),
                   ),
                 ),
               ],
@@ -1325,11 +1324,11 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
           child: Container(
             height: 80.0,
             width: double.infinity,
-            color: selectedValue == key ? OQDOThemeData.filterDividerColor : OQDOThemeData.whiteColor,
+            color: selectedValue == key ? ColorsUtils.filterDivider : Theme.of(context).colorScheme.background,
             child: Center(
               child: CustomTextView(
                 label: key,
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w700),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14.0, color: ColorsUtils.greyText, fontWeight: FontWeight.w700),
               ),
             ),
           ),
@@ -1337,7 +1336,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
         SizedBox(
           height: 1.0,
           child: Container(
-            color: OQDOThemeData.filterDividerColor,
+            color: ColorsUtils.filterDivider,
           ),
         ),
       ],
