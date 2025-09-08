@@ -148,9 +148,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         color: ColorsUtils.buddiesBackground,
+
                         border: Border.all(
                           color: ColorsUtils.buddiesBackground,
-                        ),
+
                         borderRadius: const BorderRadius.all(Radius.circular(10))),
                     child: SizedBox(
                       height: 38,
@@ -165,11 +166,14 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                 Theme.of(context).colorScheme.onBackground),
                         decoration: InputDecoration(
                           border: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
                           icon: Image.asset(
                             'assets/images/ic_search_home.png',
                             height: 20,
                             width: 20,
                             fit: BoxFit.fill,
+
 
                             color: Theme.of(context).brightness ==
                                     Brightness.dark
