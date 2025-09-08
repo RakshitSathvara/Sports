@@ -10,7 +10,6 @@ import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/model/common_passing_args.dart';
 import 'package:oqdo_mobile_app/model/forgot_password_response_model.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
-import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
 import 'package:oqdo_mobile_app/viewmodels/login_view_model.dart';
@@ -24,7 +23,8 @@ class ForgotOTPVerificationPage extends StatefulWidget {
   String email;
 
   @override
-  ForgotOTPVerificationPageState createState() => ForgotOTPVerificationPageState();
+  ForgotOTPVerificationPageState createState() =>
+      ForgotOTPVerificationPageState();
 }
 
 class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
@@ -45,7 +45,8 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
+      _progressDialog = ProgressDialog(context,
+          type: ProgressDialogType.normal, isDismissible: false);
       _progressDialog.style(message: "Please wait..");
     });
   }
@@ -103,31 +104,30 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CustomTextView(
-                      label: 'Verification',
-                      type: styleSubTitle,
-                      textStyle: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold, fontSize: 20),
+                    Text(
+                      'Verification',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).colorScheme.onSurface,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
                     ),
                     const SizedBox(
                       height: 15,
                     ),
-                    CustomTextView(
-                      label: 'Please enter OTP sent to your mail.',
-                      type: styleSubTitle,
-                      textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.shadow),
+                    Text(
+                      'Please enter OTP sent to your mail.',
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.onSurface),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
                     Align(
                       alignment: Alignment.topLeft,
-                      child: CustomTextView(
-                        label: 'Enter OTP',
-                        type: styleSubTitle,
-                        textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.shadow),
+                      child: Text(
+                        'Enter OTP',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.onSurface),
                       ),
                     ),
                     PinCodeTextField(
@@ -138,9 +138,12 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                       controller: otpController,
                       // hideCharacter: true,
                       highlight: true,
-                      highlightColor: Theme.of(context).colorScheme.secondaryContainer,
-                      defaultBorderColor: Theme.of(context).colorScheme.secondaryContainer,
-                      hasTextBorderColor: Theme.of(context).colorScheme.secondaryContainer,
+                      highlightColor:
+                          Theme.of(context).colorScheme.secondaryContainer,
+                      defaultBorderColor:
+                          Theme.of(context).colorScheme.secondaryContainer,
+                      hasTextBorderColor:
+                          Theme.of(context).colorScheme.secondaryContainer,
                       errorBorderColor: Theme.of(context).colorScheme.error,
                       maxLength: 6,
                       hasError: hasError,
@@ -149,15 +152,22 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                       onTextChanged: (text) {},
                       onDone: (text) async {},
                       wrapAlignment: WrapAlignment.spaceEvenly,
-                      pinBoxDecoration: ProvidedPinBoxDecoration.underlinedPinBoxDecoration,
-                      pinTextStyle: TextStyle(fontSize: 25.0, color: Theme.of(context).colorScheme.onSurface),
-                      pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
+                      pinBoxDecoration:
+                          ProvidedPinBoxDecoration.underlinedPinBoxDecoration,
+                      pinTextStyle: TextStyle(
+                          fontSize: 25.0,
+                          color: Theme.of(context).colorScheme.onSurface),
+                      pinTextAnimatedSwitcherTransition:
+                          ProvidedPinBoxTextAnimation.scalingTransition,
                       pinBoxColor: Theme.of(context).colorScheme.surface,
-                      pinTextAnimatedSwitcherDuration: const Duration(milliseconds: 300),
+                      pinTextAnimatedSwitcherDuration:
+                          const Duration(milliseconds: 300),
                       //                    highlightAnimation: true,
                       //highlightPinBoxColor: Colors.red,
-                      highlightAnimationBeginColor: Theme.of(context).colorScheme.onSurface,
-                      highlightAnimationEndColor: Theme.of(context).colorScheme.surface,
+                      highlightAnimationBeginColor:
+                          Theme.of(context).colorScheme.onSurface,
+                      highlightAnimationEndColor:
+                          Theme.of(context).colorScheme.surface,
                       keyboardType: TextInputType.number,
                     ),
                     const SizedBox(
@@ -169,8 +179,10 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                       textsize: 16,
                       fontWeight: FontWeight.w600,
                       letterspacing: 0.7,
-                      buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
-                      buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
+                      buttoncolor:
+                          Theme.of(context).colorScheme.secondaryContainer,
+                      buttonbordercolor:
+                          Theme.of(context).colorScheme.secondaryContainer,
                       buttonheight: 50,
                       buttonwidth: width,
                       radius: 15,
@@ -180,7 +192,8 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                         } else if (otpController.text.length < 6) {
                           showSnackBar("Please enter valid OTP", context);
                         } else {
-                          await verifyForgotPasswordOTP(email: widget.email, otp: otpController.text);
+                          await verifyForgotPasswordOTP(
+                              email: widget.email, otp: otpController.text);
                         }
                       },
                     ),
@@ -190,10 +203,13 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CustomTextView(
-                          label: 'If you did not receive the code, ',
-                          type: styleSubTitle,
-                          textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.shadow),
+                        Text(
+                          'If you did not receive the code, ',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
+                              .copyWith(
+                                  color: Theme.of(context).colorScheme.onSurface),
                         ),
                         const SizedBox(
                           width: 5,
@@ -202,10 +218,15 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                           onTap: () {
                             resendOTP(email: widget.email);
                           },
-                          child: CustomTextView(
-                            label: 'Resend.',
-                            type: styleSubTitle,
-                            textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.secondaryContainer),
+                          child: Text(
+                            'Resend.',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .secondaryContainer),
                           ),
                         ),
                       ],
@@ -223,23 +244,33 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
     );
   }
 
-  Future<void> verifyForgotPasswordOTP({required String email, required String otp}) async {
+  Future<void> verifyForgotPasswordOTP(
+      {required String email, required String otp}) async {
     await _progressDialog.show();
     try {
-      await Provider.of<LoginViewModel>(context, listen: false).verifyForgotPasswordOTP(email: email, otp: otp).then((value) async {
+      await Provider.of<LoginViewModel>(context, listen: false)
+          .verifyForgotPasswordOTP(email: email, otp: otp)
+          .then((value) async {
         Response res = value;
         await _progressDialog.hide();
         if (res.statusCode == 500 || res.statusCode == 404) {
-          showSnackBarErrorColor(AppStrings.internalServerErrorMessage, context, true);
+          showSnackBarErrorColor(
+              AppStrings.internalServerErrorMessage, context, true);
         } else if (res.statusCode == 200) {
-          ForgotPasswordResponseModel forgotPasswordResponse = ForgotPasswordResponseModel.fromJson(jsonDecode(res.body));
+          ForgotPasswordResponseModel forgotPasswordResponse =
+              ForgotPasswordResponseModel.fromJson(jsonDecode(res.body));
           if (forgotPasswordResponse.success == true) {
-            showSnackBarColor(forgotPasswordResponse.message ?? "OTP verified", context, false);
+            showSnackBarColor(forgotPasswordResponse.message ?? "OTP verified",
+                context, false);
             var arguments = EmailOTPModel(email, otp);
-            await Navigator.pushNamed(context, Constants.CREATEPASSWORD, arguments: arguments);
+            await Navigator.pushNamed(context, Constants.CREATEPASSWORD,
+                arguments: arguments);
           } else {
             showSnackBarColor(
-                forgotPasswordResponse.message ?? "We're unable to connect to server. Please contact administrator or try after some time", context, true);
+                forgotPasswordResponse.message ??
+                    "We're unable to connect to server. Please contact administrator or try after some time",
+                context,
+                true);
           }
         } else {
           Map<String, dynamic> errorModel = jsonDecode(res.body);
@@ -267,19 +298,29 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
     await _progressDialog.show();
 
     try {
-      await Provider.of<LoginViewModel>(context, listen: false).requestForgotPassword(email: email).then((value) async {
+      await Provider.of<LoginViewModel>(context, listen: false)
+          .requestForgotPassword(email: email)
+          .then((value) async {
         Response res = value;
         await _progressDialog.hide();
         if (res.statusCode == 500 || res.statusCode == 404) {
-          showSnackBarErrorColor(AppStrings.internalServerErrorMessage, context, true);
+          showSnackBarErrorColor(
+              AppStrings.internalServerErrorMessage, context, true);
         } else if (res.statusCode == 200) {
-          ForgotPasswordResponseModel forgotPasswordResponse = ForgotPasswordResponseModel.fromJson(jsonDecode(res.body));
+          ForgotPasswordResponseModel forgotPasswordResponse =
+              ForgotPasswordResponseModel.fromJson(jsonDecode(res.body));
           if (forgotPasswordResponse.success == true) {
             otpController.clear();
-            showSnackBarColor(forgotPasswordResponse.message ?? "OTP Resent Successfully", context, false);
+            showSnackBarColor(
+                forgotPasswordResponse.message ?? "OTP Resent Successfully",
+                context,
+                false);
           } else {
             showSnackBarColor(
-                forgotPasswordResponse.message ?? "We're unable to connect to server. Please contact administrator or try after some time", context, true);
+                forgotPasswordResponse.message ??
+                    "We're unable to connect to server. Please contact administrator or try after some time",
+                context,
+                true);
           }
         } else {
           Map<String, dynamic> errorModel = jsonDecode(res.body);
