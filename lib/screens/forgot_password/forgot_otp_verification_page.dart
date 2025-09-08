@@ -56,7 +56,7 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.background,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +106,10 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                     CustomTextView(
                       label: 'Verification',
                       type: styleSubTitle,
-                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                     const SizedBox(
                       height: 15,
@@ -138,7 +141,7 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                       highlightColor: Theme.of(context).colorScheme.secondaryContainer,
                       defaultBorderColor: Theme.of(context).colorScheme.secondaryContainer,
                       hasTextBorderColor: Theme.of(context).colorScheme.secondaryContainer,
-                      errorBorderColor: Colors.red,
+                      errorBorderColor: Theme.of(context).colorScheme.error,
                       maxLength: 6,
                       hasError: hasError,
                       // maskCharacter: "*",
@@ -147,14 +150,14 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                       onDone: (text) async {},
                       wrapAlignment: WrapAlignment.spaceEvenly,
                       pinBoxDecoration: ProvidedPinBoxDecoration.underlinedPinBoxDecoration,
-                      pinTextStyle: const TextStyle(fontSize: 25.0, color: Colors.black),
+                      pinTextStyle: TextStyle(fontSize: 25.0, color: Theme.of(context).colorScheme.onSurface),
                       pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
-                      pinBoxColor: Theme.of(context).colorScheme.secondaryContainer,
+                      pinBoxColor: Theme.of(context).colorScheme.surface,
                       pinTextAnimatedSwitcherDuration: const Duration(milliseconds: 300),
                       //                    highlightAnimation: true,
                       //highlightPinBoxColor: Colors.red,
-                      highlightAnimationBeginColor: Colors.black,
-                      highlightAnimationEndColor: Colors.white12,
+                      highlightAnimationBeginColor: Theme.of(context).colorScheme.onSurface,
+                      highlightAnimationEndColor: Theme.of(context).colorScheme.surface,
                       keyboardType: TextInputType.number,
                     ),
                     const SizedBox(

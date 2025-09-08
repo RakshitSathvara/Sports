@@ -65,7 +65,7 @@ class CreatePasswordPageState extends State<CreatePasswordPage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.background,
         child: SingleChildScrollView(
           child: Form(
             key: hp.formKey,
@@ -117,7 +117,10 @@ class CreatePasswordPageState extends State<CreatePasswordPage> {
                       CustomTextView(
                         label: 'Create Password',
                         type: styleSubTitle,
-                        textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                       const SizedBox(
                         height: 20,
@@ -137,7 +140,7 @@ class CreatePasswordPageState extends State<CreatePasswordPage> {
                         obscureText: hidePassword1,
                         maxlines: 1,
                         maxlength: 32,
-                        fillColor: OQDOThemeData.backgroundColor,
+                        fillColor: Theme.of(context).colorScheme.surface,
                         labelText: 'New Password',
                         validator: Validator.validatePassword,
                         keyboardType: TextInputType.text,
@@ -193,7 +196,7 @@ class CreatePasswordPageState extends State<CreatePasswordPage> {
                         obscureText: hidePassword1,
                         maxlines: 1,
                         maxlength: 32,
-                        fillColor: OQDOThemeData.backgroundColor,
+                        fillColor: Theme.of(context).colorScheme.surface,
                         labelText: 'Confirm Password',
                         validator: (val) {
                           if (val!.trim().isEmpty) {
