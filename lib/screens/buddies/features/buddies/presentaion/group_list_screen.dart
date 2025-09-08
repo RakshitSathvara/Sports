@@ -70,6 +70,7 @@ class _GroupListScreenState extends State<GroupListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       floatingActionButton: FloatingActionButton(
         elevation: 0.0,
         backgroundColor: OQDOThemeData.dividerColor,
@@ -94,7 +95,9 @@ class _GroupListScreenState extends State<GroupListScreen> {
           height: 26,
           width: 26,
           fit: BoxFit.fill,
-          color: ColorsUtils.white,
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.white
+              : Colors.black,
         ),
       ),
       appBar: CustomAppBar(
@@ -106,7 +109,7 @@ class _GroupListScreenState extends State<GroupListScreen> {
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: ColorsUtils.white,
+          color: Theme.of(context).colorScheme.background,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Column(

@@ -47,6 +47,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: CustomAppBar(
           title: 'Your Friends',
           onBack: () {
@@ -57,7 +58,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            color: ColorsUtils.white,
+            color: Theme.of(context).colorScheme.background,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -364,7 +365,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
                 children: [
                   TextButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: ColorsUtils.white,
+                        backgroundColor: Theme.of(context).colorScheme.surface,
                         shape: RoundedRectangleBorder(
                             side: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1, style: BorderStyle.solid),
                             borderRadius: const BorderRadius.all(Radius.zero))),
