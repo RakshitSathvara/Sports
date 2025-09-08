@@ -170,8 +170,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
                             height: 20,
                             width: 20,
                             fit: BoxFit.fill,
+
                             color: Theme.of(context).brightness ==
                                     Brightness.dark
+
                                 ? Colors.white
                                 : Colors.black,
                           ),
