@@ -169,9 +169,26 @@ class _ConversationScreenState extends State<ConversationScreen> {
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.onBackground),
                         decoration: InputDecoration(
-                          border: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
+                          isDense: true,
+                          filled: false,
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                          border: const UnderlineInputBorder(),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Theme.of(context).colorScheme.onSurface),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Theme.of(context).colorScheme.primary),
+                          ),
+                          disabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurface
+                                    .withOpacity(0.5)),
+                          ),
                           icon: Image.asset(
                             'assets/images/ic_search_home.png',
                             height: 20,
