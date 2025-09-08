@@ -165,7 +165,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Theme.of(context).colorScheme.onBackground,
+          color: Theme.of(context).colorScheme.background,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -183,7 +183,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                             DropdownButton<dynamic>(
                               isExpanded: false,
                               underline: const SizedBox(),
-                              dropdownColor: Theme.of(context).colorScheme.onBackground,
+                              dropdownColor: Theme.of(context).colorScheme.background,
                               hint: CustomTextView(
                                 label: filterList![0],
                                 textStyle: Theme.of(context)
@@ -237,15 +237,19 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: ColorsUtils.white,
                     borderRadius: BorderRadius.circular(8.0),
-                    border: Border.all(color: Color(0xFFB5B5B5)),
+                    border: Border.all(color: ColorsUtils.filterDivider),
                   ),
                   child: TextField(
                     controller: _searchController,
                     decoration: InputDecoration(
                       hintText: 'Search',
-                      hintStyle: TextStyle(color: Color(0xFF2B2B2B), fontSize: 18.0, fontWeight: FontWeight.bold, fontFamily: 'Montserrat'),
+                      hintStyle: TextStyle(
+                          color: ColorsUtils.greyText,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Montserrat'),
                       icon: Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Image.asset(
@@ -361,7 +365,9 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                         opacity: 0.7,
                         child: Container(
                           width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Theme.of(context).colorScheme.onBackground),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Theme.of(context).colorScheme.background),
                           child: CachedNetworkImage(
                             imageUrl: model.listingPageImage!,
                             fit: BoxFit.fill,
@@ -896,7 +902,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
         return false;
       },
       child: Container(
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.background,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(

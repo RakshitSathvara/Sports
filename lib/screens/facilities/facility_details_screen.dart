@@ -129,7 +129,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
         body: SafeArea(
           child: Container(
             padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-            color: Theme.of(context).colorScheme.onBackground,
+            color: Theme.of(context).colorScheme.background,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -645,7 +645,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.sunday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.sunday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -659,7 +661,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.monday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.monday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -673,7 +677,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.tuesday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.tuesday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -687,8 +693,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color:
-                                        addFacilitySlotModel.wednesday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.wednesday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -702,7 +709,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.thursday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.thursday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -716,7 +725,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.friday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.friday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                             const SizedBox(
@@ -730,7 +741,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     decoration: TextDecoration.underline,
-                                    color: addFacilitySlotModel.saturday! ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.primary),
+                                    color: addFacilitySlotModel.saturday!
+                                        ? Theme.of(context).colorScheme.onPrimary
+                                        : Theme.of(context).colorScheme.primary),
                               ),
                             ),
                           ],
