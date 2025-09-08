@@ -92,7 +92,7 @@ class MySplashState extends State<Splash> {
                   textOverFlow: TextOverflow.ellipsis,
                   label: "Slow or No Internet.",
                   textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: OQDOThemeData.blackColor,
+                        color: Theme.of(context).colorScheme.onBackground,
                         fontSize: 20,
                       ),
                 ),
@@ -102,7 +102,7 @@ class MySplashState extends State<Splash> {
                   textAlign: TextAlign.center,
                   maxLines: 4,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: OQDOThemeData.blackColor,
+                        color: Theme.of(context).colorScheme.onBackground,
                         fontSize: 16,
                       ),
                 ),
@@ -150,7 +150,7 @@ class MySplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.background,
       child: Column(
         children: [
           Container(
