@@ -71,6 +71,7 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: CustomAppBar(
         title: 'Buddies',
         onBack: () {
@@ -98,7 +99,7 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            color: ColorsUtils.white,
+            color: Theme.of(context).colorScheme.background,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
