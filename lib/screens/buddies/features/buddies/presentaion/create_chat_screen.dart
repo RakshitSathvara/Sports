@@ -96,31 +96,39 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
                             color: ColorsUtils.buddiesBackground,
                           ),
                           borderRadius: const BorderRadius.all(Radius.circular(10))),
-                      child: SizedBox(
-                        height: 40,
-                        child: TextFormField(
-                          autocorrect: false,
-                          autofocus: false,
-                          cursorColor: OQDOThemeData.greyColor,
-                          minLines: 1,
-                          controller: _searchActivityController,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            icon: Image.asset(
-                              'assets/images/ic_search_home.png',
-                              height: 20,
-                              width: 20,
-                              fit: BoxFit.fill,
-                            ),
-                            hintText: 'Search your friends...',
+                    child: SizedBox(
+                      height: 40,
+                      child: TextFormField(
+                        autocorrect: false,
+                        autofocus: false,
+                        cursorColor: ColorsUtils.greyText,
+                        minLines: 1,
+                        controller: _searchActivityController,
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).colorScheme.onBackground),
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          icon: Image.asset(
+                            'assets/images/ic_search_home.png',
+                            height: 20,
+                            width: 20,
+                            fit: BoxFit.fill,
+                            color: Theme.of(context).brightness ==
+                                    Brightness.dark
+                                ? Colors.white
+                                : Colors.black,
                           ),
-                          maxLines: 1,
+                          hintText: 'Search your friends...',
+                          hintStyle: TextStyle(color: ColorsUtils.greyText),
                         ),
+                        maxLines: 1,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 16,
+                ),
+                const SizedBox(
+                  height: 16,
                   ),
                   InkWell(
                     onTap: () {

@@ -137,23 +137,23 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
                           width: 6,
                         ),
                         Expanded(
-                          child: TextField(
+                          child: TextFormField(
                             controller: _nameController,
                             maxLength: 50,
                             maxLines: 1,
-                            decoration: const InputDecoration(
+                            cursorColor: ColorsUtils.greyText,
+                            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  color: Theme.of(context).colorScheme.onBackground,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                            decoration: InputDecoration(
                               hintText: "Group Name",
+                              hintStyle: TextStyle(color: ColorsUtils.greyText),
                               border: InputBorder.none,
                               counterText: "",
                             ),
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(color: OQDOThemeData.blackColor, fontSize: 16.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
-                            // label: 'Group Name',
-                            // maxLine: 1,
-                            // textOverFlow: TextOverflow.ellipsis,
-                            // type: styleSubTitle,
                           ),
                         ),
                       ],
@@ -176,9 +176,12 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
                       child: TextFormField(
                         autocorrect: false,
                         autofocus: false,
-                        cursorColor: OQDOThemeData.greyColor,
+                        cursorColor: ColorsUtils.greyText,
                         minLines: 1,
                         controller: _searchActivityController,
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).colorScheme.onBackground),
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           icon: Image.asset(
@@ -186,8 +189,13 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
                             height: 20,
                             width: 20,
                             fit: BoxFit.fill,
+                            color: Theme.of(context).brightness ==
+                                    Brightness.dark
+                                ? Colors.white
+                                : Colors.black,
                           ),
                           hintText: 'Search your friends...',
+                          hintStyle: TextStyle(color: ColorsUtils.greyText),
                         ),
                         maxLines: 1,
                       ),

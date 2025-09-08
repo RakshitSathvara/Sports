@@ -11,7 +11,7 @@ import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/model/frie
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/model/get_conversation_list_response.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/model/group_chat_response.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/domain/chat_provider.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -90,9 +90,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: Theme.of(context).colorScheme.background,
       floatingActionButton: FloatingActionButton(
         elevation: 0.0,
-        backgroundColor: OQDOThemeData.dividerColor,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () async {
           var isChange = await Navigator.of(context).pushNamed(Constants.createChatScreen);
           if (isChange != null && isChange == true) {
@@ -106,7 +107,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
           height: 26,
           width: 26,
           fit: BoxFit.fill,
-          color: Colors.white,
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.white
+              : Colors.black,
         ),
       ),
       body: SafeArea(
@@ -115,7 +118,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
           child: Container(
             width: width,
             height: height,
-            color: OQDOThemeData.whiteColor,
+            color: Theme.of(context).colorScheme.background,
             child: Column(
               children: [
                 Consumer<ChatProvider>(
@@ -144,9 +147,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
                     padding: const EdgeInsets.all(8),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                        color: const Color(0xFFF5F5F5),
+                        color: ColorsUtils.buddiesBackground,
                         border: Border.all(
-                          color: const Color(0xFFF5F5F5),
+                          color: ColorsUtils.buddiesBackground,
                         ),
                         borderRadius: const BorderRadius.all(Radius.circular(10))),
                     child: SizedBox(
@@ -154,9 +157,12 @@ class _ConversationScreenState extends State<ConversationScreen> {
                       child: TextFormField(
                         autocorrect: false,
                         autofocus: false,
-                        cursorColor: OQDOThemeData.greyColor,
+                        cursorColor: ColorsUtils.greyText,
                         minLines: 1,
                         controller: _searchActivityController,
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).colorScheme.onBackground),
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           icon: Image.asset(
@@ -164,8 +170,13 @@ class _ConversationScreenState extends State<ConversationScreen> {
                             height: 20,
                             width: 20,
                             fit: BoxFit.fill,
+                            color: Theme.of(context).brightness ==
+                                    Brightness.dark
+                                ? Colors.white
+                                : Colors.black,
                           ),
                           hintText: 'Search...',
+                          hintStyle: TextStyle(color: ColorsUtils.greyText),
                         ),
                         maxLines: 1,
                       ),
@@ -208,7 +219,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                         textStyle: Theme.of(context)
                                             .textTheme
                                             .titleMedium!
-                                            .copyWith(fontSize: 16, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                                            .copyWith(
+                                                fontSize: 16,
+                                                color: ColorsUtils.greyText,
+                                                fontWeight: FontWeight.w500),
                                       ),
                                     ],
                                   )
@@ -259,7 +273,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Card(
-              color: conversation.profileImage != null ? Colors.white : Colors.black12,
+              color: conversation.profileImage != null
+                  ? ColorsUtils.white
+                  : ColorsUtils.greyCircle,
               elevation: 0,
               child: ClipPath(
                 clipper: ShapeBorderClipper(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
@@ -295,14 +311,20 @@ class _ConversationScreenState extends State<ConversationScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     CustomTextView(
-                      label: conversation.chatType == "F" ? '${conversation.firstName} ${conversation.lastName}' : conversation.groupName.toString(),
+                      label: conversation.chatType == "F"
+                          ? '${conversation.firstName} ${conversation.lastName}'
+                          : conversation.groupName.toString(),
                       maxLine: 1,
                       textOverFlow: TextOverflow.ellipsis,
                       type: styleSubTitle,
                       textStyle: Theme.of(context)
                           .textTheme
                           .titleSmall!
-                          .copyWith(color: const Color(0xFF2B2B2B), fontSize: 14.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
+                          .copyWith(
+                              color: ColorsUtils.chipText,
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w600,
+                              overflow: TextOverflow.ellipsis),
                     ),
                     const SizedBox(
                       height: 8,
@@ -315,7 +337,11 @@ class _ConversationScreenState extends State<ConversationScreen> {
                       textStyle: Theme.of(context)
                           .textTheme
                           .titleSmall!
-                          .copyWith(color: const Color(0xFF2B2B2B), fontSize: 12.0, fontWeight: FontWeight.w400, overflow: TextOverflow.ellipsis),
+                          .copyWith(
+                              color: ColorsUtils.greyText,
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.w400,
+                              overflow: TextOverflow.ellipsis),
                     ),
                   ],
                 ),
