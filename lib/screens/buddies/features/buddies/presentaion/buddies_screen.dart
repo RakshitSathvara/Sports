@@ -71,6 +71,7 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: CustomAppBar(
         title: 'Buddies',
         onBack: () {
@@ -98,7 +99,7 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            color: ColorsUtils.white,
+            color: Theme.of(context).colorScheme.background,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
@@ -123,9 +124,12 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
                         child: TextFormField(
                           autocorrect: false,
                           autofocus: false,
-                          cursorColor: OQDOThemeData.greyColor,
+                          cursorColor: ColorsUtils.greyText,
                           minLines: 1,
                           controller: _searchActivityController,
+                          style: TextStyle(
+                              color:
+                                  Theme.of(context).colorScheme.onBackground),
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: Image.asset(
@@ -133,8 +137,13 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
                               height: 20,
                               width: 20,
                               fit: BoxFit.fill,
+                              color: Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Colors.white
+                                  : Colors.black,
                             ),
                             hintText: 'Search your buddies ',
+                            hintStyle: TextStyle(color: ColorsUtils.greyText),
                           ),
                           maxLines: 1,
                         ),

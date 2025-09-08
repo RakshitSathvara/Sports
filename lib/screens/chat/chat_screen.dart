@@ -14,7 +14,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsUtils.buddiesBackground,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Column(
           children: [
@@ -114,7 +114,9 @@ class _ChatScreenState extends State<ChatScreen> {
         margin: const EdgeInsets.only(bottom: 16),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: isSentByMe ? ColorsUtils.chatPrimary : ColorsUtils.white,
+          color: isSentByMe
+              ? ColorsUtils.chatPrimary
+              : Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
@@ -124,19 +126,19 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ],
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              message,
-              style: TextStyle(
-                color: isSentByMe ? ColorsUtils.white : ColorsUtils.chipText,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                message,
+                style: TextStyle(
+                color: isSentByMe ? Colors.white : ColorsUtils.chipText,
                 fontSize: 16,
               ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              time,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                time,
               style: TextStyle(
                 color: isSentByMe ? Colors.white70 : ColorsUtils.greyText,
                 fontSize: 12,
@@ -152,7 +154,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: ColorsUtils.white,
+        color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -164,19 +166,19 @@ class _ChatScreenState extends State<ChatScreen> {
         children: [
           SizedBox(
             width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: ColorsUtils.chatPrimary,
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: ColorsUtils.chatPrimary,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
-              ),
-              child: Text(
-                'Offer Price',
-                style: TextStyle(
-                  color: ColorsUtils.white,
+                child: Text(
+                  'Offer Price',
+                style: const TextStyle(
+                  color: Colors.white,
                   fontSize: 16,
                 ),
               ),
@@ -196,8 +198,8 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               child: Text(
                 'Ok, Done',
-                style: TextStyle(
-                  color: ColorsUtils.white,
+                style: const TextStyle(
+                  color: Colors.white,
                   fontSize: 16,
                 ),
               ),
@@ -214,14 +216,19 @@ class _ChatScreenState extends State<ChatScreen> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   decoration: BoxDecoration(
-                    color: ColorsUtils.white,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(25),
                     border: Border.all(color: ColorsUtils.buddiesBorder),
                   ),
-                  child: TextField(
+                  child: TextFormField(
                     controller: _messageController,
-                    decoration: const InputDecoration(
+                    cursorColor: ColorsUtils.greyText,
+                    style: TextStyle(
+                        color:
+                            Theme.of(context).colorScheme.onBackground),
+                    decoration: InputDecoration(
                       hintText: 'Message',
+                      hintStyle: TextStyle(color: ColorsUtils.greyText),
                       border: InputBorder.none,
                     ),
                   ),
