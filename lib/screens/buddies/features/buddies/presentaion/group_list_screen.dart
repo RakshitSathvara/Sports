@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/get_all_buddies_repository.dart';
@@ -93,7 +94,7 @@ class _GroupListScreenState extends State<GroupListScreen> {
           height: 26,
           width: 26,
           fit: BoxFit.fill,
-          color: Colors.white,
+          color: ColorsUtils.white,
         ),
       ),
       appBar: CustomAppBar(
@@ -105,7 +106,7 @@ class _GroupListScreenState extends State<GroupListScreen> {
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Colors.white,
+          color: ColorsUtils.white,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Column(
@@ -120,9 +121,9 @@ class _GroupListScreenState extends State<GroupListScreen> {
                     padding: const EdgeInsets.all(8),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                        color: const Color(0xFFF5F5F5),
+                        color: ColorsUtils.buddiesBackground,
                         border: Border.all(
-                          color: const Color(0xFFF5F5F5),
+                          color: ColorsUtils.buddiesBackground,
                         ),
                         borderRadius: const BorderRadius.all(Radius.circular(10))),
                     child: SizedBox(
@@ -296,7 +297,7 @@ class _GroupListScreenState extends State<GroupListScreen> {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleSmall!
-                        .copyWith(color: const Color(0xFF2B2B2B), fontSize: 14.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
+                        .copyWith(color: ColorsUtils.chipText, fontSize: 14.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
                   ),
                   const SizedBox(
                     height: 6,
@@ -304,7 +305,7 @@ class _GroupListScreenState extends State<GroupListScreen> {
                   CustomTextView(
                     label: "${groupModel.groupFriends!.length} Member",
                     type: styleSubTitle,
-                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: const Color(0xFF2B2B2B), fontSize: 12.0, fontWeight: FontWeight.w500),
+                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: ColorsUtils.chipText, fontSize: 12.0, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
                     height: 4,
@@ -377,7 +378,7 @@ class _GroupListScreenState extends State<GroupListScreen> {
                     textOverFlow: TextOverflow.ellipsis,
                     type: styleSubTitle,
                     textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        color: const Color(0xFF2B2B2B),
+                        color: ColorsUtils.chipText,
                         fontSize: 14.0,
                         // fontWeight: groupModel.endUserId.toString() ==
                         //         OQDOApplication.instance.endUserID
@@ -392,7 +393,7 @@ class _GroupListScreenState extends State<GroupListScreen> {
                   CustomTextView(
                     label: "${groupModel.groupFriends!.length} Member",
                     type: styleSubTitle,
-                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: const Color(0xFF2B2B2B), fontSize: 12.0, fontWeight: FontWeight.w500),
+                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: ColorsUtils.chipText, fontSize: 12.0, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
                     height: 8,

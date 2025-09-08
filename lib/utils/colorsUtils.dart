@@ -50,4 +50,27 @@ class ColorsUtils {
   /// Background color for the close account button
   static Color get closeAccountColor =>
       _isDark ? const Color(0xFFFF5252) : const Color(0xFFFC5555);
+
+  /// Primary brand blue used across chat screens
+  static Color get chatPrimary => const Color(0xFF2B5278);
+
+  /// Accent blue used across buddies features
+  static Color get accentBlue =>
+      _isDark ? const Color(0xFF4FC3F7) : const Color(0xFF006590);
+
+  /// Alternate blue for profile elements
+  static Color get profileBlue =>
+      _isDark ? const Color(0xFF4FC3F7) : const Color(0xFF3C80A8);
+
+  /// Background color for buddies screens
+  static Color get buddiesBackground =>
+      _isDark ? const Color(0xFF2A2A2A) : const Color(0xFFF5F5F5);
+
+  /// Card color for buddies screens
+  static Color get buddiesCard =>
+      _isDark ? const Color(0xFF333333) : const Color(0xFFF1F1F1);
+
+  /// Border color for buddies screens
+  static Color get buddiesBorder =>
+      _isDark ? const Color(0xFF404040) : const Color(0xFFCFCFCF);
 }

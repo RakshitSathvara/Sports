@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/get_all_buddies_repository.dart';
@@ -44,7 +45,7 @@ class _GroupInfoScreenState extends State<GroupInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorsUtils.white,
       appBar: CustomAppBar(
           title: 'Group Detail',
           onBack: () {
@@ -96,7 +97,7 @@ class _GroupInfoScreenState extends State<GroupInfoScreen> {
                 height: 6,
               ),
               const Divider(
-                color: Colors.grey,
+                color: ColorsUtils.greyCircle,
               ),
               const SizedBox(
                 height: 16,
@@ -195,7 +196,7 @@ class _GroupInfoScreenState extends State<GroupInfoScreen> {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleSmall!
-                        .copyWith(color: const Color(0xFF2B2B2B), fontSize: 14.0, fontWeight: FontWeight.w500, overflow: TextOverflow.ellipsis),
+                        .copyWith(color: ColorsUtils.chipText, fontSize: 14.0, fontWeight: FontWeight.w500, overflow: TextOverflow.ellipsis),
                   ),
                   const SizedBox(
                     height: 2,

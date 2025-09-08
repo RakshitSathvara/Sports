@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
@@ -220,7 +221,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: CustomTextView(
                     label: 'Creator',
-                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, color: const Color(0xff2B2B2B), fontWeight: FontWeight.w500),
+                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, color: ColorsUtils.chipText, fontWeight: FontWeight.w500),
                   ),
                 ),
                 const SizedBox(
@@ -230,7 +231,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: CustomTextView(
                     label: '${widget.meetupResponse!.firstName} ${widget.meetupResponse!.lastName}',
-                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 14, color: const Color(0xff2B2B2B), fontWeight: FontWeight.w400),
+                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 14, color: ColorsUtils.chipText, fontWeight: FontWeight.w400),
                   ),
                 ),
                 const SizedBox(
@@ -240,7 +241,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: CustomTextView(
                     label: 'Description',
-                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, color: const Color(0xff2B2B2B), fontWeight: FontWeight.w500),
+                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, color: ColorsUtils.chipText, fontWeight: FontWeight.w500),
                   ),
                 ),
                 const SizedBox(
@@ -250,7 +251,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: CustomTextView(
                     label: widget.meetupResponse!.description,
-                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 14, color: const Color(0xff2B2B2B), fontWeight: FontWeight.w400),
+                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 14, color: ColorsUtils.chipText, fontWeight: FontWeight.w400),
                   ),
                 ),
                 const SizedBox(
@@ -260,7 +261,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: CustomTextView(
                     label: 'Meetup Details',
-                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, color: const Color(0xff2B2B2B), fontWeight: FontWeight.w500),
+                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, color: ColorsUtils.chipText, fontWeight: FontWeight.w500),
                   ),
                 ),
                 const SizedBox(
@@ -274,7 +275,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                         label: 'Date: ',
                         textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
                               fontWeight: FontWeight.w700,
-                              color: const Color(0xFF2B2B2B),
+                              color: ColorsUtils.chipText,
                               fontSize: 16,
                             ),
                       ),
@@ -285,7 +286,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                         label: widget.meetupResponse!.date!.split('T')[0],
                         textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
                               fontWeight: FontWeight.w400,
-                              color: const Color(0xFF2B2B2B),
+                              color: ColorsUtils.chipText,
                               fontSize: 16,
                             ),
                       )
@@ -303,7 +304,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                         label: 'Time: ',
                         textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
                               fontWeight: FontWeight.w700,
-                              color: const Color(0xFF2B2B2B),
+                              color: ColorsUtils.chipText,
                               fontSize: 16,
                             ),
                       ),
@@ -314,7 +315,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                         label: '${widget.meetupResponse!.startFrom} - ${widget.meetupResponse!.endAt}',
                         textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
                               fontWeight: FontWeight.w400,
-                              color: const Color(0xFF2B2B2B),
+                              color: ColorsUtils.chipText,
                               fontSize: 16,
                             ),
                       ),
@@ -328,7 +329,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: CustomTextView(
                     label: 'Friends',
-                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, color: const Color(0xff2B2B2B), fontWeight: FontWeight.w500),
+                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, color: ColorsUtils.chipText, fontWeight: FontWeight.w500),
                   ),
                 ),
                 const SizedBox(
@@ -535,7 +536,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
             children: [
               CustomTextView(
                 label: '${widget.meetupResponse!.meetUpFriends![index].displayFirstName} ${widget.meetupResponse!.meetUpFriends![index].displayLastName}',
-                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 14, color: const Color(0xff2B2B2B), fontWeight: FontWeight.w400),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 14, color: ColorsUtils.chipText, fontWeight: FontWeight.w400),
               ),
               const Spacer(),
               Image.asset(
@@ -551,7 +552,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
             ],
           ),
           const Divider(
-            color: Color(0xFFCFCFCF),
+            color: ColorsUtils.buddiesBorder,
           )
         ],
       ),

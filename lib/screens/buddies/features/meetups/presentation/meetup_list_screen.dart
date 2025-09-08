@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/meetups/data/meet_up_repository.dart';
@@ -238,7 +239,7 @@ class _MeetupListScreenState extends State<MeetupListScreen> {
         children: [
           CustomTextView(
             label: monthStr,
-            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: const Color(0xFF333333)),
+            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: ColorsUtils.chipText),
           ),
           const Spacer(),
           // GestureDetector(
@@ -263,14 +264,14 @@ class _MeetupListScreenState extends State<MeetupListScreen> {
             calendarFormat: _calendarFormat,
             headerVisible: false,
             daysOfWeekVisible: true,
-            daysOfWeekStyle: const DaysOfWeekStyle(
-                weekdayStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500),
-                weekendStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500)),
+              daysOfWeekStyle: DaysOfWeekStyle(
+                  weekdayStyle: TextStyle(color: ColorsUtils.accentBlue, fontWeight: FontWeight.w500),
+                  weekendStyle: TextStyle(color: ColorsUtils.accentBlue, fontWeight: FontWeight.w500)),
             calendarStyle: CalendarStyle(
               isTodayHighlighted: false,
               outsideDaysVisible: false,
               selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-              defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black),
+              defaultTextStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: ColorsUtils.chipText),
             ),
             onDaySelected: _onDaySelected,
             selectedDayPredicate: (DateTime date) {

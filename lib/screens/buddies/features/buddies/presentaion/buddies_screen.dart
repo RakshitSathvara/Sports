@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/get_all_buddies_repository.dart';
@@ -84,7 +85,7 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
               padding: const EdgeInsets.only(right: 10.0, top: 15, bottom: 15),
               child: CustomTextView(
                 label: 'Your Friends',
-                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, color: const Color(0xFF006590), fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, color: ColorsUtils.accentBlue, fontWeight: FontWeight.w500),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -97,7 +98,7 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            color: Colors.white,
+            color: ColorsUtils.white,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
@@ -112,9 +113,9 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
                       padding: const EdgeInsets.all(8),
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                          color: const Color(0xFFF5F5F5),
+                          color: ColorsUtils.buddiesBackground,
                           border: Border.all(
-                            color: const Color(0xFFF5F5F5),
+                            color: ColorsUtils.buddiesBackground,
                           ),
                           borderRadius: const BorderRadius.all(Radius.circular(10))),
                       child: SizedBox(
@@ -320,7 +321,7 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleSmall!
-                        .copyWith(color: const Color(0xFF2B2B2B), fontSize: 13.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
+                        .copyWith(color: ColorsUtils.chipText, fontSize: 13.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
                   ),
                   const SizedBox(
                     height: 8,
@@ -328,7 +329,7 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
                   CustomTextView(
                     label: allBuddiesModel.aboutYourSelf,
                     type: styleSubTitle,
-                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: const Color(0xFF2B2B2B), fontSize: 11.0, fontWeight: FontWeight.w500),
+                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: ColorsUtils.chipText, fontSize: 11.0, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
                     height: 8,
@@ -469,7 +470,7 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
                     textStyle: Theme.of(context)
                         .textTheme
                         .titleSmall!
-                        .copyWith(color: const Color(0xFF2B2B2B), fontSize: 13.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
+                        .copyWith(color: ColorsUtils.chipText, fontSize: 13.0, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
                   ),
                   const SizedBox(
                     height: 8,
@@ -477,7 +478,7 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
                   CustomTextView(
                     label: allBuddiesModel.aboutYourSelf,
                     type: styleSubTitle,
-                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: const Color(0xFF2B2B2B), fontSize: 11.0, fontWeight: FontWeight.w500),
+                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: ColorsUtils.chipText, fontSize: 11.0, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
                     height: 8,
