@@ -117,7 +117,7 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                     CustomTextView(
                       label: 'Please enter OTP sent to your mail.',
                       type: styleSubTitle,
-                      textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.shadow),
+                      textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.onSurface),
                     ),
                     const SizedBox(
                       height: 20,
@@ -127,7 +127,7 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                       child: CustomTextView(
                         label: 'Enter OTP',
                         type: styleSubTitle,
-                        textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.shadow),
+                        textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.onSurface),
                       ),
                     ),
                     PinCodeTextField(
@@ -193,7 +193,7 @@ class ForgotOTPVerificationPageState extends State<ForgotOTPVerificationPage> {
                         CustomTextView(
                           label: 'If you did not receive the code, ',
                           type: styleSubTitle,
-                          textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.shadow),
+                          textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.onSurface),
                         ),
                         const SizedBox(
                           width: 5,
