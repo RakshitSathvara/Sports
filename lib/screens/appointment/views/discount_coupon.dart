@@ -15,10 +15,12 @@ class DiscountCoupon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return SizedBox(
       height: 140,
       child: CustomPaint(
-        painter: TicketShapePainter(),
+        painter: TicketShapePainter(colorScheme.primary, colorScheme.onPrimary),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
           child: Column(
@@ -26,16 +28,16 @@ class DiscountCoupon extends StatelessWidget {
             children: [
               Text(
                 couponCode,
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: colorScheme.onPrimary,
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               CustomTextView(
                 label: 'Save $discountAmount',
-                textStyle: const TextStyle(
-                  color: Colors.white,
+                textStyle: TextStyle(
+                  color: colorScheme.onPrimary,
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
                   fontFamily: 'Montserrat',
@@ -43,8 +45,8 @@ class DiscountCoupon extends StatelessWidget {
               ),
               CustomTextView(
                 label: 'Expire Date: $expiryDate',
-                textStyle: const TextStyle(
-                  color: Colors.white,
+                textStyle: TextStyle(
+                  color: colorScheme.onPrimary,
                   fontSize: 10,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Montserrat',
@@ -59,11 +61,16 @@ class DiscountCoupon extends StatelessWidget {
 }
 
 class TicketShapePainter extends CustomPainter {
+  TicketShapePainter(this.backgroundColor, this.gridColor);
+
+  final Color backgroundColor;
+  final Color gridColor;
+
   @override
   void paint(Canvas canvas, Size size) {
     // Main ticket shape paint
     final Paint paint = Paint()
-      ..color = const Color(0xFF006994) // Deep blue color
+      ..color = backgroundColor
       ..style = PaintingStyle.fill;
 
     const double circleRadius = 20;
@@ -125,7 +132,7 @@ class TicketShapePainter extends CustomPainter {
 
     // Grid pattern paint
     final Paint gridPaint = Paint()
-      ..color = Colors.white.withOpacity(0.05)
+      ..color = gridColor.withOpacity(0.05)
       ..strokeWidth = 0.5
       ..style = PaintingStyle.stroke;
 
