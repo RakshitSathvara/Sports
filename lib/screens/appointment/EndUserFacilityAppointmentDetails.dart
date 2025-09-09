@@ -50,13 +50,14 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: appbarView(),
       body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Theme.of(context).extension<CustomColors>()!.white,
+          color: colorScheme.surface,
           child: _facilityAppointmentDetailModel != null
               ? SingleChildScrollView(
                   child: Column(
@@ -538,7 +539,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
   Widget _paymentSummaryView() {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).extension<CustomColors>()!.white,
+        color: Theme.of(context).colorScheme.surface,
         border: Border.all(color: Theme.of(context).extension<CustomColors>()!.greyText),
       ),
       padding: const EdgeInsets.all(8.0),

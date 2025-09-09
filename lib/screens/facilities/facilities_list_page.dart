@@ -122,6 +122,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Book',
@@ -943,13 +944,13 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
             height: 70.0,
             child: ElevatedButton(
                 style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(const Color(0xFFCECECE)),
-                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFCECECE)),
+                  foregroundColor: MaterialStateProperty.all<Color>(colorScheme.onSurface),
+                  backgroundColor: MaterialStateProperty.all<Color>(colorScheme.surfaceVariant),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    const RoundedRectangleBorder(
+                    RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero,
                       side: BorderSide(
-                        color: Color(0xFFCECECE),
+                        color: colorScheme.surfaceVariant,
                       ),
                     ),
                   ),
@@ -988,13 +989,13 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
             height: 70.0,
             child: ElevatedButton(
                 style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(const Color(0xFF006590)),
-                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF006590)),
+                  foregroundColor: MaterialStateProperty.all<Color>(colorScheme.onPrimary),
+                  backgroundColor: MaterialStateProperty.all<Color>(colorScheme.primary),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    const RoundedRectangleBorder(
+                    RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero,
                       side: BorderSide(
-                        color: Color(0xFF006590),
+                        color: colorScheme.primary,
                       ),
                     ),
                   ),

@@ -252,7 +252,7 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                                         textStyle: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
-                                            .copyWith(fontSize: 16, color: Theme.of(context).extension<CustomColors>()!.white, fontWeight: FontWeight.w400),
+                                            .copyWith(fontSize: 16, color: Theme.of(context).colorScheme.onError, fontWeight: FontWeight.w400),
                                       ),
                                     ),
                                   ),
@@ -268,14 +268,14 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                                         facilityCancelRequest(context);
                                       },
                                       style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(Theme.of(context).extension<CustomColors>()!.greenAmount),
+                                        backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.primary),
                                       ),
                                       child: CustomTextView(
                                         label: 'Confirm',
                                         textStyle: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
-                                            .copyWith(fontSize: 16, color: Theme.of(context).extension<CustomColors>()!.white, fontWeight: FontWeight.w400),
+                                            .copyWith(fontSize: 16, color: Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.w400),
                                       ),
                                     ),
                                   ),

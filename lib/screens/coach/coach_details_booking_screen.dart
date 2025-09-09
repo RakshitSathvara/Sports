@@ -4,6 +4,7 @@ import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 
 import '../../components/my_button.dart';
 import '../../theme/oqdo_theme_data.dart';
+import '../../theme/custom_colors.dart';
 import '../../utils/custom_text_view.dart';
 
 class CoachDetailsBookingScreen extends StatefulWidget {
@@ -137,9 +138,9 @@ class _CoachDetailsBookingScreenState extends State<CoachDetailsBookingScreen> {
                     itemCount: 5,
                     itemSize: 15,
                     itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
-                    itemBuilder: (context, _) => const Icon(
+                    itemBuilder: (context, _) => Icon(
                       Icons.star,
-                      color: Colors.amber,
+                      color: Theme.of(context).extension<CustomColors>()!.yellowStatus,
                       size: 15,
                     ),
                     onRatingUpdate: (rating) {

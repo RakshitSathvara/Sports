@@ -254,9 +254,9 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                     itemCount: 5,
                     itemSize: 15,
                     itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
-                    itemBuilder: (context, _) => const Icon(
+                    itemBuilder: (context, _) => Icon(
                       Icons.star,
-                      color: Colors.amber,
+                      color: Theme.of(context).extension<CustomColors>()!.yellowStatus,
                       size: 15,
                     ),
                     onRatingUpdate: (rating) {

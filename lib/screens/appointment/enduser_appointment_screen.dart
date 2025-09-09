@@ -83,6 +83,7 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: CustomAppBar(
           title: 'Appointments Management',
@@ -91,7 +92,7 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
           }),
       body: SafeArea(
         child: Container(
-          color: Theme.of(context).extension<CustomColors>()!.white,
+          color: colorScheme.surface,
           width: MediaQuery.of(context).size.width,
           height: double.infinity,
           child: _endUserAppointmentList.isNotEmpty
@@ -131,7 +132,7 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .bodyMedium!
-                                        .copyWith(color: Theme.of(context).extension<CustomColors>()!.white, fontSize: 18, fontWeight: FontWeight.w500),
+                                        .copyWith(color: colorScheme.onPrimary, fontSize: 18, fontWeight: FontWeight.w500),
                                   ),
                                 ),
                               ),
@@ -659,7 +660,7 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
     }
 
     return Container(
-      color: Theme.of(context).extension<CustomColors>()!.white,
+      color: Theme.of(context).colorScheme.surface,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height / 1.2,
       child: SingleChildScrollView(
