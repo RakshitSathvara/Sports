@@ -8,7 +8,7 @@ import 'package:oqdo_mobile_app/model/cancel_reason_list_response_model.dart';
 import 'package:oqdo_mobile_app/model/cancel_reason_view_model.dart';
 import 'package:oqdo_mobile_app/model/coach_cancel_slot_response_model.dart';
 import 'package:oqdo_mobile_app/repository/facility_slot_cancel_response_model.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -52,7 +52,7 @@ class _CancelReasonScreenState extends State<CancelReasonScreen> {
       ),
       body: SafeArea(
         child: Container(
-          color: OQDOThemeData.whiteColor,
+          color: Theme.of(context).extension<CustomColors>()!.white,
           width: double.infinity,
           height: double.infinity,
           child: Column(
@@ -143,7 +143,10 @@ class _CancelReasonScreenState extends State<CancelReasonScreen> {
         ),
         CustomTextView(
           label: model.cancelreason,
-          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 15, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+          textStyle: Theme.of(context)
+              .textTheme
+              .bodyMedium!
+              .copyWith(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
         ),
       ],
     );

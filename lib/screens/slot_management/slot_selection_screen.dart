@@ -15,7 +15,7 @@ import 'package:oqdo_mobile_app/model/facility_slot_booking_model.dart';
 import 'package:oqdo_mobile_app/model/freeze_facility_response_model.dart';
 import 'package:oqdo_mobile_app/model/get_21_days_slot_response_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/coutdown_timer.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
@@ -153,7 +153,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
         ),
         body: SafeArea(
           child: Container(
-            color: OQDOThemeData.whiteColor,
+            color: Theme.of(context).extension<CustomColors>()!.white,
             width: MediaQuery.of(context).size.width,
             height: double.infinity,
             child: Column(
@@ -181,7 +181,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                                         textStyle: Theme.of(context)
                                             .textTheme
                                             .titleMedium!
-                                            .copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: const Color(0xFF333333)),
+                                            .copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                                       ),
                                     ],
                                   ),
@@ -226,7 +226,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 16, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                                      .copyWith(fontSize: 16, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                                 ),
                               ],
                             ),
@@ -243,14 +243,14 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                             CustomTextView(
                               label: 'Total Amount',
                               textStyle:
-                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 18, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 18, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                             ),
                             const Spacer(),
                             CustomTextView(
                               label: 'S\$ ${totalAmount.toStringAsFixed(2)}',
                               textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                                     fontWeight: FontWeight.w400,
-                                    color: OQDOThemeData.greyColor,
+                                    color: Theme.of(context).colorScheme.onSurface,
                                     fontSize: 20,
                                   ),
                             )
@@ -268,7 +268,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                           maxLine: 3,
                           label: 'Booking timeout. Please Return to Home and book again.',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: OQDOThemeData.errorColor, fontSize: 18),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error, fontSize: 18),
                         ),
                       )
                     : isTimingShow
@@ -352,7 +352,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
         children: [
           CustomTextView(
             label: monthStr,
-            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: const Color(0xFF333333)),
+            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
           ),
           const Spacer(),
           GestureDetector(
@@ -406,13 +406,13 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
             headerVisible: false,
             daysOfWeekVisible: true,
             daysOfWeekStyle: const DaysOfWeekStyle(
-                weekdayStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500),
-                weekendStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500)),
+                weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
+                weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
             calendarStyle: CalendarStyle(
               isTodayHighlighted: false,
               outsideDaysVisible: false,
               selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-              defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black),
+              defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
             ),
             onDaySelected: _onDaySelected,
             selectedDayPredicate: (DateTime date) {
@@ -454,13 +454,13 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                           border: Border.all(
                             color: Theme.of(context).colorScheme.primary,
                           ),
-                          color: const Color(0xFFCCCCCC),
+                          color: Theme.of(context).colorScheme.outline,
                         ),
                         child: Center(
                           child: CustomTextView(
                             label: '${_singleFacilityDatesList[0].listOfSlots![index].startTime} - ${_singleFacilityDatesList[0].listOfSlots![index].endTime}',
                             type: styleSubTitle,
-                            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.greyColor),
+                            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.onSurface),
                           ),
                         ),
                       ),
@@ -478,7 +478,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                             CustomTextView(
                               label: _singleFacilityDatesList[0].listOfSlots![index].availableSeat.toString(),
                               textStyle:
-                                  Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14, color: OQDOThemeData.blackColor, fontWeight: FontWeight.w300),
+                                  Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w300),
                             ),
                             const SizedBox(
                               width: 5,
@@ -493,7 +493,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                         CustomTextView(
                           label: 'Available',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: const Color(0xFF333333)),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                         ),
                         const SizedBox(
                           height: 5,
@@ -510,14 +510,14 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                           fit: FlexFit.tight,
                           child: Container(
                             decoration: BoxDecoration(
-                                border: Border.all(color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Colors.green : Colors.blue),
-                                color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Colors.green : Colors.blue),
+                                border: Border.all(color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Theme.of(context).extension<CustomColors>()!.greenAmount : Theme.of(context).colorScheme.primary),
+                                color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Theme.of(context).extension<CustomColors>()!.greenAmount : Theme.of(context).colorScheme.primary),
                             child: Center(
                               child: CustomTextView(
                                 label:
                                     '${_singleFacilityDatesList[0].listOfSlots![index].startTime} - ${_singleFacilityDatesList[0].listOfSlots![index].endTime}',
                                 type: styleSubTitle,
-                                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.whiteColor),
+                                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).extension<CustomColors>()!.white),
                               ),
                             ),
                           ),
@@ -537,7 +537,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 14, color: OQDOThemeData.blackColor, fontWeight: FontWeight.w300),
+                                      .copyWith(fontSize: 14, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w300),
                                 ),
                                 const SizedBox(
                                   width: 5,
@@ -552,7 +552,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                             CustomTextView(
                               label: 'Available',
                               textStyle:
-                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: const Color(0xFF333333)),
+                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                             ),
                             const SizedBox(
                               height: 5,
@@ -569,9 +569,9 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                           child: Container(
                             decoration: BoxDecoration(
                               border: Border.all(
-                                color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Colors.green : const Color(0xFFCCCCCC),
+                                color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Theme.of(context).extension<CustomColors>()!.greenAmount : Theme.of(context).colorScheme.outline,
                               ),
-                              color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Colors.green : const Color(0xFFCCCCCC),
+                              color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Theme.of(context).extension<CustomColors>()!.greenAmount : Theme.of(context).colorScheme.outline,
                             ),
                             child: Center(
                               child: CustomTextView(
@@ -598,7 +598,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 14, color: OQDOThemeData.blackColor, fontWeight: FontWeight.w300),
+                                      .copyWith(fontSize: 14, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w300),
                                 ),
                                 const SizedBox(
                                   width: 5,
@@ -613,7 +613,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                             CustomTextView(
                               label: 'Available',
                               textStyle:
-                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: const Color(0xFF333333)),
+                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                             ),
                             const SizedBox(
                               height: 5,
@@ -916,7 +916,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                         label:
                             'It appears that you have a scheduled meetup at the chosen time. To prevent any conflicts, you can either unfreeze the slot or request a time change from the meetup creator',
                         maxLine: 5,
-                        textStyle: const TextStyle(fontSize: 15, color: Colors.black),
+                        textStyle: const TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.onSurface),
                         textOverFlow: TextOverflow.ellipsis,
                       ),
                       actions: [
@@ -1078,7 +1078,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
     }
 
     return Container(
-      color: OQDOThemeData.whiteColor,
+      color: Theme.of(context).extension<CustomColors>()!.white,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height / 1.2,
       child: SingleChildScrollView(
@@ -1095,14 +1095,14 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
             ),
             CustomTextView(
               label: '${_currentDay.split("-")[0]} ${_currentDay.split('-')[1]} ${_currentDay.split('-')[2]}',
-              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: const Color(0xFF333333), fontWeight: FontWeight.w500),
+              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
             ),
             const SizedBox(
               height: 3,
             ),
             CustomTextView(
               label: initSelectedDate,
-              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: const Color(0xFF333333), fontWeight: FontWeight.w500),
+              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 40, left: 25, right: 25),
@@ -1115,13 +1115,13 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                 daysOfWeekVisible: true,
                 currentDay: kToday,
                 daysOfWeekStyle: const DaysOfWeekStyle(
-                    weekdayStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500),
-                    weekendStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500)),
+                    weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
+                    weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
                 calendarStyle: CalendarStyle(
                   isTodayHighlighted: false,
                   outsideDaysVisible: false,
                   selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-                  defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black),
+                  defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                 ),
                 onCalendarCreated: (controller) {
                   _pageController = controller;
@@ -1178,14 +1178,14 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
             children: [
               CustomTextView(
                 label: headerText.split(' ')[0],
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: const Color(0xFF333333)),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface),
               ),
               const SizedBox(
                 height: 5,
               ),
               CustomTextView(
                 label: headerText.split(' ')[1],
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: const Color(0xFF333333)),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface),
               ),
             ],
           ),
