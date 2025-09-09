@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 
 class SelectedDiscountView extends StatelessWidget {
@@ -15,11 +16,14 @@ class SelectedDiscountView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+
     return Container(
       margin: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF4FBFF),
-        border: Border.all(color: const Color(0xFF0099FA).withOpacity(0.5), width: 2),
+        color: colorScheme.primary.withOpacity(0.05),
+        border: Border.all(color: colorScheme.primary.withOpacity(0.5), width: 2),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Padding(
@@ -32,26 +36,26 @@ class SelectedDiscountView extends StatelessWidget {
             Expanded(
               child: Text.rich(
                 TextSpan(
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xFF0099FA),
+                    color: colorScheme.primary,
                   ),
                   children: [
                     const TextSpan(text: 'You Saved '),
                     TextSpan(
                       text: percentage,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF0099FA),
+                        color: colorScheme.primary,
                       ),
                     ),
                     const TextSpan(text: ' with '),
                     TextSpan(
                       text: couponCode,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF0099FA),
+                        color: colorScheme.primary,
                       ),
                     ),
                   ],
@@ -63,17 +67,17 @@ class SelectedDiscountView extends StatelessWidget {
             TextButton(
               onPressed: onRemove,
               style: TextButton.styleFrom(
-                foregroundColor: const Color(0xFFFF0000),
+                foregroundColor: customColors.redColor,
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 minimumSize: Size.zero,
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
               child: CustomTextView(
                 label: 'Remove',
-                textStyle: const TextStyle(
+                textStyle: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFFFF0000),
+                  color: customColors.redColor,
                 ),
               ),
             ),

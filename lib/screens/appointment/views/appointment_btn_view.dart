@@ -13,10 +13,12 @@ class AppointmentButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xFF006990),
+        backgroundColor: colorScheme.primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
@@ -34,8 +36,8 @@ class AppointmentButton extends StatelessWidget {
               children: [
                 CustomTextView(
                   label: 'S\$ ${amount.toStringAsFixed(2)}',
-                  textStyle: const TextStyle(
-                    color: Colors.white,
+                  textStyle: TextStyle(
+                    color: colorScheme.onPrimary,
                     fontSize: 14,
                     fontFamily: 'SFPro',
                     fontWeight: FontWeight.w700,
@@ -44,9 +46,9 @@ class AppointmentButton extends StatelessWidget {
                 const SizedBox(height: 4),
                 CustomTextView(
                   label: 'To Pay',
-                  textStyle: const TextStyle(
+                  textStyle: TextStyle(
                     fontFamily: 'SFPro',
-                    color: Colors.white60,
+                    color: colorScheme.onPrimary.withOpacity(0.6),
                     fontSize: 12,
                   ),
                 ),
@@ -57,8 +59,8 @@ class AppointmentButton extends StatelessWidget {
               children: [
                 CustomTextView(
                   label: 'Book Appointments',
-                  textStyle: const TextStyle(
-                    color: Colors.white,
+                  textStyle: TextStyle(
+                    color: colorScheme.onPrimary,
                     fontSize: 14,
                     fontFamily: 'SFPro',
                     fontWeight: FontWeight.w500,

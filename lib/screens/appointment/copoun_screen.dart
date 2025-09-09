@@ -32,8 +32,10 @@ class _CopounScreenState extends State<CopounScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: colorScheme.background,
       appBar: CustomAppBar(
           title: 'Book Appointment',
           onBack: () {
@@ -48,7 +50,7 @@ class _CopounScreenState extends State<CopounScreen> {
               label: 'Select Coupon',
               textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                     fontSize: 19,
-                    color: const Color(0xFF2B2B2B),
+                    color: colorScheme.onBackground,
                     fontWeight: FontWeight.bold,
                   ),
             ),
@@ -83,13 +85,13 @@ class _CopounScreenState extends State<CopounScreen> {
               : Expanded(
                   child: Center(
                   child: isLoading
-                      ? const CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF006990)),
+                      ? CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(colorScheme.primary),
                         )
                       : CustomTextView(
                           label: 'No Coupons Available',
-                          textStyle: const TextStyle(
-                            color: Color(0xFF2B2B2B),
+                          textStyle: TextStyle(
+                            color: colorScheme.onBackground,
                             fontSize: 19,
                             fontWeight: FontWeight.bold,
                           ),
