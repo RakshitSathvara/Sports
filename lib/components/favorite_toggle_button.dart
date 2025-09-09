@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class FavoriteToggleButton extends StatelessWidget {
   final Function() onFavoriteChanged;
@@ -25,6 +26,7 @@ class FavoriteToggleButton extends StatelessWidget {
         child: Image.asset(
           isFavorite ? 'assets/images/iv_selected_fav.png' : 'assets/images/ic_fav.png',
           fit: BoxFit.contain,
+          color: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
         ),
       ),
     );

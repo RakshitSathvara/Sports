@@ -10,7 +10,7 @@ import 'package:oqdo_mobile_app/model/common_passing_args.dart';
 import 'package:oqdo_mobile_app/model/get_all_activity_and_sub_activity_response.dart';
 import 'package:oqdo_mobile_app/model/selecte_home_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -124,6 +124,7 @@ class _CoachListPageState extends State<CoachListPage> {
                         "assets/images/ic_fav.png",
                         height: 30,
                         width: 30,
+                        color: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
                       )),
                 ),
         ],
@@ -222,9 +223,14 @@ class _CoachListPageState extends State<CoachListPage> {
                           height: 25,
                           width: 25,
                           fit: BoxFit.fill,
+                          color: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
                         ),
                       ),
                       border: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      focusedErrorBorder: InputBorder.none,
                     ),
                     onChanged: (value) {
                       // Cancel the previous timer
@@ -429,6 +435,7 @@ class _CoachListPageState extends State<CoachListPage> {
                             height: 20,
                             width: 20,
                             fit: BoxFit.fill,
+                            color: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
                           ),
                         ],
                       ),
@@ -876,6 +883,7 @@ class _CoachListPageState extends State<CoachListPage> {
             width: 25.0,
             child: Image.asset(
               'assets/images/ic_filter.png',
+              color: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
             ),
           ),
         ),

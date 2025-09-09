@@ -157,6 +157,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                         "assets/images/ic_fav.png",
                         height: 30,
                         width: 30,
+                        color: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
                       )),
                 ),
         ],
@@ -257,9 +258,14 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                           height: 25,
                           width: 25,
                           fit: BoxFit.fill,
+                          color: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
                         ),
                       ),
                       border: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      focusedErrorBorder: InputBorder.none,
                     ),
                     onChanged: (value) {
                       // Cancel the previous timer
@@ -441,6 +447,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
                   height: 20,
                   width: 20,
                   fit: BoxFit.fill,
+                  color: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
                 ),
                 const SizedBox(
                   width: 10,
@@ -587,6 +594,7 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
             width: 25.0,
             child: Image.asset(
               'assets/images/ic_filter.png',
+              color: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
             ),
           ),
         ),

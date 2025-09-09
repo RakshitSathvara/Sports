@@ -460,6 +460,7 @@ class _FacilityDetailsScreenState extends State<FacilityDetailsScreen> {
                       fit: BoxFit.fill,
                       width: 20,
                       height: 20,
+                      color: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
                     ),
                   ),
                 ],

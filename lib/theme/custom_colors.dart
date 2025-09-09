@@ -31,10 +31,11 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.buddiesCard,
     required this.buddiesBorder,
     required this.myButtonBgColor,
+    required this.coachFacilityFavIconColor,
   });
 
   final Color greyButton;
-  final Color greyCircle;
+  final Color greyCircle; 
   final Color redColor;
   final Color redDeleteColor;
   final Color vacationList;
@@ -62,6 +63,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color buddiesCard;
   final Color buddiesBorder;
   final Color myButtonBgColor;
+  final Color coachFacilityFavIconColor;
 
   static const CustomColors light = CustomColors(
     greyButton: Color(0xFFEFEFEF),
@@ -93,6 +95,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     buddiesCard: Color(0xFFF1F1F1),
     buddiesBorder: Color(0xFFCFCFCF),
     myButtonBgColor: Color(0xFF006590),
+    coachFacilityFavIconColor: Color(0xFFF1F1F1),
   );
 
   static const CustomColors dark = CustomColors(
@@ -125,6 +128,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     buddiesCard: Color(0xFF333333),
     buddiesBorder: Color(0xFF404040),
     myButtonBgColor : Color(0xFF006590),
+    coachFacilityFavIconColor: Color(0xFFFFFFFF),
   );
 
   @override
@@ -158,6 +162,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? buddiesCard,
     Color? buddiesBorder,
     Color? myButtonBgColor,
+    Color? coachFacilityFavIconColor,
   }) {
     return CustomColors(
       greyButton: greyButton ?? this.greyButton,
@@ -189,6 +194,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       buddiesCard: buddiesCard ?? this.buddiesCard,
       buddiesBorder: buddiesBorder ?? this.buddiesBorder,
       myButtonBgColor: myButtonBgColor ?? this.myButtonBgColor,
+      coachFacilityFavIconColor: coachFacilityFavIconColor ?? this.coachFacilityFavIconColor,
     );
   }
 
@@ -225,6 +231,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       buddiesCard: Color.lerp(buddiesCard, other.buddiesCard, t)!,
       buddiesBorder: Color.lerp(buddiesBorder, other.buddiesBorder, t)!,
       myButtonBgColor: Color.lerp(myButtonBgColor, other.myButtonBgColor, t)!,
+      coachFacilityFavIconColor: Color.lerp(coachFacilityFavIconColor, other.coachFacilityFavIconColor, t)!,
     );
   }
 }
