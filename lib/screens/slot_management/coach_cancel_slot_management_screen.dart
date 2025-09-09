@@ -844,7 +844,7 @@ class _CoachCancelSlotScreenState extends State<CoachCancelSlotScreen> {
                 headerVisible: false,
                 daysOfWeekVisible: true,
                 currentDay: kToday,
-                daysOfWeekStyle: const DaysOfWeekStyle(
+                daysOfWeekStyle:  DaysOfWeekStyle(
                     weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
                     weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
                 calendarStyle: CalendarStyle(

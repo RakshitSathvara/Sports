@@ -201,9 +201,9 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: const Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                                            color:  Theme.of(context).colorScheme.primary.withOpacity(0.1),
                                             borderRadius: BorderRadius.circular(8),
-                                            border: Border.all(color: const Theme.of(context).colorScheme.primary.withOpacity(0.5), width: 2),
+                                            border: Border.all(color:  Theme.of(context).colorScheme.primary.withOpacity(0.5), width: 2),
                                           ),
                                           padding: const EdgeInsets.all(15.0),
                                           margin: const EdgeInsets.all(10.0),
@@ -215,7 +215,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                                 width: 20,
                                               ),
                                               const SizedBox(width: 8.0),
-                                              const Text(
+                                               Text(
                                                 'View All Coupons',
                                                 style: TextStyle(
                                                   fontSize: 16.0,
@@ -702,7 +702,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                   style: ThemeMode.light,
                   googlePay: gpay,
                   applePay: const PaymentSheetApplePay(merchantCountryCode: 'SG', buttonType: PlatformButtonType.buy),
-                  appearance: const PaymentSheetAppearance(
+                  appearance:  PaymentSheetAppearance(
                       colors: PaymentSheetAppearanceColors(primary: Theme.of(context).colorScheme.primary),
                       primaryButton: PaymentSheetPrimaryButtonAppearance(
                           colors: PaymentSheetPrimaryButtonTheme(
@@ -813,7 +813,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.check_circle,
                           color: Theme.of(context).extension<CustomColors>()!.greenAmount,
                           size: 100.0,
@@ -899,7 +899,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.cancel,
                           color: Theme.of(context).colorScheme.error,
                           size: 100.0,
@@ -1014,7 +1014,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Divider(
+                   Divider(
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
                   const SizedBox(
@@ -1129,7 +1129,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
         const SizedBox(
           height: 3,
         ),
-        const Divider(
+         Divider(
           color: Theme.of(context).colorScheme.onSurface,
         ),
       ],

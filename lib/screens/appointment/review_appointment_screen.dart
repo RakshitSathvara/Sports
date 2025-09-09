@@ -118,7 +118,7 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            color: Theme.of(context).colorScheme.onBackground,
+            color: Theme.of(context).colorScheme.surface,
             child: _facilityBookingListModelResponse != null
                 ? Column(
                     children: [

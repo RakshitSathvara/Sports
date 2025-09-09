@@ -274,14 +274,14 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
             calendarFormat: _calendarFormat,
             headerVisible: false,
             daysOfWeekVisible: true,
-            daysOfWeekStyle: const DaysOfWeekStyle(
+            daysOfWeekStyle:  DaysOfWeekStyle(
                 weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
                 weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
             calendarStyle: CalendarStyle(
               isTodayHighlighted: false,
               outsideDaysVisible: false,
               selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-              defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
+              defaultTextStyle:     TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
             ),
             onDaySelected: _onDaySelected,
             selectedDayPredicate: (DateTime date) {
@@ -771,14 +771,14 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                 headerVisible: false,
                 daysOfWeekVisible: true,
                 currentDay: kToday,
-                daysOfWeekStyle: const DaysOfWeekStyle(
+                daysOfWeekStyle:  DaysOfWeekStyle(
                     weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
                     weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
                 calendarStyle: CalendarStyle(
                   isTodayHighlighted: true,
                   outsideDaysVisible: false,
                   selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-                  defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
+                  defaultTextStyle:  TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                 ),
                 onCalendarCreated: (controller) {
                   _pageController = controller;

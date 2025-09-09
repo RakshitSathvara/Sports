@@ -405,14 +405,14 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
             calendarFormat: _calendarFormat,
             headerVisible: false,
             daysOfWeekVisible: true,
-            daysOfWeekStyle: const DaysOfWeekStyle(
+            daysOfWeekStyle:  DaysOfWeekStyle(
                 weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
                 weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
             calendarStyle: CalendarStyle(
               isTodayHighlighted: false,
               outsideDaysVisible: false,
               selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-              defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
+              defaultTextStyle:  TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
             ),
             onDaySelected: _onDaySelected,
             selectedDayPredicate: (DateTime date) {
@@ -916,7 +916,7 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                         label:
                             'It appears that you have a scheduled meetup at the chosen time. To prevent any conflicts, you can either unfreeze the slot or request a time change from the meetup creator',
                         maxLine: 5,
-                        textStyle: const TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.onSurface),
+                        textStyle:  TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.onSurface),
                         textOverFlow: TextOverflow.ellipsis,
                       ),
                       actions: [
@@ -1114,14 +1114,14 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
                 headerVisible: false,
                 daysOfWeekVisible: true,
                 currentDay: kToday,
-                daysOfWeekStyle: const DaysOfWeekStyle(
+                daysOfWeekStyle:  DaysOfWeekStyle(
                     weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
                     weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
                 calendarStyle: CalendarStyle(
                   isTodayHighlighted: false,
                   outsideDaysVisible: false,
                   selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-                  defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
+                  defaultTextStyle:  TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                 ),
                 onCalendarCreated: (controller) {
                   _pageController = controller;

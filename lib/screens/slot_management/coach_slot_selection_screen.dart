@@ -190,7 +190,7 @@ class _CoachSlotSelectionScreenState extends State<CoachSlotSelectionScreen> {
                                   CustomTextView(
                                     label: 'Minimum Slot : ${_calendarViewModel.coachDetailsResponseModel!.minumumSlot}',
                                     color: Theme.of(context).colorScheme.onSurface,
-                                    textStyle: const TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
+                                    textStyle:  TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(
                                     height: 20,
@@ -240,7 +240,7 @@ class _CoachSlotSelectionScreenState extends State<CoachSlotSelectionScreen> {
                                   child: CustomTextView(
                                     label: 'Minimum Slot : ${_calendarViewModel.coachDetailsResponseModel!.minumumSlot}',
                                     color: Theme.of(context).colorScheme.onSurface,
-                                    textStyle: const TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
+                                    textStyle:  TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
                                   ),
                                 ),
                                 const SizedBox(
@@ -436,14 +436,14 @@ class _CoachSlotSelectionScreenState extends State<CoachSlotSelectionScreen> {
             calendarFormat: _calendarFormat,
             headerVisible: false,
             daysOfWeekVisible: true,
-            daysOfWeekStyle: const DaysOfWeekStyle(
+            daysOfWeekStyle:  DaysOfWeekStyle(
                 weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
                 weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
             calendarStyle: CalendarStyle(
               isTodayHighlighted: false,
               outsideDaysVisible: false,
               selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-              defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
+              defaultTextStyle:  TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
             ),
             onDaySelected: _onDaySelected,
             selectedDayPredicate: (DateTime date) {
@@ -956,7 +956,7 @@ class _CoachSlotSelectionScreenState extends State<CoachSlotSelectionScreen> {
                         label:
                             'It appears that you have a scheduled meetup at the chosen time. To prevent any conflicts, you can either unfreeze the slot or request a time change from the meetup creator',
                         maxLine: 5,
-                        textStyle: const TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.onSurface),
+                        textStyle:  TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.onSurface),
                         textOverFlow: TextOverflow.ellipsis,
                       ),
                       actions: [
@@ -1151,14 +1151,14 @@ class _CoachSlotSelectionScreenState extends State<CoachSlotSelectionScreen> {
                 headerVisible: false,
                 daysOfWeekVisible: true,
                 currentDay: kToday,
-                daysOfWeekStyle: const DaysOfWeekStyle(
+                daysOfWeekStyle:  DaysOfWeekStyle(
                     weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
                     weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
                 calendarStyle: CalendarStyle(
                   isTodayHighlighted: false,
                   outsideDaysVisible: false,
                   selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-                  defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
+                  defaultTextStyle:  TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                 ),
                 onCalendarCreated: (controller) {
                   _pageController = controller;

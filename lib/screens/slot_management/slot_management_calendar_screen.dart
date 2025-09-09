@@ -86,14 +86,14 @@ class _SlotManagementCalendarScreenState extends State<SlotManagementCalendarScr
                     headerVisible: false,
                     daysOfWeekVisible: true,
                     currentDay: kToday,
-                    daysOfWeekStyle: const DaysOfWeekStyle(
+                    daysOfWeekStyle:  DaysOfWeekStyle(
                         weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
                         weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
                     calendarStyle: CalendarStyle(
                       isTodayHighlighted: true,
                       outsideDaysVisible: false,
                       selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-                      defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
+                      defaultTextStyle:  TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                     ),
                     onCalendarCreated: (controller) {
                       _pageController = controller;
