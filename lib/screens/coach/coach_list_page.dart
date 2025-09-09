@@ -89,6 +89,7 @@ class _CoachListPageState extends State<CoachListPage> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Book',
@@ -1152,9 +1153,9 @@ class _CoachListPageState extends State<CoachListPage> {
                     child: Container(
                       height: 100.0,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.onPrimary,
+                        color: colorScheme.surface,
                         border: Border.all(
-                          color: Colors.black,
+                          color: colorScheme.outline,
                           width: 1,
                         ),
                         borderRadius: BorderRadius.circular(2),
@@ -1211,9 +1212,9 @@ class _CoachListPageState extends State<CoachListPage> {
                     child: Container(
                       height: 100.0,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.onPrimary,
+                        color: colorScheme.surface,
                         border: Border.all(
-                          color: Colors.black,
+                          color: colorScheme.outline,
                           width: 1,
                         ),
                         borderRadius: BorderRadius.circular(2),

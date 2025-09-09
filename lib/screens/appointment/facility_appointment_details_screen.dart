@@ -354,7 +354,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
   Widget _paymentSummaryView() {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).extension<CustomColors>()!.white,
+        color: Theme.of(context).colorScheme.surface,
         border: Border.all(color: Theme.of(context).extension<CustomColors>()!.greyText),
       ),
       padding: const EdgeInsets.all(8.0),

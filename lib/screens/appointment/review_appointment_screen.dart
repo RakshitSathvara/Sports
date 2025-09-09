@@ -1203,7 +1203,7 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Container(
               decoration: BoxDecoration(
-                color: Theme.of(context).extension<CustomColors>()!.white,
+                color: Theme.of(context).colorScheme.surface,
                 border: Border.all(
                     color:
                         Theme.of(context).extension<CustomColors>()!.greyText),
