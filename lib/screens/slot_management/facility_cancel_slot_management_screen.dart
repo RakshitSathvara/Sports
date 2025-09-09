@@ -10,7 +10,7 @@ import 'package:oqdo_mobile_app/model/calendar_view_model.dart';
 import 'package:oqdo_mobile_app/model/cancel_reason_view_model.dart';
 import 'package:oqdo_mobile_app/model/facility_slot_booking_model.dart';
 import 'package:oqdo_mobile_app/model/get_21_days_slot_response_model.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -82,7 +82,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
       ),
       body: SafeArea(
         child: Container(
-          color: OQDOThemeData.whiteColor,
+          color: Theme.of(context).extension<CustomColors>()!.white,
           width: MediaQuery.of(context).size.width,
           height: double.infinity,
           child: Column(
@@ -109,7 +109,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: const Color(0xFF333333)),
+                                          .copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                                     ),
                                     const Spacer(),
                                     CustomTextView(
@@ -117,7 +117,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 15, fontWeight: FontWeight.w500, color: const Color(0xFFABABAB)),
+                                          .copyWith(fontSize: 15, fontWeight: FontWeight.w500, color: Theme.of(context).extension<CustomColors>()!.greyText),
                                     ),
                                   ],
                                 ),
@@ -162,7 +162,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                                 textStyle: Theme.of(context)
                                     .textTheme
                                     .titleMedium!
-                                    .copyWith(fontSize: 16, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                                    .copyWith(fontSize: 16, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                               ),
                             ],
                           ),
@@ -202,7 +202,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                             maxLine: 3,
                             textOverFlow: TextOverflow.ellipsis,
                             textStyle:
-                                Theme.of(context).textTheme.titleMedium!.copyWith(color: OQDOThemeData.errorColor, fontSize: 16, fontWeight: FontWeight.w400),
+                                Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.error, fontSize: 16, fontWeight: FontWeight.w400),
                           ),
                         ),
                       ],
@@ -222,7 +222,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
         children: [
           CustomTextView(
             label: monthStr,
-            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: const Color(0xFF333333)),
+            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
           ),
           const Spacer(),
           GestureDetector(
@@ -275,13 +275,13 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
             headerVisible: false,
             daysOfWeekVisible: true,
             daysOfWeekStyle: const DaysOfWeekStyle(
-                weekdayStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500),
-                weekendStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500)),
+                weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
+                weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
             calendarStyle: CalendarStyle(
               isTodayHighlighted: false,
               outsideDaysVisible: false,
               selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-              defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black),
+              defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
             ),
             onDaySelected: _onDaySelected,
             selectedDayPredicate: (DateTime date) {
@@ -324,13 +324,13 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                       border: Border.all(
                         color: Theme.of(context).colorScheme.primary,
                       ),
-                      color: const Color(0xFFCCCCCC),
+                      color: Theme.of(context).colorScheme.outline,
                     ),
                     child: Center(
                       child: CustomTextView(
                         label: '${_singleFacilityDatesList[0].listOfSlots![index].startTime} - ${_singleFacilityDatesList[0].listOfSlots![index].endTime}',
                         type: styleSubTitle,
-                        textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.greyColor),
+                        textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.onSurface),
                       ),
                     ),
                   ),
@@ -348,7 +348,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                         CustomTextView(
                           label: _singleFacilityDatesList[0].listOfSlots![index].bookedSeat.toString(),
                           textStyle:
-                              Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14, color: OQDOThemeData.blackColor, fontWeight: FontWeight.w300),
+                              Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w300),
                         ),
                         const SizedBox(
                           width: 5,
@@ -362,7 +362,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                     ),
                     CustomTextView(
                       label: 'Booked',
-                      textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: const Color(0xFF333333)),
+                      textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                     ),
                     const SizedBox(
                       height: 5,
@@ -382,13 +382,13 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                           border: Border.all(
                             color: Theme.of(context).colorScheme.primary,
                           ),
-                          color: const Color(0xFFCCCCCC),
+                          color: Theme.of(context).colorScheme.outline,
                         ),
                         child: Center(
                           child: CustomTextView(
                             label: '${_singleFacilityDatesList[0].listOfSlots![index].startTime} - ${_singleFacilityDatesList[0].listOfSlots![index].endTime}',
                             type: styleSubTitle,
-                            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.greyColor),
+                            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.onSurface),
                           ),
                         ),
                       ),
@@ -406,7 +406,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                             CustomTextView(
                               label: _singleFacilityDatesList[0].listOfSlots![index].bookedSeat.toString(),
                               textStyle:
-                                  Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14, color: OQDOThemeData.blackColor, fontWeight: FontWeight.w300),
+                                  Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w300),
                             ),
                             const SizedBox(
                               width: 5,
@@ -421,7 +421,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                         CustomTextView(
                           label: 'Booked',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: const Color(0xFF333333)),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                         ),
                         const SizedBox(
                           height: 5,
@@ -438,15 +438,15 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Colors.green : Colors.blue,
+                            color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Theme.of(context).extension<CustomColors>()!.greenAmount : Theme.of(context).colorScheme.primary,
                           ),
-                          color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Colors.green : Colors.blue,
+                          color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Theme.of(context).extension<CustomColors>()!.greenAmount : Theme.of(context).colorScheme.primary,
                         ),
                         child: Center(
                           child: CustomTextView(
                             label: '${_singleFacilityDatesList[0].listOfSlots![index].startTime} - ${_singleFacilityDatesList[0].listOfSlots![index].endTime}',
                             type: styleSubTitle,
-                            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.whiteColor),
+                            textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).extension<CustomColors>()!.white),
                           ),
                         ),
                       ),
@@ -464,7 +464,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                             CustomTextView(
                               label: _singleFacilityDatesList[0].listOfSlots![index].bookedSeat.toString(),
                               textStyle:
-                                  Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14, color: OQDOThemeData.blackColor, fontWeight: FontWeight.w300),
+                                  Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w300),
                             ),
                             const SizedBox(
                               width: 5,
@@ -479,7 +479,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                         CustomTextView(
                           label: 'Booked',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: const Color(0xFF333333)),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                         ),
                         const SizedBox(
                           height: 5,
@@ -735,7 +735,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
     }
 
     return Container(
-      color: OQDOThemeData.whiteColor,
+      color: Theme.of(context).extension<CustomColors>()!.white,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height / 1.2,
       child: SingleChildScrollView(
@@ -752,14 +752,14 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
             ),
             CustomTextView(
               label: '${_currentDay.split("-")[0]} ${_currentDay.split('-')[1]} ${_currentDay.split('-')[2]}',
-              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: const Color(0xFF333333), fontWeight: FontWeight.w500),
+              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
             ),
             const SizedBox(
               height: 3,
             ),
             CustomTextView(
               label: initSelectedDate,
-              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: const Color(0xFF333333), fontWeight: FontWeight.w500),
+              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 40, left: 25, right: 25),
@@ -772,13 +772,13 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                 daysOfWeekVisible: true,
                 currentDay: kToday,
                 daysOfWeekStyle: const DaysOfWeekStyle(
-                    weekdayStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500),
-                    weekendStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500)),
+                    weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
+                    weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
                 calendarStyle: CalendarStyle(
                   isTodayHighlighted: true,
                   outsideDaysVisible: false,
                   selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-                  defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black),
+                  defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                 ),
                 onCalendarCreated: (controller) {
                   _pageController = controller;
@@ -835,14 +835,14 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
             children: [
               CustomTextView(
                 label: headerText.split(' ')[0],
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: const Color(0xFF333333)),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface),
               ),
               const SizedBox(
                 height: 5,
               ),
               CustomTextView(
                 label: headerText.split(' ')[1],
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: const Color(0xFF333333)),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface),
               ),
             ],
           ),

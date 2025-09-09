@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/model/calendar_view_model.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/utilities.dart';
@@ -50,7 +50,7 @@ class _SlotManagementCalendarScreenState extends State<SlotManagementCalendarScr
       ),
       body: SafeArea(
         child: Container(
-          color: OQDOThemeData.whiteColor,
+          color: Theme.of(context).extension<CustomColors>()!.white,
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Column(
@@ -66,14 +66,14 @@ class _SlotManagementCalendarScreenState extends State<SlotManagementCalendarScr
               ),
               CustomTextView(
                 label: '${_currentDay.split("-")[0]} ${_currentDay.split('-')[1]} ${_currentDay.split('-')[2]}',
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: const Color(0xFF333333), fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
               ),
               const SizedBox(
                 height: 3,
               ),
               CustomTextView(
                 label: initSelectedDate,
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: const Color(0xFF333333), fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
               ),
               Expanded(
                 child: Padding(
@@ -87,13 +87,13 @@ class _SlotManagementCalendarScreenState extends State<SlotManagementCalendarScr
                     daysOfWeekVisible: true,
                     currentDay: kToday,
                     daysOfWeekStyle: const DaysOfWeekStyle(
-                        weekdayStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500),
-                        weekendStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500)),
+                        weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
+                        weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
                     calendarStyle: CalendarStyle(
                       isTodayHighlighted: true,
                       outsideDaysVisible: false,
                       selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-                      defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black),
+                      defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                     ),
                     onCalendarCreated: (controller) {
                       _pageController = controller;
@@ -163,14 +163,14 @@ class _SlotManagementCalendarScreenState extends State<SlotManagementCalendarScr
             children: [
               CustomTextView(
                 label: headerText.split(' ')[0],
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: const Color(0xFF333333)),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface),
               ),
               const SizedBox(
                 height: 5,
               ),
               CustomTextView(
                 label: headerText.split(' ')[1],
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: const Color(0xFF333333)),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface),
               ),
             ],
           ),

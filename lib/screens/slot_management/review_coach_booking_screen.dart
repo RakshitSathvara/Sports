@@ -18,7 +18,6 @@ import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/appointment/intent/selected_coupon_intent.dart';
 import 'package:oqdo_mobile_app/screens/appointment/views/appointment_btn_view.dart';
 import 'package:oqdo_mobile_app/screens/appointment/views/selected_discount_view.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/extentions.dart';
@@ -114,7 +113,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            color: Theme.of(context).colorScheme.onBackground,
+            color: Theme.of(context).extension<CustomColors>()!.white,
             child: _coachBookingListModelResponse != null
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,7 +137,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleLarge!
-                                        .copyWith(fontSize: 20, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                                        .copyWith(fontSize: 20, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                                   ),
                                 ),
                                 const SizedBox(
@@ -154,7 +153,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                           label: 'Slots',
                                           textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                                                 fontSize: 16,
-                                                color: OQDOThemeData.otherTextColor.withOpacity(0.6),
+                                                color: Theme.of(context).extension<CustomColors>()!.greyText.withOpacity(0.6),
                                                 fontWeight: FontWeight.w500,
                                                 decoration: TextDecoration.underline,
                                               ),
@@ -168,7 +167,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                         isStrikeThrough: true,
                                         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                                               fontSize: 16,
-                                              color: OQDOThemeData.otherTextColor.withOpacity(0.6),
+                                              color: Theme.of(context).extension<CustomColors>()!.greyText.withOpacity(0.6),
                                               fontWeight: FontWeight.w500,
                                               decoration: TextDecoration.underline,
                                             ),
@@ -202,9 +201,9 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFF0099FA).withOpacity(0.1),
+                                            color: const Theme.of(context).colorScheme.primary.withOpacity(0.1),
                                             borderRadius: BorderRadius.circular(8),
-                                            border: Border.all(color: const Color(0xFF0099FA).withOpacity(0.5), width: 2),
+                                            border: Border.all(color: const Theme.of(context).colorScheme.primary.withOpacity(0.5), width: 2),
                                           ),
                                           padding: const EdgeInsets.all(15.0),
                                           margin: const EdgeInsets.all(10.0),
@@ -220,7 +219,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                                 'View All Coupons',
                                                 style: TextStyle(
                                                   fontSize: 16.0,
-                                                  color: Color(0xFF0099FA),
+                                                  color: Theme.of(context).colorScheme.primary,
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
@@ -262,7 +261,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleSmall!
-                                        .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                                        .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                                   ),
                                 ),
                                 const SizedBox(height: 100.0),
@@ -273,10 +272,10 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Theme.of(context).extension<CustomColors>()!.white,
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
+                              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
                               spreadRadius: 1,
                               blurRadius: 5,
                               offset: const Offset(0, -3),
@@ -294,7 +293,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleMedium!
-                                        .copyWith(color: OQDOThemeData.greyColor, fontSize: 16, fontWeight: FontWeight.w400),
+                                        .copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 16, fontWeight: FontWeight.w400),
                                   )
                                 : CustomTextView(
                                     maxLine: 2,
@@ -302,7 +301,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleMedium!
-                                        .copyWith(fontWeight: FontWeight.w700, color: OQDOThemeData.errorColor, fontSize: 20),
+                                        .copyWith(fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error, fontSize: 20),
                                   ),
                             const SizedBox(height: 20.0),
                             !isHomeVisible
@@ -398,7 +397,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w500,
-                              color: OQDOThemeData.greyColor,
+                              color: Theme.of(context).colorScheme.onSurface,
                             ),
                       ),
                       const SizedBox(
@@ -408,7 +407,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                         label:
                             '${_coachBookingListModelResponse!.coachBookingFreezeSlots![index].startTime} - ${_coachBookingListModelResponse!.coachBookingFreezeSlots![index].endTime}',
                         textStyle:
-                            Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                            Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                       ),
                       const SizedBox(
                         width: 20,
@@ -416,7 +415,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                       CustomTextView(
                         label: 'S\$ ${_coachBookingListModelResponse?.coachBookingFreezeSlots?[index].ratePerHour?.toStringAsFixed(2) ?? 0.00}/hour',
                         textStyle:
-                            Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                            Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                       ),
                     ],
                   ),
@@ -429,7 +428,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
             child: Center(
               child: CustomTextView(
                 label: 'S\$ ${_coachBookingListModelResponse?.coachBookingFreezeSlots?[index].amount?.toStringAsFixed(2) ?? 0.00}',
-                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
               ),
             ),
           ),
@@ -704,10 +703,10 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                   googlePay: gpay,
                   applePay: const PaymentSheetApplePay(merchantCountryCode: 'SG', buttonType: PlatformButtonType.buy),
                   appearance: const PaymentSheetAppearance(
-                      colors: PaymentSheetAppearanceColors(primary: OQDOThemeData.dividerColor),
+                      colors: PaymentSheetAppearanceColors(primary: Theme.of(context).colorScheme.primary),
                       primaryButton: PaymentSheetPrimaryButtonAppearance(
                           colors: PaymentSheetPrimaryButtonTheme(
-                              light: PaymentSheetPrimaryButtonThemeColors(background: OQDOThemeData.dividerColor, text: Colors.white)))),
+                              light: PaymentSheetPrimaryButtonThemeColors(background: Theme.of(context).colorScheme.primary, text: Theme.of(context).extension<CustomColors>()!.white)))),
                   merchantDisplayName: 'OQDO'))
           .then((value) {});
 
@@ -816,7 +815,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                       children: [
                         const Icon(
                           Icons.check_circle,
-                          color: Colors.green,
+                          color: Theme.of(context).extension<CustomColors>()!.greenAmount,
                           size: 100.0,
                         ),
                         const SizedBox(height: 10.0),
@@ -902,7 +901,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                       children: [
                         const Icon(
                           Icons.cancel,
-                          color: Colors.red,
+                          color: Theme.of(context).colorScheme.error,
                           size: 100.0,
                         ),
                         const SizedBox(height: 10.0),
@@ -966,8 +965,8 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Container(
               decoration: BoxDecoration(
-                color: OQDOThemeData.whiteColor,
-                border: Border.all(color: OQDOThemeData.otherTextColor),
+                color: Theme.of(context).extension<CustomColors>()!.white,
+                border: Border.all(color: Theme.of(context).extension<CustomColors>()!.greyText),
               ),
               padding: const EdgeInsets.all(10.0),
               child: Column(
@@ -978,7 +977,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                     textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                           fontSize: 16.0,
                           fontWeight: FontWeight.w600,
-                          color: OQDOThemeData.buttonColor,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                   ),
                   const SizedBox(
@@ -999,14 +998,14 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                       CustomTextView(
                         label: "Total Amount : ",
                         textStyle:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+                            Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
                       ),
                       Column(
                         children: [
                           CustomTextView(
                             label: 'S\$ ${totalAmount.toStringAsFixed(2)}',
                             textStyle:
-                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
                           ),
                         ],
                       ),
@@ -1016,7 +1015,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                     height: 10,
                   ),
                   const Divider(
-                    color: OQDOThemeData.greyColor,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                   const SizedBox(
                     height: 10,
@@ -1036,7 +1035,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                   textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.w600,
-                                      color: !isCouponSelected ? OQDOThemeData.blackColor : Theme.of(context).colorScheme.secondaryContainer),
+                                      color: !isCouponSelected ? Theme.of(context).colorScheme.onSurface : Theme.of(context).colorScheme.secondaryContainer),
                                 ),
                                 const SizedBox(
                                   height: 3,
@@ -1047,7 +1046,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                                      .copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                                 ).visible(isCouponSelected),
                               ],
                             ),
@@ -1065,7 +1064,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                                   textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                                       fontSize: 13.0,
                                       fontWeight: FontWeight.w600,
-                                      color: !isCouponSelected ? OQDOThemeData.blackColor : Theme.of(context).colorScheme.secondaryContainer),
+                                      color: !isCouponSelected ? Theme.of(context).colorScheme.onSurface : Theme.of(context).colorScheme.secondaryContainer),
                                 ),
                               ],
                             ),
@@ -1097,7 +1096,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                 children: [
                   CustomTextView(
                     label: title,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
                   ),
                   const SizedBox(
                     height: 3,
@@ -1105,7 +1104,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                   CustomTextView(
                     label: details,
                     maxLine: 2,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                   ),
                 ],
               ),
@@ -1120,7 +1119,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
                     label: 'S\$ $rate',
                     maxLine: 2,
                     textOverFlow: TextOverflow.ellipsis,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
                   ),
                 ],
               ),
@@ -1131,7 +1130,7 @@ class _ReviewCoachBookingScreenState extends State<ReviewCoachBookingScreen> {
           height: 3,
         ),
         const Divider(
-          color: OQDOThemeData.greyColor,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
       ],
     );
