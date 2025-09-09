@@ -204,7 +204,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Divider(
+                               Divider(
                                 height: 1,
                                 color: Theme.of(context).colorScheme.outline,
                               ),
@@ -243,7 +243,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                 ),
                               ),
                               const SizedBox(height: 15.0),
-                              const Divider(
+                               Divider(
                                 height: 1,
                                 color: Theme.of(context).colorScheme.onSurface,
                               ),
@@ -271,7 +271,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                 ),
                               ),
                               const SizedBox(height: 15.0),
-                              const Divider(
+                               Divider(
                                 height: 1,
                                 color: Theme.of(context).colorScheme.onSurface,
                               ),

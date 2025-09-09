@@ -184,7 +184,7 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                     const SizedBox(
                       height: 10,
                     ),
-                    const Divider(
+                    Divider(
                       height: 1,
                       color: Theme.of(context).colorScheme.outline,
                     ),
@@ -323,10 +323,10 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
           ),
           const Spacer(),
           RichText(
-            text: TextSpan(text: 'Refund Amount: ', style: const TextStyle(color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400, fontSize: 12), children: [
+            text: TextSpan(text: 'Refund Amount: ', style: TextStyle(color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400, fontSize: 12), children: [
               TextSpan(
                 text: 'S\$${finalList[index].refundedAmount?.toStringAsFixed(2) ?? 0.00}',
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: FontWeight.w500,
                   color: Theme.of(context).colorScheme.primary,
                   fontSize: 14,
@@ -378,7 +378,7 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.check_circle,
                           color: Theme.of(context).extension<CustomColors>()!.greenAmount,
                           size: 100.0,

@@ -34,7 +34,8 @@ class ReviewAppointmentScreen extends StatefulWidget {
   ReviewAppointmentScreen({Key? key, this.calendarViewModel}) : super(key: key);
 
   @override
-  State<ReviewAppointmentScreen> createState() => _ReviewAppointmentScreenState();
+  State<ReviewAppointmentScreen> createState() =>
+      _ReviewAppointmentScreenState();
 }
 
 class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
@@ -91,8 +92,10 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
     String strDigits(int n) => n.toString().padLeft(2, '0');
 
     var timerDifference = DateTime.now().difference(bookingStartTime);
-    var differenceInSeconds = bookingTimeDuration.inSeconds - timerDifference.inSeconds;
-    var remainingTimeDiff = Duration(seconds: (differenceInSeconds > 0) ? differenceInSeconds : 0);
+    var differenceInSeconds =
+        bookingTimeDuration.inSeconds - timerDifference.inSeconds;
+    var remainingTimeDiff =
+        Duration(seconds: (differenceInSeconds > 0) ? differenceInSeconds : 0);
 
     var minutes = strDigits(remainingTimeDiff.inMinutes.remainder(60));
     var seconds = strDigits(remainingTimeDiff.inSeconds.remainder(60));
@@ -104,7 +107,9 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
             title: 'Review Appointments',
             onBack: () async {
               if (isHomeVisible) {
-                await Navigator.pushNamedAndRemoveUntil(context, Constants.APPPAGES, Helper.of(context).predicate, arguments: 0);
+                await Navigator.pushNamedAndRemoveUntil(
+                    context, Constants.APPPAGES, Helper.of(context).predicate,
+                    arguments: 0);
               } else {
                 Navigator.pop(context);
               }
@@ -137,23 +142,36 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleLarge!
-                                        .copyWith(fontSize: 20, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
+                                        .copyWith(
+                                            fontSize: 20,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onSurface,
+                                            fontWeight: FontWeight.w500),
                                   ),
                                 ),
                                 const SizedBox(height: 15.0),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Expanded(
                                       flex: 2,
                                       child: Center(
                                         child: CustomTextView(
                                           label: 'Slots',
-                                          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                          textStyle: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium!
+                                              .copyWith(
                                                 fontSize: 16,
-                                                color: Theme.of(context).extension<CustomColors>()!.greyText.withOpacity(0.6),
+                                                color: Theme.of(context)
+                                                    .extension<CustomColors>()!
+                                                    .greyText
+                                                    .withOpacity(0.6),
                                                 fontWeight: FontWeight.w500,
-                                                decoration: TextDecoration.underline,
+                                                decoration:
+                                                    TextDecoration.underline,
                                               ),
                                         ),
                                       ),
@@ -163,11 +181,18 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                                       child: CustomTextView(
                                         label: 'Order fees',
                                         isStrikeThrough: true,
-                                        textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                        textStyle: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium!
+                                            .copyWith(
                                               fontSize: 16,
-                                              color: Theme.of(context).extension<CustomColors>()!.greyText.withOpacity(0.6),
+                                              color: Theme.of(context)
+                                                  .extension<CustomColors>()!
+                                                  .greyText
+                                                  .withOpacity(0.6),
                                               fontWeight: FontWeight.w500,
-                                              decoration: TextDecoration.underline,
+                                              decoration:
+                                                  TextDecoration.underline,
                                             ),
                                       ),
                                     ),
@@ -177,7 +202,8 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                                 ListView.builder(
                                   shrinkWrap: true,
                                   physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: _facilityBookingListModelResponse!.facilityBookingFreezeSlots!.length,
+                                  itemCount: _facilityBookingListModelResponse!
+                                      .facilityBookingFreezeSlots!.length,
                                   itemBuilder: ((context, index) {
                                     return reviewAppointmentListView(index);
                                   }),
@@ -185,9 +211,12 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                                 !isCouponSelected
                                     ? GestureDetector(
                                         onTap: () async {
-                                          final result = await Navigator.pushNamed(context, Constants.couponScreen);
+                                          final result =
+                                              await Navigator.pushNamed(context,
+                                                  Constants.couponScreen);
                                           if (result != null) {
-                                            selectedCouponIntent = result as SelectedCouponIntent;
+                                            selectedCouponIntent =
+                                                result as SelectedCouponIntent;
                                             setState(() {
                                               isCouponSelected = true;
                                               calculateDiscount();
@@ -196,9 +225,18 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Theme.of(context).extension<CustomColors>()!.accentBlue.withOpacity(0.1),
-                                            borderRadius: BorderRadius.circular(8),
-                                            border: Border.all(color: Theme.of(context).extension<CustomColors>()!.accentBlue.withOpacity(0.5), width: 2),
+                                            color: Theme.of(context)
+                                                .extension<CustomColors>()!
+                                                .accentBlue
+                                                .withOpacity(0.1),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            border: Border.all(
+                                                color: Theme.of(context)
+                                                    .extension<CustomColors>()!
+                                                    .accentBlue
+                                                    .withOpacity(0.5),
+                                                width: 2),
                                           ),
                                           padding: const EdgeInsets.all(15.0),
                                           margin: const EdgeInsets.all(10.0),
@@ -210,11 +248,14 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                                                 width: 20,
                                               ),
                                               const SizedBox(width: 8.0),
-                                              const Text(
+                                              Text(
                                                 'View All Coupons',
                                                 style: TextStyle(
                                                   fontSize: 16.0,
-                                                  color: Theme.of(context).extension<CustomColors>()!.accentBlue,
+                                                  color: Theme.of(context)
+                                                      .extension<
+                                                          CustomColors>()!
+                                                      .accentBlue,
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
@@ -223,13 +264,20 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                                         ),
                                       )
                                     : SelectedDiscountView(
-                                        percentage: '${selectedCouponIntent.discount} %',
-                                        couponCode: selectedCouponIntent.couponName,
+                                        percentage:
+                                            '${selectedCouponIntent.discount} %',
+                                        couponCode:
+                                            selectedCouponIntent.couponName,
                                         onRemove: () {
                                           setState(() {
                                             isCouponSelected = false;
                                             discountedAmount = 0.0;
-                                            selectedCouponIntent = SelectedCouponIntent(couponName: '', discount: 0.0, couponId: 0, discountAmount: 0.0);
+                                            selectedCouponIntent =
+                                                SelectedCouponIntent(
+                                                    couponName: '',
+                                                    discount: 0.0,
+                                                    couponId: 0,
+                                                    discountAmount: 0.0);
                                             calculateDiscount();
                                           });
                                         },
@@ -238,28 +286,43 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                                 _paymentSummaryView(),
                                 const SizedBox(height: 20.0),
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0),
                                   child: CustomTextView(
                                     label: 'Cancellation/Refund Policy:',
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleMedium!
-                                        .copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: Theme.of(context).extension<CustomColors>()!.redColor),
+                                        .copyWith(
+                                            fontSize: 14.0,
+                                            fontWeight: FontWeight.w600,
+                                            color: Theme.of(context)
+                                                .extension<CustomColors>()!
+                                                .redColor),
                                   ),
                                 ),
                                 const SizedBox(height: 6.0),
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0),
                                   child: CustomTextView(
                                     maxLine: 2,
-                                    label: 'Refundable if slot booking is cancelled $cancellationTime hours before start time',
+                                    label:
+                                        'Refundable if slot booking is cancelled $cancellationTime hours before start time',
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleSmall!
-                                        .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
+                                        .copyWith(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.w400,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onSurface),
                                   ),
                                 ),
-                                const SizedBox(height: 100.0), // Bottom padding for scrollable content
+                                const SizedBox(
+                                    height:
+                                        100.0), // Bottom padding for scrollable content
                               ],
                             ),
                           ),
@@ -268,10 +331,15 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                       // Fixed bottom section
                       Container(
                         decoration: BoxDecoration(
-                          color: Theme.of(context).extension<CustomColors>()!.white,
+                          color: Theme.of(context)
+                              .extension<CustomColors>()!
+                              .white,
                           boxShadow: [
                             BoxShadow(
-                              color: Theme.of(context).colorScheme.onBackground.withOpacity(0.1),
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onBackground
+                                  .withOpacity(0.1),
                               spreadRadius: 1,
                               blurRadius: 5,
                               offset: const Offset(0, -3),
@@ -285,24 +353,38 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                           children: [
                             !isHomeVisible
                                 ? CustomTextView(
-                                    label: 'Time remaining $minutes:$seconds minutes',
+                                    label:
+                                        'Time remaining $minutes:$seconds minutes',
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleMedium!
-                                        .copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 16, fontWeight: FontWeight.w400),
+                                        .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onSurface,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400),
                                   )
                                 : CustomTextView(
                                     maxLine: 2,
-                                    label: 'Booking timeout. Please Return to Home and book again.',
+                                    label:
+                                        'Booking timeout. Please Return to Home and book again.',
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleMedium!
-                                        .copyWith(fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error, fontSize: 20),
+                                        .copyWith(
+                                            fontWeight: FontWeight.w700,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .error,
+                                            fontSize: 20),
                                   ),
                             const SizedBox(height: 20.0),
                             !isHomeVisible
                                 ? AppointmentButton(
-                                    amount: isCouponSelected ? payNowAmount - discountedAmount : payNowAmount,
+                                    amount: isCouponSelected
+                                        ? payNowAmount - discountedAmount
+                                        : payNowAmount,
                                     onPressed: () {
                                       if (isAnySlotSelected()) {
                                         if (!isPaymentSheetVisible) {
@@ -315,17 +397,28 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                                   )
                                 : MyButton(
                                     text: 'Return to Home',
-                                    textcolor: Theme.of(context).colorScheme.onBackground,
+                                    textcolor: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground,
                                     textsize: 16,
                                     fontWeight: FontWeight.w600,
                                     letterspacing: 0.7,
-                                    buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
-                                    buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
+                                    buttoncolor: Theme.of(context)
+                                        .colorScheme
+                                        .secondaryContainer,
+                                    buttonbordercolor: Theme.of(context)
+                                        .colorScheme
+                                        .secondaryContainer,
                                     buttonheight: 55.0,
-                                    buttonwidth: MediaQuery.of(context).size.width,
+                                    buttonwidth:
+                                        MediaQuery.of(context).size.width,
                                     radius: 15,
                                     onTap: () async {
-                                      await Navigator.pushNamedAndRemoveUntil(context, Constants.APPPAGES, Helper.of(context).predicate, arguments: 0);
+                                      await Navigator.pushNamedAndRemoveUntil(
+                                          context,
+                                          Constants.APPPAGES,
+                                          Helper.of(context).predicate,
+                                          arguments: 0);
                                     },
                                   ),
                           ],
@@ -348,10 +441,17 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
       totalAmount = 0.0;
       payNowAmount = 0.0;
       payLaterAmount = 0.0;
-      for (var slot in _facilityBookingListModelResponse!.facilityBookingFreezeSlots!) {
+      for (var slot
+          in _facilityBookingListModelResponse!.facilityBookingFreezeSlots!) {
         if (slot.isSlotSelected!) {
-          discountedAmount += ((slot.amount! * selectedCouponIntent.discount / 100) * 100).round() / 100;
-          slot.discountAmount = ((slot.amount! * selectedCouponIntent.discount / 100) * 100).round() / 100;
+          discountedAmount +=
+              ((slot.amount! * selectedCouponIntent.discount / 100) * 100)
+                      .round() /
+                  100;
+          slot.discountAmount =
+              ((slot.amount! * selectedCouponIntent.discount / 100) * 100)
+                      .round() /
+                  100;
           payNowAmount = payNowAmount + slot.amount!;
           totalAmount = totalAmount + (slot.totalAmount!);
           payLaterAmount = totalAmount - payNowAmount;
@@ -360,7 +460,8 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
     } else {
       var finalAmount = 0.0;
       totalAmount = 0.0;
-      for (var slot in _facilityBookingListModelResponse!.facilityBookingFreezeSlots!) {
+      for (var slot
+          in _facilityBookingListModelResponse!.facilityBookingFreezeSlots!) {
         if (slot.isSlotSelected!) {
           finalAmount += slot.amount!;
           totalAmount = totalAmount + slot.totalAmount!;
@@ -390,21 +491,44 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                 Transform.scale(
                   scale: 1.3,
                   child: Checkbox(
-                      fillColor: MaterialStateProperty.resolveWith(Utils.getColor),
-                      checkColor: Theme.of(context).colorScheme.primaryContainer,
-                      value: _facilityBookingListModelResponse!.facilityBookingFreezeSlots![index].isSlotSelected,
+                      fillColor:
+                          MaterialStateProperty.resolveWith(Utils.getColor),
+                      checkColor:
+                          Theme.of(context).colorScheme.primaryContainer,
+                      value: _facilityBookingListModelResponse!
+                          .facilityBookingFreezeSlots![index].isSlotSelected,
                       onChanged: (value) {
                         if (value!) {
                           setState(() {
-                            _facilityBookingListModelResponse!.facilityBookingFreezeSlots![index].isSlotSelected = value;
-                            totalAmountCalculation(value, _facilityBookingListModelResponse!.facilityBookingFreezeSlots![index].totalAmount ?? 0.00,
-                                _facilityBookingListModelResponse!.facilityBookingFreezeSlots![index].amount ?? 0.00);
+                            _facilityBookingListModelResponse!
+                                .facilityBookingFreezeSlots![index]
+                                .isSlotSelected = value;
+                            totalAmountCalculation(
+                                value,
+                                _facilityBookingListModelResponse!
+                                        .facilityBookingFreezeSlots![index]
+                                        .totalAmount ??
+                                    0.00,
+                                _facilityBookingListModelResponse!
+                                        .facilityBookingFreezeSlots![index]
+                                        .amount ??
+                                    0.00);
                           });
                         } else {
                           setState(() {
-                            _facilityBookingListModelResponse!.facilityBookingFreezeSlots![index].isSlotSelected = value;
-                            totalAmountCalculation(value, _facilityBookingListModelResponse!.facilityBookingFreezeSlots![index].totalAmount ?? 0.00,
-                                _facilityBookingListModelResponse!.facilityBookingFreezeSlots![index].amount ?? 0.00);
+                            _facilityBookingListModelResponse!
+                                .facilityBookingFreezeSlots![index]
+                                .isSlotSelected = value;
+                            totalAmountCalculation(
+                                value,
+                                _facilityBookingListModelResponse!
+                                        .facilityBookingFreezeSlots![index]
+                                        .totalAmount ??
+                                    0.00,
+                                _facilityBookingListModelResponse!
+                                        .facilityBookingFreezeSlots![index]
+                                        .amount ??
+                                    0.00);
                           });
                         }
                       }),
@@ -421,8 +545,13 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                         textOverFlow: TextOverflow.ellipsis,
                         label:
                             '${convertDateToString(_facilityBookingListModelResponse!.facilityBookingFreezeSlots![index].bookingDate!).split(',')[1].split(' ')[2]} ${convertDateToString(_facilityBookingListModelResponse!.facilityBookingFreezeSlots![index].bookingDate!).split(',')[1].split(' ')[1]} - ${convertDateToString(_facilityBookingListModelResponse!.facilityBookingFreezeSlots![index].bookingDate!).split(',')[0]}',
-                        textStyle:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 18.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w500,
+                                color: Theme.of(context).colorScheme.onSurface),
                       ),
                       const SizedBox(
                         height: 5.0,
@@ -432,16 +561,31 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                           CustomTextView(
                             label:
                                 '${_facilityBookingListModelResponse!.facilityBookingFreezeSlots![index].startTime} - ${_facilityBookingListModelResponse!.facilityBookingFreezeSlots![index].endTime}',
-                            textStyle:
-                                Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
+                            textStyle: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w400,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface),
                           ),
                           const SizedBox(
                             width: 20,
                           ),
                           CustomTextView(
-                            label: 'S\$ ${_facilityBookingListModelResponse?.facilityBookingFreezeSlots?[index].ratePerHour?.toStringAsFixed(2) ?? 0.00}/hour',
-                            textStyle:
-                                Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
+                            label:
+                                'S\$ ${_facilityBookingListModelResponse?.facilityBookingFreezeSlots?[index].ratePerHour?.toStringAsFixed(2) ?? 0.00}/hour',
+                            textStyle: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w400,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface),
                           ),
                         ],
                       ),
@@ -455,8 +599,12 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
             flex: 1,
             child: Center(
               child: CustomTextView(
-                label: 'S\$ ${_facilityBookingListModelResponse?.facilityBookingFreezeSlots?[index].amount?.toStringAsFixed(2) ?? 0.00}',
-                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
+                label:
+                    'S\$ ${_facilityBookingListModelResponse?.facilityBookingFreezeSlots?[index].amount?.toStringAsFixed(2) ?? 0.00}',
+                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).colorScheme.onSurface),
               ),
             ),
           ),
@@ -478,15 +626,21 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
   }
 
   void startBookingTimer() {
-    bookingRemainingTimer = Timer.periodic(const Duration(milliseconds: 500), (timer) {
+    bookingRemainingTimer =
+        Timer.periodic(const Duration(milliseconds: 500), (timer) {
       addTimer();
     });
   }
 
   bool isAnySlotSelected() {
     bool isFacilitySelected = false;
-    for (int i = 0; i < _facilityBookingListModelResponse!.facilityBookingFreezeSlots!.length; i++) {
-      if (_facilityBookingListModelResponse!.facilityBookingFreezeSlots![i].isSlotSelected!) {
+    for (int i = 0;
+        i <
+            _facilityBookingListModelResponse!
+                .facilityBookingFreezeSlots!.length;
+        i++) {
+      if (_facilityBookingListModelResponse!
+          .facilityBookingFreezeSlots![i].isSlotSelected!) {
         isFacilitySelected = true;
         break;
       }
@@ -497,7 +651,9 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
   Future<void> getFreezeBooking() async {
     try {
       FacilityBookingListModelResponse response =
-          await Provider.of<SlotManagementViewModel>(context, listen: false).getFreezeBooking(widget.calendarViewModel!.facilityFreezeId.toString());
+          await Provider.of<SlotManagementViewModel>(context, listen: false)
+              .getFreezeBooking(
+                  widget.calendarViewModel!.facilityFreezeId.toString());
       if (response.facilityBookingFreezeId != 0) {
         setState(() {
           _facilityBookingListModelResponse = response;
@@ -516,19 +672,31 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
           if (modelState.containsKey('ErrorMessage')) {
             showSnackBarColor(modelState['ErrorMessage'][0], context, true);
           } else {
-            showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+            showSnackBarColor(
+                'We\'re unable to connect to server. Please contact administrator or try after some time',
+                context,
+                true);
           }
         } else {
-          showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+          showSnackBarColor(
+              'We\'re unable to connect to server. Please contact administrator or try after some time',
+              context,
+              true);
         }
       } else {
-        showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+        showSnackBarColor(
+            'We\'re unable to connect to server. Please contact administrator or try after some time',
+            context,
+            true);
       }
     } on NoConnectivityException catch (_) {
       showSnackBarColor(Constants.internetConnectionErrorMsg, context, true);
     } catch (error) {
       debugPrint(error.toString());
-      showSnackBarErrorColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+      showSnackBarErrorColor(
+          'We\'re unable to connect to server. Please contact administrator or try after some time',
+          context,
+          true);
     }
   }
 
@@ -539,16 +707,20 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
     return parsingDate;
   }
 
-  void totalAmountCalculation(bool isSelected, double? fullAmount, double? bookingAmount) {
+  void totalAmountCalculation(
+      bool isSelected, double? fullAmount, double? bookingAmount) {
     if (isSelected) {
       setState(() {
         // Recalculate discount if coupon is selected
         if (isCouponSelected) {
           calculateDiscount();
         } else {
-          totalAmount = double.parse(totalAmount.toStringAsFixed(2)) + fullAmount!;
-          payNowAmount = double.parse(payNowAmount.toStringAsFixed(2)) + bookingAmount!;
-          payLaterAmount = double.parse(totalAmount.toStringAsFixed(2)) - payNowAmount;
+          totalAmount =
+              double.parse(totalAmount.toStringAsFixed(2)) + fullAmount!;
+          payNowAmount =
+              double.parse(payNowAmount.toStringAsFixed(2)) + bookingAmount!;
+          payLaterAmount =
+              double.parse(totalAmount.toStringAsFixed(2)) - payNowAmount;
         }
       });
     } else {
@@ -557,39 +729,57 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
         if (isCouponSelected) {
           calculateDiscount();
         } else {
-          totalAmount = double.parse(totalAmount.toStringAsFixed(2)) - fullAmount!;
-          payNowAmount = double.parse(payNowAmount.toStringAsFixed(2)) - bookingAmount!;
-          payLaterAmount = double.parse(totalAmount.toStringAsFixed(2)) - payNowAmount;
+          totalAmount =
+              double.parse(totalAmount.toStringAsFixed(2)) - fullAmount!;
+          payNowAmount =
+              double.parse(payNowAmount.toStringAsFixed(2)) - bookingAmount!;
+          payLaterAmount =
+              double.parse(totalAmount.toStringAsFixed(2)) - payNowAmount;
         }
       });
     }
   }
 
   Future<void> facilityAppointmentBooking() async {
-    _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
+    _progressDialog = ProgressDialog(context,
+        type: ProgressDialogType.normal, isDismissible: false);
     _progressDialog.style(message: "Please wait..");
     try {
       await _progressDialog.show();
       Map<String, dynamic> request = {};
       request['TransactionDate'] = convertDateTimeToString(kToday);
       request['EndUserId'] = OQDOApplication.instance.endUserID;
-      request['FacilitySetupDetailId'] = widget.calendarViewModel!.getFacilityByIdModel!.facilitySetupDetailId;
-      request['FacilityBookingFreezeId'] = widget.calendarViewModel!.facilityFreezeId;
-      request['TotalAmt'] = !isCouponSelected ? payNowAmount : (payNowAmount - discountedAmount);
+      request['FacilitySetupDetailId'] =
+          widget.calendarViewModel!.getFacilityByIdModel!.facilitySetupDetailId;
+      request['FacilityBookingFreezeId'] =
+          widget.calendarViewModel!.facilityFreezeId;
+      request['TotalAmt'] =
+          !isCouponSelected ? payNowAmount : (payNowAmount - discountedAmount);
       List<Map> facilityBookingSlotDateDtos = [];
-      for (int i = 0; i < _facilityBookingListModelResponse!.facilityBookingFreezeSlots!.length; i++) {
+      for (int i = 0;
+          i <
+              _facilityBookingListModelResponse!
+                  .facilityBookingFreezeSlots!.length;
+          i++) {
         Map map = {};
-        if (_facilityBookingListModelResponse!.facilityBookingFreezeSlots![i].isSlotSelected!) {
-          map['BookingDate'] = _facilityBookingListModelResponse!.facilityBookingFreezeSlots![i].bookingDate;
-          map['FacilitySetupDaySlotMapId'] = _facilityBookingListModelResponse!.facilityBookingFreezeSlots![i].facilitySetupDaySlotMapId;
+        if (_facilityBookingListModelResponse!
+            .facilityBookingFreezeSlots![i].isSlotSelected!) {
+          map['BookingDate'] = _facilityBookingListModelResponse!
+              .facilityBookingFreezeSlots![i].bookingDate;
+          map['FacilitySetupDaySlotMapId'] = _facilityBookingListModelResponse!
+              .facilityBookingFreezeSlots![i].facilitySetupDaySlotMapId;
           facilityBookingSlotDateDtos.add(map);
         }
       }
       request['FacilityBookingSlotDateDtos'] = facilityBookingSlotDateDtos;
-      request['FacilityProviderId'] = widget.calendarViewModel!.getFacilityByIdModel!.facilityProviderId;
-      request['EndUserReferralActivityId'] = !isCouponSelected ? null : selectedCouponIntent.couponId;
+      request['FacilityProviderId'] =
+          widget.calendarViewModel!.getFacilityByIdModel!.facilityProviderId;
+      request['EndUserReferralActivityId'] =
+          !isCouponSelected ? null : selectedCouponIntent.couponId;
       debugPrint('facilityAppointmentBooking -> ${jsonEncode(request)}');
-      FacilityBookingResponse response = await Provider.of<SlotManagementViewModel>(context, listen: false).facilitySlotBooking(request);
+      FacilityBookingResponse response =
+          await Provider.of<SlotManagementViewModel>(context, listen: false)
+              .facilitySlotBooking(request);
       await _progressDialog.hide();
       if (!mounted) return;
       bookingRemainingTimer!.cancel();
@@ -606,19 +796,31 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
           Map<String, dynamic> modelState = errorModel['ModelState'];
           if (modelState.containsKey('ErrorMessage')) {
             showSnackBarColor(modelState['ErrorMessage'][0], context, true);
-            if (modelState['ErrorMessage'][0].toString().toLowerCase().contains('expire')) {
+            if (modelState['ErrorMessage'][0]
+                .toString()
+                .toLowerCase()
+                .contains('expire')) {
               setState(() {
                 isHomeVisible = true;
               });
             }
           } else {
-            showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+            showSnackBarColor(
+                'We\'re unable to connect to server. Please contact administrator or try after some time',
+                context,
+                true);
           }
         } else {
-          showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+          showSnackBarColor(
+              'We\'re unable to connect to server. Please contact administrator or try after some time',
+              context,
+              true);
         }
       } else {
-        showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+        showSnackBarColor(
+            'We\'re unable to connect to server. Please contact administrator or try after some time',
+            context,
+            true);
       }
     } on NoConnectivityException catch (_) {
       await _progressDialog.hide();
@@ -627,7 +829,10 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
       await _progressDialog.hide();
       if (!mounted) return;
       debugPrint(error.toString());
-      showSnackBarErrorColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+      showSnackBarErrorColor(
+          'We\'re unable to connect to server. Please contact administrator or try after some time',
+          context,
+          true);
     }
   }
 
@@ -645,7 +850,8 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
     try {
       //STEP 2: Initialize Payment Sheet
 
-      var gpay = PaymentSheetGooglePay(merchantCountryCode: "SG", currencyCode: "SGD", testEnv: false);
+      var gpay = PaymentSheetGooglePay(
+          merchantCountryCode: "SG", currencyCode: "SGD", testEnv: false);
 
       await Stripe.instance
           .initPaymentSheet(
@@ -655,19 +861,35 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                   customerId: userId,
                   billingDetails: BillingDetails(
                       name: name,
-                      address: Address(country: 'SG', city: city, line1: "", line2: "", postalCode: zipCode, state: ""),
+                      address: Address(
+                          country: 'SG',
+                          city: city,
+                          line1: "",
+                          line2: "",
+                          postalCode: zipCode,
+                          state: ""),
                       phone: phone,
                       email: email),
-                  billingDetailsCollectionConfiguration: const BillingDetailsCollectionConfiguration(address: AddressCollectionMode.automatic),
+                  billingDetailsCollectionConfiguration:
+                      const BillingDetailsCollectionConfiguration(
+                          address: AddressCollectionMode.automatic),
                   //Gotten from payment intent
                   style: ThemeMode.light,
                   googlePay: gpay,
-                  applePay: const PaymentSheetApplePay(merchantCountryCode: 'SG', buttonType: PlatformButtonType.buy),
-                  appearance: const PaymentSheetAppearance(
-                      colors: PaymentSheetAppearanceColors(primary: Theme.of(context).colorScheme.primary),
+                  applePay: const PaymentSheetApplePay(
+                      merchantCountryCode: 'SG',
+                      buttonType: PlatformButtonType.buy),
+                  appearance: PaymentSheetAppearance(
+                      colors: PaymentSheetAppearanceColors(
+                          primary: Theme.of(context).colorScheme.primary),
                       primaryButton: PaymentSheetPrimaryButtonAppearance(
                           colors: PaymentSheetPrimaryButtonTheme(
-                              light: PaymentSheetPrimaryButtonThemeColors(background: Theme.of(context).colorScheme.primary, text: Theme.of(context).extension<CustomColors>()!.white)))),
+                              light: PaymentSheetPrimaryButtonThemeColors(
+                                  background:
+                                      Theme.of(context).colorScheme.primary,
+                                  text: Theme.of(context)
+                                      .extension<CustomColors>()!
+                                      .white)))),
                   merchantDisplayName: 'OQDO'))
           .then((value) {});
 
@@ -705,8 +927,10 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
     }
   }
 
-  Future<void> validateFacilityPaymentActivity(String paymentID, int facilityBookingId) async {
-    _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
+  Future<void> validateFacilityPaymentActivity(
+      String paymentID, int facilityBookingId) async {
+    _progressDialog = ProgressDialog(context,
+        type: ProgressDialogType.normal, isDismissible: false);
     _progressDialog.style(message: "Please wait...");
     try {
       await _progressDialog.show();
@@ -714,19 +938,24 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
       request['PaymentActivityId'] = 0;
       request['FacilityBookingId'] = facilityBookingId;
       request['CoachBookingId'] = 0;
-      request['FacilityBookingSlotId'] = widget.calendarViewModel!.facilityFreezeId;
+      request['FacilityBookingSlotId'] =
+          widget.calendarViewModel!.facilityFreezeId;
       request['CoachBookingSlotId'] = 0;
       request['CoachBookingFreezeId'] = 0;
-      request['FacilityBookingFreezeId'] = widget.calendarViewModel!.facilityFreezeId;
+      request['FacilityBookingFreezeId'] =
+          widget.calendarViewModel!.facilityFreezeId;
       request['OrderId'] = paymentID;
       request['IsCoach'] = false;
-      request['Amount'] = !isCouponSelected ? payNowAmount : (payNowAmount - discountedAmount);
+      request['Amount'] =
+          !isCouponSelected ? payNowAmount : (payNowAmount - discountedAmount);
       request['Status'] = 'S';
       request['Request'] = 'Success';
       request['Response'] = 'Success';
       request['IsRefund'] = true;
       debugPrint('validateFacilityPaymentActivity -> ${jsonEncode(request)}');
-      var response = await Provider.of<SlotManagementViewModel>(context, listen: false).validateFacilityPaymentActivity(request);
+      var response =
+          await Provider.of<SlotManagementViewModel>(context, listen: false)
+              .validateFacilityPaymentActivity(request);
       await _progressDialog.hide();
       if (!mounted) return;
       if (response) {
@@ -749,18 +978,23 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
   }
 
   Future<void> successBooking(String paymentId, int facilityBookingId) async {
-    _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
+    _progressDialog = ProgressDialog(context,
+        type: ProgressDialogType.normal, isDismissible: false);
     _progressDialog.style(message: "Please wait...");
     try {
       await _progressDialog.show();
       Map<String, dynamic> request = {};
       request['FacilityBookingId'] = facilityBookingId;
       request['OrderId'] = paymentId;
-      request['Amount'] = !isCouponSelected ? payNowAmount : (payNowAmount - discountedAmount);
-      request['EndUserReferralActivityId'] = !isCouponSelected ? null : selectedCouponIntent.couponId;
+      request['Amount'] =
+          !isCouponSelected ? payNowAmount : (payNowAmount - discountedAmount);
+      request['EndUserReferralActivityId'] =
+          !isCouponSelected ? null : selectedCouponIntent.couponId;
       debugPrint('DATA -> ${jsonEncode(request)}');
 
-      bool response = await Provider.of<SlotManagementViewModel>(context, listen: false).successFacilityBooking(request);
+      bool response =
+          await Provider.of<SlotManagementViewModel>(context, listen: false)
+              .successFacilityBooking(request);
       await _progressDialog.hide();
       if (!mounted) return;
       if (response) {
@@ -773,9 +1007,11 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.check_circle,
-                          color: Theme.of(context).extension<CustomColors>()!.greenAmount,
+                          color: Theme.of(context)
+                              .extension<CustomColors>()!
+                              .greenAmount,
                           size: 100.0,
                         ),
                         const SizedBox(height: 10.0),
@@ -783,7 +1019,8 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                         const SizedBox(
                           height: 10,
                         ),
-                        const Text("Check the Calendar tab for all booked appointments"),
+                        const Text(
+                            "Check the Calendar tab for all booked appointments"),
                         const SizedBox(height: 20.0),
                         MyButton(
                           text: 'Return to Home',
@@ -791,14 +1028,21 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                           textsize: 14,
                           fontWeight: FontWeight.w500,
                           letterspacing: 0.7,
-                          buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
-                          buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
+                          buttoncolor:
+                              Theme.of(context).colorScheme.secondaryContainer,
+                          buttonbordercolor:
+                              Theme.of(context).colorScheme.secondaryContainer,
                           buttonheight: 40.0,
                           buttonwidth: 100,
                           radius: 15,
                           onTap: () async {
-                            showSnackBarColor('Facility booked', context, false);
-                            await Navigator.pushNamedAndRemoveUntil(context, Constants.APPPAGES, Helper.of(context).predicate, arguments: 0);
+                            showSnackBarColor(
+                                'Facility booked', context, false);
+                            await Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                Constants.APPPAGES,
+                                Helper.of(context).predicate,
+                                arguments: 0);
                           },
                         ),
                       ],
@@ -817,13 +1061,22 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
           if (modelState.containsKey('ErrorMessage')) {
             showSnackBarColor(modelState['ErrorMessage'][0], context, true);
           } else {
-            showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+            showSnackBarColor(
+                'We\'re unable to connect to server. Please contact administrator or try after some time',
+                context,
+                true);
           }
         } else {
-          showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+          showSnackBarColor(
+              'We\'re unable to connect to server. Please contact administrator or try after some time',
+              context,
+              true);
         }
       } else {
-        showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+        showSnackBarColor(
+            'We\'re unable to connect to server. Please contact administrator or try after some time',
+            context,
+            true);
       }
     } on NoConnectivityException catch (_) {
       await _progressDialog.hide();
@@ -832,20 +1085,27 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
       await _progressDialog.hide();
       if (!mounted) return;
       debugPrint(error.toString());
-      showSnackBarErrorColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+      showSnackBarErrorColor(
+          'We\'re unable to connect to server. Please contact administrator or try after some time',
+          context,
+          true);
     }
   }
 
   Future<void> failedBooking(String paymentId, int facilityBookingId) async {
-    _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
+    _progressDialog = ProgressDialog(context,
+        type: ProgressDialogType.normal, isDismissible: false);
     _progressDialog.style(message: "Please wait...");
     try {
       await _progressDialog.show();
       Map<String, dynamic> request = {};
       request['FacilityBookingId'] = facilityBookingId;
       request['OrderId'] = paymentId;
-      request['Amount'] = !isCouponSelected ? payNowAmount : (payNowAmount - discountedAmount);
-      bool response = await Provider.of<SlotManagementViewModel>(context, listen: false).failedFacilityBooking(request);
+      request['Amount'] =
+          !isCouponSelected ? payNowAmount : (payNowAmount - discountedAmount);
+      bool response =
+          await Provider.of<SlotManagementViewModel>(context, listen: false)
+              .failedFacilityBooking(request);
       await _progressDialog.hide();
       if (!mounted) return;
       if (response) {
@@ -858,13 +1118,14 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.cancel,
                           color: Theme.of(context).colorScheme.error,
                           size: 100.0,
                         ),
                         const SizedBox(height: 10.0),
-                        const Text("Payment failed. No appointments booked. If funds were deducted, a refund will be processed within 7-10 working days."),
+                        const Text(
+                            "Payment failed. No appointments booked. If funds were deducted, a refund will be processed within 7-10 working days."),
                         const SizedBox(height: 20.0),
                         MyButton(
                           text: 'Return to Home',
@@ -872,14 +1133,21 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                           textsize: 14,
                           fontWeight: FontWeight.w500,
                           letterspacing: 0.7,
-                          buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
-                          buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
+                          buttoncolor:
+                              Theme.of(context).colorScheme.secondaryContainer,
+                          buttonbordercolor:
+                              Theme.of(context).colorScheme.secondaryContainer,
                           buttonheight: 40.0,
                           buttonwidth: 100,
                           radius: 15,
                           onTap: () async {
-                            showSnackBarColor('Facility Booking Failed', context, true);
-                            await Navigator.pushNamedAndRemoveUntil(context, Constants.APPPAGES, Helper.of(context).predicate, arguments: 0);
+                            showSnackBarColor(
+                                'Facility Booking Failed', context, true);
+                            await Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                Constants.APPPAGES,
+                                Helper.of(context).predicate,
+                                arguments: 0);
                           },
                         ),
                       ],
@@ -898,13 +1166,22 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
           if (modelState.containsKey('ErrorMessage')) {
             showSnackBarColor(modelState['ErrorMessage'][0], context, true);
           } else {
-            showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+            showSnackBarColor(
+                'We\'re unable to connect to server. Please contact administrator or try after some time',
+                context,
+                true);
           }
         } else {
-          showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+          showSnackBarColor(
+              'We\'re unable to connect to server. Please contact administrator or try after some time',
+              context,
+              true);
         }
       } else {
-        showSnackBarErrorColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+        showSnackBarErrorColor(
+            'We\'re unable to connect to server. Please contact administrator or try after some time',
+            context,
+            true);
       }
     } on NoConnectivityException catch (_) {
       await _progressDialog.hide();
@@ -913,7 +1190,10 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
       await _progressDialog.hide();
       if (!mounted) return;
       debugPrint(error.toString());
-      showSnackBarErrorColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+      showSnackBarErrorColor(
+          'We\'re unable to connect to server. Please contact administrator or try after some time',
+          context,
+          true);
     }
   }
 
@@ -924,7 +1204,9 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
             child: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).extension<CustomColors>()!.white,
-                border: Border.all(color: Theme.of(context).extension<CustomColors>()!.greyText),
+                border: Border.all(
+                    color:
+                        Theme.of(context).extension<CustomColors>()!.greyText),
               ),
               padding: const EdgeInsets.all(10.0),
               child: Column(
@@ -932,21 +1214,28 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                 children: [
                   CustomTextView(
                     label: 'Booking Amount',
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
+                    textStyle:
+                        Theme.of(context).textTheme.titleMedium!.copyWith(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  _buildTitleDetailsRow(title: "Immediate Payment", details: "Order fees", rate: payNowAmount.toStringAsFixed(2)),
                   const SizedBox(
                     height: 10,
                   ),
                   _buildTitleDetailsRow(
-                      title: "Pay later", details: "Balance to be paid directly to the service provider", rate: payLaterAmount.toStringAsFixed(2)),
+                      title: "Immediate Payment",
+                      details: "Order fees",
+                      rate: payNowAmount.toStringAsFixed(2)),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  _buildTitleDetailsRow(
+                      title: "Pay later",
+                      details:
+                          "Balance to be paid directly to the service provider",
+                      rate: payLaterAmount.toStringAsFixed(2)),
                   const SizedBox(
                     height: 10,
                   ),
@@ -955,15 +1244,28 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                     children: [
                       CustomTextView(
                         label: "Total Amount : ",
-                        textStyle:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w600,
+                                color:
+                                    Theme.of(context).colorScheme.onBackground),
                       ),
                       Column(
                         children: [
                           CustomTextView(
                             label: 'S\$ ${totalAmount.toStringAsFixed(2)}',
-                            textStyle:
-                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
+                            textStyle: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground),
                           ),
                         ],
                       ),
@@ -972,7 +1274,7 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Divider(
+                  Divider(
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
                   const SizedBox(
@@ -989,11 +1291,22 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 CustomTextView(
-                                  label: !isCouponSelected ? 'Coupon Discount' : 'Coupon Discount (${selectedCouponIntent.discount}%)',
-                                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.w600,
-                                      color: !isCouponSelected ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.secondaryContainer),
+                                  label: !isCouponSelected
+                                      ? 'Coupon Discount'
+                                      : 'Coupon Discount (${selectedCouponIntent.discount}%)',
+                                  textStyle: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium!
+                                      .copyWith(
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.w600,
+                                          color: !isCouponSelected
+                                              ? Theme.of(context)
+                                                  .colorScheme
+                                                  .onBackground
+                                              : Theme.of(context)
+                                                  .colorScheme
+                                                  .secondaryContainer),
                                 ),
                                 const SizedBox(
                                   height: 3,
@@ -1004,7 +1317,12 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
+                                      .copyWith(
+                                          fontSize: 12.0,
+                                          fontWeight: FontWeight.w500,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onSurface),
                                 ).visible(isCouponSelected),
                               ],
                             ),
@@ -1016,13 +1334,23 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 CustomTextView(
-                                  label: 'S\$ ${discountedAmount.toStringAsFixed(2)}',
+                                  label:
+                                      'S\$ ${discountedAmount.toStringAsFixed(2)}',
                                   maxLine: 2,
                                   textOverFlow: TextOverflow.ellipsis,
-                                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
-                                      fontSize: 13.0,
-                                      fontWeight: FontWeight.w600,
-                                      color: !isCouponSelected ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.secondaryContainer),
+                                  textStyle: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium!
+                                      .copyWith(
+                                          fontSize: 13.0,
+                                          fontWeight: FontWeight.w600,
+                                          color: !isCouponSelected
+                                              ? Theme.of(context)
+                                                  .colorScheme
+                                                  .onBackground
+                                              : Theme.of(context)
+                                                  .colorScheme
+                                                  .secondaryContainer),
                                 ),
                               ],
                             ),
@@ -1041,7 +1369,8 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
         : const SizedBox();
   }
 
-  _buildTitleDetailsRow({required String title, required String details, required String rate}) {
+  _buildTitleDetailsRow(
+      {required String title, required String details, required String rate}) {
     return Column(
       children: [
         Row(
@@ -1054,7 +1383,13 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                 children: [
                   CustomTextView(
                     label: title,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
+                    textStyle: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).colorScheme.onBackground),
                   ),
                   const SizedBox(
                     height: 3,
@@ -1062,7 +1397,13 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                   CustomTextView(
                     label: details,
                     maxLine: 2,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
+                    textStyle: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.w500,
+                            color: Theme.of(context).colorScheme.onSurface),
                   ),
                 ],
               ),
@@ -1077,7 +1418,13 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
                     label: 'S\$ $rate',
                     maxLine: 2,
                     textOverFlow: TextOverflow.ellipsis,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
+                    textStyle: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(
+                            fontSize: 13.0,
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).colorScheme.onBackground),
                   ),
                 ],
               ),
@@ -1087,7 +1434,7 @@ class _ReviewAppointmentScreenState extends State<ReviewAppointmentScreen> {
         const SizedBox(
           height: 3,
         ),
-        const Divider(
+        Divider(
           color: Theme.of(context).colorScheme.onSurface,
         ),
       ],

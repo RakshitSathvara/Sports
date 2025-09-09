@@ -201,7 +201,7 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Divider(
+                              Divider(
                                 height: 1,
                                 color: Theme.of(context).colorScheme.outline,
                               ),
@@ -240,7 +240,7 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                                 ),
                               ),
                               const SizedBox(height: 15.0),
-                              const Divider(
+                              Divider(
                                 height: 1,
                                 color: Theme.of(context).colorScheme.onSurface,
                               ),
@@ -268,7 +268,7 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                                 ),
                               ),
                               const SizedBox(height: 15.0),
-                              const Divider(
+                              Divider(
                                 height: 1,
                                 color: Theme.of(context).colorScheme.onSurface,
                               ),

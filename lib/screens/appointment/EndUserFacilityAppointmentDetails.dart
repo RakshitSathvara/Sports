@@ -248,7 +248,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                   itemCount: 5,
                   itemSize: 23,
                   itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
-                  itemBuilder: (context, _) => const Icon(
+                  itemBuilder: (context, _) => Icon(
                     Icons.star,
                     color: Theme.of(context).extension<CustomColors>()!.yellowStatus,
                     size: 15,
@@ -281,7 +281,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.add,
                       size: 20,
                       color: Theme.of(context).colorScheme.primary,
@@ -440,7 +440,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
               ),
             ],
           ),
-          const Divider(
+          Divider(
             thickness: 1.0,
             color: Theme.of(context).extension<CustomColors>()!.greyButton,
           ),
@@ -584,7 +584,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
           const SizedBox(
             height: 10,
           ),
-          const Divider(
+          Divider(
             color: Theme.of(context).colorScheme.onSurface,
           ),
           const SizedBox(
@@ -695,7 +695,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
         const SizedBox(
           height: 3,
         ),
-        const Divider(
+        Divider(
           color: Theme.of(context).colorScheme.onSurface,
         ),
       ],

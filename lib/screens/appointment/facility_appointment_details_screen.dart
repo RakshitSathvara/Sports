@@ -335,7 +335,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
               ),
             ],
           ),
-          const Divider(
+           Divider(
             thickness: 1.0,
             color: Theme.of(context).extension<CustomColors>()!.greyButton,
           ),
@@ -448,7 +448,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
         const SizedBox(
           height: 3,
         ),
-        const Divider(
+         Divider(
           color: Theme.of(context).colorScheme.onSurface,
         ),
       ],

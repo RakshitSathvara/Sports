@@ -260,7 +260,7 @@ class _EndUserCoachAppointmentDetailsScreenState extends State<EndUserCoachAppoi
                   itemCount: 5,
                   itemSize: 23,
                   itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
-                  itemBuilder: (context, _) => const Icon(
+                  itemBuilder: (context, _) => Icon(
                     Icons.star,
                     color: Theme.of(context).extension<CustomColors>()!.yellowStatus,
                     size: 15,
@@ -293,7 +293,7 @@ class _EndUserCoachAppointmentDetailsScreenState extends State<EndUserCoachAppoi
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.add,
                       size: 20,
                       color: Theme.of(context).colorScheme.primary,
@@ -454,7 +454,7 @@ class _EndUserCoachAppointmentDetailsScreenState extends State<EndUserCoachAppoi
               ),
             ],
           ),
-          const Divider(
+            Divider(
             thickness: 1.0,
             color: Theme.of(context).extension<CustomColors>()!.greyButton,
           ),
@@ -613,7 +613,7 @@ class _EndUserCoachAppointmentDetailsScreenState extends State<EndUserCoachAppoi
           const SizedBox(
             height: 10,
           ),
-          const Divider(
+          Divider(
             color: Theme.of(context).colorScheme.onSurface,
           ),
           const SizedBox(
@@ -724,7 +724,7 @@ class _EndUserCoachAppointmentDetailsScreenState extends State<EndUserCoachAppoi
         const SizedBox(
           height: 3,
         ),
-        const Divider(
+        Divider(
           color: Theme.of(context).colorScheme.onSurface,
         ),
       ],
