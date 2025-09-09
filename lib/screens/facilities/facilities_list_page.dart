@@ -944,13 +944,13 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
             height: 70.0,
             child: ElevatedButton(
                 style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(colorScheme.onSurface),
-                  backgroundColor: MaterialStateProperty.all<Color>(colorScheme.surfaceVariant),
+                  foregroundColor: MaterialStateProperty.all<Color>(Theme.of(context).colorScheme.onSurface),
+                  backgroundColor: MaterialStateProperty.all<Color>(Theme.of(context).colorScheme.surfaceVariant),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero,
                       side: BorderSide(
-                        color: colorScheme.surfaceVariant,
+                        color: Theme.of(context).colorScheme.surfaceVariant,
                       ),
                     ),
                   ),
@@ -989,13 +989,13 @@ class FacilitiesListPageState extends State<FacilitiesListPage> {
             height: 70.0,
             child: ElevatedButton(
                 style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(colorScheme.onPrimary),
-                  backgroundColor: MaterialStateProperty.all<Color>(colorScheme.primary),
+                  foregroundColor: MaterialStateProperty.all<Color>(Theme.of(context).colorScheme.onPrimary),
+                  backgroundColor: MaterialStateProperty.all<Color>(Theme.of(context).colorScheme.primary),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero,
                       side: BorderSide(
-                        color: colorScheme.primary,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),

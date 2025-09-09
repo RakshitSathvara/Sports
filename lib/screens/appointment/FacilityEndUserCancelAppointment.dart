@@ -14,7 +14,6 @@ import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
-import 'package:oqdo_mobile_app/utils/utilities.dart';
 import 'package:oqdo_mobile_app/viewmodels/appointment_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -59,7 +58,7 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Theme.of(context).colorScheme.onBackground,
+          color: Theme.of(context).colorScheme.background,
           child: _facilityAppointmentDetailModel != null
               ? Column(
                   children: [
@@ -203,7 +202,8 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                               ),
                               Divider(
                                 height: 1,
-                                color: Theme.of(context).colorScheme.outline,
+                                thickness: 1,
+                                color: Theme.of(context).extension<CustomColors>()!.filterDivider,
                               ),
                               const SizedBox(
                                 height: 20.0,
@@ -242,7 +242,8 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                               const SizedBox(height: 15.0),
                               Divider(
                                 height: 1,
-                                color: Theme.of(context).colorScheme.onSurface,
+                                thickness: 1,
+                                color: Theme.of(context).extension<CustomColors>()!.filterDivider,
                               ),
                               const SizedBox(height: 15.0),
                               Padding(
@@ -255,14 +256,14 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onBackground),
+                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                                     ),
                                     CustomTextView(
                                       label: 'S\$ ${totalDiscountAmount.toStringAsFixed(2)}',
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onBackground),
+                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                                     )
                                   ],
                                 ),
@@ -270,7 +271,8 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                               const SizedBox(height: 15.0),
                               Divider(
                                 height: 1,
-                                color: Theme.of(context).colorScheme.onSurface,
+                                thickness: 1,
+                                color: Theme.of(context).extension<CustomColors>()!.filterDivider,
                               ),
                               const SizedBox(height: 20.0),
                               Padding(
@@ -313,12 +315,12 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),
                       child: MyButton(
                         text: 'Review Cancellation',
-                        textcolor: Theme.of(context).colorScheme.onBackground,
+                        textcolor: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
                         textsize: 16,
                         fontWeight: FontWeight.w600,
                         letterspacing: 0.7,
-                        buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
-                        buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
+                        buttoncolor: Theme.of(context).extension<CustomColors>()!.myButtonBgColor,
+                        buttonbordercolor: Theme.of(context).extension<CustomColors>()!.myButtonBgColor,
                         buttonheight: 55.0,
                         buttonwidth: MediaQuery.of(context).size.width,
                         radius: 15,
@@ -339,8 +341,12 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                     ),
                   ],
                 )
-              : const Center(
-                  child: CircularProgressIndicator(),
+              : Center(
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
                 ),
         ),
       ),
@@ -360,9 +366,30 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
               children: [
                 Transform.scale(
                   scale: 1.3,
-                  child: Checkbox(
-                      fillColor: MaterialStateProperty.resolveWith(Utils.getColor),
-                      checkColor: Theme.of(context).colorScheme.primaryContainer,
+                  child: Theme(
+                    data: Theme.of(context).copyWith(
+                      checkboxTheme: CheckboxThemeData(
+                        fillColor: MaterialStateProperty.resolveWith<Color?>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.selected)) {
+                              return Theme.of(context).colorScheme.primary;
+                            }
+                            return Theme.of(context).colorScheme.surface;
+                          },
+                        ),
+                        checkColor: MaterialStateProperty.all(
+                          Theme.of(context).colorScheme.onPrimary,
+                        ),
+                        side: BorderSide(
+                          color: Theme.of(context).extension<CustomColors>()!.greyText,
+                          width: 2.0,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                        ),
+                      ),
+                    ),
+                    child: Checkbox(
                       value: bookingSlotList[index].isSlotSelected,
                       onChanged: (value) {
                         if (value!) {
@@ -376,7 +403,9 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
                             totalAmountCalculation(value, bookingSlotList[index].amount, bookingSlotList[index].discountAmount);
                           });
                         }
-                      }),
+                      },
+                    ),
+                  ),
                 ),
                 const SizedBox(
                   width: 10.0,
@@ -423,15 +452,17 @@ class _FacilityEndUserCancelAppointmentState extends State<FacilityEndUserCancel
           ),
           Expanded(
             flex: 1,
-            child: Row(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 CustomTextView(
-                  label: 'Refund Amount: ',
-                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
+                  label: 'Refund Amount',
+                  textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 10.0, fontWeight: FontWeight.w500, color: Theme.of(context).extension<CustomColors>()!.greyText),
                 ),
+                const SizedBox(height: 4.0),
                 CustomTextView(
                   label: 'S\$ ${bookingSlotList[index].amount?.toStringAsFixed(2) ?? 0.00}',
-                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
+                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.primary),
                 ),
               ],
             ),

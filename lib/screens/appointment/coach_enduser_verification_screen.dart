@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously, must_be_immutable
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -70,7 +68,7 @@ class _CoachEndUserVerificationScreenState extends State<CoachEndUserVerificatio
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Theme.of(context).colorScheme.onBackground,
+          color: Theme.of(context).colorScheme.background,
           child: widget.cancelCoachAppointmentModel!.coachAppointmentDetailResponseModel != null
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,7 +194,8 @@ class _CoachEndUserVerificationScreenState extends State<CoachEndUserVerificatio
                     ),
                     Divider(
                       height: 1,
-                      color: Theme.of(context).colorScheme.outline,
+                      thickness: 1,
+                      color: Theme.of(context).extension<CustomColors>()!.filterDivider,
                     ),
                     const SizedBox(
                       height: 20.0,
@@ -255,14 +254,14 @@ class _CoachEndUserVerificationScreenState extends State<CoachEndUserVerificatio
                                         Navigator.of(context).pop();
                                       },
                                       style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.error),
+                                        backgroundColor: MaterialStateProperty.all(Theme.of(context).extension<CustomColors>()!.redColor),
                                       ),
                                       child: CustomTextView(
                                         label: 'Cancel',
                                         textStyle: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
-                                            .copyWith(fontSize: 16, color: Theme.of(context).colorScheme.onError, fontWeight: FontWeight.w400),
+                                            .copyWith(fontSize: 16, color: Theme.of(context).extension<CustomColors>()!.showTextColorForCancelAppointment, fontWeight: FontWeight.w400),
                                       ),
                                     ),
                                   ),
@@ -285,7 +284,7 @@ class _CoachEndUserVerificationScreenState extends State<CoachEndUserVerificatio
                                         textStyle: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
-                                            .copyWith(fontSize: 16, color: Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.w400),
+                                            .copyWith(fontSize: 16, color: Theme.of(context).extension<CustomColors>()!.showTextColorForCancelAppointment, fontWeight: FontWeight.w400),
                                       ),
                                     ),
                                   ),
@@ -301,8 +300,12 @@ class _CoachEndUserVerificationScreenState extends State<CoachEndUserVerificatio
                     )
                   ],
                 )
-              : const Center(
-                  child: CircularProgressIndicator(),
+              : Center(
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
                 ),
         ),
       ),
@@ -401,12 +404,12 @@ class _CoachEndUserVerificationScreenState extends State<CoachEndUserVerificatio
                         const SizedBox(height: 20.0),
                         MyButton(
                           text: 'Return to Home',
-                          textcolor: Theme.of(context).colorScheme.onBackground,
+                          textcolor: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
                           textsize: 14,
                           fontWeight: FontWeight.w500,
                           letterspacing: 0.7,
-                          buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
-                          buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
+                          buttoncolor: Theme.of(context).extension<CustomColors>()!.myButtonBgColor,
+                          buttonbordercolor: Theme.of(context).extension<CustomColors>()!.myButtonBgColor,
                           buttonheight: 40.0,
                           buttonwidth: 100,
                           radius: 15,

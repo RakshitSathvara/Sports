@@ -4,8 +4,8 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/model/CancelCoachAppointmentModel.dart';
 import 'package:oqdo_mobile_app/model/cancel_reason_list_response_model.dart';
 import 'package:oqdo_mobile_app/model/coach_cancel_appointment_virify_response_model.dart';
@@ -52,7 +52,7 @@ class _CancelCoachAppointmentReasonScreenState extends State<CancelCoachAppointm
       appBar: appbarView(),
       body: SafeArea(
         child: Container(
-            color: Theme.of(context).colorScheme.onBackground,
+            color: Theme.of(context).colorScheme.background,
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: _cancelReasonResponseModelList.isNotEmpty
@@ -130,12 +130,12 @@ class _CancelCoachAppointmentReasonScreenState extends State<CancelCoachAppointm
                         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
                         child: MyButton(
                           text: "Submit",
-                          textcolor: Theme.of(context).colorScheme.onBackground,
+                          textcolor: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
                           textsize: 20,
                           fontWeight: FontWeight.w600,
                           letterspacing: 1.2,
-                          buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
-                          buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
+                          buttoncolor: Theme.of(context).extension<CustomColors>()!.myButtonBgColor,
+                          buttonbordercolor: Theme.of(context).extension<CustomColors>()!.myButtonBgColor,
                           buttonheight: 55,
                           buttonwidth: MediaQuery.of(context).size.width,
                           radius: 15,
@@ -150,8 +150,12 @@ class _CancelCoachAppointmentReasonScreenState extends State<CancelCoachAppointm
                       ),
                     ],
                   )
-                : const Center(
-                    child: CircularProgressIndicator(),
+                : Center(
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
                   )),
       ),
     );

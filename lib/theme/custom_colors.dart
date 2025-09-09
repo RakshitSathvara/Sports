@@ -32,6 +32,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.buddiesBorder,
     required this.myButtonBgColor,
     required this.coachFacilityFavIconColor,
+    required this.showTextColorForCancelAppointment,
   });
 
   final Color greyButton;
@@ -64,6 +65,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color buddiesBorder;
   final Color myButtonBgColor;
   final Color coachFacilityFavIconColor;
+  final Color showTextColorForCancelAppointment;
 
   static const CustomColors light = CustomColors(
     greyButton: Color(0xFFEFEFEF),
@@ -85,7 +87,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     greenAmount: Color(0xFF008000),
     pendingAmount: Color(0xFFB59800),
     yellowStatus: Color(0xFFE1B000),
-    filterDivider: Color(0xFFE3E3E3),
+    filterDivider: Color( 0xFFE3E3E3),
     referEarnColor: Color(0xFF006590),
     closeAccountColor: Color(0xFFFC5555),
     chatPrimary: Color(0xFF2B5278),
@@ -96,6 +98,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     buddiesBorder: Color(0xFFCFCFCF),
     myButtonBgColor: Color(0xFF006590),
     coachFacilityFavIconColor: Color(0xFFF1F1F1),
+    showTextColorForCancelAppointment: Color(0xFFFFFFFF),
   );
 
   static const CustomColors dark = CustomColors(
@@ -129,6 +132,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     buddiesBorder: Color(0xFF404040),
     myButtonBgColor : Color(0xFF006590),
     coachFacilityFavIconColor: Color(0xFFFFFFFF),
+    showTextColorForCancelAppointment: Color(0xFFFFFFFF),
   );
 
   @override
@@ -163,6 +167,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? buddiesBorder,
     Color? myButtonBgColor,
     Color? coachFacilityFavIconColor,
+    Color? showTextColorForCancelAppointment,
   }) {
     return CustomColors(
       greyButton: greyButton ?? this.greyButton,
@@ -195,6 +200,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       buddiesBorder: buddiesBorder ?? this.buddiesBorder,
       myButtonBgColor: myButtonBgColor ?? this.myButtonBgColor,
       coachFacilityFavIconColor: coachFacilityFavIconColor ?? this.coachFacilityFavIconColor,
+      showTextColorForCancelAppointment: showTextColorForCancelAppointment ?? this.showTextColorForCancelAppointment,
     );
   }
 
@@ -232,6 +238,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       buddiesBorder: Color.lerp(buddiesBorder, other.buddiesBorder, t)!,
       myButtonBgColor: Color.lerp(myButtonBgColor, other.myButtonBgColor, t)!,
       coachFacilityFavIconColor: Color.lerp(coachFacilityFavIconColor, other.coachFacilityFavIconColor, t)!,
+      showTextColorForCancelAppointment: Color.lerp(showTextColorForCancelAppointment, other.showTextColorForCancelAppointment, t)!,
     );
   }
 }

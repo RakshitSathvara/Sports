@@ -82,7 +82,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
       ),
       body: SafeArea(
         child: Container(
-          color: Theme.of(context).extension<CustomColors>()!.white,
+          color: Theme.of(context).colorScheme.background,
           width: MediaQuery.of(context).size.width,
           height: double.infinity,
           child: Column(
@@ -125,12 +125,16 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                                   height: 20,
                                 ),
                                 isLoading
-                                    ? const Flexible(
-                                        flex: 1,
-                                        child: Center(
-                                          child: CircularProgressIndicator(),
-                                        ),
-                                      )
+                ? Flexible(
+                        flex: 1,
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
+                        ),
+                      )
                                     : Flexible(
                                         child: GridView.builder(
                                             shrinkWrap: false,
@@ -178,12 +182,12 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                           padding: const EdgeInsets.only(bottom: 15.0, left: 20, right: 20),
                           child: MyButton(
                             text: 'Cancel slot',
-                            textcolor: Theme.of(context).colorScheme.onBackground,
+                            textcolor: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
                             textsize: 16,
                             fontWeight: FontWeight.w600,
                             letterspacing: 0.7,
-                            buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
-                            buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
+                            buttoncolor: Theme.of(context).extension<CustomColors>()!.myButtonBgColor,
+                            buttonbordercolor: Theme.of(context).extension<CustomColors>()!.myButtonBgColor,
                             buttonheight: 60,
                             buttonwidth: MediaQuery.of(context).size.width,
                             radius: 15,
@@ -319,13 +323,15 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                 Flexible(
                   flex: 1,
                   fit: FlexFit.tight,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                      color: Theme.of(context).colorScheme.outline,
-                    ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Theme.of(context).extension<CustomColors>()!.greyText,
+                            width: 1.0,
+                          ),
+                          color: Theme.of(context).extension<CustomColors>()!.greyButton,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
                     child: Center(
                       child: CustomTextView(
                         label: '${_singleFacilityDatesList[0].listOfSlots![index].startTime} - ${_singleFacilityDatesList[0].listOfSlots![index].endTime}',
@@ -380,9 +386,11 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Theme.of(context).extension<CustomColors>()!.greyText,
+                            width: 1.0,
                           ),
-                          color: Theme.of(context).colorScheme.outline,
+                          color: Theme.of(context).extension<CustomColors>()!.greyButton,
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Center(
                           child: CustomTextView(
@@ -439,8 +447,10 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Theme.of(context).extension<CustomColors>()!.greenAmount : Theme.of(context).colorScheme.primary,
+                            width: 2.0,
                           ),
                           color: _singleFacilityDatesList[0].listOfSlots![index].isSlotSelected ? Theme.of(context).extension<CustomColors>()!.greenAmount : Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Center(
                           child: CustomTextView(
@@ -735,7 +745,7 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
     }
 
     return Container(
-      color: Theme.of(context).extension<CustomColors>()!.white,
+      color: Theme.of(context).colorScheme.surface,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height / 1.2,
       child: SingleChildScrollView(
@@ -802,12 +812,12 @@ class _FacilityCancelSlotManagementScreenState extends State<FacilityCancelSlotM
                     padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
                     child: MyButton(
                       text: 'Continue',
-                      textcolor: Theme.of(context).colorScheme.onBackground,
+                      textcolor: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
                       textsize: 16,
                       fontWeight: FontWeight.w600,
                       letterspacing: 0.7,
-                      buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
-                      buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
+                      buttoncolor: Theme.of(context).extension<CustomColors>()!.myButtonBgColor,
+                      buttonbordercolor: Theme.of(context).extension<CustomColors>()!.myButtonBgColor,
                       buttonheight: 50,
                       buttonwidth: MediaQuery.of(context).size.width,
                       radius: 15,

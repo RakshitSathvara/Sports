@@ -952,7 +952,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
     return SafeArea(
         child: Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: const BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),
       ),
       child: Column(
@@ -968,7 +968,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
               padding: const EdgeInsets.only(left: 20.0),
               child: CustomTextView(
                 label: 'Transaction History',
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
               ),
             ),
           ),
@@ -1420,7 +1420,9 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                 // );
               },
               separatorBuilder: (context, index) {
-                return const Divider();
+                return Divider(
+                  color: Theme.of(context).extension<CustomColors>()!.filterDivider,
+                );
               },
             ),
           ),

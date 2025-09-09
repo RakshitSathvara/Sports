@@ -1153,9 +1153,9 @@ class _CoachListPageState extends State<CoachListPage> {
                     child: Container(
                       height: 100.0,
                       decoration: BoxDecoration(
-                        color: colorScheme.surface,
+                        color: Theme.of(context).colorScheme.surface,
                         border: Border.all(
-                          color: colorScheme.outline,
+                          color: Theme.of(context).colorScheme.outline,
                           width: 1,
                         ),
                         borderRadius: BorderRadius.circular(2),
@@ -1212,9 +1212,9 @@ class _CoachListPageState extends State<CoachListPage> {
                     child: Container(
                       height: 100.0,
                       decoration: BoxDecoration(
-                        color: colorScheme.surface,
+                        color: Theme.of(context).colorScheme.surface,
                         border: Border.all(
-                          color: colorScheme.outline,
+                          color: Theme.of(context).colorScheme.outline,
                           width: 1,
                         ),
                         borderRadius: BorderRadius.circular(2),

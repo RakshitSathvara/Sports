@@ -18,16 +18,20 @@ import 'package:oqdo_mobile_app/viewmodels/appointment_view_model.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
 
-
-class FacilityEndUserCancelAppointmentVerificationScreen extends StatefulWidget {
+class FacilityEndUserCancelAppointmentVerificationScreen
+    extends StatefulWidget {
   CancelFacilityAppointmentModel? cancelFacilityAppointmentModel;
-  FacilityEndUserCancelAppointmentVerificationScreen({Key? key, this.cancelFacilityAppointmentModel}) : super(key: key);
+  FacilityEndUserCancelAppointmentVerificationScreen(
+      {Key? key, this.cancelFacilityAppointmentModel})
+      : super(key: key);
 
   @override
-  State<FacilityEndUserCancelAppointmentVerificationScreen> createState() => _FacilityEndUserCancelAppointmentVerificationScreenState();
+  State<FacilityEndUserCancelAppointmentVerificationScreen> createState() =>
+      _FacilityEndUserCancelAppointmentVerificationScreenState();
 }
 
-class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<FacilityEndUserCancelAppointmentVerificationScreen> {
+class _FacilityEndUserCancelAppointmentVerificationScreenState
+    extends State<FacilityEndUserCancelAppointmentVerificationScreen> {
   double totalAmount = 0.00;
   late ProgressDialog _progressDialog;
   List<FacilityBookingSlotDates> finalList = [];
@@ -36,13 +40,17 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
+      _progressDialog = ProgressDialog(context,
+          type: ProgressDialogType.normal, isDismissible: false);
       _progressDialog.style(message: "Please wait..");
-      for (var i = 0; i < widget.cancelFacilityAppointmentModel!.list!.length; i++) {
+      for (var i = 0;
+          i < widget.cancelFacilityAppointmentModel!.list!.length;
+          i++) {
         if (widget.cancelFacilityAppointmentModel!.list![i].isSlotSelected!) {
           setState(() {
             finalList.add(widget.cancelFacilityAppointmentModel!.list![i]);
-            totalAmount = totalAmount + widget.cancelFacilityAppointmentModel!.list![i].refundedAmount!;
+            totalAmount = totalAmount +
+                widget.cancelFacilityAppointmentModel!.list![i].refundedAmount!;
           });
         }
       }
@@ -61,8 +69,10 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Theme.of(context).colorScheme.onBackground,
-          child: widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel != null
+          color: Theme.of(context).colorScheme.background,
+          child: widget.cancelFacilityAppointmentModel!
+                      .facilityAppointmentDetailModel !=
+                  null
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -74,7 +84,13 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                       child: CustomTextView(
                         label:
                             '${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.facilitySetupTitle!.trim()} - ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.facilitySetupSubTitle!.trim()}',
-                        textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(
+                                fontSize: 20,
+                                color: Theme.of(context).colorScheme.onSurface,
+                                fontWeight: FontWeight.w500),
                       ),
                     ),
                     const SizedBox(
@@ -85,7 +101,13 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                       child: CustomTextView(
                         label:
                             '${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.activityName} - ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.subActivityName}',
-                        textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 17, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(
+                                fontSize: 17,
+                                color: Theme.of(context).colorScheme.onSurface,
+                                fontWeight: FontWeight.w500),
                       ),
                     ),
                     const SizedBox(
@@ -101,7 +123,12 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                             textStyle: Theme.of(context)
                                 .textTheme
                                 .titleSmall!
-                                .copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w600, fontSize: 12.0),
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .extension<CustomColors>()!
+                                        .greyText,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 12.0),
                           ),
                         ],
                       ),
@@ -112,8 +139,17 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: CustomTextView(
-                        label: 'Order ID: ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.bookingNo}',
-                        textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
+                        label:
+                            'Order ID: ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.bookingNo}',
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(
+                                fontSize: 14,
+                                color: Theme.of(context)
+                                    .extension<CustomColors>()!
+                                    .greyText,
+                                fontWeight: FontWeight.w400),
                       ),
                     ),
                     const SizedBox(
@@ -123,8 +159,17 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: CustomTextView(
                         maxLine: 2,
-                        label: 'Name: ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.facilityName}',
-                        textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
+                        label:
+                            'Name: ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.facilityName}',
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(
+                                fontSize: 14,
+                                color: Theme.of(context)
+                                    .extension<CustomColors>()!
+                                    .greyText,
+                                fontWeight: FontWeight.w400),
                       ),
                     ),
                     const SizedBox(
@@ -133,8 +178,17 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: CustomTextView(
-                        label: 'Email ID: ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.facilityEmail}',
-                        textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
+                        label:
+                            'Email ID: ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.facilityEmail}',
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(
+                                fontSize: 14,
+                                color: Theme.of(context)
+                                    .extension<CustomColors>()!
+                                    .greyText,
+                                fontWeight: FontWeight.w400),
                       ),
                     ),
                     const SizedBox(
@@ -143,8 +197,17 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: CustomTextView(
-                        label: 'Phone number: ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.facilityMobileNumber}',
-                        textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
+                        label:
+                            'Phone number: ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.facilityMobileNumber}',
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(
+                                fontSize: 14,
+                                color: Theme.of(context)
+                                    .extension<CustomColors>()!
+                                    .greyText,
+                                fontWeight: FontWeight.w400),
                       ),
                     ),
                     const SizedBox(
@@ -153,10 +216,22 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: CustomTextView(
-                        label: widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.bookingType == 'I'
+                        label: widget
+                                    .cancelFacilityAppointmentModel!
+                                    .facilityAppointmentDetailModel!
+                                    .bookingType ==
+                                'I'
                             ? 'Booking For: Individual'
                             : 'Booking For: Group',
-                        textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(
+                                fontSize: 14,
+                                color: Theme.of(context)
+                                    .extension<CustomColors>()!
+                                    .greyText,
+                                fontWeight: FontWeight.w400),
                       ),
                     ),
                     const SizedBox(
@@ -165,10 +240,19 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: CustomTextView(
-                        label: 'Address: ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.address}',
+                        label:
+                            'Address: ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.address}',
                         maxLine: 3,
                         textOverFlow: TextOverflow.ellipsis,
-                        textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(
+                                fontSize: 14,
+                                color: Theme.of(context)
+                                    .extension<CustomColors>()!
+                                    .greyText,
+                                fontWeight: FontWeight.w400),
                       ),
                     ),
                     const SizedBox(
@@ -177,8 +261,17 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: CustomTextView(
-                        label: 'Cancellation Reason: ${widget.cancelFacilityAppointmentModel!.selectedReason}',
-                        textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
+                        label:
+                            'Cancellation Reason: ${widget.cancelFacilityAppointmentModel!.selectedReason}',
+                        textStyle: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(
+                                fontSize: 14,
+                                color: Theme.of(context)
+                                    .extension<CustomColors>()!
+                                    .greyText,
+                                fontWeight: FontWeight.w400),
                       ),
                     ),
                     const SizedBox(
@@ -186,7 +279,10 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                     ),
                     Divider(
                       height: 1,
-                      color: Theme.of(context).colorScheme.outline,
+                      thickness: 1,
+                      color: Theme.of(context)
+                          .extension<CustomColors>()!
+                          .filterDivider,
                     ),
                     const SizedBox(
                       height: 20.0,
@@ -221,14 +317,25 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
+                                      .copyWith(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w500,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onSurface),
                                 ),
                                 CustomTextView(
-                                  label: 'S\$ ${totalAmount.toStringAsFixed(2)}',
+                                  label:
+                                      'S\$ ${totalAmount.toStringAsFixed(2)}',
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
+                                      .copyWith(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onSurface),
                                 )
                               ],
                             ),
@@ -245,14 +352,24 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                                         Navigator.of(context).pop();
                                       },
                                       style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.error),
+                                        backgroundColor:
+                                            MaterialStateProperty.all(
+                                          Theme.of(context)
+                                              .extension<CustomColors>()!
+                                              .redColor,
+                                        ),
                                       ),
                                       child: CustomTextView(
                                         label: 'Cancel',
                                         textStyle: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
-                                            .copyWith(fontSize: 16, color: Theme.of(context).colorScheme.onError, fontWeight: FontWeight.w400),
+                                            .copyWith(
+                                                fontSize: 16,
+                                                color: Theme.of(context)
+                                                    .extension<CustomColors>()!
+                                                    .showTextColorForCancelAppointment,
+                                                fontWeight: FontWeight.w400),
                                       ),
                                     ),
                                   ),
@@ -268,14 +385,23 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                                         facilityCancelRequest(context);
                                       },
                                       style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.primary),
+                                        backgroundColor:
+                                            MaterialStateProperty.all(
+                                                Theme.of(context)
+                                                    .colorScheme
+                                                    .primary),
                                       ),
                                       child: CustomTextView(
                                         label: 'Confirm',
                                         textStyle: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
-                                            .copyWith(fontSize: 16, color: Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.w400),
+                                            .copyWith(
+                                                fontSize: 16,
+                                                color: Theme.of(context)
+                                                    .extension<CustomColors>()!
+                                                    .showTextColorForCancelAppointment,
+                                                fontWeight: FontWeight.w400),
                                       ),
                                     ),
                                   ),
@@ -291,8 +417,12 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                     )
                   ],
                 )
-              : const Center(
-                  child: CircularProgressIndicator(),
+              : Center(
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
                 ),
         ),
       ),
@@ -310,29 +440,44 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
               CustomTextView(
                 label:
                     '${convertDateToString(finalList[index].bookingDate!).split(',')[1].split(' ')[2]} ${convertDateToString(finalList[index].bookingDate!).split(',')[1].split(' ')[1]} - ${convertDateToString(finalList[index].bookingDate!).split(',')[0]}',
-                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 18.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
+                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).colorScheme.onSurface),
               ),
               const SizedBox(
                 height: 5.0,
               ),
               CustomTextView(
-                label: '${finalList[index].startTime} - ${finalList[index].endTime}',
-                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
+                label:
+                    '${finalList[index].startTime} - ${finalList[index].endTime}',
+                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.w400,
+                    color: Theme.of(context).colorScheme.onSurface),
               ),
             ],
           ),
           const Spacer(),
           RichText(
-            text: TextSpan(text: 'Refund Amount: ', style: TextStyle(color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400, fontSize: 12), children: [
-              TextSpan(
-                text: 'S\$${finalList[index].refundedAmount?.toStringAsFixed(2) ?? 0.00}',
+            text: TextSpan(
+                text: 'Refund Amount: ',
                 style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  color: Theme.of(context).colorScheme.primary,
-                  fontSize: 14,
-                ),
-              ),
-            ]),
+                    color:
+                        Theme.of(context).extension<CustomColors>()!.greyText,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12),
+                children: [
+                  TextSpan(
+                    text:
+                        'S\$${finalList[index].refundedAmount?.toStringAsFixed(2) ?? 0.00}',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Theme.of(context).colorScheme.primary,
+                      fontSize: 14,
+                    ),
+                  ),
+                ]),
           ),
         ],
       ),
@@ -350,23 +495,34 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
     try {
       await _progressDialog.show();
       Map<String, dynamic> request = {};
-      request['SubActivityId'] = widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.subActivityId;
+      request['SubActivityId'] = widget.cancelFacilityAppointmentModel!
+          .facilityAppointmentDetailModel!.subActivityId;
       request['UserId'] = OQDOApplication.instance.endUserID;
-      request['CancelReasonId'] = widget.cancelFacilityAppointmentModel!.selectedReasonId;
+      request['CancelReasonId'] =
+          widget.cancelFacilityAppointmentModel!.selectedReasonId;
       request['OtherReason'] = widget.cancelFacilityAppointmentModel!.otherText;
-      request['FacilityBookingId'] = widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.facilityBookingId;
+      request['FacilityBookingId'] = widget.cancelFacilityAppointmentModel!
+          .facilityAppointmentDetailModel!.facilityBookingId;
       List<Map<String, dynamic>> data = [];
-      for (var i = 0; i < widget.cancelFacilityAppointmentModel!.list!.length; i++) {
+      for (var i = 0;
+          i < widget.cancelFacilityAppointmentModel!.list!.length;
+          i++) {
         Map<String, dynamic> selectedFacilityReq = {};
         if (widget.cancelFacilityAppointmentModel!.list![i].isSlotSelected!) {
-          selectedFacilityReq['SlotMapId'] = widget.cancelFacilityAppointmentModel!.list![i].facilitySetupDaySlotMapId;
-          selectedFacilityReq['BookingDate'] = widget.cancelFacilityAppointmentModel!.list![i].bookingDate!.split('T')[0];
+          selectedFacilityReq['SlotMapId'] = widget
+              .cancelFacilityAppointmentModel!
+              .list![i]
+              .facilitySetupDaySlotMapId;
+          selectedFacilityReq['BookingDate'] = widget
+              .cancelFacilityAppointmentModel!.list![i].bookingDate!
+              .split('T')[0];
           data.add(selectedFacilityReq);
         }
       }
       request['FacilityCancelAppointmentSlotDtos'] = data;
       debugPrint('Request -> ${json.encode(request)}');
-      var list = await Provider.of<AppointmentViewModel>(context, listen: false).facilityCancelAppointmentRequest(request);
+      var list = await Provider.of<AppointmentViewModel>(context, listen: false)
+          .facilityCancelAppointmentRequest(request);
       await _progressDialog.hide();
       if (list.isNotEmpty) {
         showDialog(
@@ -380,7 +536,9 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                       children: [
                         Icon(
                           Icons.check_circle,
-                          color: Theme.of(context).extension<CustomColors>()!.greenAmount,
+                          color: Theme.of(context)
+                              .extension<CustomColors>()!
+                              .greenAmount,
                           size: 100.0,
                         ),
                         const SizedBox(height: 10.0),
@@ -392,17 +550,27 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
                         const SizedBox(height: 20.0),
                         MyButton(
                           text: 'Return to Home',
-                          textcolor: Theme.of(context).colorScheme.onBackground,
+                          textcolor: Theme.of(context)
+                              .extension<CustomColors>()!
+                              .coachFacilityFavIconColor,
                           textsize: 14,
                           fontWeight: FontWeight.w500,
                           letterspacing: 0.7,
-                          buttoncolor: Theme.of(context).colorScheme.secondaryContainer,
-                          buttonbordercolor: Theme.of(context).colorScheme.secondaryContainer,
+                          buttoncolor: Theme.of(context)
+                              .extension<CustomColors>()!
+                              .myButtonBgColor,
+                          buttonbordercolor: Theme.of(context)
+                              .extension<CustomColors>()!
+                              .myButtonBgColor,
                           buttonheight: 40.0,
                           buttonwidth: 100,
                           radius: 15,
                           onTap: () async {
-                            await Navigator.pushNamedAndRemoveUntil(context, Constants.APPPAGES, Helper.of(context).predicate, arguments: 0);
+                            await Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                Constants.APPPAGES,
+                                Helper.of(context).predicate,
+                                arguments: 0);
                           },
                         ),
                       ],
@@ -420,13 +588,22 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
           if (modelState.containsKey('ErrorMessage')) {
             showSnackBarColor(modelState['ErrorMessage'][0], context, true);
           } else {
-            showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+            showSnackBarColor(
+                'We\'re unable to connect to server. Please contact administrator or try after some time',
+                context,
+                true);
           }
         } else {
-          showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+          showSnackBarColor(
+              'We\'re unable to connect to server. Please contact administrator or try after some time',
+              context,
+              true);
         }
       } else {
-        showSnackBarColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+        showSnackBarColor(
+            'We\'re unable to connect to server. Please contact administrator or try after some time',
+            context,
+            true);
       }
     } on NoConnectivityException catch (_) {
       await _progressDialog.hide();
@@ -434,7 +611,10 @@ class _FacilityEndUserCancelAppointmentVerificationScreenState extends State<Fac
     } catch (error) {
       await _progressDialog.hide();
       debugPrint(error.toString());
-      showSnackBarErrorColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+      showSnackBarErrorColor(
+          'We\'re unable to connect to server. Please contact administrator or try after some time',
+          context,
+          true);
     }
   }
 }
