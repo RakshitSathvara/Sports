@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/screens/appointment/intent/selected_coupon_intent.dart';
 import 'package:oqdo_mobile_app/screens/appointment/response/referral_coupon_response_model.dart';

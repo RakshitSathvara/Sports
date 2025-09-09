@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/model/CancelCoachAppointmentModel.dart';
 import 'package:oqdo_mobile_app/model/cancel_reason_list_response_model.dart';
@@ -15,7 +16,6 @@ import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
 import '../../components/my_button.dart';
 import '../../helper/helpers.dart';
-import '../../theme/oqdo_theme_data.dart';
 import '../../utils/constants.dart';
 import '../../utils/custom_text_view.dart';
 import '../../utils/textfields_widget.dart';
@@ -70,7 +70,7 @@ class _CancelCoachAppointmentReasonScreenState extends State<CancelCoachAppointm
                                   label: '${widget.cancelCoachAppointmentModel!.coachAppointmentDetailResponseModel!.setupName} ',
                                   textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                                         fontSize: 20,
-                                        color: OQDOThemeData.greyColor,
+                                        color: Theme.of(context).colorScheme.onSurface,
                                         fontWeight: FontWeight.w500,
                                       ),
                                 ),
@@ -83,7 +83,7 @@ class _CancelCoachAppointmentReasonScreenState extends State<CancelCoachAppointm
                                       '${widget.cancelCoachAppointmentModel!.coachAppointmentDetailResponseModel!.activityName} - ${widget.cancelCoachAppointmentModel!.coachAppointmentDetailResponseModel!.subActivityName}',
                                   textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                                         fontSize: 20,
-                                        color: OQDOThemeData.greyColor,
+                                        color: Theme.of(context).colorScheme.onSurface,
                                         fontWeight: FontWeight.w500,
                                       ),
                                 ),
@@ -95,7 +95,7 @@ class _CancelCoachAppointmentReasonScreenState extends State<CancelCoachAppointm
                                   label: 'Select Reason For Cancelling Appointment',
                                   textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                                         fontSize: 18.0,
-                                        color: OQDOThemeData.greyColor,
+                                        color: Theme.of(context).colorScheme.onSurface,
                                         fontWeight: FontWeight.w400,
                                       ),
                                 ),
@@ -163,7 +163,7 @@ class _CancelCoachAppointmentReasonScreenState extends State<CancelCoachAppointm
       contentPadding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 0),
       title: CustomTextView(
         label: model.cancelreason,
-        textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+        textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
       ),
       activeColor: Theme.of(context).colorScheme.primary,
       value: model.cancelReasonId.toString(),
@@ -191,13 +191,13 @@ class _CancelCoachAppointmentReasonScreenState extends State<CancelCoachAppointm
       builder: (BuildContext context) => CupertinoAlertDialog(
         title: CustomTextView(
           label: '',
-          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400, fontSize: 18.0, color: OQDOThemeData.greyColor),
+          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400, fontSize: 18.0, color: Theme.of(context).colorScheme.onSurface),
         ),
         content: Center(
           child: CustomTextView(
             label: 'Are you sure you want to\ncancel this appointment?',
             maxLine: 2,
-            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w600, color: OQDOThemeData.greyColor),
+            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
           ),
         ),
         actions: [
@@ -208,7 +208,7 @@ class _CancelCoachAppointmentReasonScreenState extends State<CancelCoachAppointm
             },
             child: CustomTextView(
               label: 'No',
-              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dialogActionColor),
+              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
             ),
           ),
           CupertinoDialogAction(
@@ -219,7 +219,7 @@ class _CancelCoachAppointmentReasonScreenState extends State<CancelCoachAppointm
             },
             child: CustomTextView(
               label: 'Yes',
-              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dialogActionColor),
+              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
             ),
           )
         ],

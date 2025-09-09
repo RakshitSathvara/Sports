@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/model/CancelFacilityAppointmentModel.dart';
 import 'package:oqdo_mobile_app/model/cancel_reason_list_response_model.dart';
@@ -13,7 +14,6 @@ import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
 
 import '../../components/my_button.dart';
-import '../../theme/oqdo_theme_data.dart';
 import '../../utils/constants.dart';
 import '../../utils/custom_text_view.dart';
 import '../../utils/textfields_widget.dart';
@@ -70,7 +70,7 @@ class _CancelFacilityAppointmentReasonScreenState extends State<CancelFacilityAp
                                 label:
                                     '${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.facilitySetupTitle!.trim()} - ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.facilitySetupSubTitle!.trim()}',
                                 textStyle:
-                                    Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                                    Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                               ),
                             ),
                             const SizedBox(
@@ -82,7 +82,7 @@ class _CancelFacilityAppointmentReasonScreenState extends State<CancelFacilityAp
                                 label:
                                     '${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.activityName} - ${widget.cancelFacilityAppointmentModel!.facilityAppointmentDetailModel!.subActivityName}',
                                 textStyle:
-                                    Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 17, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                                    Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 17, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                               ),
                             ),
                             const SizedBox(
@@ -95,7 +95,7 @@ class _CancelFacilityAppointmentReasonScreenState extends State<CancelFacilityAp
                                 textStyle: Theme.of(context)
                                     .textTheme
                                     .titleLarge!
-                                    .copyWith(fontSize: 18.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w400),
+                                    .copyWith(fontSize: 18.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
                               ),
                             ),
                             ListView.builder(
@@ -166,7 +166,7 @@ class _CancelFacilityAppointmentReasonScreenState extends State<CancelFacilityAp
       contentPadding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 0),
       title: CustomTextView(
         label: model.cancelreason,
-        textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+        textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 18, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
       ),
       activeColor: Theme.of(context).colorScheme.primary,
       value: model.cancelReasonId.toString(),
@@ -199,7 +199,7 @@ class _CancelFacilityAppointmentReasonScreenState extends State<CancelFacilityAp
     //     ),
     //     CustomTextView(
     //       label: model.cancelreason,
-    //       textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 15, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+    //       textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
     //     ),
     //   ],
     // );
@@ -219,13 +219,13 @@ class _CancelFacilityAppointmentReasonScreenState extends State<CancelFacilityAp
       builder: (BuildContext context) => CupertinoAlertDialog(
         title: CustomTextView(
           label: '',
-          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400, fontSize: 18.0, color: OQDOThemeData.greyColor),
+          textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400, fontSize: 18.0, color: Theme.of(context).colorScheme.onSurface),
         ),
         content: Center(
           child: CustomTextView(
             label: 'Are you sure you want to\ncancel this appointment?',
             maxLine: 2,
-            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w600, color: OQDOThemeData.greyColor),
+            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
           ),
         ),
         actions: [
@@ -236,7 +236,7 @@ class _CancelFacilityAppointmentReasonScreenState extends State<CancelFacilityAp
             },
             child: CustomTextView(
               label: 'No',
-              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dialogActionColor),
+              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
             ),
           ),
           CupertinoDialogAction(
@@ -247,7 +247,7 @@ class _CancelFacilityAppointmentReasonScreenState extends State<CancelFacilityAp
             },
             child: CustomTextView(
               label: 'Yes',
-              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.dialogActionColor),
+              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.primary),
             ),
           )
         ],

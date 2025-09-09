@@ -7,7 +7,6 @@ import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/model/facility_appointment_details_model.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -117,7 +116,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                         child: CustomTextView(
                           label: 'Name: ${_facilityAppointmentDetailModel!.endUserFirstName} ${_facilityAppointmentDetailModel!.endUserLastName}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -128,7 +127,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                         child: CustomTextView(
                           label: 'Email ID: ${_facilityAppointmentDetailModel!.endUserEmail}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -139,7 +138,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                         child: CustomTextView(
                           label: 'Phone number: ${_facilityAppointmentDetailModel!.endUserMobileNumber}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -150,7 +149,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                         child: CustomTextView(
                           label: _facilityAppointmentDetailModel!.bookingType == 'I' ? 'Booking For: Individual' : 'Booking For: Group',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -163,7 +162,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                           maxLine: 3,
                           textOverFlow: TextOverflow.ellipsis,
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -178,14 +177,14 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                               maxLine: 3,
                               textOverFlow: TextOverflow.ellipsis,
                               textStyle:
-                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w600),
+                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w600),
                             ),
                             CustomTextView(
                               label: '${_facilityAppointmentDetailModel!.bookingNo}',
                               maxLine: 3,
                               textOverFlow: TextOverflow.ellipsis,
                               textStyle:
-                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                             ),
                           ],
                         ),
@@ -227,7 +226,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
         //   textStyle: Theme.of(context)
         //       .textTheme
         //       .titleMedium!
-        //       .copyWith(fontWeight: FontWeight.w600, color: OQDOThemeData.greyColor, fontSize: 18.0),
+        //       .copyWith(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface, fontSize: 18.0),
         // ),
         // const SizedBox(
         //   height: 10.0,
@@ -235,7 +234,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
         // CustomTextView(
         //   label: 'Order ID: ${_facilityAppointmentDetailModel!.bookingNo}',
         //   textStyle:
-        //       Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor, fontSize: 18.0),
+        //       Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface, fontSize: 18.0),
         // ),
         // const SizedBox(
         //   height: 12.0,
@@ -248,14 +247,14 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
         //       textStyle: Theme.of(context)
         //           .textTheme
         //           .titleMedium!
-        //           .copyWith(fontWeight: FontWeight.w600, color: OQDOThemeData.greyColor, fontSize: 18.0),
+        //           .copyWith(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface, fontSize: 18.0),
         //     ),
         //     CustomTextView(
         //       label: 'S\$ ${_facilityAppointmentDetailModel!.totalAmt}',
         //       textStyle: Theme.of(context)
         //           .textTheme
         //           .titleMedium!
-        //           .copyWith(fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor, fontSize: 18.0),
+        //           .copyWith(fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface, fontSize: 18.0),
         //     ),
         //   ],
         // ),
@@ -286,7 +285,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                   CustomTextView(
                     label:
                         '${convertDateToString(_facilityAppointmentDetailModel!.facilityBookingSlotDates![index].bookingDate!).split(',')[1].split(' ')[2]} ${convertDateToString(_facilityAppointmentDetailModel!.facilityBookingSlotDates![index].bookingDate!).split(',')[1].split(' ')[1]} - ${convertDateToString(_facilityAppointmentDetailModel!.facilityBookingSlotDates![index].bookingDate!).split(',')[0]}',
-                    textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                    textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
                     height: 5.0,
@@ -299,7 +298,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                         label:
                             '${_facilityAppointmentDetailModel!.facilityBookingSlotDates![index].startTime}-${_facilityAppointmentDetailModel!.facilityBookingSlotDates![index].endTime}',
                         textStyle:
-                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(
                         width: 15,
@@ -307,7 +306,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                       CustomTextView(
                         label: 'S\$ ${_facilityAppointmentDetailModel!.facilityBookingSlotDates![index].ratePerHour}/hour',
                         textStyle:
-                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -322,7 +321,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                       ? CustomTextView(
                           label: 'Cancelled',
                           textStyle:
-                              Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14.0, color: OQDOThemeData.errorColor, fontWeight: FontWeight.w500),
+                              Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14.0, color: Theme.of(context).colorScheme.error, fontWeight: FontWeight.w500),
                         )
                       : const SizedBox(),
                   const SizedBox(
@@ -330,7 +329,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                   ),
                   CustomTextView(
                     label: 'S\$ ${finalAmount.toStringAsFixed(2)}',
-                    textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                    textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -338,7 +337,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
           ),
           const Divider(
             thickness: 1.0,
-            color: Color(0xFFEFEFEF),
+            color: Theme.of(context).extension<CustomColors>()!.greyButton,
           ),
         ],
       ),
@@ -355,8 +354,8 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
   Widget _paymentSummaryView() {
     return Container(
       decoration: BoxDecoration(
-        color: OQDOThemeData.whiteColor,
-        border: Border.all(color: OQDOThemeData.otherTextColor),
+        color: Theme.of(context).extension<CustomColors>()!.white,
+        border: Border.all(color: Theme.of(context).extension<CustomColors>()!.greyText),
       ),
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -367,7 +366,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
             textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w600,
-                  color: OQDOThemeData.buttonColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
           ),
           const SizedBox(
@@ -386,13 +385,13 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
             children: [
               CustomTextView(
                 label: "Total Amount : ",
-                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
               ),
               Column(
                 children: [
                   CustomTextView(
                     label: 'S\$ ${totalAmount.toStringAsFixed(2)}',
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
                   ),
                 ],
               ),
@@ -416,7 +415,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                 children: [
                   CustomTextView(
                     label: title,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
                   ),
                   const SizedBox(
                     height: 3,
@@ -424,7 +423,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                   CustomTextView(
                     label: details,
                     maxLine: 2,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                   ),
                 ],
               ),
@@ -439,7 +438,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                     label: 'S\$ $rate',
                     maxLine: 2,
                     textOverFlow: TextOverflow.ellipsis,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
                   ),
                 ],
               ),
@@ -450,7 +449,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
           height: 3,
         ),
         const Divider(
-          color: OQDOThemeData.greyColor,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
       ],
     );
@@ -467,7 +466,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
   //             children: [
   //               CustomTextView(
   //                 label: title,
-  //                 textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+  //                 textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
   //               ),
   //               const SizedBox(
   //                 height: 3,
@@ -475,7 +474,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
   //               CustomTextView(
   //                 label: details,
   //                 maxLine: 2,
-  //                 textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+  //                 textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
   //               ),
   //             ],
   //           ),
@@ -483,7 +482,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
   //             children: [
   //               CustomTextView(
   //                 label: 'S\$ $rate',
-  //                 textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+  //                 textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
   //               ),
   //             ],
   //           ),
@@ -493,7 +492,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
   //         height: 3,
   //       ),
   //       const Divider(
-  //         color: OQDOThemeData.greyColor,
+  //         color: Theme.of(context).colorScheme.onSurface,
   //       ),
   //     ],
   //   );
@@ -514,7 +513,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  border: Border.all(width: 7.0, color: const Color.fromRGBO(0, 101, 144, 0.5)),
+                  border: Border.all(width: 7.0, color: Theme.of(context).colorScheme.primary.withOpacity(0.5)),
                 ),
               ),
               const SizedBox(
@@ -526,7 +525,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                 children: [
                   // CustomTextView(
                   //   label: '${_facilityAppointmentDetailModel!.facilityName}',
-                  //   textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.0, color: OQDOThemeData.greyColor),
+                  //   textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.0, color: Theme.of(context).colorScheme.onSurface),
                   // ),
                   // const SizedBox(
                   //   height: 8.0,
@@ -535,14 +534,14 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                     label: '${_facilityAppointmentDetailModel!.facilitySetupTitle!.trim()}\n${_facilityAppointmentDetailModel!.facilitySetupSubTitle!.trim()}',
                     maxLine: 3,
                     textOverFlow: TextOverflow.ellipsis,
-                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w500, fontSize: 16.0, color: OQDOThemeData.greyColor),
+                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w500, fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface),
                   ),
                   const SizedBox(
                     height: 8.0,
                   ),
                   CustomTextView(
                     label: '${_facilityAppointmentDetailModel!.activityName} - ${_facilityAppointmentDetailModel!.subActivityName}',
-                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                   )
                 ],
               )
@@ -568,7 +567,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
   //             Container(
   //               decoration: BoxDecoration(
   //                 shape: BoxShape.rectangle,
-  //                 border: Border.all(width: 7.0, color: const Color.fromRGBO(0, 101, 144, 0.5)),
+  //                 border: Border.all(width: 7.0, color: Theme.of(context).colorScheme.primary.withOpacity(0.5)),
   //               ),
   //             ),
   //             const SizedBox(width: 20.0),
@@ -582,7 +581,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
   //                   textStyle: Theme.of(context)
   //                       .textTheme
   //                       .titleSmall!
-  //                       .copyWith(fontWeight: FontWeight.w500, fontSize: 16.0, color: OQDOThemeData.greyColor),
+  //                       .copyWith(fontWeight: FontWeight.w500, fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface),
   //                 ),
   //                 const SizedBox(
   //                   height: 8.0,
@@ -594,7 +593,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
   //                   textStyle: Theme.of(context)
   //                       .textTheme
   //                       .titleMedium!
-  //                       .copyWith(fontSize: 12, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w400),
+  //                       .copyWith(fontSize: 12, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
   //                 ),
   //                 const SizedBox(
   //                   height: 5,
@@ -606,7 +605,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
   //                   textStyle: Theme.of(context)
   //                       .textTheme
   //                       .titleMedium!
-  //                       .copyWith(fontSize: 12, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w400),
+  //                       .copyWith(fontSize: 12, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
   //                 ),
   //               ],
   //             ),
@@ -618,7 +617,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
   //                 textStyle: Theme.of(context)
   //                     .textTheme
   //                     .bodySmall!
-  //                     .copyWith(fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor, fontSize: 15.0),
+  //                     .copyWith(fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface, fontSize: 15.0),
   //               ),
   //             ),
   //           ],
@@ -715,7 +714,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
               padding: const EdgeInsets.only(left: 20.0),
               child: CustomTextView(
                 label: 'Transaction History',
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, color: OQDOThemeData.blackColor, fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w500),
               ),
             ),
           ),
@@ -900,7 +899,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                                   color: paymentTransaction[index].status == 'A'
                                       ? Theme.of(context).extension<CustomColors>()!.greenAmount
                                       : paymentTransaction[index].status == 'P'
-                                          ? Colors.yellow
+                                          ? Theme.of(context).extension<CustomColors>()!.yellowStatus
                                           : Theme.of(context).extension<CustomColors>()!.redAmount,
                                   fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
@@ -1086,7 +1085,7 @@ class _FacilityAppointmentDetailsScreenState extends State<FacilityAppointmentDe
                 //                   color: paymentTransaction[index].status == 'A'
                 //                       ? Theme.of(context).extension<CustomColors>()!.greenAmount
                 //                       : paymentTransaction[index].status == 'P'
-                //                           ? Colors.yellow
+                //                           ? Theme.of(context).extension<CustomColors>()!.yellowStatus
                 //                           : Theme.of(context).extension<CustomColors>()!.redAmount,
                 //                   fontWeight: FontWeight.w500),
                 //               overflow: TextOverflow.ellipsis,
