@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 
 class DiscountCoupon extends StatelessWidget {

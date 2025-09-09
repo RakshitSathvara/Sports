@@ -10,7 +10,6 @@ import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/model/end_user_appointment_model_details.dart';
 import 'package:oqdo_mobile_app/model/facility_appointment_details_model.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/extentions.dart';
@@ -57,7 +56,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: OQDOThemeData.whiteColor,
+          color: Theme.of(context).extension<CustomColors>()!.white,
           child: _facilityAppointmentDetailModel != null
               ? SingleChildScrollView(
                   child: Column(
@@ -118,7 +117,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                         child: CustomTextView(
                           label: 'Name: ${_facilityAppointmentDetailModel!.facilityName}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -129,7 +128,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                         child: CustomTextView(
                           label: 'Email ID: ${_facilityAppointmentDetailModel!.facilityEmail}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -140,7 +139,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                         child: CustomTextView(
                           label: 'Phone number: ${_facilityAppointmentDetailModel!.facilityMobileNumber}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -151,7 +150,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                         child: CustomTextView(
                           label: _facilityAppointmentDetailModel!.bookingType == 'I' ? 'Booking For: Individual' : 'Booking For: Group',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -164,7 +163,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                           textOverFlow: TextOverflow.ellipsis,
                           label: 'Address : ${_facilityAppointmentDetailModel!.address}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -175,7 +174,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                         child: CustomTextView(
                           label: 'Order ID: ${_facilityAppointmentDetailModel!.bookingNo}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                         ),
                       ),
                       const SizedBox(
@@ -217,11 +216,11 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
         //   children: [
         //     CustomTextView(
         //       label: 'Total Amount',
-        //       textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, color: OQDOThemeData.greyColor, fontSize: 18.0),
+        //       textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface, fontSize: 18.0),
         //     ),
         //     CustomTextView(
         //       label: 'S\$ ${_facilityAppointmentDetailModel!.totalAmt}',
-        //       textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor, fontSize: 18.0),
+        //       textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface, fontSize: 18.0),
         //     ),
         //   ],
         // ),
@@ -235,7 +234,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
               children: [
                 CustomTextView(
                   label: 'Add Feedback',
-                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, color: OQDOThemeData.greyColor, fontSize: 18.0),
+                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface, fontSize: 18.0),
                 ),
                 const SizedBox(
                   height: 10,
@@ -251,7 +250,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                   itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
                   itemBuilder: (context, _) => const Icon(
                     Icons.star,
-                    color: Colors.amber,
+                    color: Theme.of(context).extension<CustomColors>()!.yellowStatus,
                     size: 15,
                   ),
                   onRatingUpdate: (rating) {
@@ -277,15 +276,15 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10), bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10), topRight: Radius.circular(10)),
-                    border: Border.all(color: const Color(0xffF1F1F1)),
-                    color: const Color(0xffEFEFEF).withOpacity(0.5)),
+                    border: Border.all(color: Theme.of(context).extension<CustomColors>()!.buddiesCard),
+                    color: Theme.of(context).extension<CustomColors>()!.greyButton.withOpacity(0.5)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Icon(
                       Icons.add,
                       size: 20,
-                      color: Color(0xFF006590),
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                     const SizedBox(
                       width: 10,
@@ -293,7 +292,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                     CustomTextView(
                       label: 'Add Feedback',
                       type: styleSubTitle,
-                      textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: const Color(0xFF006590), fontSize: 14.0, fontWeight: FontWeight.w500),
+                      textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.primary, fontSize: 14.0, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
@@ -393,7 +392,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                   CustomTextView(
                     label:
                         '${convertDateToString(bookingSlotList[index].bookingDate!).split(',')[1].split(' ')[2]} ${convertDateToString(bookingSlotList[index].bookingDate!).split(',')[1].split(' ')[1]} - ${convertDateToString(bookingSlotList[index].bookingDate!).split(',')[0]}',
-                    textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                    textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
                     height: 5.0,
@@ -404,7 +403,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                       CustomTextView(
                         label: '${bookingSlotList[index].startTime}-${bookingSlotList[index].endTime}',
                         textStyle:
-                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(
                         width: 15,
@@ -412,7 +411,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                       CustomTextView(
                         label: 'S\$ ${bookingSlotList[index].ratePerHour?.toStringAsFixed(2) ?? 0.00}/hour',
                         textStyle:
-                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                            Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -427,7 +426,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                       ? CustomTextView(
                           label: 'Cancelled',
                           textStyle:
-                              Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14.0, color: OQDOThemeData.errorColor, fontWeight: FontWeight.w500),
+                              Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 14.0, color: Theme.of(context).colorScheme.error, fontWeight: FontWeight.w500),
                         )
                       : const SizedBox(),
                   const SizedBox(
@@ -435,7 +434,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                   ),
                   CustomTextView(
                     label: 'S\$ ${bookingSlotList[index].bookingAmount?.toStringAsFixed(2) ?? 0.00}',
-                    textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20.0, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                    textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20.0, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -443,7 +442,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
           ),
           const Divider(
             thickness: 1.0,
-            color: Color(0xFFEFEFEF),
+            color: Theme.of(context).extension<CustomColors>()!.greyButton,
           ),
         ],
       ),
@@ -465,7 +464,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  border: Border.all(width: 7.0, color: const Color.fromRGBO(0, 101, 144, 0.5)),
+                  border: Border.all(width: 7.0, color: Theme.of(context).colorScheme.primary.withOpacity(0.5)),
                 ),
               ),
               const SizedBox(width: 20.0),
@@ -507,14 +506,14 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                 children: [
                   CustomTextView(
                     label: '${_facilityAppointmentDetailModel!.facilitySetupTitle}\n${_facilityAppointmentDetailModel!.facilitySetupSubTitle}',
-                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.0, color: OQDOThemeData.greyColor),
+                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.0, color: Theme.of(context).colorScheme.onSurface),
                   ),
                   const SizedBox(
                     height: 8.0,
                   ),
                   CustomTextView(
                     label: '${_facilityAppointmentDetailModel!.activityName} - ${_facilityAppointmentDetailModel!.subActivityName}',
-                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                   )
                 ],
               )
@@ -539,8 +538,8 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
   Widget _paymentSummaryView() {
     return Container(
       decoration: BoxDecoration(
-        color: OQDOThemeData.whiteColor,
-        border: Border.all(color: OQDOThemeData.otherTextColor),
+        color: Theme.of(context).extension<CustomColors>()!.white,
+        border: Border.all(color: Theme.of(context).extension<CustomColors>()!.greyText),
       ),
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -551,7 +550,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
             textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w600,
-                  color: OQDOThemeData.buttonColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
           ),
           const SizedBox(
@@ -570,13 +569,13 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
             children: [
               CustomTextView(
                 label: "Total Amount : ",
-                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
               ),
               Column(
                 children: [
                   CustomTextView(
                     label: 'S\$ ${totalAmount.toStringAsFixed(2)}',
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
                   ),
                 ],
               ),
@@ -586,7 +585,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
             height: 10,
           ),
           const Divider(
-            color: OQDOThemeData.greyColor,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
           const SizedBox(
             height: 10,
@@ -606,7 +605,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                           textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontSize: 14.0,
                               fontWeight: FontWeight.w600,
-                              color: discountedAmount <= 0 ? OQDOThemeData.blackColor : Theme.of(context).colorScheme.secondaryContainer),
+                              color: discountedAmount <= 0 ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.secondaryContainer),
                         ),
                         const SizedBox(
                           height: 3,
@@ -615,7 +614,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                           label: 'Applied on booking fees (S\$ ${bookingAmount.toStringAsFixed(2)})',
                           maxLine: 2,
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                         ).visible(discountedAmount > 0),
                       ],
                     ),
@@ -633,7 +632,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                           textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontSize: 13.0,
                               fontWeight: FontWeight.w600,
-                              color: discountedAmount <= 0 ? OQDOThemeData.blackColor : Theme.of(context).colorScheme.secondaryContainer),
+                              color: discountedAmount <= 0 ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.secondaryContainer),
                         ),
                       ],
                     ),
@@ -663,7 +662,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                 children: [
                   CustomTextView(
                     label: title,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
                   ),
                   const SizedBox(
                     height: 3,
@@ -671,7 +670,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                   CustomTextView(
                     label: details,
                     maxLine: 2,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                   ),
                 ],
               ),
@@ -686,7 +685,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                     label: 'S\$ $rate',
                     maxLine: 2,
                     textOverFlow: TextOverflow.ellipsis,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
                   ),
                 ],
               ),
@@ -697,7 +696,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
           height: 3,
         ),
         const Divider(
-          color: OQDOThemeData.greyColor,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
       ],
     );
@@ -716,7 +715,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
   //               children: [
   //                 CustomTextView(
   //                   label: title,
-  //                   textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+  //                   textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
   //                 ),
   //                 const SizedBox(
   //                   height: 3,
@@ -724,7 +723,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
   //                 CustomTextView(
   //                   label: details,
   //                   maxLine: 2,
-  //                   textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+  //                   textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
   //                 ),
   //               ],
   //             ),
@@ -738,7 +737,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
   //                   maxLine: 2,
   //                   textOverFlow: TextOverflow.ellipsis,
   //                   label: 'S\$ $rate',
-  //                   textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13.0, fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor),
+  //                   textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13.0, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground),
   //                 ),
   //               ],
   //             ),
@@ -749,7 +748,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
   //         height: 3,
   //       ),
   //       const Divider(
-  //         color: OQDOThemeData.greyColor,
+  //         color: Theme.of(context).colorScheme.onSurface,
   //       ),
   //     ],
   //   );
@@ -968,7 +967,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
               padding: const EdgeInsets.only(left: 20.0),
               child: CustomTextView(
                 label: 'Transaction History',
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, color: OQDOThemeData.blackColor, fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w500),
               ),
             ),
           ),
@@ -1178,7 +1177,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                                   color: paymentTransaction[index].status == 'A'
                                       ? Theme.of(context).extension<CustomColors>()!.greenAmount
                                       : paymentTransaction[index].status == 'P'
-                                          ? Colors.yellow
+                                          ? Theme.of(context).extension<CustomColors>()!.yellowStatus
                                           : Theme.of(context).extension<CustomColors>()!.redAmount,
                                   fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
@@ -1377,7 +1376,7 @@ class _EndUserFacilityAppointmentDetailsState extends State<EndUserFacilityAppoi
                 //                   color: paymentTransaction[index].status == 'A'
                 //                       ? Theme.of(context).extension<CustomColors>()!.greenAmount
                 //                       : paymentTransaction[index].status == 'P'
-                //                           ? Colors.yellow
+                //                           ? Theme.of(context).extension<CustomColors>()!.yellowStatus
                 //                           : Theme.of(context).extension<CustomColors>()!.redAmount,
                 //                   fontWeight: FontWeight.w500),
                 //               overflow: TextOverflow.ellipsis,

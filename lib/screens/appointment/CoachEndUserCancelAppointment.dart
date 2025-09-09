@@ -11,7 +11,6 @@ import 'package:oqdo_mobile_app/model/CancelCoachAppointmentModel.dart';
 import 'package:oqdo_mobile_app/model/coach_appointment_details_response_model.dart' as model;
 import 'package:oqdo_mobile_app/model/end_user_appointment_model_details.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -88,7 +87,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(fontSize: 20, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                                      .copyWith(fontSize: 20, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                                 ),
                               ),
                               const SizedBox(
@@ -101,7 +100,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                                      .copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                                 ),
                               ),
                               const SizedBox(
@@ -117,7 +116,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
-                                          .copyWith(color: OQDOThemeData.otherTextColor, fontWeight: FontWeight.w600, fontSize: 12.0),
+                                          .copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w600, fontSize: 12.0),
                                     ),
                                   ],
                                 ),
@@ -132,7 +131,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                      .copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                                 ),
                               ),
                               const SizedBox(
@@ -145,7 +144,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                      .copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                                 ),
                               ),
                               const SizedBox(
@@ -158,7 +157,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                      .copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                                 ),
                               ),
                               const SizedBox(
@@ -171,7 +170,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                      .copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                                 ),
                               ),
                               const SizedBox(
@@ -184,7 +183,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                      .copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                                 ),
                               ),
                               const SizedBox(
@@ -199,7 +198,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(fontSize: 14, color: const Color(0xFF818181), fontWeight: FontWeight.w400),
+                                      .copyWith(fontSize: 14, color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400),
                                 ),
                               ),
                               const SizedBox(
@@ -207,7 +206,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                               ),
                               const Divider(
                                 height: 1,
-                                color: Color(0xFFCACACA),
+                                color: Theme.of(context).colorScheme.outline,
                               ),
                               const SizedBox(
                                 height: 20.0,
@@ -231,14 +230,14 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                                     ),
                                     CustomTextView(
                                       label: 'S\$ ${totalRefundAmount.toStringAsFixed(2)}',
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                                     )
                                   ],
                                 ),
@@ -246,7 +245,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                               const SizedBox(height: 15.0),
                               const Divider(
                                 height: 1,
-                                color: OQDOThemeData.greyColor,
+                                color: Theme.of(context).colorScheme.onSurface,
                               ),
                               const SizedBox(height: 15.0),
                               Padding(
@@ -259,14 +258,14 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: OQDOThemeData.blackColor),
+                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onBackground),
                                     ),
                                     CustomTextView(
                                       label: 'S\$ ${totalDiscountAmount.toStringAsFixed(2)}',
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
-                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: OQDOThemeData.blackColor),
+                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onBackground),
                                     )
                                   ],
                                 ),
@@ -274,7 +273,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                               const SizedBox(height: 15.0),
                               const Divider(
                                 height: 1,
-                                color: OQDOThemeData.greyColor,
+                                color: Theme.of(context).colorScheme.onSurface,
                               ),
                               const SizedBox(height: 20.0),
                               Padding(
@@ -300,7 +299,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
-                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                                          .copyWith(fontSize: 16.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                                     ),
                                   ],
                                 ),
@@ -395,7 +394,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                         label:
                             '${convertDateToString(bookingSlotList[index].bookingDate!).split(',')[1].split(' ')[2]} ${convertDateToString(bookingSlotList[index].bookingDate!).split(',')[1].split(' ')[1]} - ${convertDateToString(bookingSlotList[index].bookingDate!).split(',')[0]}',
                         textStyle:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 18.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                            Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 18.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                       ),
                       const SizedBox(
                         height: 5.0,
@@ -407,7 +406,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                           CustomTextView(
                             label: '${bookingSlotList[index].startTime} - ${bookingSlotList[index].endTime}',
                             textStyle:
-                                Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                                Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                           ),
                           const SizedBox(
                             width: 15,
@@ -415,7 +414,7 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
                           CustomTextView(
                             label: 'S\$ ${bookingSlotList[index].ratePerHour?.toStringAsFixed(2) ?? 0.00}/hour',
                             textStyle:
-                                Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                                Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                           ),
                         ],
                       ),
@@ -431,11 +430,11 @@ class _CoachEndUserCancelAppointmentState extends State<CoachEndUserCancelAppoin
               children: [
                 CustomTextView(
                   label: 'Refund Amount: ',
-                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface),
                 ),
                 CustomTextView(
                   label: 'S\$ ${bookingSlotList[index].amount?.toStringAsFixed(2) ?? 0.00}',
-                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: OQDOThemeData.buttonColor),
+                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12.0, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.primary),
                 ),
               ],
             ),
