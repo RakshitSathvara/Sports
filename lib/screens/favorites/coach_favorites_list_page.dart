@@ -11,7 +11,7 @@ import 'package:oqdo_mobile_app/model/get_all_activity_and_sub_activity_response
 import 'package:oqdo_mobile_app/model/selecte_home_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/favorites/model/coach_batch_favorite_response_model.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -107,7 +107,7 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
           child: Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
-              color: Theme.of(context).colorScheme.onBackground,
+              color: Theme.of(context).colorScheme.background,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -122,11 +122,11 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
                         DropdownButton<dynamic>(
                           isExpanded: false,
                           underline: const SizedBox(),
-                          dropdownColor: Theme.of(context).colorScheme.onBackground,
+                          dropdownColor: Theme.of(context).colorScheme.background,
                           hint: CustomTextView(
                             label: filterList![0],
                             textStyle:
-                                Theme.of(context).textTheme.titleMedium!.copyWith(color: OQDOThemeData.greyColor, fontSize: 20.0, fontWeight: FontWeight.w300),
+                                  Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 20.0, fontWeight: FontWeight.w300),
                           ),
                           value: selectedTypeValue,
                           items: filterList!.map((interest) {
@@ -137,7 +137,7 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
                                 textStyle: Theme.of(context)
                                     .textTheme
                                     .titleMedium!
-                                    .copyWith(color: OQDOThemeData.greyColor, fontSize: 20.0, fontWeight: FontWeight.w300),
+                                  .copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 20.0, fontWeight: FontWeight.w300),
                               ),
                             );
                           }).toList(),
@@ -197,7 +197,7 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleLarge!
-                                        .copyWith(fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor, fontSize: 16.0),
+                                          .copyWith(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface, fontSize: 16.0),
                                   ),
                           ),
                         ),
@@ -219,7 +219,7 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
           width: MediaQuery.of(context).size.width,
           height: 180,
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          color: Theme.of(context).colorScheme.onBackground,
+            color: Theme.of(context).colorScheme.background,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -229,7 +229,7 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
                   clipper: ShapeBorderClipper(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
                   child: Container(
                     height: 160,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Theme.of(context).colorScheme.onBackground),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Theme.of(context).colorScheme.background),
                     child: Image.network(
                       coachesModel.profileImagePath!,
                       fit: BoxFit.fill,
@@ -258,7 +258,7 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
                               maxLine: 1,
                               textOverFlow: TextOverflow.ellipsis,
                               textStyle:
-                                  Theme.of(context).textTheme.titleSmall!.copyWith(color: OQDOThemeData.greyColor, fontSize: 18, fontWeight: FontWeight.w600),
+                                    Theme.of(context).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 18, fontWeight: FontWeight.w600),
                             ),
                           ),
                           const SizedBox(
@@ -281,7 +281,7 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
                               maxLine: 2,
                               textOverFlow: TextOverflow.ellipsis,
                               textStyle:
-                                  Theme.of(context).textTheme.bodyMedium!.copyWith(color: OQDOThemeData.greyColor, fontWeight: FontWeight.w400, fontSize: 15),
+                                    Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400, fontSize: 15),
                             ),
                           ),
                         ],
@@ -299,12 +299,13 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
                                 .bodyMedium!
                                 .copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w300, fontSize: 13),
                           ),
-                          Image.asset(
-                            coachesModel.bookingType == "I" ? 'assets/images/ic_individual_booking.png' : 'assets/images/ic_group_booking.png',
-                            height: 20,
-                            width: 20,
-                            fit: BoxFit.fill,
-                          ),
+                            Image.asset(
+                              coachesModel.bookingType == "I" ? 'assets/images/ic_individual_booking.png' : 'assets/images/ic_group_booking.png',
+                              height: 20,
+                              width: 20,
+                              fit: BoxFit.fill,
+                              color: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
+                            ),
                         ],
                       ),
                       const SizedBox(
@@ -315,7 +316,7 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
                           CustomTextView(
                             label: 'Availability: ',
                             textStyle:
-                                Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 13, fontWeight: FontWeight.w400, color: const Color(0xFF8A8A8A)),
+                                  Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 13, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
                           ),
                           const SizedBox(
                             width: 10,
@@ -323,7 +324,7 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
                           CustomTextView(
                             label: '${coachesModel.startTime} : ${coachesModel.endTime}',
                             textStyle:
-                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                                  Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                           )
                         ],
                       ),
@@ -338,7 +339,7 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
                               label: 'Singapore',
                               maxLine: 3,
                               textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: OQDOThemeData.greyColor,
+                                      color: Theme.of(context).colorScheme.onSurface,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 10,
                                   ),
@@ -350,9 +351,9 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
                           Container(
                             padding: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: const Color(0xFFE1E1E1),
-                                ),
+                                  border: Border.all(
+                                    color: Theme.of(context).colorScheme.outline,
+                                  ),
                                 borderRadius: const BorderRadius.all(Radius.circular(8))),
                             child: Row(
                               children: [
@@ -362,7 +363,7 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleSmall!
-                                      .copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                                        .copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                                 ),
                                 const SizedBox(
                                   width: 3,
@@ -519,7 +520,7 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
           textStyle: Theme.of(context)
               .textTheme
               .titleLarge!
-              .copyWith(fontWeight: FontWeight.bold, fontSize: 20.0, color: OQDOThemeData.greyColor, fontStyle: FontStyle.normal),
+              .copyWith(fontWeight: FontWeight.bold, fontSize: 20.0, color: Theme.of(context).colorScheme.onSurface, fontStyle: FontStyle.normal),
         ),
       ],
     );

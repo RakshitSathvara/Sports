@@ -20,7 +20,7 @@ import 'package:oqdo_mobile_app/viewmodels/BookingViewModel.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
 
-import '../../theme/oqdo_theme_data.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class FacilitiesFavoritesListPage extends StatefulWidget {
   SelectedHomeModel? selectedHomeModel;
@@ -119,7 +119,7 @@ class FacilitiesFavoritesListPageState extends State<FacilitiesFavoritesListPage
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            color: Theme.of(context).colorScheme.onBackground,
+            color: Theme.of(context).colorScheme.background,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -138,13 +138,13 @@ class FacilitiesFavoritesListPageState extends State<FacilitiesFavoritesListPage
                           DropdownButton<dynamic>(
                             isExpanded: false,
                             underline: const SizedBox(),
-                            dropdownColor: Theme.of(context).colorScheme.onBackground,
+                            dropdownColor: Theme.of(context).colorScheme.background,
                             hint: CustomTextView(
                               label: filterList![0],
                               textStyle: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
-                                  .copyWith(color: OQDOThemeData.greyColor, fontSize: 20.0, fontWeight: FontWeight.w300),
+                                  .copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 20.0, fontWeight: FontWeight.w300),
                             ),
                             value: selectedTypeValue,
                             items: filterList!.map((interest) {
@@ -155,7 +155,7 @@ class FacilitiesFavoritesListPageState extends State<FacilitiesFavoritesListPage
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(color: OQDOThemeData.greyColor, fontSize: 20.0, fontWeight: FontWeight.w300),
+                                      .copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 20.0, fontWeight: FontWeight.w300),
                                 ),
                               );
                             }).toList(),
@@ -218,7 +218,7 @@ class FacilitiesFavoritesListPageState extends State<FacilitiesFavoritesListPage
                                   textStyle: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor, fontSize: 16.0),
+                                        .copyWith(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface, fontSize: 16.0),
                                 ),
                         ),
                       ),
@@ -253,7 +253,7 @@ class FacilitiesFavoritesListPageState extends State<FacilitiesFavoritesListPage
                         opacity: 0.7,
                         child: Container(
                           width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Theme.of(context).colorScheme.onBackground),
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Theme.of(context).colorScheme.background),
                           child: CachedNetworkImage(
                             imageUrl: model.listingPageImage!,
                             fit: BoxFit.fill,
@@ -277,11 +277,11 @@ class FacilitiesFavoritesListPageState extends State<FacilitiesFavoritesListPage
                     maxLine: 2,
                     textOverFlow: TextOverflow.ellipsis,
                     type: styleSubTitle,
-                    textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18.0,
-                          color: OQDOThemeData.greyColor,
-                        ),
+                      textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18.0,
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
                   ),
                 ),
                 const SizedBox(
@@ -301,19 +301,20 @@ class FacilitiesFavoritesListPageState extends State<FacilitiesFavoritesListPage
               maxLine: 2,
               textOverFlow: TextOverflow.ellipsis,
               type: styleSubTitle,
-              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: OQDOThemeData.greyColor, fontWeight: FontWeight.w400, fontSize: 16),
+                textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400, fontSize: 16),
             ),
             const SizedBox(
               height: 6,
             ),
             Row(
               children: [
-                Image.asset(
-                  model.bookingType == "I" ? 'assets/images/ic_individual_booking.png' : 'assets/images/ic_group_booking.png',
-                  height: 20,
-                  width: 20,
-                  fit: BoxFit.fill,
-                ),
+                  Image.asset(
+                    model.bookingType == "I" ? 'assets/images/ic_individual_booking.png' : 'assets/images/ic_group_booking.png',
+                    height: 20,
+                    width: 20,
+                    fit: BoxFit.fill,
+                    color: Theme.of(context).extension<CustomColors>()!.coachFacilityFavIconColor,
+                  ),
                 const SizedBox(
                   width: 10,
                 ),
@@ -322,23 +323,23 @@ class FacilitiesFavoritesListPageState extends State<FacilitiesFavoritesListPage
                     label: 'From S\$ ${model.minimumHrRate?.toStringAsFixed(2) ?? 0.00} / hour',
                     type: styleSubTitle,
                     textOverFlow: TextOverflow.ellipsis,
-                    textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: OQDOThemeData.greyColor, fontWeight: FontWeight.w400, fontSize: 14.0),
+                      textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).extension<CustomColors>()!.greyText, fontWeight: FontWeight.w400, fontSize: 14.0),
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: const Color(0xFFE1E1E1),
-                      ),
-                      borderRadius: const BorderRadius.all(Radius.circular(8))),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Theme.of(context).extension<CustomColors>()!.filterDivider,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(8))),
                   child: Row(
                     children: [
                       CustomTextView(
                         label: model.avrageRating.toStringAsFixed(1),
                         textOverFlow: TextOverflow.ellipsis,
-                        textStyle:
-                            Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                          textStyle:
+                              Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: Theme.of(context).extension<CustomColors>()!.greyText),
                       ),
                       const SizedBox(
                         width: 3,
@@ -369,7 +370,7 @@ class FacilitiesFavoritesListPageState extends State<FacilitiesFavoritesListPage
           textStyle: Theme.of(context)
               .textTheme
               .titleLarge!
-              .copyWith(fontWeight: FontWeight.bold, fontSize: 20.0, color: OQDOThemeData.greyColor, fontStyle: FontStyle.normal),
+              .copyWith(fontWeight: FontWeight.bold, fontSize: 20.0, color: Theme.of(context).colorScheme.onSurface, fontStyle: FontStyle.normal),
         ),
       ],
     );
