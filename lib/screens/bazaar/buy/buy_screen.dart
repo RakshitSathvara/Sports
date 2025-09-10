@@ -79,7 +79,7 @@ class _BuyScreenState extends State<BuyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [_buildSearchBar(), Expanded(child: _buildEquipmentGrid(equipments))],
       ),
@@ -88,8 +88,8 @@ class _BuyScreenState extends State<BuyScreen> {
 
   Widget _buildSearchBar() {
     return Container(
-      color: Color(0xFF006590),
-      padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
+      color: Theme.of(context).colorScheme.primary,
+      padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
       child: Row(
         children: [
           Expanded(
@@ -97,16 +97,16 @@ class _BuyScreenState extends State<BuyScreen> {
               onChanged: _onSearchChanged,
               decoration: InputDecoration(
                 hintText: "Search Equipment's",
-                prefixIcon: const Icon(
+                prefixIcon:  Icon(
                   Icons.search,
-                  color: Color(0xFF006590),
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Theme.of(context).colorScheme.background,
               ),
             ),
           ),
@@ -131,7 +131,7 @@ class _BuyScreenState extends State<BuyScreen> {
                 }
               },
               child: Image.asset('assets/images/ic_bazaar_filter.png', width: 30.0, height: 30.0)),
-          const SizedBox(width: 15.0), // Space between filter icon and fav icon
+          SizedBox(width: 15.0), // Space between filter icon and fav icon
           GestureDetector(
             onTap: () async {
               var result = await Navigator.pushNamed(context, BuyFavScreen.routeName);
@@ -168,7 +168,7 @@ class _BuyScreenState extends State<BuyScreen> {
         Expanded(
           child: GridView.builder(
             controller: _scrollController,
-            padding: const EdgeInsets.all(2.0),
+            padding: EdgeInsets.all(2.0),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 0.79,
@@ -198,7 +198,7 @@ class _BuyScreenState extends State<BuyScreen> {
         ),
         if (isLoading && hasMoreData && equipments.isNotEmpty)
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding: EdgeInsets.symmetric(vertical: 16.0),
             child: const Center(
               child: CircularProgressIndicator(),
             ),

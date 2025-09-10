@@ -29,14 +29,14 @@ class CategoryView extends StatelessWidget {
               Positioned.fill(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.black.withAlpha(75), // 0.2 * 255 ≈ 51
+                    color: Theme.of(context).colorScheme.onBackground.withAlpha(75), // 0.2 * 255 ≈ 51
                   ),
                   child: Center(
                     child: Text(
                       title ?? '',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontFamily: 'Montserrat',
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.background,
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),

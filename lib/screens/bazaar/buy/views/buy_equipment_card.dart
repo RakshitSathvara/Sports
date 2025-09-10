@@ -47,14 +47,14 @@ class BuyEquipmentCard extends StatelessWidget {
             ),
             // Content Section
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Title
                   Text(
                     equipment.title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
                       height: 1.2,
@@ -62,7 +62,7 @@ class BuyEquipmentCard extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4),
                   // Source
                   Text(
                     'by ${equipment.equipmentCategory?.name ?? ''}',
@@ -72,10 +72,10 @@ class BuyEquipmentCard extends StatelessWidget {
                       fontSize: 12,
                       fontFamily: 'Montserrat',
                       overflow: TextOverflow.ellipsis,
-                      color: Colors.grey[600],
+                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
                   // Price and Favorite Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,10 +83,10 @@ class BuyEquipmentCard extends StatelessWidget {
                     children: [
                       Text(
                         'S\$ - ${equipment.price.toStringAsFixed(2)}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF006590),
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                       GestureDetector(

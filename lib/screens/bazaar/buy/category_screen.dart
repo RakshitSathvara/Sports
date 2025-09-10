@@ -7,7 +7,6 @@ import 'package:oqdo_mobile_app/model/common_passing_args.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/ads_screen/model/subactivyt_and_activity_response_model.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/sell/models/equipment_category_response_model.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/sell/viewmodel/sell_viewmodel.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -283,12 +282,12 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: CustomAppBar(
         title: 'Filter',
         onBack: () => Navigator.pop(context),
         isIconColorBlack: false,
-        backgroundColor: const Color(0xFF006989),
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: WillPopScope(
         onWillPop: () async {
@@ -300,7 +299,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: EdgeInsets.all(16),
               child: _buildHeader(),
             ),
             Expanded(
@@ -322,14 +321,14 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
           textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: 18.0,
-                color: OQDOThemeData.otherTextColor,
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
               ),
         ),
-        const SizedBox(height: 15.0),
+        SizedBox(height: 15.0),
         CustomTextView(
           label: '(Select categories)',
           textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: OQDOThemeData.blackColor,
+                color: Theme.of(context).colorScheme.onBackground,
                 fontWeight: FontWeight.w400,
                 fontSize: 16.0,
               ),
@@ -348,7 +347,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
           child: _buildActivityList(),
         ),
         Container(
-          color: const Color.fromRGBO(227, 227, 227, 1.0),
+          color: Theme.of(context).colorScheme.outline,
           width: 1,
           height: double.infinity,
         ),
@@ -377,13 +376,13 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
             child: Container(
               height: 80.0,
               width: double.infinity,
-              color: selectedActivityName == activity.name ? OQDOThemeData.filterDividerColor : OQDOThemeData.whiteColor,
+              color: selectedActivityName == activity.name ? Theme.of(context).colorScheme.outline : Theme.of(context).colorScheme.background,
               child: Center(
                 child: CustomTextView(
                   label: activity.name,
                   textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontSize: 16.0,
-                        color: OQDOThemeData.greyColor,
+                        color: Theme.of(context).colorScheme.onSurface,
                         fontWeight: FontWeight.w700,
                       ),
                 ),
@@ -392,7 +391,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
           ),
           Container(
             height: 1.0,
-            color: OQDOThemeData.filterDividerColor,
+            color: Theme.of(context).colorScheme.outline,
           ),
         ],
       ));
@@ -409,13 +408,13 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
           child: Container(
             height: 80.0,
             width: double.infinity,
-            color: selectedActivityName == PRODUCT_CATEGORY_KEY ? OQDOThemeData.filterDividerColor : OQDOThemeData.whiteColor,
+            color: selectedActivityName == PRODUCT_CATEGORY_KEY ? Theme.of(context).colorScheme.outline : Theme.of(context).colorScheme.background,
             child: Center(
               child: CustomTextView(
                 label: PRODUCT_CATEGORY_KEY,
                 textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontSize: 16.0,
-                      color: OQDOThemeData.greyColor,
+                      color: Theme.of(context).colorScheme.onSurface,
                       fontWeight: FontWeight.w700,
                     ),
               ),
@@ -424,7 +423,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
         ),
         Container(
           height: 1.0,
-          color: OQDOThemeData.filterDividerColor,
+          color: Theme.of(context).colorScheme.outline,
         ),
       ],
     ));
@@ -453,7 +452,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
         final subActivity = selectedValuesFromKey[index] as SubActivity;
 
         return Container(
-          padding: const EdgeInsets.only(left: 10.0, right: 20.0, top: 20.0),
+          padding: EdgeInsets.only(left: 10.0, right: 20.0, top: 20.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -474,7 +473,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
                   },
                 ),
               ),
-              const SizedBox(width: 15.0),
+              SizedBox(width: 15.0),
               Expanded(
                 child: CustomTextView(
                   label: subActivity.name,
@@ -482,7 +481,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
                   textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
-                        color: OQDOThemeData.greyColor,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                 ),
               ),
@@ -501,7 +500,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
         final category = equipmentCategories[index];
 
         return Container(
-          padding: const EdgeInsets.only(left: 10.0, right: 20.0, top: 20.0),
+          padding: EdgeInsets.only(left: 10.0, right: 20.0, top: 20.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -522,7 +521,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
                   },
                 ),
               ),
-              const SizedBox(width: 15.0),
+              SizedBox(width: 15.0),
               Expanded(
                 child: CustomTextView(
                   label: category.name,
@@ -530,7 +529,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
                   textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
-                        color: OQDOThemeData.greyColor,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                 ),
               ),
@@ -549,12 +548,12 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
             height: 70.0,
             child: ElevatedButton(
               style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all(const Color(0xFFCECECE)),
-                backgroundColor: MaterialStateProperty.all(const Color(0xFFCECECE)),
+                foregroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.outline),
+                backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.outline),
                 shape: MaterialStateProperty.all(
                   const RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
-                    side: BorderSide(color: Color(0xFFCECECE)),
+                    side: BorderSide(color: Theme.of(context).colorScheme.outline),
                   ),
                 ),
               ),
@@ -568,7 +567,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
                       fontWeight: FontWeight.w400,
                       fontSize: 16.0,
                       decoration: TextDecoration.underline,
-                      color: OQDOThemeData.blackColor,
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
               ),
             ),
@@ -579,13 +578,13 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
             height: 70.0,
             child: ElevatedButton(
               style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all(const Color(0xFF006590)),
-                backgroundColor: MaterialStateProperty.all(const Color(0xFF006590)),
+                foregroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.primary),
+                backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.primary),
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                     side: BorderSide(
-                      color: hasSelections() ? const Color(0xFF006590) : const Color(0xFFCECECE),
+                      color: hasSelections() ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline,
                     ),
                   ),
                 ),
@@ -651,7 +650,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
                 textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                       fontWeight: FontWeight.w600,
                       fontSize: 16.0,
-                      color: OQDOThemeData.whiteColor,
+                      color: Theme.of(context).colorScheme.background,
                     ),
               ),
             ),

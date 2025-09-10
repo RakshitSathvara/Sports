@@ -135,9 +135,9 @@ class _SportsAdvertisementCarouselState extends State<SportsAdvertisementCarouse
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: CustomAppBar(
-        backgroundColor: const Color(0xFF006590),
+        backgroundColor: Theme.of(context).colorScheme.primary,
         title: widget.intent!.selectedAdsType == 1 ? 'Advertisement' : 'Events',
         isIconColorBlack: false,
         onBack: () => Navigator.pop(context),
@@ -234,7 +234,7 @@ class _SportsAdvertisementCarouselState extends State<SportsAdvertisementCarouse
                               child: Container(
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
-                                  color: Colors.grey[900],
+                                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.9),
                                 ),
                                 child: Image.network(
                                   advertisementList[index].filePath,
@@ -243,7 +243,7 @@ class _SportsAdvertisementCarouselState extends State<SportsAdvertisementCarouse
                                     return const Center(
                                       child: Icon(
                                         Icons.error_outline,
-                                        color: Colors.white,
+                                        color: Theme.of(context).colorScheme.background,
                                         size: 48.0,
                                       ),
                                     );
@@ -264,13 +264,13 @@ class _SportsAdvertisementCarouselState extends State<SportsAdvertisementCarouse
                                       child: Container(
                                         width: 16.0,
                                         height: 16.0,
-                                        margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                                        margin: EdgeInsets.symmetric(horizontal: 4.0),
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
-                                          color: _currentIndex == entry.key ? const Color(0xFF006590) : Colors.white,
+                                          color: _currentIndex == entry.key ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.background,
                                           border: _currentIndex == entry.key
-                                              ? Border.all(color: Colors.white, width: 2.0)
-                                              : Border.all(color: Colors.grey[300]!, width: 1.0),
+                                              ? Border.all(color: Theme.of(context).colorScheme.background, width: 2.0)
+                                              : Border.all(color: Theme.of(context).colorScheme.outline, width: 1.0),
                                         ),
                                       ),
                                     );

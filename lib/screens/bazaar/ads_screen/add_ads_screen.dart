@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/ads_screen/viewmodel/ads_view_model.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
@@ -77,9 +76,9 @@ class _AddAdsScreenState extends State<AddAdsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: CustomAppBar(
-        backgroundColor: Color(0xFF006590),
+        backgroundColor: Theme.of(context).colorScheme.primary,
         title: 'Advertisements',
         isIconColorBlack: false,
         onBack: () {
@@ -87,7 +86,7 @@ class _AddAdsScreenState extends State<AddAdsScreen> {
         },
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
             Expanded(
@@ -100,7 +99,7 @@ class _AddAdsScreenState extends State<AddAdsScreen> {
                     children: [
                       Text(
                         'Request to Post Ad',
-                        style: TextStyle(fontWeight: FontWeight.w400, color: Colors.black, fontSize: 16, fontFamily: 'SFPro'),
+                        style: TextStyle(fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onBackground, fontSize: 16, fontFamily: 'SFPro'),
                       ),
                       CustomTextFormField(
                         read: false,
@@ -110,7 +109,7 @@ class _AddAdsScreenState extends State<AddAdsScreen> {
                         inputformat: [
                           FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z ]+')),
                         ],
-                        fillColor: OQDOThemeData.backgroundColor,
+                        fillColor: Theme.of(context).colorScheme.background,
                         labelText: 'Full Name',
                         hintText: 'Enter Full Name',
                         keyboardType: TextInputType.text,
@@ -125,7 +124,7 @@ class _AddAdsScreenState extends State<AddAdsScreen> {
                         inputformat: [
                           FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z ]+')),
                         ],
-                        fillColor: OQDOThemeData.backgroundColor,
+                        fillColor: Theme.of(context).colorScheme.background,
                         labelText: 'Name of Organization',
                         hintText: 'Enter Organization Name',
                         keyboardType: TextInputType.text,
@@ -137,7 +136,7 @@ class _AddAdsScreenState extends State<AddAdsScreen> {
                         obscureText: false,
                         maxlines: 1,
                         maxlength: 50,
-                        fillColor: OQDOThemeData.backgroundColor,
+                        fillColor: Theme.of(context).colorScheme.background,
                         labelText: 'Email Address',
                         hintText: 'Enter Email Address',
                         keyboardType: TextInputType.text,
@@ -153,7 +152,7 @@ class _AddAdsScreenState extends State<AddAdsScreen> {
                           FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                           FilteringTextInputFormatter.digitsOnly,
                         ],
-                        fillColor: OQDOThemeData.backgroundColor,
+                        fillColor: Theme.of(context).colorScheme.background,
                         labelText: 'Mobile Number',
                         hintText: 'Enter Mobile Number',
                         keyboardType: TextInputType.number,
@@ -165,7 +164,7 @@ class _AddAdsScreenState extends State<AddAdsScreen> {
                         obscureText: false,
                         maxlines: 5,
                         maxlength: 500,
-                        fillColor: OQDOThemeData.backgroundColor,
+                        fillColor: Theme.of(context).colorScheme.background,
                         labelText: 'Description',
                         keyboardType: TextInputType.text,
                         validator: (value) => validateRequired(value, 'Description'),
@@ -204,7 +203,7 @@ class _AddAdsScreenState extends State<AddAdsScreen> {
                                     fontWeight: FontWeight.w600,
                                     fontSize: 17.0,
                                     fontFamily: 'Montserrat',
-                                    color: const Color(0xFF006590),
+                                    color: Theme.of(context).colorScheme.primary,
                                     decoration: TextDecoration.underline,
                                     decorationThickness: 2),
                               ),
@@ -238,7 +237,7 @@ class _AddAdsScreenState extends State<AddAdsScreen> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF006590),
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                   padding: EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -247,7 +246,7 @@ class _AddAdsScreenState extends State<AddAdsScreen> {
                 child: Text(
                   'Send Request',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.background,
                     fontSize: 18,
                     fontFamily: 'SFPro',
                     fontWeight: FontWeight.w700,

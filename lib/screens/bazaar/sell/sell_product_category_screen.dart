@@ -8,7 +8,6 @@ import 'package:oqdo_mobile_app/screens/bazaar/ads_screen/model/subactivyt_and_a
 import 'package:oqdo_mobile_app/screens/bazaar/sell/models/edit_view_equipment_intent_model.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/sell/models/sell_equipment_response_model.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/sell/viewmodel/sell_viewmodel.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -55,25 +54,25 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: CustomAppBar(
         title: 'Product Category',
         onBack: () => Navigator.pop(context),
         isIconColorBlack: false,
-        backgroundColor: const Color(0xFF006989),
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.all(16),
             child: Text(
               'Used For',
               style: TextStyle(
                 fontSize: 18,
                 fontFamily: 'SFPro',
                 fontWeight: FontWeight.w400,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.onBackground,
               ),
             ),
           ),
@@ -84,7 +83,7 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
                 Container(
                   width: 150,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.background,
                     border: Border(
                       right: BorderSide(color: Color(0xFFE3E3E3)),
                     ),
@@ -101,9 +100,9 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
                           });
                         },
                         child: Container(
-                          padding: const EdgeInsets.all(16),
+                          padding: EdgeInsets.all(16),
                           decoration: BoxDecoration(
-                            color: categories[index].isExpanded ? Colors.white : Colors.transparent,
+                            color: categories[index].isExpanded ? Theme.of(context).colorScheme.background : Colors.transparent,
                             border: Border(
                               bottom: BorderSide(color: Color(0xFFE3E3E3)),
                             ),
@@ -140,7 +139,7 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
                                 final subActivity = category.subActivities[subIndex];
 
                                 return Container(
-                                  padding: const EdgeInsets.only(left: 10.0, right: 20.0, top: 20.0),
+                                  padding: EdgeInsets.only(left: 10.0, right: 20.0, top: 20.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -161,7 +160,7 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
                                           },
                                         ),
                                       ),
-                                      const SizedBox(width: 15.0),
+                                      SizedBox(width: 15.0),
                                       Expanded(
                                         child: CustomTextView(
                                           label: subActivity.name,
@@ -169,7 +168,7 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
                                           textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                                                 fontSize: 18.0,
                                                 fontWeight: FontWeight.w500,
-                                                color: OQDOThemeData.greyColor,
+                                                color: Theme.of(context).colorScheme.onSurface,
                                               ),
                                         ),
                                       ),
@@ -192,7 +191,7 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
                                 //     });
                                 //   },
                                 //   controlAffinity: ListTileControlAffinity.leading,
-                                //   activeColor: Color(0xFF006989),
+                                //   activeColor: Theme.of(context).colorScheme.primary,
                                 //   contentPadding: EdgeInsets.symmetric(horizontal: 16),
                                 // );
                               },
@@ -208,9 +207,9 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
           ),
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.background,
               border: Border(
-                top: BorderSide(color: Colors.grey[300]!),
+                top: BorderSide(color: Theme.of(context).colorScheme.outline),
               ),
             ),
             child: Row(
@@ -220,13 +219,13 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
                     height: 70.0,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        foregroundColor: WidgetStateProperty.all<Color>(const Color(0xFFCECECE)),
-                        backgroundColor: WidgetStateProperty.all<Color>(const Color(0xFFCECECE)),
+                        foregroundColor: WidgetStateProperty.all<Color>(Theme.of(context).colorScheme.outline),
+                        backgroundColor: WidgetStateProperty.all<Color>(Theme.of(context).colorScheme.outline),
                         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           const RoundedRectangleBorder(
                             borderRadius: BorderRadius.zero,
                             side: BorderSide(
-                              color: Color(0xFFCECECE),
+                              color: Theme.of(context).colorScheme.outline,
                             ),
                           ),
                         ),
@@ -238,7 +237,7 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
                               fontWeight: FontWeight.w400,
                               fontSize: 16.0,
                               decoration: TextDecoration.underline,
-                              color: OQDOThemeData.blackColor,
+                              color: Theme.of(context).colorScheme.onBackground,
                               fontFamily: 'SFPro',
                             ),
                       ),
@@ -250,13 +249,13 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
                     height: 70.0,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        foregroundColor: WidgetStateProperty.all<Color>(const Color(0xFF006590)),
-                        backgroundColor: WidgetStateProperty.all<Color>(selectedSubActivities.isEmpty ? const Color(0xFFCECECE) : const Color(0xFF006590)),
+                        foregroundColor: WidgetStateProperty.all<Color>(Theme.of(context).colorScheme.primary),
+                        backgroundColor: WidgetStateProperty.all<Color>(selectedSubActivities.isEmpty ? Theme.of(context).colorScheme.outline : Theme.of(context).colorScheme.primary),
                         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.zero,
                             side: BorderSide(
-                              color: selectedSubActivities.isEmpty ? const Color(0xFFCECECE) : const Color(0xFF006590),
+                              color: selectedSubActivities.isEmpty ? Theme.of(context).colorScheme.outline : Theme.of(context).colorScheme.primary,
                             ),
                           ),
                         ),
@@ -320,7 +319,7 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
                         textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                               fontWeight: FontWeight.w600,
                               fontSize: 16.0,
-                              color: selectedSubActivities.isEmpty ? Colors.grey[600] : OQDOThemeData.whiteColor,
+                              color: selectedSubActivities.isEmpty ? Theme.of(context).colorScheme.onSurface.withOpacity(0.6) : Theme.of(context).colorScheme.background,
                               fontFamily: 'SFPro',
                             ),
                       ),

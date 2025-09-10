@@ -44,27 +44,27 @@ class _BuyProductDetailsScreenState extends State<BuyProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: Color(0xFF006989),
+        backgroundColor: Theme.of(context).colorScheme.primary,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.background,
           ),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           'Product List',
           style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.background,
                 fontWeight: FontWeight.w600,
                 fontSize: 20.0,
               ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xFF006590),
+        backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () async {
           final value = await Navigator.pushNamed(context, Constants.buyingChatScreen, arguments: equipmentDetails);
           if (value != null && value is bool && value) {
@@ -74,7 +74,7 @@ class _BuyProductDetailsScreenState extends State<BuyProductDetailsScreen> {
         },
         child: Image.asset(
           'assets/images/ic_bazaar_msg.png',
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.background,
           height: 25,
           width: 25,
         ),
@@ -86,7 +86,7 @@ class _BuyProductDetailsScreenState extends State<BuyProductDetailsScreen> {
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(16.0),
                   child: equipmentDetails == null
                       ? Container()
                       : Column(
@@ -112,7 +112,7 @@ class _BuyProductDetailsScreenState extends State<BuyProductDetailsScreen> {
                                   controller: PageController(viewportFraction: 0.93),
                                   itemBuilder: (context, index) {
                                     return Container(
-                                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                                      margin: EdgeInsets.symmetric(horizontal: 4),
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(8),
                                         child: Image.network(
@@ -120,8 +120,8 @@ class _BuyProductDetailsScreenState extends State<BuyProductDetailsScreen> {
                                           fit: BoxFit.cover,
                                           errorBuilder: (context, error, stackTrace) {
                                             return Container(
-                                              color: Colors.grey[300],
-                                              child: const Icon(Icons.error),
+                                              color: Theme.of(context).colorScheme.outline,
+                                              child:  Icon(Icons.error),
                                             );
                                           },
                                         ),
@@ -149,7 +149,7 @@ class _BuyProductDetailsScreenState extends State<BuyProductDetailsScreen> {
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w700,
-                                color: Color(0xFF006590),
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                             ),
                             SizedBox(height: 16),
@@ -177,14 +177,14 @@ class _BuyProductDetailsScreenState extends State<BuyProductDetailsScreen> {
                                   children: equipmentDetails?.equipmentSubActivities.map((activity) {
                                         return Container(
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFFF1F5F9), // Light blue-grey background
+                                            color: Theme.of(context).colorScheme.surfaceVariant, // Light blue-grey background
                                             borderRadius: BorderRadius.circular(20),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                                             child: Text(
                                               activity.name,
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                 color: Color(0xFF475569), // Dark blue-grey text
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w500,
@@ -208,7 +208,7 @@ class _BuyProductDetailsScreenState extends State<BuyProductDetailsScreen> {
                             if (equipmentDetails?.expiryDate != null)
                               Text(
                                 'Post expiry date: ${DateFormat('dd/MM/yyyy').format(equipmentDetails?.expiryDate ?? DateTime.now())}',
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Montserrat',

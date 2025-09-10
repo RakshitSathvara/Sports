@@ -42,12 +42,12 @@ class _AdsScreenState extends State<AdsScreen> with SingleTickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: categories.isNotEmpty
           ? Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(10.0, 20, 10, 0),
+                  padding: EdgeInsets.fromLTRB(10.0, 20, 10, 0),
                   child: SegmentedView(
                     segments: segments,
                     backgroundColor: Color(0xFFD4EEF9),
@@ -60,7 +60,7 @@ class _AdsScreenState extends State<AdsScreen> with SingleTickerProviderStateMix
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                     child: Column(
                       children: [
                         Expanded(
@@ -87,7 +87,7 @@ class _AdsScreenState extends State<AdsScreen> with SingleTickerProviderStateMix
                                           image: category.filePath,
                                           title: category.name,
                                         ),
-                                        if (index != categories.length - 1) const SizedBox(height: 16),
+                                        if (index != categories.length - 1) SizedBox(height: 16),
                                       ],
                                     );
                                   },
@@ -104,16 +104,16 @@ class _AdsScreenState extends State<AdsScreen> with SingleTickerProviderStateMix
                               Navigator.pushNamed(context, Constants.addAdsScreen);
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF006590),
-                              foregroundColor: Color(0xFF006590),
+                              backgroundColor: Theme.of(context).colorScheme.primary,
+                              foregroundColor: Theme.of(context).colorScheme.primary,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
-                              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                             ),
                             child: Text(
                               'Add Your Advertisement',
-                              style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w700, fontFamily: 'SFPro'),
+                              style: TextStyle(fontSize: 20, color: Theme.of(context).colorScheme.background, fontWeight: FontWeight.w700, fontFamily: 'SFPro'),
                             ),
                           ),
                         )

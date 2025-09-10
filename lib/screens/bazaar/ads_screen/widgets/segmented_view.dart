@@ -15,7 +15,7 @@ class SegmentedView extends StatefulWidget {
     required this.segments,
     this.onSegmentSelected,
     this.onPressed,
-    this.selectedColor = const Color(0xFF006590),
+    this.selectedColor = Theme.of(context).colorScheme.primary,
     this.unselectedColor = const Color(0xFFD4EEF9),
     this.backgroundColor = const Color(0xFFE0E0E0),
     this.initialIndex = 0,
@@ -60,7 +60,7 @@ class _SegmentedViewState extends State<SegmentedView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0),
       child: Row(
         children: [
           Expanded(
@@ -114,7 +114,7 @@ class _SegmentedViewState extends State<SegmentedView> {
           segment.onPressed?.call();
         },
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 12.0),
+          padding: EdgeInsets.symmetric(vertical: 12.0),
           decoration: BoxDecoration(
             color: isSelected ? widget.selectedColor : widget.unselectedColor,
             borderRadius: BorderRadius.circular(20.0),
@@ -127,7 +127,7 @@ class _SegmentedViewState extends State<SegmentedView> {
                 segment.name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: isSelected ? Colors.white : Colors.black87,
+                  color: isSelected ? Theme.of(context).colorScheme.background : Theme.of(context).colorScheme.onBackground.withOpacity(0.87),
                   fontWeight: FontWeight.w700,
                   fontSize: 17.0,
                   fontFamily: 'Montserrat',

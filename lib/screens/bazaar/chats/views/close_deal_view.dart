@@ -12,11 +12,11 @@ class DisabledAdNotification extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       decoration: BoxDecoration(
-        color: const Color(0xFF006590), // Blue background color
+        color: Theme.of(context).colorScheme.primary, // Blue background color
         border: Border.all(
-          color: Colors.grey.shade300,
+          color: Theme.of(context).colorScheme.outline,
           width: 1.0,
         ),
       ),
@@ -24,12 +24,12 @@ class DisabledAdNotification extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
               
-              child: const Text(
+              child:  Text(
                 'This ad has been disabled by the seller',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.background,
                   fontSize: 16,
                   fontFamily: 'SFPro',
                   fontWeight: FontWeight.w400,
@@ -38,19 +38,19 @@ class DisabledAdNotification extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 16.0),
+          SizedBox(width: 16.0),
           TextButton(
             onPressed: onDelete,
             style: TextButton.styleFrom(
-              padding: const EdgeInsets.symmetric(
+              padding: EdgeInsets.symmetric(
                 horizontal: 16.0,
                 vertical: 8.0,
               ),
             ),
-            child: const Text(
+            child:  Text(
               'Delete',
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.background,
                 fontSize: 16,
                 fontFamily: 'SFPro',
                 fontWeight: FontWeight.w600,

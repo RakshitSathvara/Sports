@@ -13,7 +13,6 @@ import 'package:oqdo_mobile_app/screens/bazaar/sell/models/sell_equipment_respon
 import 'package:oqdo_mobile_app/screens/bazaar/sell/product/sell_product_detail_screen.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/sell/viewmodel/sell_viewmodel.dart';
 import 'package:oqdo_mobile_app/screens/common_widget/view_image_screen.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -117,28 +116,28 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF006590),
+        backgroundColor: Theme.of(context).colorScheme.primary,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back, color: Colors.white),
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.background),
         ),
         title: Text(
           'Used For',
-          style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 20.0),
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.background, fontWeight: FontWeight.w600, fontSize: 20.0),
         ),
       ),
       body: Container(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.background,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(16),
           child: Form(
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                 Text(
                   'Category',
                   style: TextStyle(
                     fontSize: 16,
@@ -147,7 +146,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 Text(
                   widget.editViewEquipmentIntentModel.sellEquipmentResponseModel!.sellEquipmentCategory.name,
                   style: TextStyle(
@@ -157,8 +156,8 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     color: Color(0xFF2B2B2B),
                   ),
                 ),
-                const SizedBox(height: 16),
-                const Text(
+                SizedBox(height: 16),
+                 Text(
                   'Used For',
                   style: TextStyle(
                     fontSize: 16,
@@ -167,24 +166,24 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 // Updated Activity Selection Section with FilterChips
                 Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
+                  padding: EdgeInsets.only(top: 10.0),
                   child: Wrap(
                     spacing: 8.0,
                     runSpacing: 8.0,
                     children: widget.editViewEquipmentIntentModel.sellEquipmentResponseModel!.equipmentSubActivities.map((activity) {
                       return Container(
                         decoration: BoxDecoration(
-                          color: const Color(0xFFF1F5F9), // Light blue-grey background
+                          color: Theme.of(context).colorScheme.surfaceVariant, // Light blue-grey background
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                           child: Text(
                             activity.name,
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Color(0xFF475569), // Dark blue-grey text
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
@@ -196,14 +195,14 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     }).toList(),
                   ),
                 ),
-                const SizedBox(height: 24),
+                SizedBox(height: 24),
                 // Rest of the form fields...
                 _buildProductDetailsSection(),
-                const SizedBox(height: 24),
+                SizedBox(height: 24),
                 _buildImageUploadSection(),
-                const SizedBox(height: 16),
+                SizedBox(height: 16),
                 _buildTermsAndConditions(),
-                const SizedBox(height: 24),
+                SizedBox(height: 24),
                 _buildNextButton(),
               ],
             ),
@@ -217,16 +216,16 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+         Text(
           'Product Details',
           style: TextStyle(
             fontSize: 18,
-            color: Colors.black,
+            color: Theme.of(context).colorScheme.onBackground,
             fontFamily: 'SFPro',
             fontWeight: FontWeight.w400,
           ),
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 16),
         CustomTextFormField(
           labelText: 'Title',
           obscureText: false,
@@ -240,7 +239,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
           validator: (value) => validateRequired(value, 'Title'),
           hintText: 'Enter Title',
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 16),
         CustomTextFormField(
           labelText: 'Brand',
           obscureText: false,
@@ -254,7 +253,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
           validator: (value) => validateRequired(value, 'Brand'),
           hintText: 'Enter Brand Name',
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 16),
         CustomTextFormField(
           labelText: 'Description',
           obscureText: false,
@@ -266,7 +265,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
           hintText: 'Enter Description',
           validator: (value) => validateRequired(value, 'Description'),
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 16),
         CustomTextFormField(
           labelText: 'Price',
           obscureText: false,
@@ -299,7 +298,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
           hintText: 'Enter Price',
           validator: (value) => validatePrice(value),
         ),
-        const SizedBox(height: 25),
+        SizedBox(height: 25),
         _buildDropdownField(selectedCondition),
       ],
     );
@@ -340,7 +339,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
               label: 'I have read and accept the terms & conditions',
               textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     fontFamily: 'Montserrat',
-                    color: Color(0xFF006590),
+                    color: Theme.of(context).colorScheme.primary,
                     fontSize: 16.0,
                     fontWeight: FontWeight.w600,
                     decoration: TextDecoration.underline,
@@ -362,18 +361,18 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
           }
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF006590),
+          backgroundColor: Theme.of(context).colorScheme.primary,
           minimumSize: const Size(double.infinity, 48),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
           elevation: 0,
-          padding: const EdgeInsets.symmetric(vertical: 14),
+          padding: EdgeInsets.symmetric(vertical: 14),
         ),
-        child: const Text(
+        child:  Text(
           'Next',
           style: TextStyle(
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.background,
             fontSize: 16,
             fontFamily: 'SFPro',
             fontWeight: FontWeight.w500,
@@ -399,8 +398,8 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
             content: CustomTextView(
                 label: entry.key,
                 maxLine: 5,
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(color: OQDOThemeData.whiteColor, fontSize: 16.0, fontWeight: FontWeight.w500)),
-            backgroundColor: OQDOThemeData.blackColor,
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(color: Theme.of(context).colorScheme.background, fontSize: 16.0, fontWeight: FontWeight.w500)),
+            backgroundColor: Theme.of(context).colorScheme.onBackground,
             behavior: SnackBarBehavior.floating);
 
         rootScaffoldMessangerKey.currentState?.removeCurrentSnackBar();
@@ -467,27 +466,27 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
   /// [hint] - Placeholder text when no value selected
   Widget _buildDropdownField(EquipmentCondition condition) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: EdgeInsets.only(bottom: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'Condition',
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 14,
-              color: Colors.black54,
+              color: Theme.of(context).colorScheme.onBackground.withOpacity(0.54),
             ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8),
           InkWell(
             onTap: () {
               _showConditionBottomSheet();
               // The selected value will automatically update through setState in _buildConditionOption
             },
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                border: Border.all(color: Color(0xFF006590)),
+                border: Border.all(color: Theme.of(context).colorScheme.primary),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(
@@ -496,10 +495,10 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                   Text(
                     selectedCondition.name.isNotEmpty ? selectedCondition.name : 'Select Condition',
                     style: TextStyle(
-                      color: selectedCondition.name.isEmpty ? Colors.grey[600] : Colors.black,
+                      color: selectedCondition.name.isEmpty ? Theme.of(context).colorScheme.onSurface.withOpacity(0.6) : Theme.of(context).colorScheme.onBackground,
                     ),
                   ),
-                  const Icon(Icons.keyboard_arrow_down, color: Color(0xFF006590)),
+                   Icon(Icons.keyboard_arrow_down, color: Theme.of(context).colorScheme.primary),
                 ],
               ),
             ),
@@ -514,7 +513,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
   void _showConditionBottomSheet() {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
@@ -527,9 +526,9 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                  padding: EdgeInsets.only(top: 10, left: 10, right: 10),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     child: Stack(
                       children: [
                         Align(
@@ -537,7 +536,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                           child: IconButton(
                             padding: EdgeInsets.zero,
                             constraints: const BoxConstraints(),
-                            icon: const Icon(Icons.close),
+                            icon:  Icon(Icons.close),
                             onPressed: () => Navigator.pop(context),
                           ),
                         ),
@@ -564,7 +563,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     },
                   ),
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16),
               ],
             );
           },
@@ -586,7 +585,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
         Navigator.pop(context);
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Column(
           children: [
             Row(
@@ -598,20 +597,20 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     children: [
                       Text(
                         condition.name,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 15,
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.w600,
-                          color: Colors.black,
+                          color: Theme.of(context).colorScheme.onBackground,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10),
                       Text(
                         condition.description,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 13,
                           fontFamily: 'Montserrat',
-                          color: Colors.black,
+                          color: Theme.of(context).colorScheme.onBackground,
                           fontWeight: FontWeight.w400,
                           height: 1.2,
                         ),
@@ -628,8 +627,8 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                       shape: BoxShape.circle,
                       border: Border.all(
                         color: selectedCondition.name == condition.name
-                            ? const Color(0xFF006590) // Blue border when selected
-                            : const Color(0xFFB7B7B7), // Light gray border when unselected
+                            ? Theme.of(context).colorScheme.primary // Blue border when selected
+                            : Theme.of(context).colorScheme.outline, // Light gray border when unselected
                         width: 1.5,
                       ),
                     ),
@@ -638,17 +637,17 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                             child: Container(
                               width: 12,
                               height: 12,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Color(0xFF006590),
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                               child: Center(
                                 child: Container(
                                   width: 0,
                                   height: 4,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Colors.white,
+                                    color: Theme.of(context).colorScheme.background,
                                   ),
                                 ),
                               ),
@@ -659,10 +658,10 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                 )
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
             Divider(
               height: 3,
-              color: Colors.black,
+              color: Theme.of(context).colorScheme.onBackground,
             ),
           ],
         ),
@@ -681,7 +680,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
             textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(color: const Color(0xFF818181)),
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -699,7 +698,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                 backgroundImage: AssetImage("assets/images/camera.png"),
               ),
             ),
-            const SizedBox(width: 10.0),
+            SizedBox(width: 10.0),
             certificateList.isNotEmpty
                 ? Expanded(
                     child: GridView.builder(
@@ -733,7 +732,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                  border: isMainImage ? Border.all(color: const Color(0xFF006590), width: 2) : null,
+                                  border: isMainImage ? Border.all(color: Theme.of(context).colorScheme.primary, width: 2) : null,
                                 ),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(isMainImage ? 6 : 8),
@@ -767,15 +766,15 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                                   top: 4,
                                   left: 4,
                                   child: Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                                    padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFF006590),
+                                      color: Theme.of(context).colorScheme.primary,
                                       borderRadius: BorderRadius.circular(2),
                                     ),
-                                    child: const Text(
+                                    child:  Text(
                                       'MAIN',
                                       style: TextStyle(
-                                        color: Colors.white,
+                                        color: Theme.of(context).colorScheme.background,
                                         fontSize: 8,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -831,12 +830,12 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                                     });
                                   },
                                   child: Container(
-                                    padding: const EdgeInsets.all(3),
+                                    padding: EdgeInsets.all(3),
                                     decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(0.7),
+                                      color: Theme.of(context).colorScheme.background.withOpacity(0.7),
                                       shape: BoxShape.circle,
                                     ),
-                                    child: const Icon(Icons.close, size: 14, color: Colors.black),
+                                    child:  Icon(Icons.close, size: 14, color: Theme.of(context).colorScheme.onBackground),
                                   ),
                                 ),
                               ),
@@ -846,7 +845,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                       },
                     ),
                   )
-                : const SizedBox(),
+                : SizedBox(),
           ],
         ),
       ],
@@ -885,7 +884,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
   //               backgroundImage: AssetImage("assets/images/camera.png"),
   //             ),
   //           ),
-  //           const SizedBox(
+  //           SizedBox(
   //             width: 10.0,
   //           ),
   //           certificateList.isNotEmpty
@@ -915,7 +914,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
   //                           child: Row(
   //                             children: [
   //                               IconButton(
-  //                                 icon: const Icon(Icons.close),
+  //                                 icon:  Icon(Icons.close),
   //                                 onPressed: () {
   //                                   certificateList.removeAt(index);
   //                                   certificateUploadId!.removeAt(index);
@@ -942,7 +941,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
   //                                   errorBuilder: (context, error, trace) {
   //                                     return ClipRRect(
   //                                       borderRadius: BorderRadius.circular(10.0),
-  //                                       child: const SizedBox(
+  //                                       child: SizedBox(
   //                                         height: 70,
   //                                         width: 70,
   //                                         child: Icon(Icons.image_not_supported_outlined, size: 70),
@@ -956,7 +955,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
   //                         );
   //                       }),
   //                 )
-  //               : const SizedBox(),
+  //               : SizedBox(),
   //         ],
   //       ),
   //     ],
@@ -1017,8 +1016,8 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
             child: Wrap(
               children: <Widget>[
                 ListTile(
-                    leading: const Icon(Icons.photo_library),
-                    title: const Text(
+                    leading:  Icon(Icons.photo_library),
+                    title:  Text(
                       'Photo Library',
                       style: TextStyle(
                           // fontFamily: 'Fingbanger',
@@ -1047,8 +1046,8 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                       }
                     }),
                 ListTile(
-                    leading: const Icon(Icons.photo_camera),
-                    title: const Text(
+                    leading:  Icon(Icons.photo_camera),
+                    title:  Text(
                       'Camera',
                       style: TextStyle(
                           // fontFamily: 'Fingbanger',
@@ -1135,8 +1134,8 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
     var mCroppedFile = await ImageCropper().cropImage(sourcePath: pickedFile.path, compressFormat: ImageCompressFormat.jpg, compressQuality: 100, uiSettings: [
       AndroidUiSettings(
           toolbarTitle: 'Cropper',
-          toolbarColor: OQDOThemeData.buttonColor,
-          toolbarWidgetColor: Colors.white,
+          toolbarColor: Theme.of(context).colorScheme.primary,
+          toolbarWidgetColor: Theme.of(context).colorScheme.background,
           initAspectRatio: CropAspectRatioPreset.square,
           lockAspectRatio: false),
       IOSUiSettings(
@@ -1505,7 +1504,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color(0xFF006590), width: 2),
+              border: Border.all(color: Theme.of(context).colorScheme.primary, width: 2),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
@@ -1540,12 +1539,12 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     left: 0,
                     right: 0,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                      color: Colors.black.withOpacity(0.5),
+                      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                      color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
                       child: Text(
                         titleController.text.isEmpty ? 'Main Image' : titleController.text,
-                        style: const TextStyle(
-                          color: Colors.white,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.background,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
@@ -1560,15 +1559,15 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     top: 8,
                     left: 8,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF006590),
+                        color: Theme.of(context).colorScheme.primary,
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      child: const Text(
+                      child:  Text(
                         'MAIN IMAGE',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.background,
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
                         ),
@@ -1594,12 +1593,12 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                         setState(() {});
                       },
                       child: Container(
-                        padding: const EdgeInsets.all(4),
+                        padding: EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.7),
+                          color: Theme.of(context).colorScheme.background.withOpacity(0.7),
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(Icons.close, size: 20, color: Colors.black),
+                        child:  Icon(Icons.close, size: 20, color: Theme.of(context).colorScheme.onBackground),
                       ),
                     ),
                   ),
@@ -1688,15 +1687,15 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     });
                   },
                   // child: Container(
-                  //   padding: const EdgeInsets.all(4),
+                  //   padding: EdgeInsets.all(4),
                   //   decoration: BoxDecoration(
-                  //     color: const Color(0xFF006590).withOpacity(0.8),
+                  //     color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
                   //     borderRadius: BorderRadius.circular(4),
                   //   ),
-                  //   child: const Text(
+                  //   child:  Text(
                   //     'MAIN',
                   //     style: TextStyle(
-                  //       color: Colors.white,
+                  //       color: Theme.of(context).colorScheme.background,
                   //       fontSize: 8,
                   //       fontWeight: FontWeight.bold,
                   //     ),
@@ -1717,12 +1716,12 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     });
                   },
                   child: Container(
-                    padding: const EdgeInsets.all(4),
+                    padding: EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.7),
+                      color: Theme.of(context).colorScheme.background.withOpacity(0.7),
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.close, size: 16, color: Colors.black),
+                    child:  Icon(Icons.close, size: 16, color: Theme.of(context).colorScheme.onBackground),
                   ),
                 ),
               ),

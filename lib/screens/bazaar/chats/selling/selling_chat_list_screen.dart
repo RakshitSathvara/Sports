@@ -192,7 +192,7 @@ class SellingChatListScreenState extends State<SellingChatListScreen> with Autom
     _notificationService = Provider.of<ChatNotificationService>(context);
 
     return Material(
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.background,
       child: RefreshIndicator(
         key: _refreshIndicatorKey,
         onRefresh: _refreshData,
@@ -210,7 +210,7 @@ class SellingChatListScreenState extends State<SellingChatListScreen> with Autom
             : ListView.builder(
                 controller: _scrollController,
                 itemCount: _chatList.length + (_isLoading && _hasMoreData ? 1 : 0),
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(16),
                 physics: const AlwaysScrollableScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) {
@@ -242,7 +242,7 @@ class SellingChatListScreenState extends State<SellingChatListScreen> with Autom
     debugPrint('Chat item at index $index: isNewMsg=${chatItem.isNewMsg}');
 
     return Padding(
-      padding: const EdgeInsets.only(top: 8, bottom: 8),
+      padding: EdgeInsets.only(top: 8, bottom: 8),
       child: GestureDetector(
         onTap: () async {
           // Mark as read when opening the chat
@@ -302,7 +302,7 @@ class SellingChatListScreenState extends State<SellingChatListScreen> with Autom
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Card(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.background,
               elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
@@ -346,10 +346,10 @@ class SellingChatListScreenState extends State<SellingChatListScreen> with Autom
                 ),
               ),
             ),
-            const SizedBox(width: 8),
+            SizedBox(width: 8),
             Flexible(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, 8.0, 0, 0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -373,7 +373,7 @@ class SellingChatListScreenState extends State<SellingChatListScreen> with Autom
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: 8),
                     CustomTextView(
                       label: chatItem.title,
                       maxLine: 2,
@@ -386,7 +386,7 @@ class SellingChatListScreenState extends State<SellingChatListScreen> with Autom
                             overflow: TextOverflow.ellipsis,
                           ),
                     ),
-                    const SizedBox(height: 4),
+                    SizedBox(height: 4),
                   ],
                 ),
               ),
@@ -396,7 +396,7 @@ class SellingChatListScreenState extends State<SellingChatListScreen> with Autom
               key: Key('notification_dot_${chatItem.equipmentChatId}_${chatItem.isNewMsg}'),
               visible: chatItem.isNewMsg ?? false,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 22.0, 15.0, 0.0),
+                padding: EdgeInsets.fromLTRB(0, 22.0, 15.0, 0.0),
                 child: Container(
                   height: 10,
                   width: 10,

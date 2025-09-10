@@ -136,7 +136,7 @@ class _ProductCategoryScreenState extends State<ProductCategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         centerTitle: true,
         elevation: 0.0,
@@ -144,38 +144,38 @@ class _ProductCategoryScreenState extends State<ProductCategoryScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
+          icon:  Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.background,
           ),
         ),
-        title: const Text(
+        title:  Text(
           "Bazaar",
           style: TextStyle(
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.background,
             fontFamily: 'SFPro',
             fontWeight: FontWeight.w700,
             fontSize: 17,
           ),
         ),
-        backgroundColor: const Color(0xFF006590),
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Container(
-        padding: const EdgeInsets.all(16),
-        color: Colors.white,
+        padding: EdgeInsets.all(16),
+        color: Theme.of(context).colorScheme.background,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+             Text(
               'Select Product Category',
               style: TextStyle(
                 fontSize: 18,
                 fontFamily: 'SFPro',
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.onBackground,
                 fontWeight: FontWeight.w400,
               ),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             Expanded(
               child: isLoading
                   ? const Center(child: CircularProgressIndicator())
