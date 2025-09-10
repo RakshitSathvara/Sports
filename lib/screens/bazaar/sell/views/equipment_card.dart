@@ -32,7 +32,7 @@ class EquipmentCard extends StatelessWidget {
       case 'sold':
         return const Color(0xFF3C3C3C);
       default:
-        return Colors.black;
+        return Theme.of(context).colorScheme.onBackground;
     }
   }
 
@@ -67,7 +67,7 @@ class EquipmentCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -80,7 +80,7 @@ class EquipmentCard extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 equipment.title,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Montserrat',
                                   fontSize: 15,
@@ -91,7 +91,7 @@ class EquipmentCard extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            const SizedBox(width: 8),
+                            SizedBox(width: 8),
                             ((equipment.equipmentStatus!.code == EquipmentStatusCode.sold.toString()) ||
                                     (equipment.equipmentStatus!.code == EquipmentStatusCode.expired.toString()))
                                 ? SizedBox(
@@ -99,9 +99,9 @@ class EquipmentCard extends StatelessWidget {
                                     height: 24,
                                     child: PopupMenuButton<String>(
                                       padding: EdgeInsets.zero,
-                                      icon: const Icon(
+                                      icon:  Icon(
                                         Icons.more_vert,
-                                        color: Color(0xFF006590),
+                                        color: Theme.of(context).colorScheme.primary,
                                         size: 20,
                                       ),
                                       onSelected: (String choice) {
@@ -132,9 +132,9 @@ class EquipmentCard extends StatelessWidget {
                                     height: 24,
                                     child: PopupMenuButton<String>(
                                       padding: EdgeInsets.zero,
-                                      icon: const Icon(
+                                      icon:  Icon(
                                         Icons.more_vert,
-                                        color: Color(0xFF006590),
+                                        color: Theme.of(context).colorScheme.primary,
                                         size: 20,
                                       ),
                                       onSelected: (String choice) {
@@ -170,7 +170,7 @@ class EquipmentCard extends StatelessWidget {
                         );
                       },
                     ),
-                    const SizedBox(height: 4),
+                    SizedBox(height: 4),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -189,7 +189,7 @@ class EquipmentCard extends StatelessWidget {
                           equipment.expiryDate == null
                               ? ''
                               : 'Expiry: ${equipment.expiryDate == null ? '' : DateFormat('dd/MM/yyyy').format(equipment.expiryDate!)}',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.w600,
                             color: Color(0xFF6B6B6B),
@@ -198,13 +198,13 @@ class EquipmentCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: 8),
                     Text(
                       'S\$ - ${equipment.price.toStringAsFixed(2)}',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Montserrat',
-                        color: Color(0xFF006590),
+                        color: Theme.of(context).colorScheme.primary,
                         fontSize: 16,
                       ),
                     ),

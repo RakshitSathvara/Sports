@@ -22,7 +22,7 @@ class CategoryCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
         side: BorderSide(
-          color: isSelected ? const Color(0xFF006590) : Colors.transparent,
+          color: isSelected ? Theme.of(context).colorScheme.primary : Colors.transparent,
           width: isSelected ? 2 : 0,
         ),
       ),
@@ -37,13 +37,13 @@ class CategoryCard extends StatelessWidget {
               width: 80,
               height: 80,
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              padding: EdgeInsets.symmetric(horizontal: 8),
               child: Text(
                 title,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 16,
                   fontFamily: 'Montserrat',
                   fontWeight: FontWeight.bold,

@@ -77,7 +77,7 @@ class _SellScreenState extends State<SellScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [
           _searchbar(),
@@ -87,14 +87,14 @@ class _SellScreenState extends State<SellScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF006590),
+        backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () {
           var intentModel = EditViewEquipmentIntentModel(isEdit: false, equipmentId: 0, sellEquipmentResponseModel: null);
           Navigator.pushNamed(context, Constants.sellProductListScreen, arguments: intentModel);
         },
-        child: const Icon(
+        child:  Icon(
           Icons.add,
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.background,
         ),
       ),
     );
@@ -114,22 +114,22 @@ class _SellScreenState extends State<SellScreen> {
 
   Widget _searchbar() {
     return Container(
-      color: const Color(0xFF006590),
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 0, bottom: 16),
+      color: Theme.of(context).colorScheme.primary,
+      padding: EdgeInsets.only(left: 16, right: 16, top: 0, bottom: 16),
       child: TextField(
         controller: _searchController,
         onChanged: _onSearchChanged,
         decoration: InputDecoration(
           hintText: "Search Equipment's",
-          prefixIcon: const Icon(
+          prefixIcon:  Icon(
             Icons.search,
-            color: Color(0xFF006590),
+            color: Theme.of(context).colorScheme.primary,
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
           ),
           filled: true,
-          fillColor: Colors.white,
+          fillColor: Theme.of(context).colorScheme.background,
         ),
       ),
     );
@@ -138,7 +138,7 @@ class _SellScreenState extends State<SellScreen> {
   Widget _equipmentGridView(List<EquipmentData> equipments) {
     return GridView.builder(
       controller: _scrollController,
-      padding: const EdgeInsets.all(2.0),
+      padding: EdgeInsets.all(2.0),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 0.8,
@@ -298,10 +298,10 @@ class _SellScreenState extends State<SellScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: 8),
               const Divider(
                 height: 2,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.onBackground,
               ),
               IntrinsicHeight(
                 child: Row(
@@ -309,8 +309,8 @@ class _SellScreenState extends State<SellScreen> {
                     Expanded(
                       child: TextButton(
                         style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Color(0xFF006590),
+                          foregroundColor: Theme.of(context).colorScheme.background,
+                          backgroundColor: Theme.of(context).colorScheme.primary,
                           padding: EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -322,14 +322,14 @@ class _SellScreenState extends State<SellScreen> {
                           Navigator.of(context).pop();
                           deleteEquipment(equipmentId);
                         },
-                        child: const Text('Yes'),
+                        child:  Text('Yes'),
                       ),
                     ),
                     const VerticalDivider(width: 1),
                     Expanded(
                       child: TextButton(
                         style: TextButton.styleFrom(
-                          foregroundColor: Colors.black87,
+                          foregroundColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.87),
                           padding: EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -338,7 +338,7 @@ class _SellScreenState extends State<SellScreen> {
                           ),
                         ),
                         onPressed: () => Navigator.of(context).pop(false),
-                        child: const Text('No'),
+                        child:  Text('No'),
                       ),
                     ),
                   ],

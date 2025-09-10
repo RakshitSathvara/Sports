@@ -48,17 +48,17 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
     final product = widget.editViewEquipmentIntentModel.sellEquipmentResponseModel!;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF006989),
+        backgroundColor: Theme.of(context).colorScheme.primary,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon:  Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.background),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           'Product List',
           style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.background,
                 fontWeight: FontWeight.w600,
                 fontSize: 20.0,
               ),
@@ -69,11 +69,11 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                     Text(
                       'Review your Details',
                       style: TextStyle(
                         fontSize: 18,
@@ -81,7 +81,7 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     // Image carousel
                     if (product.equipmentImages.isNotEmpty) ...[
@@ -92,7 +92,7 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
                           controller: PageController(viewportFraction: 0.93),
                           itemBuilder: (context, index) {
                             return Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 4),
+                              margin: EdgeInsets.symmetric(horizontal: 4),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8),
                                 child: Image.network(
@@ -105,26 +105,26 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
                           },
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16),
                     ],
 
                     // Product title
                     Text(
                       product.title,
-                      style: const TextStyle(fontSize: 25, fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: Colors.black),
+                      style: TextStyle(fontSize: 25, fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onBackground),
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: 8),
 
                     // Product price
                     Text(
                       'S\$ ${product.price.toStringAsFixed(2)}',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF006590),
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     // Category information
                     _buildInfoSection('Category', product.sellEquipmentCategory.name),
@@ -133,7 +133,7 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                         Text(
                           'Used For',
                           style: TextStyle(
                             fontSize: 16,
@@ -142,7 +142,7 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
                             color: Color(0xFF2B2B2B),
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8),
                         Wrap(
                           spacing: 8.0,
                           runSpacing: 8.0,
@@ -152,7 +152,7 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
                               label: Text(
                                 activity.name,
                                 style: TextStyle(
-                                  color: selectedActivities.contains(activity.name) ? Colors.white : Theme.of(context).extension<CustomColors>()!.chipText,
+                                  color: selectedActivities.contains(activity.name) ? Theme.of(context).colorScheme.background : Theme.of(context).extension<CustomColors>()!.chipText,
                                   fontSize: 13.0,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -165,7 +165,7 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
                                   color: selectedActivities.contains(activity.name) ? Theme.of(context).primaryColor : Theme.of(context).extension<CustomColors>()!.chipBackground,
                                 ),
                               ),
-                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                               showCheckmark: false,
                               onSelected: (bool selected) {
                                 setState(() {
@@ -181,7 +181,7 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     // Product details
                     _buildInfoSection('Description', product.description),
@@ -194,14 +194,14 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
                       postExpiryDate.isEmpty
                           ? 'Post expiry date: ${DateFormat('dd/MM/yyyy').format(product.expiryDate!)}'
                           : 'Post expiry date: ${DateFormat('dd/MM/yyyy').format(DateTime.parse(postExpiryDate))}',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
                         fontFamily: 'Montserrat',
                         color: Color(0xFF808080),
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
                     // ],
                   ],
                 ),
@@ -212,24 +212,24 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
           // Post button
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(10.0),
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => postProduct(),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF006989),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    padding: EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text(
+                  child:  Text(
                     'Post Now',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.background,
                     ),
                   ),
                 ),
@@ -247,23 +247,23 @@ class _SellProductDetailScreenState extends State<SellProductDetailScreen> {
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontFamily: 'Montserrat',
             fontWeight: FontWeight.w600,
             color: Color(0xFF2B2B2B),
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8),
         Text(
           content,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontFamily: 'Montserrat',
             fontWeight: FontWeight.w400,
           ),
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 16),
       ],
     );
   }

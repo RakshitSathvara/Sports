@@ -103,14 +103,14 @@ class _ChatsScreenState extends State<ChatsScreen> with SingleTickerProviderStat
         ],
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).colorScheme.background,
           body: SafeArea(
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0, 20, 20, 0),
+                  padding: EdgeInsets.fromLTRB(20.0, 20, 20, 0),
                   child: Container(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.background,
                     child: Container(
                       decoration: BoxDecoration(
                         color: Color(0xFFD4EEF9),
@@ -124,9 +124,9 @@ class _ChatsScreenState extends State<ChatsScreen> with SingleTickerProviderStat
                               child: GestureDetector(
                                 onTap: () => _onTabTapped(0),
                                 child: Container(
-                                  padding: const EdgeInsets.symmetric(vertical: 14.0),
+                                  padding: EdgeInsets.symmetric(vertical: 14.0),
                                   decoration: BoxDecoration(
-                                    color: _selectedIndex == 0 ? const Color(0xFF006590) : Colors.transparent,
+                                    color: _selectedIndex == 0 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                                     borderRadius: BorderRadius.circular(25.0),
                                   ),
                                   child: Text(
@@ -134,7 +134,7 @@ class _ChatsScreenState extends State<ChatsScreen> with SingleTickerProviderStat
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: 'Montserrat',
-                                      color: _selectedIndex == 0 ? Colors.white : Colors.black,
+                                      color: _selectedIndex == 0 ? Theme.of(context).colorScheme.background : Theme.of(context).colorScheme.onBackground,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -146,9 +146,9 @@ class _ChatsScreenState extends State<ChatsScreen> with SingleTickerProviderStat
                               child: GestureDetector(
                                 onTap: () => _onTabTapped(1),
                                 child: Container(
-                                  padding: const EdgeInsets.symmetric(vertical: 12.0),
+                                  padding: EdgeInsets.symmetric(vertical: 12.0),
                                   decoration: BoxDecoration(
-                                    color: _selectedIndex == 1 ? const Color(0xFF006590) : Colors.transparent,
+                                    color: _selectedIndex == 1 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                                     borderRadius: BorderRadius.circular(25.0),
                                   ),
                                   child: Text(
@@ -156,7 +156,7 @@ class _ChatsScreenState extends State<ChatsScreen> with SingleTickerProviderStat
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: 'Montserrat',
-                                      color: _selectedIndex == 1 ? Colors.white : Colors.black,
+                                      color: _selectedIndex == 1 ? Theme.of(context).colorScheme.background : Theme.of(context).colorScheme.onBackground,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500,
                                     ),

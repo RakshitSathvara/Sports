@@ -58,11 +58,11 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
-          backgroundColor: const Color(0xFF006989),
+          backgroundColor: Theme.of(context).colorScheme.primary,
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            icon:  Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.background),
             onPressed: () {
               if (isAPICalled) {
                 Navigator.of(context).pop(true);
@@ -74,7 +74,7 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
           title: Text(
             'Product List',
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.background,
                   fontWeight: FontWeight.w600,
                   fontSize: 20.0,
                 ),
@@ -97,14 +97,14 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
           children: [
             Text(
               errorMessage!,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 fontFamily: 'Montserrat',
-                color: Colors.grey,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 setState(() {
@@ -114,9 +114,9 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                 getSellEquipmentDetails();
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF006989),
+                backgroundColor: Theme.of(context).colorScheme.primary,
               ),
-              child: const Text('Retry'),
+              child:  Text('Retry'),
             ),
           ],
         ),
@@ -130,7 +130,7 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
           style: TextStyle(
             fontSize: 16,
             fontFamily: 'Montserrat',
-            color: Colors.grey,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
       );
@@ -141,11 +141,11 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
         Expanded(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                   Text(
                     'Review your Details',
                     style: TextStyle(
                       fontSize: 18,
@@ -153,7 +153,7 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16),
 
                   // Image carousel
                   if (equipmentDetails!.equipmentImages.isNotEmpty)
@@ -164,7 +164,7 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                         controller: PageController(viewportFraction: 0.93),
                         itemBuilder: (context, index) {
                           return Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 4),
+                            margin: EdgeInsets.symmetric(horizontal: 4),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
@@ -172,8 +172,8 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                                 fit: BoxFit.cover,
                                 errorBuilder: (context, error, stackTrace) {
                                   return Container(
-                                    color: Colors.grey[300],
-                                    child: const Icon(Icons.error),
+                                    color: Theme.of(context).colorScheme.outline,
+                                    child:  Icon(Icons.error),
                                   );
                                 },
                               ),
@@ -182,28 +182,28 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                         },
                       ),
                     ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16),
 
                   // Product title
                   Text(
                     equipmentDetails!.title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15),
 
                   // Product price
                   Row(
                     children: [
                       Text(
                         'S\$ ${equipmentDetails!.price.toStringAsFixed(2)}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF006590),
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                       Spacer(),
@@ -217,7 +217,7 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20),
 
                   // Category information
                   _buildInfoSection('Category', equipmentDetails!.sellEquipmentCategory.name),
@@ -226,7 +226,7 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                       Text(
                         'Used For',
                         style: TextStyle(
                           fontSize: 18,
@@ -235,21 +235,21 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                           color: Color(0xFF2B2B2B),
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: 8),
                       Wrap(
                         spacing: 8.0,
                         runSpacing: 8.0,
                         children: equipmentDetails!.equipmentSubActivities.map((activity) {
                           return Container(
                             decoration: BoxDecoration(
-                              color: const Color(0xFFF1F5F9), // Light blue-grey background
+                              color: Theme.of(context).colorScheme.surfaceVariant, // Light blue-grey background
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                               child: Text(
                                 activity.name,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   color: Color(0xFF475569), // Dark blue-grey text
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -262,26 +262,26 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                       )
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20),
 
                   // Product details sections
                   _buildInfoSection('Description', equipmentDetails!.description),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   _buildInfoSection('Brand', equipmentDetails!.brand),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   _buildInfoSection('Condition', equipmentDetails!.sellEquipmentCondition.name),
 
                   if (equipmentDetails!.expiryDate != null)
                     Text(
                       'Post expiry date: ${DateFormat('dd/MM/yyyy').format(equipmentDetails!.expiryDate!)}',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
                         fontFamily: 'Montserrat',
                         color: Color(0xFF808080),
                       ),
                     ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16),
                 ],
               ),
             ),
@@ -291,7 +291,7 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
         // Bottom button
         SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(10.0),
             child: Row(
               children: [
                 Expanded(
@@ -306,8 +306,8 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF006989),
-                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      padding: EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -320,30 +320,30 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.background,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(width: 10),
+                SizedBox(width: 10),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
                       showDeleteConfirmationDialog(context, int.parse(widget.equipmentId));
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      backgroundColor: Theme.of(context).colorScheme.onSurface,
+                      padding: EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: const Text(
+                    child:  Text(
                       'Remove',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.background,
                       ),
                     ),
                   ),
@@ -362,24 +362,24 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 20,
             fontFamily: 'Montserrat',
             fontWeight: FontWeight.bold,
             color: Color(0xFF2B2B2B),
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8),
         Text(
           content,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontFamily: 'Montserrat',
             fontWeight: FontWeight.w600,
             color: Color(0xFF2B2B2B),
           ),
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 16),
       ],
     );
   }
@@ -449,7 +449,7 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
       case 'sold':
         return const Color(0xFF3C3C3C);
       default:
-        return Colors.black;
+        return Theme.of(context).colorScheme.onBackground;
     }
   }
 
@@ -491,10 +491,10 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: 8),
               const Divider(
                 height: 2,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.onBackground,
               ),
               IntrinsicHeight(
                 child: Row(
@@ -502,8 +502,8 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                     Expanded(
                       child: TextButton(
                         style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Color(0xFF006590),
+                          foregroundColor: Theme.of(context).colorScheme.background,
+                          backgroundColor: Theme.of(context).colorScheme.primary,
                           padding: EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -515,14 +515,14 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                           Navigator.of(context).pop();
                           deleteEquipment(equipmentId);
                         },
-                        child: const Text('Yes'),
+                        child:  Text('Yes'),
                       ),
                     ),
                     const VerticalDivider(width: 1),
                     Expanded(
                       child: TextButton(
                         style: TextButton.styleFrom(
-                          foregroundColor: Colors.black87,
+                          foregroundColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.87),
                           padding: EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -531,7 +531,7 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                           ),
                         ),
                         onPressed: () => Navigator.of(context).pop(false),
-                        child: const Text('No'),
+                        child:  Text('No'),
                       ),
                     ),
                   ],
@@ -645,7 +645,7 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
           content: Text(message),
           actions: <Widget>[
             TextButton(
-              child: const Text('Okay'),
+              child:  Text('Okay'),
               onPressed: () {
                 Navigator.of(context).pop(true);
                 Navigator.of(context).pop(true);

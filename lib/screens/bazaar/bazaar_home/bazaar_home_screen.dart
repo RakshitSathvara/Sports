@@ -60,7 +60,7 @@ class _BazaarHomeScreenState extends State<BazaarHomeScreen> {
           centerTitle: false,
           elevation: 0.0,
           leadingWidth: 0.0,
-          leading: const SizedBox(),
+          leading: SizedBox(),
           title: Text(
             index == 0
                 ? "Home"
@@ -71,9 +71,9 @@ class _BazaarHomeScreenState extends State<BazaarHomeScreen> {
                         : index == 3
                             ? "Chats"
                             : "OQDO - Advertisements",
-            style: TextStyle(color: Colors.white, fontFamily: 'SFPro', fontWeight: FontWeight.w700, fontSize: 17),
+            style: TextStyle(color: Theme.of(context).colorScheme.background, fontFamily: 'SFPro', fontWeight: FontWeight.w700, fontSize: 17),
           ),
-          backgroundColor: const Color(0xFF006590),
+          backgroundColor: Theme.of(context).colorScheme.primary,
         ),
         body: isPageSet ? page : ChangeNotifierProvider(create: (context) => SellViewmodel(), child: const BuyScreen()),
         bottomNavigationBar: BottomNavigationBar(
@@ -174,19 +174,19 @@ class _BazaarHomeScreenState extends State<BazaarHomeScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Are you sure?'),
-        content: const Text('Do you want to exit a Bazaar?'),
+        title:  Text('Are you sure?'),
+        content:  Text('Do you want to exit a Bazaar?'),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('No'),
+            child:  Text('No'),
           ),
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             },
-            child: const Text('Yes'),
+            child:  Text('Yes'),
           ),
         ],
       ),
@@ -197,19 +197,19 @@ class _BazaarHomeScreenState extends State<BazaarHomeScreen> {
   //   return await showDialog(
   //         context: context,
   //         builder: (context) => AlertDialog(
-  //           title: const Text('Are you sure?'),
-  //           content: const Text('Do you want to exit a Bazaar?'),
+  //           title:  Text('Are you sure?'),
+  //           content:  Text('Do you want to exit a Bazaar?'),
   //           actions: <Widget>[
   //             TextButton(
   //               onPressed: () => Navigator.of(context).pop(false),
-  //               child: const Text('No'),
+  //               child:  Text('No'),
   //             ),
   //             TextButton(
   //               onPressed: () {
   //                 Navigator.of(context).pop();
   //                 Navigator.of(context).pop();
   //               },
-  //               child: const Text('Yes'),
+  //               child:  Text('Yes'),
   //             ),
   //           ],
   //         ),

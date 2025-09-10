@@ -3,7 +3,6 @@ import 'dart:ffi';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 
@@ -44,22 +43,22 @@ class _OfferPriceBottomSheetViewState extends State<OfferPriceBottomSheetView> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: CustomTextView(
               label: widget.title,
-              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold, fontSize: 18, color: OQDOThemeData.greyColor),
+              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold, fontSize: 18, color: Theme.of(context).colorScheme.onSurface),
             ),
           ),
-          const SizedBox(height: 15),
+          SizedBox(height: 15),
           Divider(
             thickness: 2,
             color: Color(0xFFD0D0D0),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -72,10 +71,10 @@ class _OfferPriceBottomSheetViewState extends State<OfferPriceBottomSheetView> {
                       textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                             fontSize: 30.0,
                             fontWeight: FontWeight.w400,
-                            color: OQDOThemeData.blackColor,
+                            color: Theme.of(context).colorScheme.onBackground,
                           ),
                     ),
-                    const SizedBox(width: 3),
+                    SizedBox(width: 3),
                     ConstrainedBox(
                       constraints: BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width / 2),
                       child: IntrinsicWidth(
@@ -93,13 +92,13 @@ class _OfferPriceBottomSheetViewState extends State<OfferPriceBottomSheetView> {
                             hintStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                                   fontSize: 30.0,
                                   fontWeight: FontWeight.w400,
-                                  color: OQDOThemeData.filterDividerColor,
+                                  color: Theme.of(context).colorScheme.outline,
                                 ),
                           ),
                           style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                 fontSize: 30.0,
                                 fontWeight: FontWeight.w400,
-                                color: OQDOThemeData.blackColor,
+                                color: Theme.of(context).colorScheme.onBackground,
                               ),
                         ),
                       ),
@@ -110,7 +109,7 @@ class _OfferPriceBottomSheetViewState extends State<OfferPriceBottomSheetView> {
                   color: Theme.of(context).colorScheme.primary,
                   child: CustomTextView(
                     label: 'Send',
-                    textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold, fontSize: 18, color: OQDOThemeData.whiteColor),
+                    textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold, fontSize: 18, color: Theme.of(context).colorScheme.background),
                   ),
                   onPressed: () {
                     if (widget.offerPriceController.text.isEmpty || double.parse(widget.offerPriceController.text) <= 0) {
@@ -125,7 +124,7 @@ class _OfferPriceBottomSheetViewState extends State<OfferPriceBottomSheetView> {
               ],
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 20,
           ),
         ],

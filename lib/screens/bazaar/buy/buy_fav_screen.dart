@@ -7,7 +7,6 @@ import 'package:oqdo_mobile_app/screens/bazaar/buy/buy_product_details_screen.da
 import 'package:oqdo_mobile_app/screens/bazaar/buy/model/buy_fav_response_model.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/buy/views/buy_favorite_equipment_card.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/sell/viewmodel/sell_viewmodel.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -69,7 +68,7 @@ class _BuyFavScreenState extends State<BuyFavScreen> {
       },
       child: Scaffold(
         appBar: CustomAppBar(
-            backgroundColor: Color(0xFF006590),
+            backgroundColor: Theme.of(context).colorScheme.primary,
             title: 'My Favorites',
             isIconColorBlack: false,
             onBack: () {
@@ -87,7 +86,7 @@ class _BuyFavScreenState extends State<BuyFavScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20),
                   equipments.isNotEmpty
                       ? Expanded(
                           child: Stack(
@@ -122,7 +121,7 @@ class _BuyFavScreenState extends State<BuyFavScreen> {
                                     textStyle: Theme.of(context)
                                         .textTheme
                                         .titleLarge!
-                                        .copyWith(fontWeight: FontWeight.w600, color: OQDOThemeData.blackColor, fontSize: 16.0),
+                                        .copyWith(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground, fontSize: 16.0),
                                   ),
                           ),
                         ),
@@ -135,7 +134,7 @@ class _BuyFavScreenState extends State<BuyFavScreen> {
 
   Widget _buildEquipmentGrid(List<BuyFavoriteEquipment> equipments) {
     return GridView.builder(
-      padding: const EdgeInsets.all(2.0),
+      padding: EdgeInsets.all(2.0),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 0.79,

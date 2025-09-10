@@ -11,7 +11,6 @@ import 'package:oqdo_mobile_app/screens/bazaar/chats/viewmodel/chat_view_model.d
 import 'package:oqdo_mobile_app/screens/bazaar/chats/views/close_deal_view.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/chats/views/offer_price_bottom_sheet_view.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/sell/models/sell_equipment_response_model.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
@@ -162,9 +161,9 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
           centerTitle: false,
           elevation: 0.0,
           leadingWidth: 0.0,
-          leading: const SizedBox(),
+          leading: SizedBox(),
           title: Container(
-            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
+            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 4),
             // Added padding
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -180,11 +179,11 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                       },
                       child: Icon(
                         Icons.arrow_back,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.background,
                         size: 30,
                       ),
                     ),
-                    const SizedBox(width: 18),
+                    SizedBox(width: 18),
                     ClipPath(
                       clipper: ShapeBorderClipper(
                         shape: RoundedRectangleBorder(
@@ -203,13 +202,13 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                             fit: BoxFit.fill,
                           )),
                     ),
-                    const SizedBox(width: 12),
+                    SizedBox(width: 12),
                     Text(
                       widget.equipmentDetails.fullName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.background,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Montserrat',
@@ -217,7 +216,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 5),
+                SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -227,18 +226,18 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                         overflow: TextOverflow.ellipsis,
                         widget.equipmentDetails.title,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.background,
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                           fontFamily: 'Montserrat',
                         ),
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    SizedBox(width: 10),
                     Text(
                       'S\$ ${widget.equipmentDetails.price.toStringAsFixed(2)}',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.background,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Montserrat',
@@ -249,7 +248,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
               ],
             ),
           ),
-          backgroundColor: const Color(0xFF006590),
+          backgroundColor: Theme.of(context).colorScheme.primary,
         ),
         body: SafeArea(
           child: isLoading
@@ -276,13 +275,13 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
             Icon(
               Icons.chat_bubble_outline,
               size: 48,
-              color: const Color(0xFF006590),
+              color: Theme.of(context).colorScheme.primary,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             Text(
               "Please send a message to start the chat",
               style: TextStyle(
-                color: Colors.black54,
+                color: Theme.of(context).colorScheme.onBackground.withOpacity(0.54),
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
                 fontFamily: 'Montserrat',
@@ -295,7 +294,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
       return ListView.builder(
         physics: BouncingScrollPhysics(),
         controller: _scrollController,
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16),
         reverse: false,
         itemCount: chatMessageResponseModelList.isNotEmpty ? chatMessageResponseModelList.length : 0,
         itemBuilder: (context, index) {
@@ -334,20 +333,20 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
         children: [
           Container(
             constraints: BoxConstraints(maxWidth: (MediaQuery.sizeOf(context).width / 1.4)),
-            margin: const EdgeInsets.only(bottom: 5),
+            margin: EdgeInsets.only(bottom: 5),
             padding: EdgeInsets.fromLTRB(16, 15, isOfferAcceptanceMessage! ? 16 : 32, 15),
             decoration: BoxDecoration(
               color: (isOfferMessage!)
-                  ? const Color(0xFF006590)
+                  ? Theme.of(context).colorScheme.primary
                   : (((!isSentByMe) && isOfferAcceptanceMessage))
-                      ? Colors.white
+                      ? Theme.of(context).colorScheme.background
                       : isSentByMe
                           ? const Color(0xFFC7DDE7)
-                          : Colors.white,
+                          : Theme.of(context).colorScheme.background,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.1),
+                  color: Theme.of(context).colorScheme.onBackground.withValues(alpha: 0.1),
                   blurRadius: 4,
                   offset: const Offset(0, 2),
                 ),
@@ -371,7 +370,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                                           maxLines: 2,
                                           "Offer: S\$ ${price.toStringAsFixed(2)}",
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: Theme.of(context).colorScheme.onBackground,
                                             fontSize: 14,
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Montserrat',
@@ -391,7 +390,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                                   ),
                                 )
                               : Container(
-                                  color: Colors.white,
+                                  color: Theme.of(context).colorScheme.background,
                                   padding: EdgeInsets.all(10),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -401,7 +400,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                                           maxLines: 2,
                                           "Offer: S\$ ${price.toStringAsFixed(2)}",
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: Theme.of(context).colorScheme.onBackground,
                                             fontSize: 14,
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Montserrat',
@@ -420,11 +419,11 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                                     ],
                                   ),
                                 ),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15),
                           Text(
                             message,
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Theme.of(context).colorScheme.onBackground,
                               fontSize: 18,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'Montserrat',
@@ -439,17 +438,17 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                               Text(
                                 "${isSentByMe ? "YOUR" : "SELLER'S"} OFFER",
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Theme.of(context).colorScheme.background,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'Montserrat',
                                 ),
                               ),
-                              const SizedBox(height: 10),
+                              SizedBox(height: 10),
                               Text(
                                 'S\$ $message',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Theme.of(context).colorScheme.background,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w800,
                                   fontFamily: 'Montserrat',
@@ -460,7 +459,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                         : Text(
                             message,
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Theme.of(context).colorScheme.onBackground,
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'Montserrat',
@@ -472,11 +471,11 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
           Text(
             time,
             style: TextStyle(
-              color: Colors.black,
+              color: Theme.of(context).colorScheme.onBackground,
               fontSize: 12,
             ),
           ),
-          const SizedBox(height: 5),
+          SizedBox(height: 5),
         ],
       ),
     );
@@ -484,7 +483,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
 
   Widget _buildBottomSection(bool isKeyboardVisible) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(vertical: 10),
       child: Column(
         children: [
           showCloseDealView
@@ -497,28 +496,28 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     isKeyboardVisible
-                        ? const SizedBox(
+                        ? SizedBox(
                             width: 18,
                           )
                         : Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 18),
+                            padding: EdgeInsets.symmetric(horizontal: 18),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Color(0xFF006590),
+                                color: Theme.of(context).colorScheme.primary,
                                 shape: BoxShape.circle,
                               ),
                               child: Theme(
                                 data: Theme.of(context).copyWith(
-                                  cardColor: Color(0xFF006590),
+                                  cardColor: Theme.of(context).colorScheme.primary,
                                   dividerTheme: DividerThemeData(
-                                    color: Colors.white,
+                                    color: Theme.of(context).colorScheme.background,
                                   ),
                                 ),
                                 child: PopupMenuButton<String>(
                                   offset: const Offset(0, -115),
                                   popUpAnimationStyle: AnimationStyle.noAnimation,
                                   menuPadding: EdgeInsets.zero,
-                                  icon: const Icon(Icons.more_vert, color: Colors.white),
+                                  icon:  Icon(Icons.more_vert, color: Theme.of(context).colorScheme.background),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(5.0),
@@ -535,7 +534,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                                         'Offer Price',
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
-                                          color: Colors.white,
+                                          color: Theme.of(context).colorScheme.background,
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600,
                                           fontFamily: 'Montserrat',
@@ -562,7 +561,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                                                 text: TextSpan(
                                                     text: 'Ok, Done |',
                                                     style: TextStyle(
-                                                      color: Colors.white,
+                                                      color: Theme.of(context).colorScheme.background,
                                                       fontSize: 16,
                                                       fontWeight: FontWeight.w400,
                                                       fontFamily: 'Montserrat',
@@ -571,7 +570,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                                                       TextSpan(
                                                         text: ' S\$ ${price.toStringAsFixed(2)}',
                                                         style: TextStyle(
-                                                          color: Colors.white,
+                                                          color: Theme.of(context).colorScheme.background,
                                                           fontSize: 16,
                                                           fontWeight: FontWeight.w800,
                                                           fontFamily: 'Montserrat',
@@ -583,7 +582,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                                           : Text(
                                               'Ok, Done',
                                               style: TextStyle(
-                                                color: Colors.white,
+                                                color: Theme.of(context).colorScheme.background,
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600,
                                                 fontFamily: 'Montserrat',
@@ -630,7 +629,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                                 }
                               },
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 15),
+                                padding: EdgeInsets.symmetric(horizontal: 15),
                                 child: Image.asset(
                                   "assets/images/ic_send.png",
                                   height: 30,
@@ -642,7 +641,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 18),
+                    SizedBox(width: 18),
                   ],
                 ),
         ],
@@ -657,7 +656,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
       enableDrag: true,
       isScrollControlled: true,
       showDragHandle: true,
-      backgroundColor: OQDOThemeData.whiteColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       builder: (context) => OfferPriceBottomSheetView(
         title: 'Make an Offer',
         offerPriceController: offerPriceController,
@@ -1107,7 +1106,7 @@ class _BuyingChatScreenState extends State<BuyingChatScreen> {
           content: Text('Chat timed out. Relaunch from list.'),
           actions: <Widget>[
             TextButton(
-              child: const Text('Okay'),
+              child:  Text('Okay'),
               onPressed: () {
                 Navigator.pop(context, true);
                 Navigator.pop(context, true);
