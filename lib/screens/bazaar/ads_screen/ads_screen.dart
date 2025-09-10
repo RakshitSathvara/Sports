@@ -50,7 +50,6 @@ class _AdsScreenState extends State<AdsScreen> with SingleTickerProviderStateMix
                   padding: EdgeInsets.fromLTRB(10.0, 20, 10, 0),
                   child: SegmentedView(
                     segments: segments,
-                    backgroundColor: Color(0xFFD4EEF9),
                     onSegmentSelected: (p0) {
                       selectedSegment = p0;
                       setState(() {});
