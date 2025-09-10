@@ -21,7 +21,7 @@ class EquipmentCard extends StatelessWidget {
     required this.onDelete,
   });
 
-  Color _getStatusColor() {
+  Color _getStatusColor(BuildContext context) {
     switch (equipment.equipmentStatus!.name.toLowerCase()) {
       case 'active':
         return const Color(0xFF1AB805);
@@ -178,7 +178,7 @@ class EquipmentCard extends StatelessWidget {
                           child: Text(
                             equipment.equipmentStatus?.name ?? '',
                             style: TextStyle(
-                              color: _getStatusColor(),
+                              color: _getStatusColor(context),
                               fontSize: 14,
                               fontWeight: FontWeight.w800,
                               fontFamily: 'Montserrat',

@@ -124,7 +124,7 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
     }
 
     if (equipmentDetails == null) {
-      return const Center(
+      return  Center(
         child: Text(
           'No data found',
           style: TextStyle(
@@ -492,7 +492,7 @@ class _SellProductDetailScreenState extends State<EditSellProductDetailScreen> {
                 ),
               ),
               SizedBox(height: 8),
-              const Divider(
+               Divider(
                 height: 2,
                 color: Theme.of(context).colorScheme.onBackground,
               ),

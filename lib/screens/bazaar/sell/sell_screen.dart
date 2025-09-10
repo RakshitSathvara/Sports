@@ -39,7 +39,8 @@ class _SellScreenState extends State<SellScreen> {
     super.initState();
     _scrollController.addListener(_scrollListener);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
+      _progressDialog = ProgressDialog(context,
+          type: ProgressDialogType.normal, isDismissible: false);
       _progressDialog.style(message: "Please wait..");
       getSellEquipments(isInitial: true);
     });
@@ -54,7 +55,8 @@ class _SellScreenState extends State<SellScreen> {
   }
 
   void _scrollListener() {
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
       if (!isLoading && hasMoreData) {
         getSellEquipments();
       }
@@ -89,10 +91,12 @@ class _SellScreenState extends State<SellScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () {
-          var intentModel = EditViewEquipmentIntentModel(isEdit: false, equipmentId: 0, sellEquipmentResponseModel: null);
-          Navigator.pushNamed(context, Constants.sellProductListScreen, arguments: intentModel);
+          var intentModel = EditViewEquipmentIntentModel(
+              isEdit: false, equipmentId: 0, sellEquipmentResponseModel: null);
+          Navigator.pushNamed(context, Constants.sellProductListScreen,
+              arguments: intentModel);
         },
-        child:  Icon(
+        child: Icon(
           Icons.add,
           color: Theme.of(context).colorScheme.background,
         ),
@@ -121,7 +125,7 @@ class _SellScreenState extends State<SellScreen> {
         onChanged: _onSearchChanged,
         decoration: InputDecoration(
           hintText: "Search Equipment's",
-          prefixIcon:  Icon(
+          prefixIcon: Icon(
             Icons.search,
             color: Theme.of(context).colorScheme.primary,
           ),
@@ -183,7 +187,8 @@ class _SellScreenState extends State<SellScreen> {
             Navigator.pushNamed(
               context,
               Constants.sellProductListScreen,
-              arguments: EditViewEquipmentIntentModel(equipmentId: p0.equipmentId, isEdit: true),
+              arguments: EditViewEquipmentIntentModel(
+                  equipmentId: p0.equipmentId, isEdit: true),
             );
           },
           onDelete: (p0) {
@@ -209,24 +214,32 @@ class _SellScreenState extends State<SellScreen> {
         "seachquery": searchQuery,
       };
 
-      await Provider.of<SellViewmodel>(context, listen: false).getEquipments(request).then(
+      await Provider.of<SellViewmodel>(context, listen: false)
+          .getEquipments(request)
+          .then(
         (value) {
           Response res = value;
           debugPrint("Response: ${res.body}");
 
           if (res.statusCode == 500 || res.statusCode == 404) {
-            showSnackBarErrorColor(AppStrings.internalServerErrorMessage, context, true);
+            showSnackBarErrorColor(
+                AppStrings.internalServerErrorMessage, context, true);
           } else if (res.statusCode == 200) {
-            BuyEquipmentResponseModel buyEquipmentResponseModel = BuyEquipmentResponseModel.fromJson(jsonDecode(res.body));
+            BuyEquipmentResponseModel buyEquipmentResponseModel =
+                BuyEquipmentResponseModel.fromJson(jsonDecode(res.body));
 
             setState(() {
               if (buyEquipmentResponseModel.data.isEmpty) {
                 hasMoreData = false;
               } else {
-                for (var i = 0; i < buyEquipmentResponseModel.data.length; i++) {
+                for (var i = 0;
+                    i < buyEquipmentResponseModel.data.length;
+                    i++) {
                   var data = buyEquipmentResponseModel.data[i];
-                  if (data.equipmentStatus!.code != EquipmentStatusCode.removed.toString() ||
-                      data.equipmentStatus!.code != EquipmentStatusCode.inactive.toString()) {
+                  if (data.equipmentStatus!.code !=
+                          EquipmentStatusCode.removed.toString() ||
+                      data.equipmentStatus!.code !=
+                          EquipmentStatusCode.inactive.toString()) {
                     equipments.add(data);
                   }
                 }
@@ -260,7 +273,8 @@ class _SellScreenState extends State<SellScreen> {
     }
   }
 
-  Future<void> showDeleteConfirmationDialog(BuildContext context, int equipmentId) {
+  Future<void> showDeleteConfirmationDialog(
+      BuildContext context, int equipmentId) {
     return showDialog<bool>(
       context: context,
       builder: (BuildContext context) {
@@ -299,7 +313,7 @@ class _SellScreenState extends State<SellScreen> {
                 ),
               ),
               SizedBox(height: 8),
-              const Divider(
+              Divider(
                 height: 2,
                 color: Theme.of(context).colorScheme.onBackground,
               ),
@@ -309,8 +323,10 @@ class _SellScreenState extends State<SellScreen> {
                     Expanded(
                       child: TextButton(
                         style: TextButton.styleFrom(
-                          foregroundColor: Theme.of(context).colorScheme.background,
-                          backgroundColor: Theme.of(context).colorScheme.primary,
+                          foregroundColor:
+                              Theme.of(context).colorScheme.background,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
                           padding: EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -322,14 +338,17 @@ class _SellScreenState extends State<SellScreen> {
                           Navigator.of(context).pop();
                           deleteEquipment(equipmentId);
                         },
-                        child:  Text('Yes'),
+                        child: Text('Yes'),
                       ),
                     ),
                     const VerticalDivider(width: 1),
                     Expanded(
                       child: TextButton(
                         style: TextButton.styleFrom(
-                          foregroundColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.87),
+                          foregroundColor: Theme.of(context)
+                              .colorScheme
+                              .onBackground
+                              .withOpacity(0.87),
                           padding: EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -338,7 +357,7 @@ class _SellScreenState extends State<SellScreen> {
                           ),
                         ),
                         onPressed: () => Navigator.of(context).pop(false),
-                        child:  Text('No'),
+                        child: Text('No'),
                       ),
                     ),
                   ],
@@ -354,14 +373,18 @@ class _SellScreenState extends State<SellScreen> {
   Future<void> deleteEquipment(int equipmentId) async {
     try {
       _progressDialog.show();
-      await Provider.of<SellViewmodel>(context, listen: false)
-          .deleteEquipment({"EquipmentId": equipmentId, "InActiveReason": "Removed by owner", "IsRemoveMobile": true}).then(
+      await Provider.of<SellViewmodel>(context, listen: false).deleteEquipment({
+        "EquipmentId": equipmentId,
+        "InActiveReason": "Removed by owner",
+        "IsRemoveMobile": true
+      }).then(
         (value) {
           Response res = value;
           debugPrint("Response: ${res.body}");
 
           if (res.statusCode == 500 || res.statusCode == 404) {
-            showSnackBarErrorColor(AppStrings.internalServerErrorMessage, context, true);
+            showSnackBarErrorColor(
+                AppStrings.internalServerErrorMessage, context, true);
           } else if (res.statusCode == 200) {
             _progressDialog.hide();
             showSnackBarColor("Equipment deleted successfully", context, false);

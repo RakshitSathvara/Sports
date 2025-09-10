@@ -551,7 +551,7 @@ class _BuyCategoryScreenState extends State<BuyCategoryScreen> {
                 foregroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.outline),
                 backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.outline),
                 shape: MaterialStateProperty.all(
-                  const RoundedRectangleBorder(
+                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                     side: BorderSide(color: Theme.of(context).colorScheme.outline),
                   ),

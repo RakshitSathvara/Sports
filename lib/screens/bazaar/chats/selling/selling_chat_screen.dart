@@ -1192,7 +1192,7 @@ class _SellingChatScreenState extends State<SellingChatScreen> {
                 ),
               ),
               SizedBox(height: 8),
-              const Divider(
+               Divider(
                 height: 4,
                 color: Theme.of(context).colorScheme.onBackground,
               ),

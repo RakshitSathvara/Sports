@@ -222,7 +222,7 @@ class _SellProductCategoryScreenState extends State<SellProductCategoryScreen> {
                         foregroundColor: WidgetStateProperty.all<Color>(Theme.of(context).colorScheme.outline),
                         backgroundColor: WidgetStateProperty.all<Color>(Theme.of(context).colorScheme.outline),
                         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                          const RoundedRectangleBorder(
+                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.zero,
                             side: BorderSide(
                               color: Theme.of(context).colorScheme.outline,
