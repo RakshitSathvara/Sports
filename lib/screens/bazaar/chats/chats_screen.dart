@@ -6,6 +6,7 @@ import 'package:oqdo_mobile_app/screens/bazaar/chats/socket_service.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/chats/viewmodel/chat_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class ChatsScreen extends StatefulWidget {
   const ChatsScreen({super.key});
@@ -113,7 +114,7 @@ class _ChatsScreenState extends State<ChatsScreen> with SingleTickerProviderStat
                     color: Theme.of(context).colorScheme.background,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFFD4EEF9),
+                        color: Theme.of(context).extension<CustomColors>()!.bazaarTabBackground,
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       child: Padding(

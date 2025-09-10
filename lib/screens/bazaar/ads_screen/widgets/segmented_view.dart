@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/ads_screen/model/advertisement_type_response_model.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class SegmentedView extends StatefulWidget {
   final List<AdvertisementTypeResponse> segments;
   final void Function(AdvertisementTypeResponse)? onSegmentSelected;
-  final Color selectedColor;
-  final Color unselectedColor;
-  final Color backgroundColor;
   final int initialIndex;
   final VoidCallback? onPressed;
 
@@ -15,9 +13,6 @@ class SegmentedView extends StatefulWidget {
     required this.segments,
     this.onSegmentSelected,
     this.onPressed,
-    this.selectedColor = Theme.of(context).colorScheme.primary,
-    this.unselectedColor = const Color(0xFFD4EEF9),
-    this.backgroundColor = const Color(0xFFE0E0E0),
     this.initialIndex = 0,
   });
 
@@ -59,6 +54,7 @@ class _SegmentedViewState extends State<SegmentedView> {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return Container(
       padding: EdgeInsets.all(8.0),
       child: Row(
@@ -66,7 +62,7 @@ class _SegmentedViewState extends State<SegmentedView> {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: widget.backgroundColor,
+                color: customColors.bazaarTabBackground,
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: widget.segments.length <= 2
@@ -99,6 +95,7 @@ class _SegmentedViewState extends State<SegmentedView> {
   Widget _buildSegment(int index) {
     final segment = widget.segments[index];
     final bool isSelected = selectedIndex == index;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
 
     return Expanded(
       flex: widget.segments.length <= 2 ? 1 : 0,
@@ -116,7 +113,9 @@ class _SegmentedViewState extends State<SegmentedView> {
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 12.0),
           decoration: BoxDecoration(
-            color: isSelected ? widget.selectedColor : widget.unselectedColor,
+            color: isSelected
+                ? Theme.of(context).colorScheme.primary
+                : customColors.bazaarTabBackground,
             borderRadius: BorderRadius.circular(20.0),
           ),
           child: Row(

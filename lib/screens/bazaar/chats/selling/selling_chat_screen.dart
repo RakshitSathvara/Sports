@@ -19,6 +19,7 @@ import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class SellingChatScreen extends StatefulWidget {
   const SellingChatScreen({super.key, required this.equipmentDetails});
@@ -143,7 +144,7 @@ class _SellingChatScreenState extends State<SellingChatScreen> {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        backgroundColor: Color(0xFFEAF3F7),
+        backgroundColor: Theme.of(context).extension<CustomColors>()!.bazaarChatBackground,
         appBar: AppBar(
           toolbarHeight: 80,
           centerTitle: false,
@@ -330,7 +331,7 @@ class _SellingChatScreenState extends State<SellingChatScreen> {
                   : (((!isSentByMe) && isOfferAcceptanceMessage))
                       ? Theme.of(context).colorScheme.background
                       : isSentByMe
-                          ? const Color(0xFFC7DDE7)
+                          ? Theme.of(context).extension<CustomColors>()!.messageLeft
                           : Theme.of(context).colorScheme.background,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
