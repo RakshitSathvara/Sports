@@ -33,6 +33,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.myButtonBgColor,
     required this.coachFacilityFavIconColor,
     required this.showTextColorForCancelAppointment,
+    required this.bazaarTabBackground,
+    required this.bazaarChatBackground,
   });
 
   final Color greyButton;
@@ -66,6 +68,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color myButtonBgColor;
   final Color coachFacilityFavIconColor;
   final Color showTextColorForCancelAppointment;
+  final Color bazaarTabBackground;
+  final Color bazaarChatBackground;
 
   static const CustomColors light = CustomColors(
     greyButton: Color(0xFFEFEFEF),
@@ -99,6 +103,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
     myButtonBgColor: Color(0xFF006590),
     coachFacilityFavIconColor: Color(0xFFF1F1F1),
     showTextColorForCancelAppointment: Color(0xFFFFFFFF),
+    bazaarTabBackground: Color(0xFFD4EEF9),
+    bazaarChatBackground: Color(0xFFEAF3F7),
   );
 
   static const CustomColors dark = CustomColors(
@@ -133,6 +139,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
     myButtonBgColor : Color(0xFF006590),
     coachFacilityFavIconColor: Color(0xFFFFFFFF),
     showTextColorForCancelAppointment: Color(0xFFFFFFFF),
+    bazaarTabBackground: Color(0xFF2A3540),
+    bazaarChatBackground: Color(0xFF2A2A2A),
   );
 
   @override
@@ -168,6 +176,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? myButtonBgColor,
     Color? coachFacilityFavIconColor,
     Color? showTextColorForCancelAppointment,
+    Color? bazaarTabBackground,
+    Color? bazaarChatBackground,
   }) {
     return CustomColors(
       greyButton: greyButton ?? this.greyButton,
@@ -201,6 +211,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
       myButtonBgColor: myButtonBgColor ?? this.myButtonBgColor,
       coachFacilityFavIconColor: coachFacilityFavIconColor ?? this.coachFacilityFavIconColor,
       showTextColorForCancelAppointment: showTextColorForCancelAppointment ?? this.showTextColorForCancelAppointment,
+      bazaarTabBackground: bazaarTabBackground ?? this.bazaarTabBackground,
+      bazaarChatBackground: bazaarChatBackground ?? this.bazaarChatBackground,
     );
   }
 
@@ -239,6 +251,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
       myButtonBgColor: Color.lerp(myButtonBgColor, other.myButtonBgColor, t)!,
       coachFacilityFavIconColor: Color.lerp(coachFacilityFavIconColor, other.coachFacilityFavIconColor, t)!,
       showTextColorForCancelAppointment: Color.lerp(showTextColorForCancelAppointment, other.showTextColorForCancelAppointment, t)!,
+      bazaarTabBackground: Color.lerp(bazaarTabBackground, other.bazaarTabBackground, t)!,
+      bazaarChatBackground: Color.lerp(bazaarChatBackground, other.bazaarChatBackground, t)!,
     );
   }
 }
