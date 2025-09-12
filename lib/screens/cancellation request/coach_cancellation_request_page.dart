@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/model/cancellation_request_list_response_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -192,7 +192,10 @@ class _CoachCancellationRequestPageState extends State<CoachCancellationRequestP
                     Expanded(
                       child: Text(
                         bookingDate,
-                        style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.black, fontSize: 16),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).colorScheme.onSurface,
+                            fontSize: 16),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -205,12 +208,22 @@ class _CoachCancellationRequestPageState extends State<CoachCancellationRequestP
                         CustomTextView(
                           label: 'Refund Amount: ',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w500,
+                                  color: Theme.of(context)
+                                      .extension<CustomColors>()!
+                                      .greyText),
                         ),
                         CustomTextView(
                           label: 'S\$ ${cancellationRequest.amount?.toStringAsFixed(2) ?? 0.0}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.w500, color: OQDOThemeData.buttonColor),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w500,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .primary),
                         ),
                       ],
                     ),
@@ -225,18 +238,42 @@ class _CoachCancellationRequestPageState extends State<CoachCancellationRequestP
                   children: [
                     CustomTextView(
                       label: cancellationRequest.startTime ?? "",
-                      textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context)
+                                  .extension<CustomColors>()!
+                                  .greyText),
                     ),
                     CustomTextView(
                       label: "-${cancellationRequest.endTime ?? ""}",
-                      textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context)
+                                  .extension<CustomColors>()!
+                                  .greyText),
                     ),
                     const SizedBox(
                       width: 10,
                     ),
                     CustomTextView(
                       label: 'S\$ ${cancellationRequest.ratePerHour ?? 0.0}/hour',
-                      textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context)
+                                  .extension<CustomColors>()!
+                                  .greyText),
                     ),
                   ],
                 ),
@@ -245,7 +282,15 @@ class _CoachCancellationRequestPageState extends State<CoachCancellationRequestP
                 ),
                 CustomTextView(
                   label: 'Initiated - on $createdDate',
-                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                  textStyle: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context)
+                              .extension<CustomColors>()!
+                              .greyText),
                 ),
                 const SizedBox(
                   height: 2,
@@ -253,7 +298,15 @@ class _CoachCancellationRequestPageState extends State<CoachCancellationRequestP
                 Row(children: [
                   CustomTextView(
                     label: 'Time left to reject ',
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                    textStyle: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                            color: Theme.of(context)
+                                .extension<CustomColors>()!
+                                .greyText),
                   ),
                   CustomTimer(
                       controller: cancellationRequest.expireTimeController!,
@@ -261,7 +314,15 @@ class _CoachCancellationRequestPageState extends State<CoachCancellationRequestP
                         return CustomTextView(
                           label: "${time.hours}:${time.minutes}:${time.seconds}",
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                              Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500,
+                                      color: Theme.of(context)
+                                          .extension<CustomColors>()!
+                                          .greyText),
                         );
                       })
                 ]),
@@ -271,7 +332,15 @@ class _CoachCancellationRequestPageState extends State<CoachCancellationRequestP
                 CustomTextView(
                   label: 'Requested by: ${cancellationRequest.firstName ?? ""} ${cancellationRequest.lastName ?? ""}',
                   maxLine: 3,
-                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                  textStyle: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context)
+                              .extension<CustomColors>()!
+                              .greyText),
                 ),
               ],
             ),
@@ -297,13 +366,19 @@ class _CoachCancellationRequestPageState extends State<CoachCancellationRequestP
             height: 70.0,
             child: ElevatedButton(
               style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(const Color(0xFFCECECE)),
-                backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFCECECE)),
+                foregroundColor: MaterialStateProperty.all<Color>(
+                    Theme.of(context).colorScheme.onSurface),
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    Theme.of(context)
+                        .extension<CustomColors>()!
+                        .greyButton),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  const RoundedRectangleBorder(
+                  RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                     side: BorderSide(
-                      color: Color(0xFFCECECE),
+                      color: Theme.of(context)
+                          .extension<CustomColors>()!
+                          .greyButton,
                     ),
                   ),
                 ),
@@ -318,7 +393,7 @@ class _CoachCancellationRequestPageState extends State<CoachCancellationRequestP
                 textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
                       fontWeight: FontWeight.w400,
                       fontSize: 16.0,
-                      color: OQDOThemeData.blackColor,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
               ),
             ),
@@ -329,13 +404,15 @@ class _CoachCancellationRequestPageState extends State<CoachCancellationRequestP
             height: 70.0,
             child: ElevatedButton(
               style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(const Color(0xFF006590)),
-                backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF006590)),
+                foregroundColor: MaterialStateProperty.all<Color>(
+                    Theme.of(context).colorScheme.onPrimary),
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    Theme.of(context).colorScheme.primary),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  const RoundedRectangleBorder(
+                  RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                     side: BorderSide(
-                      color: Color(0xFF006590),
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ),
@@ -347,7 +424,10 @@ class _CoachCancellationRequestPageState extends State<CoachCancellationRequestP
                   : null,
               child: CustomTextView(
                 label: 'Accept',
-                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, fontSize: 16.0, color: OQDOThemeData.whiteColor),
+                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.0,
+                    color: Theme.of(context).colorScheme.onPrimary),
               ),
             ),
           ),
