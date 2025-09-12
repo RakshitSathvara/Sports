@@ -193,7 +193,7 @@ class _EndUserCalendarViewScreenState extends State<EndUserCalendarViewScreen> {
                                   textStyle: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 18,
-                                      color: Theme.of(context).colorScheme.onPrimary),
+                                      color: Theme.of(context).extension<CustomColors>()!.showTextColorForCancelAppointment),
                                 ),
                               ),
                             ),
@@ -226,7 +226,7 @@ class _EndUserCalendarViewScreenState extends State<EndUserCalendarViewScreen> {
                                   textStyle: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 18,
-                                      color: Theme.of(context).colorScheme.onPrimary),
+                                      color: Theme.of(context).extension<CustomColors>()!.showTextColorForCancelAppointment),
                                 ),
                               ),
                             ),
