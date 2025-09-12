@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/model/notification_response.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -22,7 +22,7 @@ import '../../helper/helpers.dart';
 import '../../main.dart';
 
 class NotificationsPage extends StatefulWidget {
-  const NotificationsPage({Key? key}) : super(key: key);
+  const NotificationsPage({super.key});
 
   @override
   _NotificationsPageState createState() => _NotificationsPageState();
@@ -70,8 +70,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+    
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: CustomAppBar(
         title: 'Notifications',
         onBack: () {
@@ -79,7 +81,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
         },
         actions: [
           GestureDetector(
-            onTap: notifications.length > 0
+            onTap: notifications.isNotEmpty
                 ? () {
                     deleteAllNotification();
                   }
@@ -91,8 +93,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   child: CustomTextView(
                     label: 'Clear All',
                     textStyle: TextStyle(
-                      color:
-                          notifications.length > 0 ? Colors.red : Colors.grey,
+                      color: notifications.isNotEmpty 
+                          ? customColors.redDeleteColor 
+                          : customColors.greyText,
                       fontWeight: FontWeight.bold,
                       fontSize: 17,
                     ),
@@ -104,7 +107,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
       body: Container(
         width: width,
         height: height,
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.surface,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: isMainLoading
@@ -168,9 +171,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                             notifications[index]
                                                 .notificationTemplateType
                                                 .toString(),
-                                            style: const TextStyle(
+                                            style: TextStyle(
                                                 fontSize: 16,
-                                                fontWeight: FontWeight.w600),
+                                                fontWeight: FontWeight.w600,
+                                                color: Theme.of(context).colorScheme.onSurface),
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                           ),
@@ -180,9 +184,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                         ),
                                         Text(
                                           "$formattedDate $time",
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                               fontWeight: FontWeight.w400,
-                                              color: Colors.black38,
+                                              color: customColors.greyText,
                                               fontSize: 13),
                                           overflow: TextOverflow.ellipsis,
                                         ),
@@ -199,9 +203,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                                   .content
                                                   .toString(),
                                               maxLines: 5,
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                   fontSize: 14,
-                                                  color: Colors.black87,
+                                                  color: customColors.subTitle,
                                                   fontWeight: FontWeight.w500),
                                               overflow: TextOverflow.ellipsis,
                                             ),
@@ -218,7 +222,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                           child: Icon(
                                             Icons.delete_outline,
                                             size: 30,
-                                            color: Colors.red,
+                                            color: customColors.redDeleteColor,
                                           ),
                                         ),
                                       ],
@@ -229,7 +233,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
                             );
                           },
                           separatorBuilder: (context, index) {
-                            return const Divider();
+                            return Divider(
+                              color: customColors.filterDivider,
+                            );
                           },
                         ),
                         isLoading
@@ -254,10 +260,16 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                 Theme.of(context).colorScheme.primary),
                           ),
                         )
-                      : const Center(
+                      : Center(
                           child: Padding(
-                            padding: EdgeInsets.all(40.0),
-                            child: Text('No Notification Found!'),
+                            padding: const EdgeInsets.all(40.0),
+                            child: Text(
+                              'No Notification Found!',
+                              style: TextStyle(
+                                color: customColors.greyText,
+                                fontSize: 16,
+                              ),
+                            ),
                           ),
                         ),
         ),
@@ -370,8 +382,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 isMainLoading = false;
               }
             });
-            showSnackBarErrorColor(
-                AppStrings.internalServerErrorMessage, context, true);
+            if (mounted) {
+              showSnackBarErrorColor(
+                  AppStrings.internalServerErrorMessage, context, true);
+            }
           } else if (res.statusCode == 200) {
             if (!mounted) return;
             NotificationResponse notificationResponse =
@@ -409,7 +423,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
             Map<String, dynamic> errorModel = jsonDecode(res.body);
             if (errorModel.containsKey('ModelState')) {
               Map<String, dynamic> modelState = errorModel['ModelState'];
-              if (modelState.containsKey('ErrorMessage')) {
+              if (modelState.containsKey('ErrorMessage') && mounted) {
                 showSnackBarColor(modelState['ErrorMessage'][0], context, true);
               }
             }
@@ -425,7 +439,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
         }
       });
       if (!mounted) return;
-      showSnackBarErrorColor(AppStrings.noInternet, context, true);
+      if (mounted) {
+        showSnackBarErrorColor(AppStrings.noInternet, context, true);
+      }
     } on TimeoutException catch (_) {
       await _progressDialog.hide();
       setState(() {
@@ -435,7 +451,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
         }
       });
       if (!mounted) return;
-      showSnackBarErrorColor(AppStrings.timeout, context, true);
+      if (mounted) {
+        showSnackBarErrorColor(AppStrings.timeout, context, true);
+      }
     } on ServerException catch (_) {
       await _progressDialog.hide();
       setState(() {
@@ -445,7 +463,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
         }
       });
       if (!mounted) return;
-      showSnackBarErrorColor(AppStrings.serverError, context, true);
+      if (mounted) {
+        showSnackBarErrorColor(AppStrings.serverError, context, true);
+      }
     } catch (exception) {
       await _progressDialog.hide();
       setState(() {
@@ -455,7 +475,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
         }
       });
       if (!mounted) return;
-      showSnackBarErrorColor(exception.toString(), context, true);
+      if (mounted) {
+        showSnackBarErrorColor(exception.toString(), context, true);
+      }
     }
   }
 
@@ -475,8 +497,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
 
           if (res.statusCode == 500 || res.statusCode == 404) {
             await _progressDialog.hide();
-            showSnackBarErrorColor(
-                AppStrings.internalServerErrorMessage, context, true);
+            if (mounted) {
+              showSnackBarErrorColor(
+                  AppStrings.internalServerErrorMessage, context, true);
+            }
           } else if (res.statusCode == 200) {
             await _progressDialog.hide();
             String list = res.body;
@@ -485,7 +509,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 notifications.removeAt(index);
                 totalCount = totalCount - 2;
               });
-              showSnackBarColor('Notification deleted', context, false);
+              if (mounted) {
+                showSnackBarColor('Notification deleted', context, false);
+              }
               debugPrint('Notification Count -> ${notifications.length}');
               debugPrint('total Count -> $totalCount');
               // getNotification();
@@ -495,7 +521,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
             Map<String, dynamic> errorModel = jsonDecode(res.body);
             if (errorModel.containsKey('ModelState')) {
               Map<String, dynamic> modelState = errorModel['ModelState'];
-              if (modelState.containsKey('ErrorMessage')) {
+              if (modelState.containsKey('ErrorMessage') && mounted) {
                 showSnackBarColor(modelState['ErrorMessage'][0], context, true);
               }
             }
@@ -504,16 +530,24 @@ class _NotificationsPageState extends State<NotificationsPage> {
       );
     } on NoConnectivityException catch (_) {
       await _progressDialog.hide();
-      showSnackBarErrorColor(AppStrings.noInternet, context, true);
+      if (mounted) {
+        showSnackBarErrorColor(AppStrings.noInternet, context, true);
+      }
     } on TimeoutException catch (_) {
       await _progressDialog.hide();
-      showSnackBarErrorColor(AppStrings.timeout, context, true);
+      if (mounted) {
+        showSnackBarErrorColor(AppStrings.timeout, context, true);
+      }
     } on ServerException catch (_) {
       await _progressDialog.hide();
-      showSnackBarErrorColor(AppStrings.serverError, context, true);
+      if (mounted) {
+        showSnackBarErrorColor(AppStrings.serverError, context, true);
+      }
     } catch (exception) {
       await _progressDialog.hide();
-      showSnackBarErrorColor(exception.toString(), context, true);
+      if (mounted) {
+        showSnackBarErrorColor(exception.toString(), context, true);
+      }
     }
   }
 
@@ -531,13 +565,17 @@ class _NotificationsPageState extends State<NotificationsPage> {
           Response res = value;
           if (res.statusCode == 500 || res.statusCode == 404) {
             await _progressDialog.hide();
-            showSnackBarErrorColor(
-                AppStrings.internalServerErrorMessage, context, true);
+            if (mounted) {
+              showSnackBarErrorColor(
+                  AppStrings.internalServerErrorMessage, context, true);
+            }
           } else if (res.statusCode == 200) {
             await _progressDialog.hide();
             String list = res.body;
             if (list.isNotEmpty) {
-              showSnackBarColor('Notifications deleted', context, false);
+              if (mounted) {
+                showSnackBarColor('Notifications deleted', context, false);
+              }
               notifications.clear();
               setState(() {
                 notifications.clear();
@@ -549,7 +587,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
             Map<String, dynamic> errorModel = jsonDecode(res.body);
             if (errorModel.containsKey('ModelState')) {
               Map<String, dynamic> modelState = errorModel['ModelState'];
-              if (modelState.containsKey('ErrorMessage')) {
+              if (modelState.containsKey('ErrorMessage') && mounted) {
                 showSnackBarColor(modelState['ErrorMessage'][0], context, true);
               }
             }
@@ -558,16 +596,24 @@ class _NotificationsPageState extends State<NotificationsPage> {
       );
     } on NoConnectivityException catch (_) {
       await _progressDialog.hide();
-      showSnackBarErrorColor(AppStrings.noInternet, context, true);
+      if (mounted) {
+        showSnackBarErrorColor(AppStrings.noInternet, context, true);
+      }
     } on TimeoutException catch (_) {
       await _progressDialog.hide();
-      showSnackBarErrorColor(AppStrings.timeout, context, true);
+      if (mounted) {
+        showSnackBarErrorColor(AppStrings.timeout, context, true);
+      }
     } on ServerException catch (_) {
       await _progressDialog.hide();
-      showSnackBarErrorColor(AppStrings.serverError, context, true);
+      if (mounted) {
+        showSnackBarErrorColor(AppStrings.serverError, context, true);
+      }
     } catch (exception) {
       await _progressDialog.hide();
-      showSnackBarErrorColor(exception.toString(), context, true);
+      if (mounted) {
+        showSnackBarErrorColor(exception.toString(), context, true);
+      }
     }
   }
 }
