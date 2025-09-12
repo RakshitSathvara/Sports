@@ -9,7 +9,6 @@ import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/meetups/data/friend_list_repsonse_model.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/meetups/data/meet_up_repository.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -65,7 +64,7 @@ class _AddMeetupScreenState extends State<AddMeetupScreen> {
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: OQDOThemeData.whiteColor,
+          color: Theme.of(context).colorScheme.background,
           padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
           child: SingleChildScrollView(
             child: Column(
@@ -508,8 +507,8 @@ class _AddMeetupScreenState extends State<AddMeetupScreen> {
                   height: 10,
                 ),
                 ListView.separated(
-                  separatorBuilder: (context, index) => const Divider(
-                    color: OQDOThemeData.greyColor,
+                  separatorBuilder: (context, index) => Divider(
+                    color: Theme.of(context).extension<CustomColors>()!.buddiesBorder,
                     height: 1,
                   ),
                   shrinkWrap: true,
@@ -587,7 +586,7 @@ class _AddMeetupScreenState extends State<AddMeetupScreen> {
             label: '${frindListResponse.firstName} ${frindListResponse.lastName}',
             maxLine: 2,
             textOverFlow: TextOverflow.ellipsis,
-            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 18.0, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+            textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 18.0, fontWeight: FontWeight.w500, color: Theme.of(context).extension<CustomColors>()!.chipText),
           ),
         ),
       ],

@@ -10,7 +10,6 @@ import 'package:oqdo_mobile_app/helper/helpers.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/meetups/data/meet_up_repository.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/meetups/data/meetup_response_model.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -64,7 +63,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: OQDOThemeData.whiteColor,
+          color: Theme.of(context).colorScheme.background,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,12 +85,12 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                                       Expanded(
                                         child: SimpleButton(
                                           text: "Deny",
-                                          textcolor: OQDOThemeData.buttonColor,
+                                          textcolor: Theme.of(context).colorScheme.primary,
                                           textsize: 13,
                                           fontWeight: FontWeight.w600,
                                           letterspacing: 0.7,
-                                          buttoncolor: OQDOThemeData.whiteColor,
-                                          buttonbordercolor: OQDOThemeData.buttonColor,
+                                          buttoncolor: Theme.of(context).colorScheme.background,
+                                          buttonbordercolor: Theme.of(context).colorScheme.primary,
                                           buttonheight: 50,
                                           buttonwidth: MediaQuery.of(context).size.width / 2,
                                           radius: 0,
@@ -102,7 +101,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                                                   return Dialog(
                                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), //this right here
                                                     child: Container(
-                                                      color: OQDOThemeData.whiteColor,
+                                                      color: Theme.of(context).colorScheme.background,
                                                       height: 300,
                                                       child: Padding(
                                                         padding: const EdgeInsets.all(12.0),
@@ -118,7 +117,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                                                               textStyle: Theme.of(context)
                                                                   .textTheme
                                                                   .bodyMedium!
-                                                                  .copyWith(fontSize: 18, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+                                                                  .copyWith(fontSize: 18, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.bold),
                                                             ),
                                                             const SizedBox(
                                                               height: 10,
@@ -143,12 +142,12 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                                                                 Expanded(
                                                                   child: SimpleButton(
                                                                     text: "Cancel",
-                                                                    textcolor: OQDOThemeData.buttonColor,
+                                                                    textcolor: Theme.of(context).colorScheme.primary,
                                                                     textsize: 13,
                                                                     fontWeight: FontWeight.w600,
                                                                     letterspacing: 0.7,
-                                                                    buttoncolor: OQDOThemeData.whiteColor,
-                                                                    buttonbordercolor: OQDOThemeData.buttonColor,
+                                                                    buttoncolor: Theme.of(context).colorScheme.background,
+                                                                    buttonbordercolor: Theme.of(context).colorScheme.primary,
                                                                     buttonheight: 50,
                                                                     buttonwidth: MediaQuery.of(context).size.width / 2,
                                                                     radius: 0,
@@ -160,12 +159,12 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                                                                 Expanded(
                                                                   child: SimpleButton(
                                                                     text: 'Send',
-                                                                    textcolor: OQDOThemeData.whiteColor,
+                                                                    textcolor: Theme.of(context).colorScheme.onPrimary,
                                                                     textsize: 13,
                                                                     fontWeight: FontWeight.w600,
                                                                     letterspacing: 0.7,
-                                                                    buttoncolor: OQDOThemeData.buttonColor,
-                                                                    buttonbordercolor: OQDOThemeData.buttonColor,
+                                                                    buttoncolor: Theme.of(context).colorScheme.primary,
+                                                                    buttonbordercolor: Theme.of(context).colorScheme.primary,
                                                                     buttonheight: 50,
                                                                     buttonwidth: MediaQuery.of(context).size.width / 2,
                                                                     radius: 0,
@@ -189,12 +188,12 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                                       Expanded(
                                         child: SimpleButton(
                                           text: 'Accept',
-                                          textcolor: OQDOThemeData.whiteColor,
+                                          textcolor: Theme.of(context).colorScheme.onPrimary,
                                           textsize: 13,
                                           fontWeight: FontWeight.w600,
                                           letterspacing: 0.7,
-                                          buttoncolor: OQDOThemeData.buttonColor,
-                                          buttonbordercolor: OQDOThemeData.buttonColor,
+                                          buttoncolor: Theme.of(context).colorScheme.primary,
+                                          buttonbordercolor: Theme.of(context).colorScheme.primary,
                                           buttonheight: 50,
                                           buttonwidth: MediaQuery.of(context).size.width / 2,
                                           radius: 0,
@@ -352,12 +351,12 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                             alignment: Alignment.center,
                             child: SimpleButton(
                               text: "Cancel Meetup",
-                              textcolor: OQDOThemeData.buttonColor,
+                              textcolor: Theme.of(context).colorScheme.primary,
                               textsize: 13,
                               fontWeight: FontWeight.w600,
                               letterspacing: 0.7,
-                              buttoncolor: OQDOThemeData.whiteColor,
-                              buttonbordercolor: OQDOThemeData.buttonColor,
+                              buttoncolor: Theme.of(context).colorScheme.background,
+                              buttonbordercolor: Theme.of(context).colorScheme.primary,
                               buttonheight: 50,
                               buttonwidth: MediaQuery.of(context).size.width / 2,
                               radius: 0,
@@ -368,7 +367,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                                       return Dialog(
                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), //this right here
                                         child: Container(
-                                          color: OQDOThemeData.whiteColor,
+                                          color: Theme.of(context).colorScheme.background,
                                           height: 300,
                                           child: Padding(
                                             padding: const EdgeInsets.all(12.0),
@@ -384,7 +383,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                                                   textStyle: Theme.of(context)
                                                       .textTheme
                                                       .bodyMedium!
-                                                      .copyWith(fontSize: 18, color: OQDOThemeData.blackColor, fontWeight: FontWeight.bold),
+                                                      .copyWith(fontSize: 18, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.bold),
                                                 ),
                                                 const SizedBox(
                                                   height: 10,
@@ -409,12 +408,12 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                                                     Expanded(
                                                       child: SimpleButton(
                                                         text: "Cancel",
-                                                        textcolor: OQDOThemeData.buttonColor,
+                                                        textcolor: Theme.of(context).colorScheme.primary,
                                                         textsize: 13,
                                                         fontWeight: FontWeight.w600,
                                                         letterspacing: 0.7,
-                                                        buttoncolor: OQDOThemeData.whiteColor,
-                                                        buttonbordercolor: OQDOThemeData.buttonColor,
+                                                        buttoncolor: Theme.of(context).colorScheme.background,
+                                                        buttonbordercolor: Theme.of(context).colorScheme.primary,
                                                         buttonheight: 50,
                                                         buttonwidth: MediaQuery.of(context).size.width / 2,
                                                         radius: 0,
@@ -426,12 +425,12 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
                                                     Expanded(
                                                       child: SimpleButton(
                                                         text: 'Send',
-                                                        textcolor: OQDOThemeData.whiteColor,
+                                                        textcolor: Theme.of(context).colorScheme.onPrimary,
                                                         textsize: 13,
                                                         fontWeight: FontWeight.w600,
                                                         letterspacing: 0.7,
-                                                        buttoncolor: OQDOThemeData.buttonColor,
-                                                        buttonbordercolor: OQDOThemeData.buttonColor,
+                                                        buttoncolor: Theme.of(context).colorScheme.primary,
+                                                        buttonbordercolor: Theme.of(context).colorScheme.primary,
                                                         buttonheight: 50,
                                                         buttonwidth: MediaQuery.of(context).size.width / 2,
                                                         radius: 0,
@@ -480,7 +479,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  border: Border.all(width: 7.0, color: const Color.fromRGBO(0, 101, 144, 0.5)),
+                  border: Border.all(width: 7.0, color: Theme.of(context).colorScheme.primary.withOpacity(0.5)),
                 ),
               ),
               const SizedBox(width: 20.0),
@@ -518,7 +517,7 @@ class _MeetupDetailsScreenState extends State<MeetupDetailsScreen> {
               ),
               CustomTextView(
                 label: widget.meetupResponse!.name,
-                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.0, color: OQDOThemeData.greyColor),
+                textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w500, fontSize: 18.0, color: Theme.of(context).extension<CustomColors>()!.chipText),
               ),
             ],
           ),

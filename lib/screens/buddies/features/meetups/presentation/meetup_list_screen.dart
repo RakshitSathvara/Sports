@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/meetups/data/meet_up_repository.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/meetups/data/meetup_response_model.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -92,7 +91,7 @@ class _MeetupListScreenState extends State<MeetupListScreen> {
         ),
         body: SafeArea(
             child: Container(
-          color: OQDOThemeData.whiteColor,
+          color: Theme.of(context).colorScheme.background,
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
@@ -141,7 +140,7 @@ class _MeetupListScreenState extends State<MeetupListScreen> {
                                             padding: const EdgeInsets.all(2.0),
                                             child: Card(
                                               semanticContainer: true,
-                                              color: const Color.fromRGBO(237, 237, 237, 1),
+                                              color: Theme.of(context).extension<CustomColors>()!.meetupEmptyCard,
                                               clipBehavior: Clip.antiAliasWithSaveLayer,
                                               elevation: 4.0,
                                               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -189,7 +188,7 @@ class _MeetupListScreenState extends State<MeetupListScreen> {
                                                         textStyle: Theme.of(context)
                                                             .textTheme
                                                             .titleSmall!
-                                                            .copyWith(fontWeight: FontWeight.w500, fontSize: 15.0, color: OQDOThemeData.greyColor),
+                                                            .copyWith(fontWeight: FontWeight.w500, fontSize: 15.0, color: Theme.of(context).extension<CustomColors>()!.chipText),
                                                       ),
                                                     ],
                                                   ),
@@ -220,7 +219,7 @@ class _MeetupListScreenState extends State<MeetupListScreen> {
                                 textStyle: Theme.of(context)
                                     .textTheme
                                     .titleMedium!
-                                    .copyWith(fontSize: 16, color: OQDOThemeData.greyColor, fontWeight: FontWeight.w500),
+                                    .copyWith(fontSize: 16, color: Theme.of(context).extension<CustomColors>()!.chipText, fontWeight: FontWeight.w500),
                               ),
                             ],
                           ),
@@ -389,7 +388,9 @@ class _MeetupListScreenState extends State<MeetupListScreen> {
           padding: const EdgeInsets.all(2.0),
           child: Card(
             semanticContainer: true,
-            color: model.isCreator! ? const Color.fromRGBO(255, 250, 235, 1) : const Color.fromRGBO(234, 242, 246, 1),
+            color: model.isCreator!
+                ? Theme.of(context).extension<CustomColors>()!.meetupCreatorCard
+                : Theme.of(context).extension<CustomColors>()!.meetupParticipantCard,
             clipBehavior: Clip.antiAliasWithSaveLayer,
             elevation: 4.0,
             shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -440,7 +441,7 @@ class _MeetupListScreenState extends State<MeetupListScreen> {
                         maxLine: 2,
                         textOverFlow: TextOverflow.ellipsis,
                         textStyle:
-                            Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w500, fontSize: 15.0, color: OQDOThemeData.greyColor),
+                            Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w500, fontSize: 15.0, color: Theme.of(context).extension<CustomColors>()!.chipText),
                       ),
                       const SizedBox(
                         height: 8.0,
@@ -448,7 +449,7 @@ class _MeetupListScreenState extends State<MeetupListScreen> {
                       CustomTextView(
                         label: '${model.startFrom} - ${model.endAt}',
                         textStyle:
-                            Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: OQDOThemeData.greyColor),
+                            Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 14.0, fontWeight: FontWeight.w400, color: Theme.of(context).extension<CustomColors>()!.chipText),
                       )
                     ],
                   ),
