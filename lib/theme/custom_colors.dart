@@ -36,6 +36,9 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.showTextColorForCancelAppointment,
     required this.bazaarTabBackground,
     required this.bazaarChatBackground,
+    required this.meetupCreatorCard,
+    required this.meetupParticipantCard,
+    required this.meetupEmptyCard,
   });
 
   final Color greyButton;
@@ -72,6 +75,9 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color showTextColorForCancelAppointment;
   final Color bazaarTabBackground;
   final Color bazaarChatBackground;
+  final Color meetupCreatorCard;
+  final Color meetupParticipantCard;
+  final Color meetupEmptyCard;
 
   static const CustomColors light = CustomColors(
     greyButton: Color(0xFFEFEFEF),
@@ -108,6 +114,9 @@ class CustomColors extends ThemeExtension<CustomColors> {
     showTextColorForCancelAppointment: Color(0xFFFFFFFF),
     bazaarTabBackground: Color(0xFFD4EEF9),
     bazaarChatBackground: Color(0xFFEAF3F7),
+    meetupCreatorCard: Color(0xFFFFFAEB),
+    meetupParticipantCard: Color(0xFFEAF2F6),
+    meetupEmptyCard: Color(0xFFEDEDED),
   );
 
   static const CustomColors dark = CustomColors(
@@ -145,6 +154,9 @@ class CustomColors extends ThemeExtension<CustomColors> {
     showTextColorForCancelAppointment: Color(0xFFFFFFFF),
     bazaarTabBackground: Color(0xFF2A3540),
     bazaarChatBackground: Color(0xFF2A2A2A),
+    meetupCreatorCard: Color(0xFF3B3628),
+    meetupParticipantCard: Color(0xFF2A3540),
+    meetupEmptyCard: Color(0xFF2A2A2A),
   );
 
   @override
@@ -183,6 +195,9 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? showTextColorForCancelAppointment,
     Color? bazaarTabBackground,
     Color? bazaarChatBackground,
+    Color? meetupCreatorCard,
+    Color? meetupParticipantCard,
+    Color? meetupEmptyCard,
   }) {
     return CustomColors(
       greyButton: greyButton ?? this.greyButton,
@@ -219,6 +234,9 @@ class CustomColors extends ThemeExtension<CustomColors> {
       showTextColorForCancelAppointment: showTextColorForCancelAppointment ?? this.showTextColorForCancelAppointment,
       bazaarTabBackground: bazaarTabBackground ?? this.bazaarTabBackground,
       bazaarChatBackground: bazaarChatBackground ?? this.bazaarChatBackground,
+      meetupCreatorCard: meetupCreatorCard ?? this.meetupCreatorCard,
+      meetupParticipantCard: meetupParticipantCard ?? this.meetupParticipantCard,
+      meetupEmptyCard: meetupEmptyCard ?? this.meetupEmptyCard,
     );
   }
 
@@ -257,10 +275,14 @@ class CustomColors extends ThemeExtension<CustomColors> {
       myButtonBgColor: Color.lerp(myButtonBgColor, other.myButtonBgColor, t)!,
       meetupButtonColor: Color.lerp(meetupButtonColor, other.meetupButtonColor, t)!,
       coachFacilityFavIconColor: Color.lerp(coachFacilityFavIconColor, other.coachFacilityFavIconColor, t)!,
-      showTextColorForCancelAppointment: Color.lerp(showTextColorForCancelAppointment, other.showTextColorForCancelAppointment, t)!,
+      showTextColorForCancelAppointment:
+          Color.lerp(showTextColorForCancelAppointment, other.showTextColorForCancelAppointment, t)!,
       bazaarTabBackground: Color.lerp(bazaarTabBackground, other.bazaarTabBackground, t)!,
       bazaarChatBackground: Color.lerp(bazaarChatBackground, other.bazaarChatBackground, t)!,
+      meetupCreatorCard: Color.lerp(meetupCreatorCard, other.meetupCreatorCard, t)!,
+      meetupParticipantCard: Color.lerp(meetupParticipantCard, other.meetupParticipantCard, t)!,
+      meetupEmptyCard: Color.lerp(meetupEmptyCard, other.meetupEmptyCard, t)!,
     );
+    }
   }
-}
 
