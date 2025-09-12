@@ -56,7 +56,7 @@ class _TransactionHistoryPageState extends State<TransactionHistoryPage> with Si
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).extension<CustomColors>()!.white,
           appBar: CustomAppBar(
               title: 'Transaction History',
               onBack: () {
