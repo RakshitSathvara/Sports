@@ -6,7 +6,6 @@ import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/model/coach_appointments_response_model.dart';
 import 'package:oqdo_mobile_app/model/facility_appointment_resopnse_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
@@ -55,7 +54,7 @@ class _ServiceProviderCalendarScreenState extends State<ServiceProviderCalendarS
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        color: OQDOThemeData.whiteColor,
+        color: Theme.of(context).colorScheme.background,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
@@ -72,14 +71,20 @@ class _ServiceProviderCalendarScreenState extends State<ServiceProviderCalendarS
               ),
               CustomTextView(
                 label: '${_currentDay.split("-")[0]} ${_currentDay.split('-')[1]} ${_currentDay.split('-')[2]}',
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: const Color(0xFF333333), fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontSize: 21,
+                    color: Theme.of(context).colorScheme.onBackground,
+                    fontWeight: FontWeight.w500),
               ),
               const SizedBox(
                 height: 3,
               ),
               CustomTextView(
                 label: initSelectedDate,
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: const Color(0xFF333333), fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontSize: 21,
+                    color: Theme.of(context).colorScheme.onBackground,
+                    fontWeight: FontWeight.w500),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 40, left: 25, right: 25),
@@ -92,14 +97,17 @@ class _ServiceProviderCalendarScreenState extends State<ServiceProviderCalendarS
                   daysOfWeekVisible: true,
                   eventLoader: (day) => calendarDateList.where((element) => isSameDay(element, day)).toList(),
                   currentDay: kToday,
-                  daysOfWeekStyle: const DaysOfWeekStyle(
-                      weekdayStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500),
-                      weekendStyle: TextStyle(color: Color(0xFF006590), fontWeight: FontWeight.w500)),
+                  daysOfWeekStyle: DaysOfWeekStyle(
+                      weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
+                      weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
                   calendarStyle: CalendarStyle(
                     isTodayHighlighted: true,
                     outsideDaysVisible: false,
                     selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-                    defaultTextStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black),
+                    defaultTextStyle: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        color: Theme.of(context).colorScheme.onSurface),
                   ),
                   onCalendarCreated: (controller) {
                     _pageController = controller;
@@ -161,14 +169,20 @@ class _ServiceProviderCalendarScreenState extends State<ServiceProviderCalendarS
             children: [
               CustomTextView(
                 label: headerText.split(' ')[0],
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: const Color(0xFF333333)),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontSize: 21,
+                    fontWeight: FontWeight.w700,
+                    color: Theme.of(context).colorScheme.onBackground),
               ),
               const SizedBox(
                 height: 5,
               ),
               CustomTextView(
                 label: headerText.split(' ')[1],
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: const Color(0xFF333333)),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontSize: 21,
+                    fontWeight: FontWeight.w700,
+                    color: Theme.of(context).colorScheme.onBackground),
               ),
             ],
           ),

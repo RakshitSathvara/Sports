@@ -31,6 +31,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.buddiesCard,
     required this.buddiesBorder,
     required this.myButtonBgColor,
+    required this.meetupButtonColor,
     required this.coachFacilityFavIconColor,
     required this.showTextColorForCancelAppointment,
     required this.bazaarTabBackground,
@@ -66,6 +67,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color buddiesCard;
   final Color buddiesBorder;
   final Color myButtonBgColor;
+  final Color meetupButtonColor;
   final Color coachFacilityFavIconColor;
   final Color showTextColorForCancelAppointment;
   final Color bazaarTabBackground;
@@ -101,6 +103,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     buddiesCard: Color(0xFFF1F1F1),
     buddiesBorder: Color(0xFFCFCFCF),
     myButtonBgColor: Color(0xFF006590),
+    meetupButtonColor: Color(0xFFED8000),
     coachFacilityFavIconColor: Color(0xFFF1F1F1),
     showTextColorForCancelAppointment: Color(0xFFFFFFFF),
     bazaarTabBackground: Color(0xFFD4EEF9),
@@ -137,6 +140,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     buddiesCard: Color(0xFF333333),
     buddiesBorder: Color(0xFF404040),
     myButtonBgColor : Color(0xFF006590),
+    meetupButtonColor: Color(0xFFFFB74D),
     coachFacilityFavIconColor: Color(0xFFFFFFFF),
     showTextColorForCancelAppointment: Color(0xFFFFFFFF),
     bazaarTabBackground: Color(0xFF2A3540),
@@ -174,6 +178,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? buddiesCard,
     Color? buddiesBorder,
     Color? myButtonBgColor,
+    Color? meetupButtonColor,
     Color? coachFacilityFavIconColor,
     Color? showTextColorForCancelAppointment,
     Color? bazaarTabBackground,
@@ -209,6 +214,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       buddiesCard: buddiesCard ?? this.buddiesCard,
       buddiesBorder: buddiesBorder ?? this.buddiesBorder,
       myButtonBgColor: myButtonBgColor ?? this.myButtonBgColor,
+      meetupButtonColor: meetupButtonColor ?? this.meetupButtonColor,
       coachFacilityFavIconColor: coachFacilityFavIconColor ?? this.coachFacilityFavIconColor,
       showTextColorForCancelAppointment: showTextColorForCancelAppointment ?? this.showTextColorForCancelAppointment,
       bazaarTabBackground: bazaarTabBackground ?? this.bazaarTabBackground,
@@ -249,6 +255,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       buddiesCard: Color.lerp(buddiesCard, other.buddiesCard, t)!,
       buddiesBorder: Color.lerp(buddiesBorder, other.buddiesBorder, t)!,
       myButtonBgColor: Color.lerp(myButtonBgColor, other.myButtonBgColor, t)!,
+      meetupButtonColor: Color.lerp(meetupButtonColor, other.meetupButtonColor, t)!,
       coachFacilityFavIconColor: Color.lerp(coachFacilityFavIconColor, other.coachFacilityFavIconColor, t)!,
       showTextColorForCancelAppointment: Color.lerp(showTextColorForCancelAppointment, other.showTextColorForCancelAppointment, t)!,
       bazaarTabBackground: Color.lerp(bazaarTabBackground, other.bazaarTabBackground, t)!,
