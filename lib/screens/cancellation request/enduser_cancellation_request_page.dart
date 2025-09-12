@@ -9,7 +9,6 @@ import 'package:intl/intl.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/model/cancellation_request_list_response_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 import 'package:oqdo_mobile_app/viewmodels/service_providers_cancellation_view_model.dart';
@@ -157,7 +156,10 @@ class _EnduserCancellationRequestPageState extends State<EnduserCancellationRequ
                     Expanded(
                       child: Text(
                         bookingDate,
-                        style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.black, fontSize: 16),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).colorScheme.onSurface,
+                            fontSize: 16),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -170,12 +172,22 @@ class _EnduserCancellationRequestPageState extends State<EnduserCancellationRequ
                         CustomTextView(
                           label: 'Refund Amount: ',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w500,
+                                  color: Theme.of(context)
+                                      .extension<CustomColors>()!
+                                      .greyText),
                         ),
                         CustomTextView(
                           label: 'S\$ ${cancellationRequest.status == 'R' ? 0.0 : (cancellationRequest.amount?.toStringAsFixed(2) ?? 0.0)}',
                           textStyle:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 11, fontWeight: FontWeight.w500, color: OQDOThemeData.buttonColor),
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w500,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .primary),
                         ),
                       ],
                     ),
@@ -190,18 +202,42 @@ class _EnduserCancellationRequestPageState extends State<EnduserCancellationRequ
                   children: [
                     CustomTextView(
                       label: cancellationRequest.startTime ?? "",
-                      textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context)
+                                  .extension<CustomColors>()!
+                                  .greyText),
                     ),
                     CustomTextView(
                       label: cancellationRequest.endTime != null && cancellationRequest.endTime!.isNotEmpty ? "-${cancellationRequest.endTime}" : "",
-                      textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context)
+                                  .extension<CustomColors>()!
+                                  .greyText),
                     ),
                     const SizedBox(
                       width: 10,
                     ),
                     CustomTextView(
                       label: 'S\$ ${cancellationRequest.ratePerHour ?? 0.0}/hour',
-                      textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context)
+                                  .extension<CustomColors>()!
+                                  .greyText),
                     ),
                   ],
                 ),
@@ -210,7 +246,15 @@ class _EnduserCancellationRequestPageState extends State<EnduserCancellationRequ
                 ),
                 CustomTextView(
                   label: 'Initiated on - $createdDate',
-                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                  textStyle: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context)
+                              .extension<CustomColors>()!
+                              .greyText),
                 ),
                 const SizedBox(
                   height: 2,
@@ -220,7 +264,15 @@ class _EnduserCancellationRequestPageState extends State<EnduserCancellationRequ
                   child: Row(children: [
                     CustomTextView(
                       label: 'Waiting time ',
-                      textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context)
+                                  .extension<CustomColors>()!
+                                  .greyText),
                     ),
                     CustomTimer(
                         controller: cancellationRequest.expireTimeController!,
@@ -228,7 +280,15 @@ class _EnduserCancellationRequestPageState extends State<EnduserCancellationRequ
                           return CustomTextView(
                             label: "${time.hours}:${time.minutes}:${time.seconds}",
                             textStyle:
-                                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                                Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w500,
+                                        color: Theme.of(context)
+                                            .extension<CustomColors>()!
+                                            .greyText),
                           );
                         })
                   ]),
@@ -239,7 +299,15 @@ class _EnduserCancellationRequestPageState extends State<EnduserCancellationRequ
                 CustomTextView(
                   label: 'Requested to: ${cancellationRequest.facilityName ?? ""}',
                   maxLine: 3,
-                  textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                  textStyle: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context)
+                              .extension<CustomColors>()!
+                              .greyText),
                 ),
                 const SizedBox(
                   height: 2,
@@ -250,7 +318,15 @@ class _EnduserCancellationRequestPageState extends State<EnduserCancellationRequ
                   children: [
                     CustomTextView(
                       label: 'Status : ',
-                      textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 13, fontWeight: FontWeight.w500, color: OQDOThemeData.greyColor),
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context)
+                                  .extension<CustomColors>()!
+                                  .greyText),
                     ),
                     CustomTextView(
                       label: cancellationRequest.status == 'A'
