@@ -60,7 +60,7 @@ class _AllTransactionListState extends State<AllTransactionList> with AutomaticK
     return Container(
       width: width,
       height: height,
-      color: Theme.of(context).colorScheme.onBackground,
+      color: Theme.of(context).extension<CustomColors>()!.white,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(15, 8, 15, 0),
         child: transactions.isNotEmpty
@@ -89,7 +89,7 @@ class _AllTransactionListState extends State<AllTransactionList> with AutomaticK
                                 Expanded(
                                   child: Text(
                                     "$formattedDate $time",
-                                    style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.black, fontSize: 15),
+                                    style: TextStyle(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground, fontSize: 15),
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
@@ -123,7 +123,7 @@ class _AllTransactionListState extends State<AllTransactionList> with AutomaticK
                               child: Text(
                                 'Booking No. ${transactions[index].bookingNo!}',
                                 maxLines: 3,
-                                style: const TextStyle(fontSize: 14, color: Colors.black87, fontWeight: FontWeight.w500),
+                                style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w500),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -155,7 +155,7 @@ class _AllTransactionListState extends State<AllTransactionList> with AutomaticK
                       );
                     },
                     separatorBuilder: (context, index) {
-                      return const Divider();
+                      return Divider(color: Theme.of(context).extension<CustomColors>()!.filterDivider);
                     },
                   ),
                   isLoading
@@ -178,10 +178,11 @@ class _AllTransactionListState extends State<AllTransactionList> with AutomaticK
                       valueColor: AlwaysStoppedAnimation(Theme.of(context).colorScheme.primary),
                     ),
                   )
-                : const Center(
+                : Center(
                     child: Padding(
-                    padding: EdgeInsets.all(40.0),
-                    child: Text('No Transaction Found!'),
+                    padding: const EdgeInsets.all(40.0),
+                    child: Text('No Transaction Found!',
+                        style: TextStyle(color: Theme.of(context).colorScheme.onBackground)),
                   )),
       ),
     );
