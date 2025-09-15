@@ -140,15 +140,37 @@ class NewHomePage extends StatelessWidget {
             // Community section -----------------------------------------
             Text('Community', style: textTheme.titleMedium),
             const SizedBox(height: 16),
-            GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
-              children: _communityItems
-                  .map((item) => _CommunityCard(item: item))
-                  .toList(),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      for (var i = 0; i < _communityItems.length; i += 2)
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: i + 2 < _communityItems.length ? 12 : 0,
+                          ),
+                          child: _CommunityCard(item: _communityItems[i]),
+                        ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    children: [
+                      for (var i = 1; i < _communityItems.length; i += 2)
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: i + 2 < _communityItems.length ? 12 : 0,
+                          ),
+                          child: _CommunityCard(item: _communityItems[i]),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -268,8 +290,8 @@ class _CommunityCard extends StatelessWidget {
   }
 }
 
-/// Community items used to build the grid. The list order stacks
-/// "Bazaar Sell" and "Bazaar Buy" vertically without inserting a gap.
+/// Community items used to build the two-column layout. The list order
+/// places "Bazaar Sell" and "Bazaar Buy" in the right column.
 final List<_CommunityItem> _communityItems = [
   const _CommunityItem(
     icon: Icons.people_alt_outlined,
