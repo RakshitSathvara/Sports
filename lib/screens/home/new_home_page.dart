@@ -140,30 +140,20 @@ class NewHomePage extends StatelessWidget {
             // Community section -----------------------------------------
             Text('Community', style: textTheme.titleMedium),
             const SizedBox(height: 16),
-            GridView.count(
-              crossAxisCount: 2,
+            GridView.builder(
               shrinkWrap: true,
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
               physics: const NeverScrollableScrollPhysics(),
-              children: const [
-                _CommunityCard(
-                  icon: Icons.people_alt_outlined,
-                  label: 'Find Friends',
-                ),
-                _CommunityCard(
-                  icon: Icons.sell_outlined,
-                  label: 'Bazaar Sell',
-                ),
-                _CommunityCard(
-                  icon: Icons.groups_outlined,
-                  label: 'Your Groups',
-                ),
-                _CommunityCard(
-                  icon: Icons.shopping_cart_outlined,
-                  label: 'Bazaar Buy',
-                ),
-              ],
+              itemCount: _communityItems.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 12,
+              ),
+              itemBuilder: (context, index) {
+                final item = _communityItems[index];
+                if (item == null) return const SizedBox.shrink();
+                return _CommunityCard(item: item);
+              },
             ),
           ],
         ),
@@ -224,31 +214,100 @@ class _ActionCard extends StatelessWidget {
   }
 }
 
-class _CommunityCard extends StatelessWidget {
-  const _CommunityCard({required this.icon, required this.label});
+class _CommunityItem {
+  const _CommunityItem({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.iconColor,
+  });
 
   final IconData icon;
-  final String label;
+  final String title;
+  final String subtitle;
+  final Color iconColor;
+}
+
+class _CommunityCard extends StatelessWidget {
+  const _CommunityCard({required this.item});
+
+  final _CommunityItem item;
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
+    final subtitleStyle =
+        textTheme.bodySmall?.copyWith(color: colorScheme.onSurface.withOpacity(0.6));
+
     return Card(
       color: colorScheme.surface,
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 40, color: colorScheme.primary),
+            Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                color: item.iconColor.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(item.icon, color: item.iconColor, size: 28),
+            ),
             const SizedBox(height: 12),
-            Text(label, style: textTheme.titleMedium),
+            Text(item.title,
+                style: textTheme.titleMedium,
+                textAlign: TextAlign.center),
+            const SizedBox(height: 4),
+            Text(
+              item.subtitle,
+              style: subtitleStyle,
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),
     );
   }
 }
+
+/// Community items used to build the grid. A null entry creates an empty
+/// placeholder so that "Join Meetup" appears in the left column while
+/// "Bazaar Buy" occupies the right column on the last row, matching the
+/// provided design.
+final List<_CommunityItem?> _communityItems = [
+  const _CommunityItem(
+    icon: Icons.people_alt_outlined,
+    title: 'Find Friends',
+    subtitle: 'Connect with like-minded people',
+    iconColor: Colors.blue,
+  ),
+  const _CommunityItem(
+    icon: Icons.sell_outlined,
+    title: 'Bazaar Sell',
+    subtitle: 'Sell your equipment',
+    iconColor: Colors.purple,
+  ),
+  const _CommunityItem(
+    icon: Icons.groups_outlined,
+    title: 'Your Groups',
+    subtitle: 'See your sports and hobby groups',
+    iconColor: Colors.green,
+  ),
+  null,
+  const _CommunityItem(
+    icon: Icons.event_available_outlined,
+    title: 'Join Meetup',
+    subtitle: 'See your meetup events',
+    iconColor: Colors.orange,
+  ),
+  const _CommunityItem(
+    icon: Icons.shopping_cart_outlined,
+    title: 'Bazaar Buy',
+    subtitle: 'Purchase equipment',
+    iconColor: Colors.amber,
+  ),
+];
 
