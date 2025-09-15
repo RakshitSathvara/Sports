@@ -151,7 +151,6 @@ class NewHomePage extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 final item = _communityItems[index];
-                if (item == null) return const SizedBox.shrink();
                 return _CommunityCard(item: item);
               },
             ),
@@ -273,11 +272,9 @@ class _CommunityCard extends StatelessWidget {
   }
 }
 
-/// Community items used to build the grid. A null entry creates an empty
-/// placeholder so that "Join Meetup" appears in the left column while
-/// "Bazaar Buy" occupies the right column on the last row, matching the
-/// provided design.
-final List<_CommunityItem?> _communityItems = [
+/// Community items used to build the grid. The list order stacks
+/// "Bazaar Sell" and "Bazaar Buy" vertically without inserting a gap.
+final List<_CommunityItem> _communityItems = [
   const _CommunityItem(
     icon: Icons.people_alt_outlined,
     title: 'Find Friends',
@@ -296,18 +293,17 @@ final List<_CommunityItem?> _communityItems = [
     subtitle: 'See your sports and hobby groups',
     iconColor: Colors.green,
   ),
-  null,
-  const _CommunityItem(
-    icon: Icons.event_available_outlined,
-    title: 'Join Meetup',
-    subtitle: 'See your meetup events',
-    iconColor: Colors.orange,
-  ),
   const _CommunityItem(
     icon: Icons.shopping_cart_outlined,
     title: 'Bazaar Buy',
     subtitle: 'Purchase equipment',
     iconColor: Colors.amber,
+  ),
+  const _CommunityItem(
+    icon: Icons.event_available_outlined,
+    title: 'Join Meetup',
+    subtitle: 'See your meetup events',
+    iconColor: Colors.orange,
   ),
 ];
 
