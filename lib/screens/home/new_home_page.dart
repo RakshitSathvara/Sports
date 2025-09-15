@@ -140,19 +140,15 @@ class NewHomePage extends StatelessWidget {
             // Community section -----------------------------------------
             Text('Community', style: textTheme.titleMedium),
             const SizedBox(height: 16),
-            GridView.builder(
+            GridView.count(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: _communityItems.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 12,
-                crossAxisSpacing: 12,
-              ),
-              itemBuilder: (context, index) {
-                final item = _communityItems[index];
-                return _CommunityCard(item: item);
-              },
+              crossAxisCount: 2,
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
+              children: _communityItems
+                  .map((item) => _CommunityCard(item: item))
+                  .toList(),
             ),
           ],
         ),
