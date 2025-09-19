@@ -16,23 +16,23 @@ class Constants {
   static const String APP_NAME = 'OQDO';
 
   //Stripe Key
-  // static String stripeKey = 'pk_test_51M95mODhKWfy8s83EMobpRUTU5NZxyaqNtYrZ8zuXr6DzqRokoI42mvYICZl5SezddYhQoEXbDUC4bQwCgMe5M4J00Y2JAKs5b'; // TESTING
+  static String stripeKey = 'pk_test_51M95mODhKWfy8s83EMobpRUTU5NZxyaqNtYrZ8zuXr6DzqRokoI42mvYICZl5SezddYhQoEXbDUC4bQwCgMe5M4J00Y2JAKs5b'; // TESTING
 
-  static String stripeKey = 'pk_live_51M95mODhKWfy8s83aV2c8XNxazP85QGkqezmioBKG1DU0fhN1cZSTRzREnfNbUuK1iRhYD3iAvspSD65YeZGKeJf004y0cL6IQ'; //LIVE
+  // static String stripeKey = 'pk_live_51M95mODhKWfy8s83aV2c8XNxazP85QGkqezmioBKG1DU0fhN1cZSTRzREnfNbUuK1iRhYD3iAvspSD65YeZGKeJf004y0cL6IQ'; //LIVE
 
   //API URL Constants
 
   // static const String BASE_URL = 'http://192.168.24.144/OqdoApi'; // Local
   // static const String SOCKET_BASE_URL = 'http://192.168.24.144/OqdoApi';
 
-  // static const String BASE_URL = 'https://api-oqdo-qa.azurewebsites.net'; // QA
-  // static const String SOCKET_BASE_URL = 'https://oqdo-chathub-qa.azurewebsites.net'; // QA
+  static const String BASE_URL = 'https://api-oqdo-qa.azurewebsites.net'; // QA
+  static const String SOCKET_BASE_URL = 'https://oqdo-chathub-qa.azurewebsites.net'; // QA
 
   // static const String BASE_URL = 'https://api-oqdo-uat.azurewebsites.net'; //UAT
   // static const String SOCKET_BASE_URL = 'https://oqdo-chathub-uat.azurewebsites.net'; // UAT
 
-  static const String BASE_URL = 'https://merlion.oqdo.com'; //LIVE
-  static const String SOCKET_BASE_URL = 'https://merlion-chat.oqdo.com'; // LIVE
+  // static const String BASE_URL = 'https://merlion.oqdo.com'; //LIVE
+  // static const String SOCKET_BASE_URL = 'https://merlion-chat.oqdo.com'; // LIVE
 
   static String platForm = '';
   static double androidVersion = 0.0;
@@ -319,6 +319,18 @@ Future<void> checkAndSetOSVersionOfAndroid() async {
   AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
   Constants.androidVersion = double.parse(androidInfo.version.release);
   debugPrint("============== Android Version is ${Constants.androidVersion} ===============");
+}
+
+String parseDoubleToRoundString(double value) {
+  // Format to 2 decimal places first
+  String formatted = value.toStringAsFixed(2);
+
+  // If it ends with .00, remove the decimal part
+  if (formatted.endsWith('.00')) {
+    return formatted.substring(0, formatted.length - 3);
+  }
+
+  return formatted;
 }
 
 Duration convertMinutesToDuration(int totalMinutes) {

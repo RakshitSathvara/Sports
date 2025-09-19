@@ -25,12 +25,11 @@ import 'package:oqdo_mobile_app/screens/cancellation%20request/coach_cancellatio
 import 'package:oqdo_mobile_app/screens/cancellation%20request/facility_cancellation_request_page.dart';
 import 'package:oqdo_mobile_app/screens/home/conversation_screen.dart';
 import 'package:oqdo_mobile_app/screens/home/end_user_calendar_screen.dart';
-import 'package:oqdo_mobile_app/screens/home/homepage.dart';
+import 'package:oqdo_mobile_app/screens/home/new_home_page.dart';
 import 'package:oqdo_mobile_app/screens/home/service_provider_calendar_screen.dart';
 import 'package:oqdo_mobile_app/screens/profile/coach_profile.dart';
 import 'package:oqdo_mobile_app/screens/profile/facility_profile.dart';
 import 'package:oqdo_mobile_app/screens/profile/learner_profile.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/ConnectivityService.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
@@ -1477,7 +1476,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                 create: (context) => DashboardViewModel(),
                 child: Stack(
                   children: [
-                    const Homepage(),
+                    const NewHomePage(),
                     Positioned(
                       bottom: 50,
                       left: 0,
@@ -1764,7 +1763,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
       index = i;
       switch (index) {
         case 0:
-          page = ChangeNotifierProvider(create: (context) => DashboardViewModel(), child: const Homepage());
+          page = ChangeNotifierProvider(create: (context) => DashboardViewModel(), child: const NewHomePage());
           break;
         case 1:
           if (OQDOApplication.instance.isLogin == null) {
@@ -1827,7 +1826,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
           }
           break;
         default:
-          page = ChangeNotifierProvider(create: (context) => DashboardViewModel(), child: const Homepage());
+          page = ChangeNotifierProvider(create: (context) => DashboardViewModel(), child: const NewHomePage());
           break;
       }
       isPageSet = true;

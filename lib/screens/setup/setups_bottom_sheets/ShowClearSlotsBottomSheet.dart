@@ -4,7 +4,10 @@ import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
 
 class ShowClearSlotsBottomSheet extends StatefulWidget {
-  const ShowClearSlotsBottomSheet({super.key});
+  const ShowClearSlotsBottomSheet({super.key,this.fieldName = "Slot Time",this.height = 300});
+
+  final String fieldName;
+  final double height;
 
   @override
   State<ShowClearSlotsBottomSheet> createState() => _ShowClearSlotsBottomSheetState();
@@ -14,7 +17,7 @@ class _ShowClearSlotsBottomSheetState extends State<ShowClearSlotsBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: widget.height,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(10),
@@ -36,7 +39,7 @@ class _ShowClearSlotsBottomSheetState extends State<ShowClearSlotsBottomSheet> {
           ),
           Expanded(
             child: CustomTextView(
-              label: 'Slots will be removed on changing Slot Time. Are you sure you want to proceed?',
+              label: 'Slots will be removed on changing ${widget.fieldName}. Are you sure you want to proceed?',
               maxLine: 6,
               textStyle: Theme.of(context)
                   .textTheme

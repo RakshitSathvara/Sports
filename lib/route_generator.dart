@@ -114,10 +114,18 @@ import 'package:oqdo_mobile_app/screens/setup/add_facility_page.dart';
 import 'package:oqdo_mobile_app/screens/setup/batch_setup_list_page.dart';
 import 'package:oqdo_mobile_app/screens/setup/calendar_service_provider_page.dart';
 import 'package:oqdo_mobile_app/screens/setup/cancellation_request_page.dart';
+import 'package:oqdo_mobile_app/screens/setup/coach_setup/models/coach_preview_model.dart';
+import 'package:oqdo_mobile_app/screens/setup/coach_setup/view/coach_training_preview_page.dart';
+import 'package:oqdo_mobile_app/screens/setup/coach_setup/view/create_coach_setup_page.dart';
+import 'package:oqdo_mobile_app/screens/setup/coach_setup/viewmodel/create_coach_view_model.dart';
 import 'package:oqdo_mobile_app/screens/setup/coach_vacation_setup_screen.dart';
 import 'package:oqdo_mobile_app/screens/setup/coach_vacationlist_screen.dart';
 import 'package:oqdo_mobile_app/screens/setup/edit_batch_setup.dart';
 import 'package:oqdo_mobile_app/screens/setup/edit_facility_setup.dart';
+import 'package:oqdo_mobile_app/screens/setup/facility_setup/models/facility_preview_model.dart';
+import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/create_facility_setup_page.dart';
+import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/facility_training_preview_page.dart';
+import 'package:oqdo_mobile_app/screens/setup/facility_setup/viewmodel/create_facility_view_model.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup_page.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_vacation_setup_screen.dart';
 import 'package:oqdo_mobile_app/screens/setup/vacationlist_screen.dart';
@@ -153,6 +161,7 @@ import 'screens/slot_management/review_coach_booking_screen.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     var args = settings.arguments;
+    debugPrint("Route name =============================> ${settings.name}");
     switch (settings.name) {
       case Constants.LOCATIONCHOOSEPAGE:
         return MaterialPageRoute(builder: (_) => const LocationChoosePage());
@@ -1036,6 +1045,40 @@ class RouteGenerator {
             child: BuyCategoryScreen(
               initialFilters: intent,
             ),
+          ),
+        );
+
+      case CreateFacilitySetupPage.routeName:
+        var intent = settings.arguments as GetFacilityByIdModel?;
+        return MaterialPageRoute(
+          builder: (_) => ChangeNotifierProvider(
+            create: (context) => CreateFacilityViewModel(getFacilityByIdModel: intent),
+            child: CreateFacilitySetupPage(),
+          ),
+        );
+
+      case FacilityTrainingPreviewPage.routeName:
+        var intent = settings.arguments as FacilityPreviewModel;
+        return MaterialPageRoute(
+          builder: (_) => FacilityTrainingPreviewPage(
+            facilityDetails: intent,
+          ),
+        );
+
+      case CreateCoachSetupPage.routeName:
+        var intent = settings.arguments as GetCoachBySetupIdModel?;
+        return MaterialPageRoute(
+          builder: (_) => ChangeNotifierProvider(
+            create: (context) => CreateCoachViewModel(getCoachBySetupIdModel: intent),
+            child: CreateCoachSetupPage(),
+          ),
+        );
+
+      case CoachTrainingPreviewPage.routeName:
+        var intent = settings.arguments as CoachPreviewModel;
+        return MaterialPageRoute(
+          builder: (_) => CoachTrainingPreviewPage(
+            coachDetails: intent,
           ),
         );
 

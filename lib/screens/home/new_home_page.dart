@@ -61,8 +61,8 @@ class NewHomePage extends StatelessWidget {
                   children: [
                     Text(
                       'Your world of Sports,\nHobbies and Wellness!',
-                      style: textTheme.titleLarge!
-                          .copyWith(color: Colors.white, fontWeight: FontWeight.w600),
+                      style: textTheme.titleLarge!.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(height: 8),
                     ElevatedButton(
@@ -140,37 +140,66 @@ class NewHomePage extends StatelessWidget {
             // Community section -----------------------------------------
             Text('Community', style: textTheme.titleMedium),
             const SizedBox(height: 16),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Column(
-                    children: [
-                      for (var i = 0; i < _communityItems.length; i += 2)
-                        Padding(
-                          padding: EdgeInsets.only(
-                            bottom: i + 2 < _communityItems.length ? 12 : 0,
+            SizedBox(
+              height: 500,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Community Column
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: _CommunityTile(
+                            icon: Icons.person_search,
+                            label: "Find Friends",
+                            onTap: () {},
                           ),
-                          child: _CommunityCard(item: _communityItems[i]),
                         ),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    children: [
-                      for (var i = 1; i < _communityItems.length; i += 2)
-                        Padding(
-                          padding: EdgeInsets.only(
-                            bottom: i + 2 < _communityItems.length ? 12 : 0,
+                        SizedBox(height: 16),
+                        Expanded(
+                          child: _CommunityTile(
+                            icon: Icons.group,
+                            label: "Your Groups",
+                            onTap: () {},
                           ),
-                          child: _CommunityCard(item: _communityItems[i]),
                         ),
-                    ],
+                        SizedBox(height: 16),
+                        Expanded(
+                          child: _CommunityTile(
+                            icon: Icons.event,
+                            label: "Join Meetup",
+                            onTap: () {},
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  SizedBox(width: 20),
+                  // Bazaar Column
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: _CommunityTile(
+                            icon: Icons.sell,
+                            label: "Bazaar Sell",
+                            onTap: () {},
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        Expanded(
+                          child: _CommunityTile(
+                            icon: Icons.shopping_basket,
+                            label: "Bazaar Buy",
+                            onTap: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -223,7 +252,8 @@ class _ActionCard extends StatelessWidget {
           children: [
             Icon(icon, size: 32, color: colorScheme.primary),
             const SizedBox(height: 8),
-            Text(label, style: textTheme.bodyMedium, textAlign: TextAlign.center),
+            Text(label,
+                style: textTheme.bodyMedium, textAlign: TextAlign.center),
           ],
         ),
       ),
@@ -254,8 +284,8 @@ class _CommunityCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
-    final subtitleStyle =
-        textTheme.bodySmall?.copyWith(color: colorScheme.onSurface.withOpacity(0.6));
+    final subtitleStyle = textTheme.bodySmall
+        ?.copyWith(color: colorScheme.onSurface.withOpacity(0.6));
 
     return Card(
       color: colorScheme.surface,
@@ -275,8 +305,7 @@ class _CommunityCard extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             Text(item.title,
-                style: textTheme.titleMedium,
-                textAlign: TextAlign.center),
+                style: textTheme.titleMedium, textAlign: TextAlign.center),
             const SizedBox(height: 4),
             Text(
               item.subtitle,
@@ -325,3 +354,40 @@ final List<_CommunityItem> _communityItems = [
   ),
 ];
 
+class _CommunityTile extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  const _CommunityTile({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Theme.of(context).colorScheme.surfaceVariant,
+      borderRadius: BorderRadius.circular(15),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(15),
+        onTap: onTap,
+        child: Container(
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+          child: Column(
+            children: [
+              Icon(icon, size: 36, color: Theme.of(context).colorScheme.primary),
+              SizedBox(height: 12),
+              Text(
+                label,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

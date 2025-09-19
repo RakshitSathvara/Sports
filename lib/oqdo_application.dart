@@ -48,6 +48,7 @@ class OQDOApplication extends StatefulWidget {
   String? country = '';
   String? city = '';
   String? zipcode = '';
+  int? coachExperienceYears = 0;
   int isAppIsInBackground = 0;
   String? lastNotificationId = '';
   String? defualtRefCode = '';

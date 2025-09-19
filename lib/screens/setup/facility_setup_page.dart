@@ -5,6 +5,11 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/screens/setup/facility_setup/models/add_time_slot_model.dart';
+import 'package:oqdo_mobile_app/screens/setup/facility_setup/models/facility_preview_model.dart';
+import 'package:oqdo_mobile_app/screens/setup/facility_setup/models/grid_view_item_model.dart';
+import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/create_facility_setup_page.dart';
+import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/facility_training_preview_page.dart';
 import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/helper/helpers.dart';
@@ -68,13 +73,19 @@ class FacilitySetupPageState extends State<FacilitySetupPage> {
         // isExtended: true,
         backgroundColor: Theme.of(context).extension<CustomColors>()!.greyButton,
         onPressed: () async {
-          await Navigator.pushNamed(context, Constants.ADDFACILITYPAGE).then((value) {
-            if (value != null) {
-              Future.delayed(const Duration(milliseconds: 200), () {
-                getFacilitySetupList();
-              });
-            }
-          });
+          final result = await Navigator.pushNamed(context, CreateFacilitySetupPage.routeName);
+          if (result == true) {
+            Future.delayed(const Duration(milliseconds: 200), () {
+              getFacilitySetupList(showLoader: false);
+            });
+          }
+          // await Navigator.pushNamed(context, Constants.ADDFACILITYPAGE).then((value) {
+          //   if (value != null) {
+          //     Future.delayed(const Duration(milliseconds: 200), () {
+          //       getFacilitySetupList();
+          //     });
+          //   }
+          // });
         },
         // isExtended: true,
         child: Icon(
@@ -247,23 +258,30 @@ class FacilitySetupPageState extends State<FacilitySetupPage> {
     );
   }
 
-  void getFacilitySetupList() async {
+  void getFacilitySetupList({bool showLoader = true}) async {
     try {
-      _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
-      _progressDialog.show();
+      if (showLoader) {
+        _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
+        _progressDialog.style(message: "Please wait..");
+        _progressDialog.show();
+      }
       FacilityListResponseModel facilityListResponseModel =
           await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getFacilitySetupList(OQDOApplication.instance.facilityID!);
-
-      _progressDialog.hide();
+      if (showLoader) {
+        _progressDialog.hide();
+      }
       setState(() {});
       facilitySetupList = facilityListResponseModel.data!;
       debugPrint(facilityListResponseModel.data!.toString());
     } on NoConnectivityException catch (_) {
-      _progressDialog.hide();
+      if (showLoader) {
+        _progressDialog.hide();
+      }
       showSnackBarColor(Constants.internetConnectionErrorMsg, context, true);
     } catch (error) {
-      _progressDialog.hide();
+      if (showLoader) {
+        _progressDialog.hide();
+      }
       debugPrint(error.toString());
       // showSnackBarErrorColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
     }
@@ -351,11 +369,15 @@ class FacilitySetupPageState extends State<FacilitySetupPage> {
       GetFacilityByIdModel getFacilityByIdModel = await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getFacilityById(facilitySetupId!);
       await _progressDialog.hide();
       debugPrint(getFacilityByIdModel.title);
-      await Navigator.of(context).pushNamed(Constants.editFacilitySetup, arguments: getFacilityByIdModel).then((value) {
-        if (value != null) {
-          getFacilitySetupList();
-        }
-      });
+      final result = await Navigator.pushNamed(context, CreateFacilitySetupPage.routeName, arguments: getFacilityByIdModel);
+      if (result == true) {
+        getFacilitySetupList();
+      }
+      // await Navigator.of(context).pushNamed(Constants.editFacilitySetup, arguments: getFacilityByIdModel).then((value) {
+      //   if (value != null) {
+      //     getFacilitySetupList();
+      //   }
+      // });
     } on CommonException catch (error) {
       await _progressDialog.hide();
       debugPrint(error.toString());
@@ -391,7 +413,14 @@ class FacilitySetupPageState extends State<FacilitySetupPage> {
       GetFacilityByIdModel getFacilityByIdModel = await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getFacilityById(facilityId!);
       await _progressDialog.hide();
       debugPrint(getFacilityByIdModel.title);
-      await Navigator.of(context).pushNamed(Constants.facilityDetailsScreen, arguments: getFacilityByIdModel);
+      // Convert GetFacilityByIdModel to FacilityPreviewModel
+      FacilityPreviewModel facilityPreviewModel = _convertToFacilityPreviewModel(getFacilityByIdModel);
+
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => FacilityTrainingPreviewPage(facilityDetails: facilityPreviewModel),
+        ),
+      );
     } on CommonException catch (error) {
       await _progressDialog.hide();
       debugPrint(error.toString());
@@ -416,6 +445,104 @@ class FacilitySetupPageState extends State<FacilitySetupPage> {
     } catch (error) {
       await _progressDialog.hide();
       debugPrint(error.toString());
+    }
+  }
+
+  FacilityPreviewModel _convertToFacilityPreviewModel(GetFacilityByIdModel model) {
+    // Convert slots to AddTimeSlotModel list
+    List<AddTimeSlotModel> slotsList = [];
+
+    if (model.slots != null) {
+      for (Slots slot in model.slots!) {
+        // Convert day numbers to GridViewItemModel list
+        List<GridViewItemModel> selectedDays = [];
+        if (slot.dayNos != null) {
+          for (int dayNo in slot.dayNos!) {
+            String dayName = _getDayName(dayNo);
+            selectedDays.add(GridViewItemModel(id: dayNo, imagePath: "", title: dayName));
+          }
+        }
+
+        // Create controllers for the AddTimeSlotModel
+        TextEditingController startTimeController = TextEditingController(text: slot.startTimeFormatted ?? '00:00');
+        TextEditingController numberOfSlotsController = TextEditingController(text: (slot.noOfSlot ?? 1).toString());
+
+        AddTimeSlotModel timeSlotModel = AddTimeSlotModel(
+          selectedDays: selectedDays,
+          startTime: startTimeController,
+          formKey: GlobalKey<FormState>(),
+          numberOfSlots: numberOfSlotsController,
+          perSlotDuration: int.tryParse(model.slotTimeHour ?? '1') ?? 1,
+          startTimeControllerKey: GlobalKey(),
+          ratePerHour: slot.ratePerHour ?? model.ratePerHour ?? 0.0,
+          startTimeFormatted: slot.startTimeFormatted,
+          endTimeFormatted: slot.endTimeFormatted,
+        );
+
+        slotsList.add(timeSlotModel);
+      }
+    }
+
+    // Determine if it's private rental based on booking type
+    bool isPrivateRental = model.bookingType == 'I' ? true : false;
+
+    // Calculate slot duration for display
+    String slotDuration = '';
+    if (model.slotTimeHour != null && model.slotTimeMinute != null) {
+      int slotHours = int.tryParse(model.slotTimeHour!) ?? 0;
+      int totalMinutes = (slotHours * 60) + (model.slotTimeMinute ?? 0);
+      if (totalMinutes >= 60) {
+        int hours = totalMinutes ~/ 60;
+        int minutes = totalMinutes % 60;
+        if (minutes > 0) {
+          slotDuration = '${hours}h ${minutes}m';
+        } else {
+          slotDuration = '${hours}h';
+        }
+      } else {
+        slotDuration = '${totalMinutes}m';
+      }
+    } else if (model.slotTimeHour != null) {
+      slotDuration = '${model.slotTimeHour}h';
+    }
+
+    // Calculate rental duration in minutes
+    int slotHours = int.tryParse(model.slotTimeHour ?? '1') ?? 1;
+    int rentalDurationInMinutes = (slotHours * 60) + (model.slotTimeMinute ?? 0);
+
+    return FacilityPreviewModel(
+      title: model.title ?? '',
+      subTitle: model.subTitle ?? '',
+      activity: model.activityName ?? '',
+      subActivity: model.subActivityName ?? '',
+      description: model.description ?? '',
+      slotDuration: slotDuration,
+      rentalDurationInMinutes: rentalDurationInMinutes,
+      slotRate: model.ratePerHour ?? 0.0,
+      maxCapacityOrGroupSize: model.bookingType == "I" ? (model.facilityCapacity?.toString() ?? '1') : (model.maxGroupSize?.toString() ?? '1'),
+      isPrivateRental: isPrivateRental,
+      slotsList: slotsList,
+    );
+  }
+
+  String _getDayName(int dayNo) {
+    switch (dayNo) {
+      case 1:
+        return 'Mon';
+      case 2:
+        return 'Tue';
+      case 3:
+        return 'Wed';
+      case 4:
+        return 'Thu';
+      case 5:
+        return 'Fri';
+      case 6:
+        return 'Sat';
+      case 0:
+        return 'Sun';
+      default:
+        return 'Unknown';
     }
   }
 }

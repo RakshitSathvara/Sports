@@ -4,6 +4,12 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/model/CoachDetailsResponseModel.dart' as CoachDetails;
+import 'package:oqdo_mobile_app/screens/setup/coach_setup/models/coach_preview_model.dart';
+import 'package:oqdo_mobile_app/screens/setup/coach_setup/view/coach_training_preview_page.dart';
+import 'package:oqdo_mobile_app/screens/setup/coach_setup/view/create_coach_setup_page.dart';
+import 'package:oqdo_mobile_app/screens/setup/facility_setup/models/add_time_slot_model.dart';
+import 'package:oqdo_mobile_app/screens/setup/facility_setup/models/grid_view_item_model.dart';
 import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/components/custom_app_bar.dart';
 import 'package:oqdo_mobile_app/model/CoachDetailsResponseModel.dart';
@@ -54,13 +60,20 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
         // isExtended: true,
         backgroundColor: Theme.of(context).extension<CustomColors>()!.greyButton,
         onPressed: () async {
-          await Navigator.pushNamed(context, Constants.ADDBATCHSETUPPAGE).then((value) {
+          await Navigator.pushNamed(context, CreateCoachSetupPage.routeName).then((value) {
             if (value != null) {
               Future.delayed(const Duration(milliseconds: 200), () {
                 getCoachBatchList();
               });
             }
           });
+          // await Navigator.pushNamed(context, Constants.ADDBATCHSETUPPAGE).then((value) {
+          //   if (value != null) {
+          //     Future.delayed(const Duration(milliseconds: 200), () {
+          //       getCoachBatchList();
+          //     });
+          //   }
+          // });
         },
         // isExtended: true,
         child: Icon(
@@ -244,8 +257,7 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
     }
     try {
       await _progressDialog.show();
-      GetCoachBatchModel facilityListResponseModel =
-          await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getCoachBatchList(OQDOApplication.instance.coachID!);
+      GetCoachBatchModel facilityListResponseModel = await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getCoachBatchList(OQDOApplication.instance.coachID!);
       await _progressDialog.hide();
       setState(() {});
       coachBatchList = facilityListResponseModel.data!;
@@ -286,13 +298,12 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
       GetCoachBySetupIdModel getCoachBySetupIdModel = await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getBatchByID(batchID);
       await _progressDialog.hide();
       debugPrint(getCoachBySetupIdModel.name);
-      await Navigator.of(context).pushNamed(Constants.editBatchSetup, arguments: getCoachBySetupIdModel).then((value) {
-        if (value != null) {
-          Future.delayed(const Duration(milliseconds: 200), () {
-            getCoachBatchList();
-          });
-        }
-      });
+      final result = await Navigator.pushNamed(context, CreateCoachSetupPage.routeName, arguments: getCoachBySetupIdModel);
+      if (result == true) {
+        Future.delayed(const Duration(milliseconds: 200), () {
+          getCoachBatchList();
+        });
+      }
     } on CommonException catch (error) {
       await _progressDialog.hide();
       debugPrint(error.toString());
@@ -402,12 +413,15 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
       _progressDialog.style(message: "Please wait..");
       await _progressDialog.show();
-      CoachDetailsResponseModel coachDetailsResponseModel =
-          await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getCoachDetailsById(coachBatchSetupId!);
+      CoachDetailsResponseModel coachDetailsResponseModel = await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getCoachDetailsById(coachBatchSetupId!);
       await _progressDialog.hide();
-      if (coachDetailsResponseModel.coachName!.isNotEmpty) {
-        Navigator.pushNamed(context, Constants.coachDetailScreen, arguments: coachDetailsResponseModel);
-      }
+      CoachPreviewModel coachPreviewModel = _convertToCoachPreviewModel(coachDetailsResponseModel);
+
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => CoachTrainingPreviewPage(coachDetails: coachPreviewModel),
+        ),
+      );
     } on CommonException catch (error) {
       await _progressDialog.hide();
       debugPrint(error.toString());
@@ -433,6 +447,116 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
       await _progressDialog.hide();
       debugPrint(error.toString());
       showSnackBarErrorColor('We\'re unable to connect to server. Please contact administrator or try after some time', context, true);
+    }
+  }
+
+  CoachPreviewModel _convertToCoachPreviewModel(CoachDetails.CoachDetailsResponseModel model) {
+    // Convert slots to AddTimeSlotModel list
+    List<AddTimeSlotModel> slotsList = [];
+
+    if (model.slots != null) {
+      for (CoachDetails.Slots slot in model.slots!) {
+        // Convert day numbers to GridViewItemModel list
+        List<GridViewItemModel> selectedDays = [];
+        if (slot.dayNos != null) {
+          for (int dayNo in slot.dayNos!) {
+            String dayName = _getDayName(dayNo);
+            selectedDays.add(GridViewItemModel(id: dayNo, imagePath: "", title: dayName));
+          }
+        }
+
+        // Create controllers for the AddTimeSlotModel
+        TextEditingController startTimeController = TextEditingController(text: slot.startTimeFormatted ?? '00:00');
+        TextEditingController numberOfSlotsController = TextEditingController(text: (slot.noOfSlot ?? 1).toString());
+
+        AddTimeSlotModel timeSlotModel = AddTimeSlotModel(
+          selectedDays: selectedDays,
+          startTime: startTimeController,
+          formKey: GlobalKey<FormState>(),
+          numberOfSlots: numberOfSlotsController,
+          perSlotDuration: int.tryParse(model.slotTimeHour ?? '1') ?? 1,
+          startTimeControllerKey: GlobalKey(),
+          ratePerHour: slot.ratePerHour ?? model.ratePerHour ?? 0.0,
+        );
+
+        slotsList.add(timeSlotModel);
+      }
+    }
+
+    // Determine if it's open class based on booking type
+    bool isOpenClass = model.bookingType == "I" ? true : false;
+
+    // Calculate slot duration for display
+    String slotDurationFormatted = '';
+    int slotDurationInMinutes = 0;
+    int slotDuration = 0;
+
+    if (model.slotTimeHour != null && model.slotTimeMinute != null) {
+      int slotHours = int.tryParse(model.slotTimeHour!) ?? 0;
+      slotDurationInMinutes = (slotHours * 60) + (model.slotTimeMinute ?? 0);
+      slotDuration = slotHours;
+
+      if (slotDurationInMinutes >= 60) {
+        int hours = slotDurationInMinutes ~/ 60;
+        int minutes = slotDurationInMinutes % 60;
+        if (minutes > 0) {
+          slotDurationFormatted = '${hours}h ${minutes}m';
+        } else {
+          slotDurationFormatted = '${hours}h';
+        }
+      } else {
+        slotDurationFormatted = '${slotDurationInMinutes}m';
+      }
+    } else if (model.slotTimeHour != null) {
+      slotDuration = int.tryParse(model.slotTimeHour!) ?? 0;
+      slotDurationInMinutes = slotDuration * 60;
+      slotDurationFormatted = '${model.slotTimeHour}h';
+    }
+
+    // Determine address type ID
+    int addressTypeId = 1; // Default to coach's address
+    if (model.isTrainingAddress == true && model.isTraineeAddress == true) {
+      addressTypeId = 3; // Both
+    } else if (model.isTrainingAddress == true) {
+      addressTypeId = 1; // Coach's address
+    } else if (model.isTraineeAddress == true) {
+      addressTypeId = 2; // Home training
+    }
+
+    return CoachPreviewModel(
+      title: model.name ?? '',
+      activity: model.activities?.name ?? '',
+      subActivity: model.subActivities?.name ?? '',
+      slotDuration: slotDuration,
+      slotDurationInMinutes: slotDurationInMinutes,
+      slotDurationFormatted: slotDurationFormatted,
+      slotRate: model.ratePerHour ?? 0.0,
+      maxCapacityOrGroupSize: model.bookingType == "I" ? (model.batchCapacity?.toString() ?? '1') : (model.maxGroupSize?.toString() ?? '1'),
+      minSessions: (model.minumumSlot ?? 1).toString(),
+      isOpenClass: isOpenClass,
+      addressTypeId: addressTypeId,
+      slotsList: slotsList,
+    );
+  }
+
+  String _getDayName(int dayNo) {
+    switch (dayNo) {
+      case 1:
+        return 'Mon';
+      case 2:
+        return 'Tue';
+      case 3:
+        return 'Wed';
+      case 4:
+        return 'Thu';
+      case 5:
+        return 'Fri';
+      case 6:
+        return 'Sat';
+      case 0:
+        return 'Sun';
+      default:
+        return 'Unknown';
     }
   }
 }

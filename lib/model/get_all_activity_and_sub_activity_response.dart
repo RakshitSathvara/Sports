@@ -26,6 +26,7 @@ class ActivityBean {
   String? Name;
   bool? IsActive;
   bool? isSelected = false;
+  String? localIconPath;
   List<SubActivitiesBean>? SubActivities;
 
   static ActivityBean? fromMap(Map<String, dynamic> map) {
@@ -33,6 +34,7 @@ class ActivityBean {
     dataBean.ActivityId = map['ActivityId'];
     dataBean.Name = map['Name'];
     dataBean.IsActive = map['IsActive'];
+    dataBean.localIconPath = "";
     dataBean.SubActivities = []..addAll((map['SubActivities'] as List).map((o) => SubActivitiesBean.fromMap(o)!));
     return dataBean;
   }
@@ -51,12 +53,14 @@ class SubActivitiesBean {
   int? ActivityId;
   bool? selectedValue = false;
   bool? isSelected = false;
+  String? imageUrl;
 
   static SubActivitiesBean? fromMap(Map<String, dynamic> map) {
     SubActivitiesBean subActivitiesBean = SubActivitiesBean();
     subActivitiesBean.SubActivityId = map['SubActivityId'];
     subActivitiesBean.Name = map['Name'];
     subActivitiesBean.ActivityId = map['ActivityId'];
+    subActivitiesBean.imageUrl = map['FilePath'];
     return subActivitiesBean;
   }
 
