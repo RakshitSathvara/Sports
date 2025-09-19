@@ -7,8 +7,7 @@ import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/base_c
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/duration_input_field.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/viewmodel/create_facility_view_model.dart';
 import 'package:oqdo_mobile_app/screens/setup/setups_bottom_sheets/ShowClearSlotsBottomSheet.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_field.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -84,7 +83,7 @@ class FacilityStepTwo extends StatelessWidget {
         ),
       ),
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      backgroundColor: OQDOThemeData.whiteColor,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       builder: (BuildContext context) => const ShowClearSlotsBottomSheet(
         height: 230,
         fieldName: "Rental Duration",
@@ -106,6 +105,8 @@ class FacilityStepTwo extends StatelessWidget {
   }
 
   Widget _buildImageAndDescriptionView(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,20 +116,20 @@ class FacilityStepTwo extends StatelessWidget {
           "Images & Description",
           style: TextStyle(
             fontFamily: 'SFPro',
-            color: ColorsUtils.primary,
+            color: colorScheme.primary,
             fontWeight: FontWeight.w600,
             fontSize: 16,
           ),
         ),
         const SizedBox(height: 15.0),
         BaseContainer(
-          bgColor: ColorsUtils.white,
+          bgColor: customColors.containerBG,
           width: double.infinity,
           child: _buildGalleryImageSelectionView(context),
         ),
         const SizedBox(height: 20.0),
         BaseContainer(
-          bgColor: ColorsUtils.white,
+          bgColor: customColors.containerBG,
           width: double.infinity,
           child: _buildCoverImageSelectionView(context),
         ),
@@ -137,7 +138,7 @@ class FacilityStepTwo extends StatelessWidget {
           "Add a cover image and up to 3 gallery photos showcasing your facility.",
           style: TextStyle(
             fontFamily: 'Inter',
-            color: ColorsUtils.hintTextColor,
+            color: customColors.hintTextColor,
             fontWeight: FontWeight.w400,
             fontSize: 12,
           ),
@@ -147,6 +148,7 @@ class FacilityStepTwo extends StatelessWidget {
   }
 
   Widget _buildGalleryImageSelectionView(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,7 +157,7 @@ class FacilityStepTwo extends StatelessWidget {
           "Gallery",
           style: TextStyle(
             fontFamily: 'Montserrat',
-            color: ColorsUtils.chipText,
+            color: customColors.chipText,
             fontWeight: FontWeight.w600,
             fontSize: 14,
           ),
@@ -179,6 +181,8 @@ class FacilityStepTwo extends StatelessWidget {
   }
 
   Widget _buildGallerySelectionTile(BuildContext context, bool forGallery) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return GestureDetector(
       onTap: () async {
         if (forGallery) {
@@ -199,9 +203,9 @@ class FacilityStepTwo extends StatelessWidget {
         width: 90,
         height: 90,
         decoration: BoxDecoration(
-          color: ColorsUtils.lightBlueBGColor,
+          color: customColors.lightBlueBGColor,
           borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: ColorsUtils.primary, width: 1),
+          border: Border.all(color: colorScheme.primary, width: 1),
         ),
         child: Center(
           child: SizedBox(
@@ -348,7 +352,7 @@ class FacilityStepTwo extends StatelessWidget {
           "Cover Image",
           style: TextStyle(
             fontFamily: 'Montserrat',
-            color: ColorsUtils.chipText,
+            color: Theme.of(context).extension<CustomColors>()!.chipText,
             fontWeight: FontWeight.w600,
             fontSize: 14,
           ),
@@ -390,7 +394,7 @@ class FacilityStepTwo extends StatelessWidget {
                     "Tell users about your facility's features",
                     style: TextStyle(
                       fontFamily: 'Montserrat',
-                      color: ColorsUtils.chipText,
+                      color: Theme.of(context).extension<CustomColors>()!.chipText,
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
                     ),
@@ -400,7 +404,7 @@ class FacilityStepTwo extends StatelessWidget {
               const SizedBox(height: 15.0),
               CommonTextField(
                 maxLength: 250,
-                fillColor: ColorsUtils.white,
+                fillColor: Theme.of(context).extension<CustomColors>()!.containerBG,
                 borderRadius: 6,
                 maxLines: 4,
                 hint: "Facility Description",
@@ -410,7 +414,7 @@ class FacilityStepTwo extends StatelessWidget {
                 textStyle: TextStyle(
                   fontSize: 16,
                   fontFamily: "Inter",
-                  color: ColorsUtils.black,
+                  color: Theme.of(context).colorScheme.onSurface,
                   fontWeight: FontWeight.w500,
                 ),
                 validator: (value) {
@@ -425,7 +429,7 @@ class FacilityStepTwo extends StatelessWidget {
                 "Describe your facility's features and amenities.",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.hintTextColor,
+                  color: Theme.of(context).extension<CustomColors>()!.hintTextColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
@@ -444,7 +448,7 @@ class FacilityStepTwo extends StatelessWidget {
       children: [
         const SizedBox(height: 20),
         BaseContainer(
-          bgColor: ColorsUtils.white,
+          bgColor: Theme.of(context).extension<CustomColors>()!.containerBG,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -454,7 +458,7 @@ class FacilityStepTwo extends StatelessWidget {
                 "Configure your facility details",
                 style: TextStyle(
                   fontFamily: 'Montserrat',
-                  color: ColorsUtils.chipText,
+                  color: Theme.of(context).extension<CustomColors>()!.chipText,
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                 ),
@@ -479,7 +483,7 @@ class FacilityStepTwo extends StatelessWidget {
                               ),
                             ),
                             clipBehavior: Clip.antiAliasWithSaveLayer,
-                            backgroundColor: OQDOThemeData.whiteColor,
+                            backgroundColor: Theme.of(context).colorScheme.surface,
                             builder: (BuildContext context) => const ShowClearSlotsBottomSheet(
                               height: 230,
                               fieldName: "Rental Duration",
@@ -555,7 +559,7 @@ class FacilityStepTwo extends StatelessWidget {
                                 ),
                               ),
                               clipBehavior: Clip.antiAliasWithSaveLayer,
-                              backgroundColor: OQDOThemeData.whiteColor,
+                              backgroundColor: Theme.of(context).colorScheme.surface,
                               builder: (BuildContext context) => const ShowClearSlotsBottomSheet(
                                 height: 230,
                                 fieldName: "Rental Duration",
@@ -587,7 +591,7 @@ class FacilityStepTwo extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 14,
                         fontFamily: "Inter",
-                        color: ColorsUtils.hintTextColor,
+                        color: Theme.of(context).extension<CustomColors>()!.hintTextColor,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -599,7 +603,7 @@ class FacilityStepTwo extends StatelessWidget {
                 "Minimum 1 hour -  booking duration for users",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.hintTextColor,
+                  color: Theme.of(context).extension<CustomColors>()!.hintTextColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
@@ -617,17 +621,17 @@ class FacilityStepTwo extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                       decoration: BoxDecoration(
-                        color: ColorsUtils.selectedGridItemColor,
+                        color: Theme.of(context).extension<CustomColors>()!.selectedGridItemColor,
                         borderRadius: BorderRadius.circular(6),
                         border: Border.all(
-                          color: ColorsUtils.lightBlueBorderColor,
+                          color: Theme.of(context).extension<CustomColors>()!.lightBlueBorderColor,
                         ),
                       ),
                       child: Text(
                         duration,
                         style: TextStyle(
                           fontSize: 14,
-                          color: ColorsUtils.black,
+                          color: Theme.of(context).colorScheme.onSurface,
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w400,
                         ),
@@ -641,7 +645,7 @@ class FacilityStepTwo extends StatelessWidget {
                 'Popular Duration. Click to select quickly.',
                 style: TextStyle(
                   fontSize: 12,
-                  color: ColorsUtils.textGray,
+                  color: Theme.of(context).extension<CustomColors>()!.textGray,
                   fontFamily: 'Inter',
                   fontWeight: FontWeight.w400,
                 ),
@@ -649,7 +653,7 @@ class FacilityStepTwo extends StatelessWidget {
               const SizedBox(height: 15),
               CommonTextField(
                 maxLength: 3,
-                fillColor: ColorsUtils.white,
+                fillColor: Theme.of(context).extension<CustomColors>()!.containerBG,
                 isNumber: true,
                 borderRadius: 6,
                 hint: (context.watch<CreateFacilityViewModel>().selectedBookingType?.id == 1)
@@ -663,7 +667,7 @@ class FacilityStepTwo extends StatelessWidget {
                 textStyle: TextStyle(
                   fontSize: 16,
                   fontFamily: "Inter",
-                  color: ColorsUtils.black,
+                  color: Theme.of(context).colorScheme.onSurface,
                   fontWeight: FontWeight.w500,
                 ),
                 validator: (value) {
@@ -693,7 +697,7 @@ class FacilityStepTwo extends StatelessWidget {
                 "Maximum number of people allowed to book the facility",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.hintTextColor,
+                  color: Theme.of(context).extension<CustomColors>()!.hintTextColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),

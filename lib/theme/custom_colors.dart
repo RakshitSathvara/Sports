@@ -39,6 +39,19 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.meetupCreatorCard,
     required this.meetupParticipantCard,
     required this.meetupEmptyCard,
+    required this.borderColor,
+    required this.selectedGridItemColor,
+    required this.lightBlueBGColor,
+    required this.lightBlueBorderColor,
+    required this.buttonBg,
+    required this.greyBG,
+    required this.buttonColorGrey,
+    required this.hintTextColor,
+    required this.textGray,
+    required this.containerBG,
+    required this.green,
+    required this.darkRed,
+    required this.onAccentText,
   });
 
   final Color greyButton;
@@ -78,6 +91,19 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color meetupCreatorCard;
   final Color meetupParticipantCard;
   final Color meetupEmptyCard;
+  final Color borderColor;
+  final Color selectedGridItemColor;
+  final Color lightBlueBGColor;
+  final Color lightBlueBorderColor;
+  final Color buttonBg;
+  final Color greyBG;
+  final Color buttonColorGrey;
+  final Color hintTextColor;
+  final Color textGray;
+  final Color containerBG;
+  final Color green;
+  final Color darkRed;
+  final Color onAccentText;
 
   static const CustomColors light = CustomColors(
     greyButton: Color(0xFFEFEFEF),
@@ -117,6 +143,19 @@ class CustomColors extends ThemeExtension<CustomColors> {
     meetupCreatorCard: Color(0xFFFFFAEB),
     meetupParticipantCard: Color(0xFFEAF2F6),
     meetupEmptyCard: Color(0xFFEDEDED),
+    borderColor: Color(0xFFE9E9E9),
+    selectedGridItemColor: Color(0xFFEBF9FF),
+    lightBlueBGColor: Color(0xFFD6F3FF),
+    lightBlueBorderColor: Color(0xFFB4D9E9),
+    buttonBg: Color(0xFFF2F2F2),
+    greyBG: Color(0xFFDBDBDB),
+    buttonColorGrey: Color(0xFFF6F6F6),
+    hintTextColor: Color(0xFF878787),
+    textGray: Color(0xFF737373),
+    containerBG: Color(0xFFFBFBFB),
+    green: Color(0xFF067421),
+    darkRed: Color(0xFFA80000),
+    onAccentText: Color(0xFFFFFFFF),
   );
 
   static const CustomColors dark = CustomColors(
@@ -157,6 +196,19 @@ class CustomColors extends ThemeExtension<CustomColors> {
     meetupCreatorCard: Color(0xFF3B3628),
     meetupParticipantCard: Color(0xFF2A3540),
     meetupEmptyCard: Color(0xFF2A2A2A),
+    borderColor: Color(0xFF404040),
+    selectedGridItemColor: Color(0xFF1E3A45),
+    lightBlueBGColor: Color(0xFF102734),
+    lightBlueBorderColor: Color(0xFF2F5E73),
+    buttonBg: Color(0xFF2A2A2A),
+    greyBG: Color(0xFF3A3A3A),
+    buttonColorGrey: Color(0xFF333333),
+    hintTextColor: Color(0xFFB0B0B0),
+    textGray: Color(0xFFB0B0B0),
+    containerBG: Color(0xFF1E1E1E),
+    green: Color(0xFF4CAF50),
+    darkRed: Color(0xFFE57373),
+    onAccentText: Color(0xFFFFFFFF),
   );
 
   @override
@@ -198,6 +250,19 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? meetupCreatorCard,
     Color? meetupParticipantCard,
     Color? meetupEmptyCard,
+    Color? borderColor,
+    Color? selectedGridItemColor,
+    Color? lightBlueBGColor,
+    Color? lightBlueBorderColor,
+    Color? buttonBg,
+    Color? greyBG,
+    Color? buttonColorGrey,
+    Color? hintTextColor,
+    Color? textGray,
+    Color? containerBG,
+    Color? green,
+    Color? darkRed,
+    Color? onAccentText,
   }) {
     return CustomColors(
       greyButton: greyButton ?? this.greyButton,
@@ -237,6 +302,19 @@ class CustomColors extends ThemeExtension<CustomColors> {
       meetupCreatorCard: meetupCreatorCard ?? this.meetupCreatorCard,
       meetupParticipantCard: meetupParticipantCard ?? this.meetupParticipantCard,
       meetupEmptyCard: meetupEmptyCard ?? this.meetupEmptyCard,
+      borderColor: borderColor ?? this.borderColor,
+      selectedGridItemColor: selectedGridItemColor ?? this.selectedGridItemColor,
+      lightBlueBGColor: lightBlueBGColor ?? this.lightBlueBGColor,
+      lightBlueBorderColor: lightBlueBorderColor ?? this.lightBlueBorderColor,
+      buttonBg: buttonBg ?? this.buttonBg,
+      greyBG: greyBG ?? this.greyBG,
+      buttonColorGrey: buttonColorGrey ?? this.buttonColorGrey,
+      hintTextColor: hintTextColor ?? this.hintTextColor,
+      textGray: textGray ?? this.textGray,
+      containerBG: containerBG ?? this.containerBG,
+      green: green ?? this.green,
+      darkRed: darkRed ?? this.darkRed,
+      onAccentText: onAccentText ?? this.onAccentText,
     );
   }
 
@@ -282,7 +360,20 @@ class CustomColors extends ThemeExtension<CustomColors> {
       meetupCreatorCard: Color.lerp(meetupCreatorCard, other.meetupCreatorCard, t)!,
       meetupParticipantCard: Color.lerp(meetupParticipantCard, other.meetupParticipantCard, t)!,
       meetupEmptyCard: Color.lerp(meetupEmptyCard, other.meetupEmptyCard, t)!,
+      borderColor: Color.lerp(borderColor, other.borderColor, t)!,
+      selectedGridItemColor: Color.lerp(selectedGridItemColor, other.selectedGridItemColor, t)!,
+      lightBlueBGColor: Color.lerp(lightBlueBGColor, other.lightBlueBGColor, t)!,
+      lightBlueBorderColor: Color.lerp(lightBlueBorderColor, other.lightBlueBorderColor, t)!,
+      buttonBg: Color.lerp(buttonBg, other.buttonBg, t)!,
+      greyBG: Color.lerp(greyBG, other.greyBG, t)!,
+      buttonColorGrey: Color.lerp(buttonColorGrey, other.buttonColorGrey, t)!,
+      hintTextColor: Color.lerp(hintTextColor, other.hintTextColor, t)!,
+      textGray: Color.lerp(textGray, other.textGray, t)!,
+      containerBG: Color.lerp(containerBG, other.containerBG, t)!,
+      green: Color.lerp(green, other.green, t)!,
+      darkRed: Color.lerp(darkRed, other.darkRed, t)!,
+      onAccentText: Color.lerp(onAccentText, other.onAccentText, t)!,
     );
-    }
   }
+}
 

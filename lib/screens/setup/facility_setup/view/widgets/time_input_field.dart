@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 
 class TimeInputField extends StatefulWidget {
@@ -268,9 +268,9 @@ class TimeInputFieldState extends State<TimeInputField> {
           child: Theme(
             data: Theme.of(context).copyWith(
               timePickerTheme: TimePickerThemeData(
-                backgroundColor: ColorsUtils.white,
-                hourMinuteTextColor: ColorsUtils.black,
-                dayPeriodTextColor: ColorsUtils.black,
+                backgroundColor: Theme.of(context).colorScheme.surface,
+                hourMinuteTextColor: Theme.of(context).colorScheme.onSurface,
+                dayPeriodTextColor: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             child: child!,
@@ -310,7 +310,7 @@ class TimeInputFieldState extends State<TimeInputField> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(errorMessage),
-              backgroundColor: ColorsUtils.redColor,
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.redColor,
               duration: const Duration(seconds: 3),
             ),
           );
@@ -478,11 +478,13 @@ class TimeInputFieldState extends State<TimeInputField> {
           height: 48,
           decoration: BoxDecoration(
             border: Border.all(
-              color: _errorText != null ? ColorsUtils.redColor : ColorsUtils.borderColor,
+              color: _errorText != null
+                  ? Theme.of(context).extension<CustomColors>()!.redColor
+                  : Theme.of(context).extension<CustomColors>()!.borderColor,
               width: 1,
             ),
             borderRadius: BorderRadius.circular(6),
-            color: ColorsUtils.white,
+            color: Theme.of(context).extension<CustomColors>()!.containerBG,
           ),
           child: Row(
             children: [
@@ -497,14 +499,14 @@ class TimeInputFieldState extends State<TimeInputField> {
                   ],
                   style: TextStyle(
                     fontSize: 14,
-                    color: ColorsUtils.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w600,
                   ),
                   decoration: InputDecoration(
                     hintText: widget.hintText,
                     hintStyle: TextStyle(
-                      color: ColorsUtils.hintTextColor,
+                      color: Theme.of(context).extension<CustomColors>()!.hintTextColor,
                       fontSize: 14,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w400,
@@ -549,7 +551,7 @@ class TimeInputFieldState extends State<TimeInputField> {
             _errorText!,
             style: TextStyle(
               fontSize: 12,
-              color: ColorsUtils.redColor,
+              color: Theme.of(context).extension<CustomColors>()!.redColor,
               fontFamily: 'Inter',
               fontWeight: FontWeight.w400,
             ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class DurationInputField extends StatefulWidget {
   final TextEditingController controller;
@@ -354,7 +354,7 @@ class DurationInputFieldState extends State<DurationInputField> {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
-                color: ColorsUtils.chipText,
+                color: Theme.of(context).extension<CustomColors>()!.chipText,
                 fontFamily: 'Inter',
               ),
             ),
@@ -363,11 +363,15 @@ class DurationInputFieldState extends State<DurationInputField> {
               height: 48,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: field.hasError ? ColorsUtils.redColor : ColorsUtils.borderColor,
+                  color: field.hasError
+                      ? Theme.of(context).extension<CustomColors>()!.redColor
+                      : Theme.of(context).extension<CustomColors>()!.borderColor,
                   width: 1,
                 ),
                 borderRadius: BorderRadius.circular(6),
-                color: widget.readOnly ? ColorsUtils.buttonColorGrey : ColorsUtils.white,
+                color: widget.readOnly
+                    ? Theme.of(context).extension<CustomColors>()!.buttonColorGrey
+                    : Theme.of(context).extension<CustomColors>()!.containerBG,
               ),
               child: Row(
                 children: [
@@ -397,14 +401,16 @@ class DurationInputFieldState extends State<DurationInputField> {
                               ],
                         style: TextStyle(
                           fontSize: 14,
-                          color: widget.readOnly ? ColorsUtils.textGray : ColorsUtils.black,
+                          color: widget.readOnly
+                              ? Theme.of(context).extension<CustomColors>()!.textGray
+                              : Theme.of(context).colorScheme.onSurface,
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w600,
                         ),
                         decoration: InputDecoration(
                           hintText: widget.hintText,
                           hintStyle: TextStyle(
-                            color: ColorsUtils.hintTextColor,
+                            color: Theme.of(context).extension<CustomColors>()!.hintTextColor,
                             fontSize: 14,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w400,
@@ -454,7 +460,7 @@ class DurationInputFieldState extends State<DurationInputField> {
                 field.errorText!,
                 style: TextStyle(
                   fontSize: 12,
-                  color: ColorsUtils.redColor,
+                  color: Theme.of(context).extension<CustomColors>()!.redColor,
                   fontFamily: 'Inter',
                   fontWeight: FontWeight.w400,
                 ),

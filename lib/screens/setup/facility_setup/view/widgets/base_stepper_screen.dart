@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:oqdo_mobile_app/components/custom_button.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/models/stepper_config_model.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class StepperBaseScreen extends StatelessWidget {
   final int currentStep;
@@ -19,6 +19,7 @@ class StepperBaseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, asd) {
@@ -32,14 +33,14 @@ class StepperBaseScreen extends StatelessWidget {
       },
       child: Scaffold(
         // resizeToAvoidBottomInset: false,
-        backgroundColor: ColorsUtils.white,
+        backgroundColor: colorScheme.surface,
         appBar: _buildAppBar(context),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Progress Indicator
-            _buildProgressIndicator(),
+            _buildProgressIndicator(context),
 
             // Step Content (Green highlighted area)
             Expanded(
@@ -55,14 +56,16 @@ class StepperBaseScreen extends StatelessWidget {
   }
 
   PreferredSizeWidget _buildAppBar(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return AppBar(
-      backgroundColor: ColorsUtils.white,
+      backgroundColor: colorScheme.surface,
       elevation: 0,
       titleSpacing: 0,
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back,
-          color: ColorsUtils.black,
+          color: colorScheme.onSurface,
           size: 24,
         ),
         onPressed: config.onBackPressed ?? () => Navigator.of(context).pop(),
@@ -70,7 +73,7 @@ class StepperBaseScreen extends StatelessWidget {
       title: Text(
         config.appBarTitle,
         style: TextStyle(
-          color: ColorsUtils.chipText,
+          color: customColors.chipText,
           fontFamily: 'Montserrat',
           fontSize: 18,
           fontWeight: FontWeight.w600,
@@ -79,7 +82,9 @@ class StepperBaseScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProgressIndicator() {
+  Widget _buildProgressIndicator(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     double progress = currentStep / totalSteps;
     int progressPercentage = (progress * 100).round();
 
@@ -88,8 +93,8 @@ class StepperBaseScreen extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
-          color: ColorsUtils.white,
-          border: Border.all(color: ColorsUtils.borderColor, width: 1),
+          color: customColors.containerBG,
+          border: Border.all(color: customColors.borderColor, width: 1),
           borderRadius: BorderRadius.all(
             Radius.circular(5.0),
           ),
@@ -105,19 +110,22 @@ class StepperBaseScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontFamily: 'Inter',
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0), color: ColorsUtils.lightBlueBGColor),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    color: customColors.lightBlueBGColor,
+                  ),
                   child: Text(
                     '$progressPercentage%',
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                      color: ColorsUtils.primary,
+                      color: colorScheme.primary,
                       fontFamily: 'Montserrat',
                     ),
                   ),
@@ -129,8 +137,8 @@ class StepperBaseScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(15.0),
               child: LinearProgressIndicator(
                 value: progress,
-                backgroundColor: ColorsUtils.greyBG,
-                valueColor: const AlwaysStoppedAnimation<Color>(ColorsUtils.primary),
+                backgroundColor: customColors.greyBG,
+                valueColor: AlwaysStoppedAnimation<Color>(colorScheme.primary),
                 minHeight: 10,
               ),
             ),
@@ -156,8 +164,11 @@ class StepperBaseScreen extends StatelessWidget {
     bool isFirstStep = currentStep == 1;
     bool isLastStep = currentStep == totalSteps;
 
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+
     return Container(
-      color: Colors.white,
+      color: colorScheme.surface,
       padding: const EdgeInsets.all(16.0),
       child: SafeArea(
         child: Row(
@@ -169,8 +180,8 @@ class StepperBaseScreen extends StatelessWidget {
               Expanded(
                 child: CustomButton(
                   text: config.previousButtonText,
-                  textcolor: ColorsUtils.black,
-                  buttonColor: ColorsUtils.buttonBg,
+                  textcolor: colorScheme.onSurface,
+                  buttonColor: customColors.buttonBg,
                   textsize: 16,
                   fontWeight: FontWeight.bold,
                   buttonheight: 50,
@@ -186,8 +197,8 @@ class StepperBaseScreen extends StatelessWidget {
             Expanded(
               child: CustomButton(
                 text: isLastStep ? config.completeButtonText : config.nextButtonText,
-                textcolor: ColorsUtils.white,
-                buttonColor: ColorsUtils.primary,
+                textcolor: colorScheme.onPrimary,
+                buttonColor: colorScheme.primary,
                 textsize: 16,
                 fontWeight: FontWeight.bold,
                 buttonheight: 50,
