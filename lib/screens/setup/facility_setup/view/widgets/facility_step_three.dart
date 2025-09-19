@@ -6,7 +6,7 @@ import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/facility_train
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/base_container.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/time_input_field.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/viewmodel/create_facility_view_model.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_field.dart';
 import 'package:provider/provider.dart';
@@ -75,14 +75,14 @@ class FacilityStepThree extends StatelessWidget {
           "Booking Schedule",
           style: TextStyle(
             fontFamily: 'SFPro',
-            color: ColorsUtils.primary,
+            color: Theme.of(context).colorScheme.primary,
             fontWeight: FontWeight.w600,
             fontSize: 16,
           ),
         ),
         const SizedBox(height: 15.0),
         BaseContainer(
-          bgColor: ColorsUtils.white,
+          bgColor: Theme.of(context).extension<CustomColors>()!.containerBG,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,7 +92,7 @@ class FacilityStepThree extends StatelessWidget {
                 "Rate Settings",
                 style: TextStyle(
                   fontFamily: 'Montserrat',
-                  color: ColorsUtils.chipText,
+                  color: Theme.of(context).extension<CustomColors>()!.chipText,
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                 ),
@@ -110,7 +110,7 @@ class FacilityStepThree extends StatelessWidget {
                         "Same Rate for Slots",
                         style: TextStyle(
                           fontFamily: 'Montserrat',
-                          color: ColorsUtils.chipText,
+                          color: Theme.of(context).extension<CustomColors>()!.chipText,
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
                         ),
@@ -120,7 +120,7 @@ class FacilityStepThree extends StatelessWidget {
                         "Apply one rate to all time slots",
                         style: TextStyle(
                           fontFamily: 'Inter',
-                          color: ColorsUtils.hintTextColor,
+                          color: Theme.of(context).extension<CustomColors>()!.hintTextColor,
                           fontWeight: FontWeight.w400,
                           fontSize: 12,
                         ),
@@ -179,7 +179,7 @@ class FacilityStepThree extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Inter",
-                                color: ColorsUtils.darkGrey,
+                                color: Theme.of(context).extension<CustomColors>()!.darkGrey,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -188,7 +188,7 @@ class FacilityStepThree extends StatelessWidget {
                           Expanded(
                             child: CommonTextField(
                               maxLength: 6,
-                              fillColor: ColorsUtils.white,
+                              fillColor: Theme.of(context).extension<CustomColors>()!.containerBG,
                               isDouble: true,
                               borderRadius: 6,
                               hint: "Enter hourly rate",
@@ -198,7 +198,7 @@ class FacilityStepThree extends StatelessWidget {
                               textStyle: TextStyle(
                                 fontSize: 16,
                                 fontFamily: "Inter",
-                                color: ColorsUtils.black,
+                                color: Theme.of(context).colorScheme.onSurface,
                                 fontWeight: FontWeight.w500,
                               ),
                               validator: (value) {
@@ -243,9 +243,9 @@ class FacilityStepThree extends StatelessWidget {
               CustomButton(
                 text: "Add Time Slot",
                 leadingIcon: Icon(Icons.add, size: 18),
-                textcolor: ColorsUtils.black,
-                buttonColor: ColorsUtils.buttonColorGrey,
-                borderColor: ColorsUtils.borderColor,
+                textcolor: Theme.of(context).colorScheme.onSurface,
+                buttonColor: Theme.of(context).extension<CustomColors>()!.buttonColorGrey,
+                borderColor: Theme.of(context).extension<CustomColors>()!.borderColor,
                 textsize: 16,
                 fontWeight: FontWeight.bold,
                 buttonheight: 50,
@@ -263,7 +263,7 @@ class FacilityStepThree extends StatelessWidget {
                 "Add available rental time slots.",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.hintTextColor,
+                  color: Theme.of(context).extension<CustomColors>()!.hintTextColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
@@ -282,10 +282,10 @@ class FacilityStepThree extends StatelessWidget {
                       strokeWidth: 1.5,
                       radius: const Radius.circular(5),
                       dashPattern: const [3, 3],
-                      color: ColorsUtils.messageRight,
+                      color: Theme.of(context).extension<CustomColors>()!.messageRight,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: ColorsUtils.buttonColorGrey,
+                          color: Theme.of(context).extension<CustomColors>()!.buttonColorGrey,
                           borderRadius: BorderRadius.all(
                             Radius.circular(5),
                           ),
@@ -306,13 +306,13 @@ class FacilityStepThree extends StatelessWidget {
                                     children: slotDetails.sortedSelectedDays.map((day) {
                                       return Container(
                                         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
-                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0), color: ColorsUtils.primary),
+                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0), color: Theme.of(context).colorScheme.primary),
                                         child: Text(
                                           day.title,
                                           style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w400,
-                                            color: ColorsUtils.white,
+                                            color: Theme.of(context).extension<CustomColors>()!.onAccentText,
                                             fontFamily: 'Inter',
                                           ),
                                         ),
@@ -329,7 +329,7 @@ class FacilityStepThree extends StatelessWidget {
                                     padding: EdgeInsets.all(4.0),
                                     child: Image.asset(
                                       "assets/images/ic_cancel_appointment.png",
-                                      color: ColorsUtils.black,
+                                      color: Theme.of(context).colorScheme.onSurface,
                                     ),
                                   ),
                                 )
@@ -383,7 +383,7 @@ class FacilityStepThree extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
-                color: ColorsUtils.black,
+                color: Theme.of(context).colorScheme.onSurface,
                 fontFamily: 'Inter',
               ),
             ),
@@ -393,7 +393,7 @@ class FacilityStepThree extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
-                color: ColorsUtils.black,
+                color: Theme.of(context).colorScheme.onSurface,
                 fontFamily: 'Inter',
               ),
             ),
@@ -431,7 +431,7 @@ class FacilityStepThree extends StatelessWidget {
                       // Remove fixed height - let content determine height
                       padding: EdgeInsets.all(15.0),
                       decoration: BoxDecoration(
-                        color: ColorsUtils.white,
+                        color: Theme.of(context).extension<CustomColors>()!.containerBG,
                         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                       ),
                       child: Column(
@@ -446,7 +446,7 @@ class FacilityStepThree extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
-                                  color: ColorsUtils.black,
+                                  color: Theme.of(context).colorScheme.onSurface,
                                   fontFamily: 'Montserrat',
                                 ),
                               ),
@@ -497,7 +497,7 @@ class FacilityStepThree extends StatelessWidget {
                                       'Select multiple days when the same availability applies',
                                       style: TextStyle(
                                         fontSize: 12,
-                                        color: ColorsUtils.textGray,
+                                        color: Theme.of(context).extension<CustomColors>()!.textGray,
                                         fontFamily: 'Inter',
                                         fontWeight: FontWeight.w400,
                                       ),
@@ -517,7 +517,7 @@ class FacilityStepThree extends StatelessWidget {
                                                 style: TextStyle(
                                                   fontSize: 14,
                                                   fontFamily: "Inter",
-                                                  color: ColorsUtils.darkGrey,
+                                                  color: Theme.of(context).extension<CustomColors>()!.darkGrey,
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                               ),
@@ -526,7 +526,7 @@ class FacilityStepThree extends StatelessWidget {
                                                 child: CommonTextField(
                                                   maxLength: 6,
                                                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                                                  fillColor: ColorsUtils.white,
+                                                  fillColor: Theme.of(context).extension<CustomColors>()!.containerBG,
                                                   isDouble: true,
                                                   borderRadius: 6,
                                                   hint: "Enter hourly rate",
@@ -534,7 +534,7 @@ class FacilityStepThree extends StatelessWidget {
                                                   textStyle: TextStyle(
                                                     fontSize: 16,
                                                     fontFamily: "Inter",
-                                                    color: ColorsUtils.black,
+                                                    color: Theme.of(context).colorScheme.onSurface,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                                   validator: (value) {
@@ -566,7 +566,7 @@ class FacilityStepThree extends StatelessWidget {
                                       children: [
                                         Row(
                                           children: [
-                                            Icon(Icons.access_time, size: 20, color: ColorsUtils.chipText),
+                                            Icon(Icons.access_time, size: 20, color: Theme.of(context).extension<CustomColors>()!.chipText),
                                             SizedBox(width: 8),
                                             Text(
                                               'Booking Slots (6 AM - 10 PM)',
@@ -574,7 +574,7 @@ class FacilityStepThree extends StatelessWidget {
                                                 fontSize: 14,
                                                 fontFamily: 'Montserrat',
                                                 fontWeight: FontWeight.w600,
-                                                color: ColorsUtils.chipText,
+                                                color: Theme.of(context).extension<CustomColors>()!.chipText,
                                               ),
                                             ),
                                           ],
@@ -585,11 +585,11 @@ class FacilityStepThree extends StatelessWidget {
                                           leadingIcon: Icon(
                                             Icons.add,
                                             size: 20,
-                                            color: ColorsUtils.black,
+                                            color: Theme.of(context).colorScheme.onSurface,
                                           ),
-                                          textcolor: ColorsUtils.black,
-                                          buttonColor: ColorsUtils.selectedGridItemColor,
-                                          borderColor: ColorsUtils.selectedGridItemColor,
+                                          textcolor: Theme.of(context).colorScheme.onSurface,
+                                          buttonColor: Theme.of(context).extension<CustomColors>()!.selectedGridItemColor,
+                                          borderColor: Theme.of(context).extension<CustomColors>()!.selectedGridItemColor,
                                           textsize: 16,
                                           fontWeight: FontWeight.bold,
                                           buttonheight: 35,
@@ -610,7 +610,7 @@ class FacilityStepThree extends StatelessWidget {
                                                 return Form(
                                                   key: editSlot.formKey,
                                                   child: BaseContainer(
-                                                    bgColor: ColorsUtils.white,
+                                                    bgColor: Theme.of(context).extension<CustomColors>()!.containerBG,
                                                     child: Column(
                                                       mainAxisAlignment: MainAxisAlignment.start,
                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -620,7 +620,7 @@ class FacilityStepThree extends StatelessWidget {
                                                           children: [
                                                             Text(
                                                               'Session',
-                                                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'Montserrat', color: ColorsUtils.black),
+                                                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'Montserrat', color: Theme.of(context).colorScheme.onSurface),
                                                             ),
                                                             GestureDetector(
                                                               onTap: () {
@@ -638,7 +638,7 @@ class FacilityStepThree extends StatelessWidget {
                                                             fontSize: 14,
                                                             fontWeight: FontWeight.w500,
                                                             fontFamily: 'Inter',
-                                                            color: ColorsUtils.chipText,
+                                                            color: Theme.of(context).extension<CustomColors>()!.chipText,
                                                           ),
                                                         ),
                                                         const SizedBox(height: 8),
@@ -664,17 +664,17 @@ class FacilityStepThree extends StatelessWidget {
                                                               child: Container(
                                                                 padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                                                                 decoration: BoxDecoration(
-                                                                  color: ColorsUtils.selectedGridItemColor,
+                                                                  color: Theme.of(context).extension<CustomColors>()!.selectedGridItemColor,
                                                                   borderRadius: BorderRadius.circular(6),
                                                                   border: Border.all(
-                                                                    color: ColorsUtils.lightBlueBorderColor,
+                                                                    color: Theme.of(context).extension<CustomColors>()!.lightBlueBorderColor,
                                                                   ),
                                                                 ),
                                                                 child: Text(
                                                                   time,
                                                                   style: TextStyle(
                                                                     fontSize: 14,
-                                                                    color: ColorsUtils.black,
+                                                                    color: Theme.of(context).colorScheme.onSurface,
                                                                     fontFamily: 'Inter',
                                                                     fontWeight: FontWeight.w400,
                                                                   ),
@@ -688,7 +688,7 @@ class FacilityStepThree extends StatelessWidget {
                                                           'Popular booking times. Click to select quickly.',
                                                           style: TextStyle(
                                                             fontSize: 12,
-                                                            color: ColorsUtils.textGray,
+                                                            color: Theme.of(context).extension<CustomColors>()!.textGray,
                                                             fontFamily: 'Inter',
                                                             fontWeight: FontWeight.w400,
                                                           ),
@@ -705,7 +705,7 @@ class FacilityStepThree extends StatelessWidget {
                                                                   fontSize: 14,
                                                                   fontWeight: FontWeight.w500,
                                                                   fontFamily: 'Inter',
-                                                                  color: ColorsUtils.chipText,
+                                                                  color: Theme.of(context).extension<CustomColors>()!.chipText,
                                                                 ),
                                                               ),
                                                               const SizedBox(height: 15),
@@ -713,7 +713,7 @@ class FacilityStepThree extends StatelessWidget {
                                                                 controller: editSlot.numberOfSlots,
                                                                 autovalidateMode: AutovalidateMode.onUserInteraction,
                                                                 maxLength: 2,
-                                                                fillColor: ColorsUtils.white,
+                                                                fillColor: Theme.of(context).extension<CustomColors>()!.containerBG,
                                                                 isNumber: true,
                                                                 borderRadius: 6,
                                                                 hint: "Number of Slots",
@@ -721,7 +721,7 @@ class FacilityStepThree extends StatelessWidget {
                                                                 textStyle: TextStyle(
                                                                   fontSize: 16,
                                                                   fontFamily: "Inter",
-                                                                  color: ColorsUtils.black,
+                                                                  color: Theme.of(context).colorScheme.onSurface,
                                                                   fontWeight: FontWeight.w500,
                                                                 ),
                                                                 validator: (value) {
@@ -748,7 +748,7 @@ class FacilityStepThree extends StatelessWidget {
                                                                 'Consecutive hours for venue booking',
                                                                 style: TextStyle(
                                                                   fontSize: 12,
-                                                                  color: ColorsUtils.textGray,
+                                                                  color: Theme.of(context).extension<CustomColors>()!.textGray,
                                                                   fontFamily: 'Inter',
                                                                   fontWeight: FontWeight.w400,
                                                                 ),
@@ -760,10 +760,10 @@ class FacilityStepThree extends StatelessWidget {
                                                                 strokeWidth: 1.5,
                                                                 radius: const Radius.circular(5),
                                                                 dashPattern: const [3, 3],
-                                                                color: ColorsUtils.messageRight,
+                                                                color: Theme.of(context).extension<CustomColors>()!.messageRight,
                                                                 child: Container(
                                                                   decoration: BoxDecoration(
-                                                                    color: ColorsUtils.buttonColorGrey,
+                                                                    color: Theme.of(context).extension<CustomColors>()!.buttonColorGrey,
                                                                     borderRadius: BorderRadius.all(
                                                                       Radius.circular(5),
                                                                     ),
@@ -810,7 +810,7 @@ class FacilityStepThree extends StatelessWidget {
                                       'Add multiple slots if you have separate booking periods on the same day',
                                       style: TextStyle(
                                         fontSize: 12,
-                                        color: ColorsUtils.textGray,
+                                        color: Theme.of(context).extension<CustomColors>()!.textGray,
                                         fontFamily: 'Inter',
                                         fontWeight: FontWeight.w400,
                                       ),
@@ -827,8 +827,8 @@ class FacilityStepThree extends StatelessWidget {
                               Expanded(
                                 child: CustomButton(
                                   text: "Cancel",
-                                  textcolor: ColorsUtils.black,
-                                  buttonColor: ColorsUtils.buttonBg,
+                                  textcolor: Theme.of(context).colorScheme.onSurface,
+                                  buttonColor: Theme.of(context).extension<CustomColors>()!.buttonBg,
                                   textsize: 16,
                                   fontWeight: FontWeight.bold,
                                   buttonheight: 50,
@@ -844,8 +844,8 @@ class FacilityStepThree extends StatelessWidget {
                               Expanded(
                                 child: CustomButton(
                                   text: "Add Time Slot",
-                                  textcolor: ColorsUtils.white,
-                                  buttonColor: ColorsUtils.primary,
+                                  textcolor: Theme.of(context).colorScheme.onPrimary,
+                                  buttonColor: Theme.of(context).colorScheme.primary,
                                   textsize: 16,
                                   fontWeight: FontWeight.bold,
                                   buttonheight: 50,
@@ -882,15 +882,23 @@ class FacilityStepThree extends StatelessWidget {
               width: 30,
               height: 30,
               decoration: BoxDecoration(
-                color: isSelected ? ColorsUtils.primary : ColorsUtils.greyBG,
+                color: isSelected ? Theme.of(context).colorScheme.primary : Theme.of(context).extension<CustomColors>()!.greyBG,
                 borderRadius: BorderRadius.circular(7),
               ),
-              child: isSelected ? Icon(Icons.check, size: 18, color: ColorsUtils.white) : null,
+              child: isSelected
+                  ? Icon(Icons.check, size: 18, color: Theme.of(context).extension<CustomColors>()!.onAccentText)
+                  : null,
             ),
             SizedBox(width: 8),
             Text(
               day,
-              style: TextStyle(color: isSelected ? ColorsUtils.black : ColorsUtils.hintTextColor, fontSize: 14, fontWeight: FontWeight.w600, fontFamily: 'Inter'),
+              style: TextStyle(
+                  color: isSelected
+                      ? Theme.of(context).colorScheme.onSurface
+                      : Theme.of(context).extension<CustomColors>()!.hintTextColor,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Inter'),
             ),
           ],
         ),

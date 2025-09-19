@@ -3,8 +3,7 @@ import 'package:oqdo_mobile_app/model/get_all_activity_and_sub_activity_response
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/base_container.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/setup_grid_view_item.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/viewmodel/create_facility_view_model.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_field.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
@@ -52,6 +51,8 @@ class FacilityStepOne extends StatelessWidget {
   }
 
   Widget _buildTitleAndFacilityTitleView(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +62,7 @@ class FacilityStepOne extends StatelessWidget {
           "Activity & Type Setup",
           style: TextStyle(
             fontFamily: 'SFPro',
-            color: ColorsUtils.primary,
+            color: colorScheme.primary,
             fontWeight: FontWeight.w600,
             fontSize: 16,
           ),
@@ -78,7 +79,7 @@ class FacilityStepOne extends StatelessWidget {
                   "Facility Title",
                   style: TextStyle(
                     fontFamily: 'Montserrat',
-                    color: ColorsUtils.chipText,
+                    color: customColors.chipText,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -86,7 +87,7 @@ class FacilityStepOne extends StatelessWidget {
                 const SizedBox(height: 15.0),
                 CommonTextField(
                   maxLength: 50,
-                  fillColor: ColorsUtils.white,
+                  fillColor: customColors.containerBG,
                   borderRadius: 6,
                   hint: "Facility Title",
                   labelText: "Facility Title",
@@ -95,7 +96,7 @@ class FacilityStepOne extends StatelessWidget {
                   textStyle: TextStyle(
                     fontSize: 16,
                     fontFamily: "Inter",
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w500,
                   ),
                   validator: (value) {
@@ -110,7 +111,7 @@ class FacilityStepOne extends StatelessWidget {
                   "Give your facility a catchy name.",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.hintTextColor,
+                    color: customColors.hintTextColor,
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
                   ),
@@ -118,7 +119,7 @@ class FacilityStepOne extends StatelessWidget {
                 const SizedBox(height: 15.0),
                 CommonTextField(
                   maxLength: 50,
-                  fillColor: ColorsUtils.white,
+                  fillColor: customColors.containerBG,
                   borderRadius: 6,
                   hint: "Subtitle",
                   labelText: "Subtitle",
@@ -127,7 +128,7 @@ class FacilityStepOne extends StatelessWidget {
                   textStyle: TextStyle(
                     fontSize: 16,
                     fontFamily: "Inter",
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w500,
                   ),
                   validator: (value) {
@@ -142,7 +143,7 @@ class FacilityStepOne extends StatelessWidget {
                   "A brief tagline describing your facility.",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.hintTextColor,
+                    color: customColors.hintTextColor,
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
                   ),
@@ -156,13 +157,15 @@ class FacilityStepOne extends StatelessWidget {
   }
 
   Widget _buildChooseYourActivityView(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 20),
         BaseContainer(
-          bgColor: ColorsUtils.white,
+          bgColor: customColors.containerBG,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,7 +175,7 @@ class FacilityStepOne extends StatelessWidget {
                 "${context.read<CreateFacilityViewModel>().isEdit ? "" : "Choose "}Your Activity",
                 style: TextStyle(
                   fontFamily: 'Montserrat',
-                  color: ColorsUtils.chipText,
+                  color: customColors.chipText,
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                 ),
@@ -192,6 +195,7 @@ class FacilityStepOne extends StatelessWidget {
                     isSelected: isSelected,
                     isEnabled: !context.read<CreateFacilityViewModel>().isEdit,
                     onTap: () => context.read<CreateFacilityViewModel>().onSelectActivity(item),
+                    unSelectedColor: customColors.containerBG,
                   );
                 },
               ),
@@ -200,7 +204,7 @@ class FacilityStepOne extends StatelessWidget {
                 "${context.read<CreateFacilityViewModel>().isEdit ? "The" : "Choose the"} main category your facility belongs to.",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.hintTextColor,
+                  color: customColors.hintTextColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
@@ -213,9 +217,9 @@ class FacilityStepOne extends StatelessWidget {
                     const SizedBox(height: 10.0),
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(color: ColorsUtils.borderColor),
+                        border: Border.all(color: customColors.borderColor),
                         borderRadius: BorderRadius.circular(15),
-                        color: OQDOThemeData.backgroundColor,
+                        color: customColors.containerBG,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
@@ -223,15 +227,15 @@ class FacilityStepOne extends StatelessWidget {
                             isExpanded: true,
                             icon: Icon(Icons.keyboard_arrow_down_rounded,
                                 color: context.watch<CreateFacilityViewModel>().isEdit
-                                    ? Colors.grey.shade400 // Disabled icon color
-                                    : OQDOThemeData.blackColor),
-                            dropdownColor: ColorsUtils.white,
+                                    ? Theme.of(context).disabledColor // Disabled icon color
+                                    : colorScheme.onSurface),
+                            dropdownColor: customColors.containerBG,
                             underline: const SizedBox(),
                             borderRadius: BorderRadius.circular(15),
                             hint: CustomTextView(
                               label: context.watch<CreateFacilityViewModel>().subActivityHint,
                               textStyle: TextStyle(
-                                color: ColorsUtils.hintTextColor,
+                                color: customColors.hintTextColor,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: 'Inter',
@@ -244,7 +248,7 @@ class FacilityStepOne extends StatelessWidget {
                                 child: CustomTextView(
                                   label: subActivity.Name ?? "",
                                   textStyle: TextStyle(
-                                    color: ColorsUtils.black,
+                                    color: colorScheme.onSurface,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
                                     fontFamily: 'Inter',
@@ -260,7 +264,7 @@ class FacilityStepOne extends StatelessWidget {
                       "${context.read<CreateFacilityViewModel>().isEdit ? "The" : "Select the"} specific activity your facility specializes in.",
                       style: TextStyle(
                         fontFamily: 'Inter',
-                        color: ColorsUtils.hintTextColor,
+                        color: customColors.hintTextColor,
                         fontWeight: FontWeight.w400,
                         fontSize: 12,
                       ),
@@ -275,6 +279,7 @@ class FacilityStepOne extends StatelessWidget {
   }
 
   Widget _buildChooseBookingTypeView(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -294,7 +299,7 @@ class FacilityStepOne extends StatelessWidget {
                     "Choose Booking Type",
                     style: TextStyle(
                       fontFamily: 'Montserrat',
-                      color: ColorsUtils.chipText,
+                      color: customColors.chipText,
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
                     ),
@@ -306,7 +311,7 @@ class FacilityStepOne extends StatelessWidget {
                 "Choose how users can book your facility.",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.hintTextColor,
+                  color: customColors.hintTextColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
@@ -322,7 +327,7 @@ class FacilityStepOne extends StatelessWidget {
                   final isSelected = (context.watch<CreateFacilityViewModel>().selectedBookingType?.id == item.id);
                   return SetupGridViewItem(
                     title: item.title,
-                    unSelectedColor: ColorsUtils.white,
+                    unSelectedColor: customColors.containerBG,
                     imagePath: item.imagePath,
                     isSelected: isSelected,
                     isEnabled: true,
@@ -335,7 +340,7 @@ class FacilityStepOne extends StatelessWidget {
                 (context.watch<CreateFacilityViewModel>().selectedBookingType?.id == 2) ? "Shared access with other users" : "Exclusive access to the facility",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.hintTextColor,
+                  color: customColors.hintTextColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),

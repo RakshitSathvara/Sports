@@ -3,7 +3,7 @@ import 'package:oqdo_mobile_app/components/custom_button.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/models/facility_preview_model.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/base_container.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 
 class FacilityTrainingPreviewPage extends StatelessWidget {
@@ -15,16 +15,18 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return Scaffold(
-      backgroundColor: ColorsUtils.white,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
-        backgroundColor: ColorsUtils.white,
+        backgroundColor: colorScheme.surface,
         elevation: 0,
         titleSpacing: 0,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: ColorsUtils.black,
+            color: colorScheme.onSurface,
             size: 24,
           ),
           onPressed: () => Navigator.of(context).pop(),
@@ -32,7 +34,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
         title: Text(
           "Training Preview",
           style: TextStyle(
-            color: ColorsUtils.chipText,
+            color: customColors.chipText,
             fontFamily: 'Montserrat',
             fontSize: 18,
             fontWeight: FontWeight.w600,
@@ -46,17 +48,17 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildTrainingPreviewCard(),
+              _buildTrainingPreviewCard(context),
               const SizedBox(height: 20.0),
-              _buildAddressAndContactInfo(),
+              _buildAddressAndContactInfo(context),
               const SizedBox(height: 20.0),
-              _buildAvailableBookingSlotsView(),
+              _buildAvailableBookingSlotsView(context),
               const SizedBox(height: 20.0),
-              _buildFacilityDescription(),
+              _buildFacilityDescription(context),
               const SizedBox(height: 20.0),
               _buildGoToListViewButton(context),
               const SizedBox(height: 20.0),
-              _buildBottomText(),
+              _buildBottomText(context),
             ],
           ),
         ),
@@ -64,10 +66,12 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
     );
   }
 
-  Widget _buildTrainingPreviewCard() {
+  Widget _buildTrainingPreviewCard(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return BaseContainer(
-      borderColor: ColorsUtils.primary,
-      bgColor: ColorsUtils.selectedGridItemColor,
+      borderColor: colorScheme.primary,
+      bgColor: customColors.selectedGridItemColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +80,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
             facilityDetails.title,
             style: TextStyle(
               fontFamily: 'Inter',
-              color: ColorsUtils.primary,
+              color: colorScheme.primary,
               fontWeight: FontWeight.w600,
               fontSize: 18,
             ),
@@ -86,7 +90,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
             facilityDetails.subTitle,
             style: TextStyle(
               fontFamily: 'Inter',
-              color: ColorsUtils.black,
+              color: colorScheme.onSurface,
               fontWeight: FontWeight.w500,
               fontSize: 14,
             ),
@@ -103,7 +107,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.chipText,
+                    color: customColors.chipText,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                   ),
@@ -114,14 +118,14 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
-                  color: facilityDetails.isPrivateRental ? ColorsUtils.green : ColorsUtils.darkRed,
+                  color: facilityDetails.isPrivateRental ? customColors.green : customColors.darkRed,
                 ),
                 child: Text(
                   facilityDetails.isPrivateRental ? 'Shared Rental' : 'Private Rental',
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
-                    color: ColorsUtils.white,
+                    color: customColors.onAccentText,
                     fontFamily: 'Montserrat',
                   ),
                 ),
@@ -138,7 +142,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(Icons.access_time, size: 20, color: ColorsUtils.chipText),
+                    Icon(Icons.access_time, size: 20, color: customColors.chipText),
                     SizedBox(width: 5),
                     Text(
                       '${facilityDetails.slotDuration} slots',
@@ -146,7 +150,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                         fontSize: 14,
                         fontFamily: 'Montserrat',
                         fontWeight: FontWeight.w600,
-                        color: ColorsUtils.chipText,
+                        color: customColors.chipText,
                       ),
                     ),
                   ],
@@ -168,7 +172,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                         fontSize: 14,
                         fontFamily: 'Montserrat',
                         fontWeight: FontWeight.w600,
-                        color: ColorsUtils.chipText,
+                        color: customColors.chipText,
                       ),
                     ),
                   ],
@@ -191,7 +195,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                           fontSize: 14,
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.w600,
-                          color: ColorsUtils.chipText,
+                          color: customColors.chipText,
                         ),
                       ),
                     ],
@@ -204,10 +208,12 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
     );
   }
 
-  Widget _buildAddressAndContactInfo() {
+  Widget _buildAddressAndContactInfo(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return BaseContainer(
-      borderColor: ColorsUtils.borderColor,
-      bgColor: ColorsUtils.buttonBg,
+      borderColor: customColors.borderColor,
+      bgColor: customColors.buttonBg,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -221,7 +227,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                   OQDOApplication.instance.userName ?? "",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w600,
                     fontSize: 18,
                   ),
@@ -231,7 +237,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                   "Address",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                   ),
@@ -241,7 +247,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                   "Venue address will be provided after booking",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -251,7 +257,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                   "Contact Number",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                   ),
@@ -261,7 +267,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                   OQDOApplication.instance.phone ?? "",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -274,10 +280,12 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
     );
   }
 
-  Widget _buildAvailableBookingSlotsView() {
+  Widget _buildAvailableBookingSlotsView(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return BaseContainer(
-      borderColor: ColorsUtils.borderColor,
-      bgColor: ColorsUtils.white,
+      borderColor: customColors.borderColor,
+      bgColor: customColors.containerBG,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -291,7 +299,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                   "Available Booking Slots",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -304,7 +312,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final slotDetails = facilityDetails.slotsList[index];
                     return BaseContainer(
-                      bgColor: ColorsUtils.buttonBg,
+                      bgColor: customColors.buttonBg,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -323,13 +331,16 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                                         children: slotDetails.sortedSelectedDays.map((day) {
                                           return Container(
                                             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
-                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0), color: ColorsUtils.white),
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(20.0),
+                                              color: customColors.containerBG,
+                                            ),
                                             child: Text(
                                               day.title,
                                               style: TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w400,
-                                                color: ColorsUtils.black,
+                                                color: colorScheme.onSurface,
                                                 fontFamily: 'Inter',
                                               ),
                                             ),
@@ -345,7 +356,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                                   "${slotDetails.startTimeFormatted} → ${slotDetails.endTimeFormatted}",
                                   style: TextStyle(
                                     fontFamily: 'Inter',
-                                    color: ColorsUtils.black,
+                                    color: colorScheme.onSurface,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 14,
                                   ),
@@ -362,7 +373,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                                 "S\$ ${parseDoubleToRoundString(slotDetails.ratePerHour ?? 0)}/hr",
                                 style: TextStyle(
                                   fontFamily: 'Inter',
-                                  color: ColorsUtils.primary,
+                                  color: colorScheme.primary,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16,
                                 ),
@@ -372,7 +383,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                                 "${slotDetails.tempNumberOfSlots} ${((slotDetails.tempNumberOfSlots) > 1) ? "Slots" : "Slot"}",
                                 style: TextStyle(
                                   fontFamily: 'Inter',
-                                  color: ColorsUtils.textGray,
+                                  color: customColors.textGray,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14,
                                 ),
@@ -393,10 +404,12 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
     );
   }
 
-  Widget _buildFacilityDescription() {
+  Widget _buildFacilityDescription(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return BaseContainer(
-      borderColor: ColorsUtils.borderColor,
-      bgColor: ColorsUtils.white,
+      borderColor: customColors.borderColor,
+      bgColor: customColors.containerBG,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -410,7 +423,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                   "Facility Description",
                   style: TextStyle(
                     fontFamily: 'Montserrat',
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -420,7 +433,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                   facilityDetails.description,
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.textGray,
+                    color: customColors.textGray,
                     fontWeight: FontWeight.w500,
                     fontSize: 12,
                   ),
@@ -435,7 +448,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                         "Maximum Group Size",
                         style: TextStyle(
                           fontFamily: 'Inter',
-                          color: ColorsUtils.textGray,
+                          color: customColors.textGray,
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
                         ),
@@ -445,7 +458,7 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
                         facilityDetails.maxCapacityOrGroupSize,
                         style: TextStyle(
                           fontFamily: 'Inter',
-                          color: ColorsUtils.black,
+                          color: colorScheme.onSurface,
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
                         ),
@@ -461,10 +474,11 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
   }
 
   Widget _buildGoToListViewButton(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return CustomButton(
       text: "Go to List",
-      textcolor: ColorsUtils.white,
-      buttonColor: ColorsUtils.primary,
+      textcolor: colorScheme.onPrimary,
+      buttonColor: colorScheme.primary,
       textsize: 16,
       fontWeight: FontWeight.bold,
       buttonheight: 50,
@@ -474,13 +488,14 @@ class FacilityTrainingPreviewPage extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomText() {
+  Widget _buildBottomText(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return Text(
       "Need a different time slot? Contact the instructor directly for custom scheduling.",
       textAlign: TextAlign.center,
       style: TextStyle(
         fontFamily: 'Inter',
-        color: ColorsUtils.textGray,
+        color: customColors.textGray,
         fontWeight: FontWeight.w400,
         fontSize: 12,
       ),

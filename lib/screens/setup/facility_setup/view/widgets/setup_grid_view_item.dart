@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class SetupGridViewItem extends StatelessWidget {
   const SetupGridViewItem({
@@ -24,18 +24,23 @@ class SetupGridViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+    final double borderOpacity = isEnabled ? 1 : 0.25;
+    final double backgroundOpacity = isEnabled ? 1 : 0.5;
+    final Color resolvedUnselectedColor = unSelectedColor ?? customColors.containerBG;
     return GestureDetector(
       onTap: isEnabled ? onTap : null,
       child: Container(
         padding: EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           border: Border.all(
-              color: isSelected ? ColorsUtils.primary.withValues(alpha: isEnabled ? 1 : 0.25) : ColorsUtils.borderColor.withValues(alpha: isEnabled ? 1 : 0.25),
+              color: (isSelected ? colorScheme.primary : customColors.borderColor).withOpacity(borderOpacity),
               width: 1),
           borderRadius: BorderRadius.circular(5.0),
           color: isSelected
-              ? ColorsUtils.selectedGridItemColor.withValues(alpha: isEnabled ? 1 : 0.5)
-              : ((unSelectedColor ?? ColorsUtils.containerBG)..withValues(alpha: isEnabled ? 1 : 0.5)),
+              ? customColors.selectedGridItemColor.withOpacity(backgroundOpacity)
+              : resolvedUnselectedColor.withOpacity(backgroundOpacity),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -69,7 +74,7 @@ class SetupGridViewItem extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
-                  color: ColorsUtils.black,
+                  color: colorScheme.onSurface,
                   fontFamily: 'Inter',
                 ),
               ),

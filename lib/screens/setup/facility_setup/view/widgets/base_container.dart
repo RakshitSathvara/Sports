@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class BaseContainer extends StatelessWidget {
   const BaseContainer({super.key, required this.child, this.bgColor, this.width, this.borderColor});
@@ -11,13 +11,14 @@ class BaseContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
     return Container(
       width: width,
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        color: bgColor ?? ColorsUtils.containerBG,
+        color: bgColor ?? customColors.containerBG,
         borderRadius: BorderRadius.circular(5.0),
-        border: Border.all(color: borderColor ?? ColorsUtils.borderColor, width: 1),
+        border: Border.all(color: borderColor ?? customColors.borderColor, width: 1),
       ),
       child: child,
     );
