@@ -9,7 +9,6 @@ import 'package:oqdo_mobile_app/screens/setup/facility_setup/viewmodel/stepper_m
 import 'package:oqdo_mobile_app/screens/setup/setups_bottom_sheets/Show24HrsAleartBottomSheet.dart';
 import 'package:oqdo_mobile_app/screens/setup/setups_bottom_sheets/ShowEditFacilityCoachChangesBottomSheet.dart';
 import 'package:oqdo_mobile_app/screens/setup/setups_bottom_sheets/ShowSaveDiscardBottomSheet.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
@@ -84,7 +83,7 @@ class CreateCoachSetupPage extends StatelessWidget {
         ),
       ),
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      backgroundColor: OQDOThemeData.whiteColor,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       builder: (ctx) => const Show24HrsAlearBottomSheet(),
     ).then((value) {
       if (value != null) {
@@ -131,7 +130,7 @@ class CreateCoachSetupPage extends StatelessWidget {
           ),
         ),
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        backgroundColor: OQDOThemeData.whiteColor,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         builder: (ctx) => const Show24HrsAlearBottomSheet(),
       ).then((value) {
         if (value != null) {
@@ -170,7 +169,7 @@ class CreateCoachSetupPage extends StatelessWidget {
           ),
         ),
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        backgroundColor: OQDOThemeData.whiteColor,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         builder: (ctx) => ShowEditFacilityCoachChangesBottomSheet(
           type: 'C',
         ),
@@ -189,7 +188,7 @@ class CreateCoachSetupPage extends StatelessWidget {
                 ),
               ),
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              backgroundColor: OQDOThemeData.whiteColor,
+              backgroundColor: Theme.of(context).colorScheme.surface,
               builder: (ctx) => const Show24HrsAlearBottomSheet(),
             ).then((value) {
               if (value != null) {
@@ -237,7 +236,7 @@ class CreateCoachSetupPage extends StatelessWidget {
                       ),
                     ),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                    backgroundColor: OQDOThemeData.whiteColor,
+                    backgroundColor: Theme.of(context).colorScheme.surface,
                     builder: (ctx) => const Show24HrsAlearBottomSheet(),
                   ).then((value) {
                     if (value != null) {

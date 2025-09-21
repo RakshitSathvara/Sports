@@ -4,7 +4,7 @@ import 'package:oqdo_mobile_app/components/custom_button.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/setup/coach_setup/models/coach_preview_model.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/base_container.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 
 class CoachTrainingPreviewPage extends StatelessWidget {
@@ -16,16 +16,19 @@ class CoachTrainingPreviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+
     return Scaffold(
-      backgroundColor: ColorsUtils.white,
+      backgroundColor: colorScheme.background,
       appBar: AppBar(
-        backgroundColor: ColorsUtils.white,
+        backgroundColor: colorScheme.surface,
         elevation: 0,
         titleSpacing: 0,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: ColorsUtils.black,
+            color: colorScheme.onSurface,
             size: 24,
           ),
           onPressed: () => Navigator.of(context).pop(true),
@@ -33,7 +36,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
         title: Text(
           "Training Preview",
           style: TextStyle(
-            color: ColorsUtils.chipText,
+            color: customColors.chipText,
             fontFamily: 'Montserrat',
             fontSize: 18,
             fontWeight: FontWeight.w600,
@@ -47,19 +50,19 @@ class CoachTrainingPreviewPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildTrainingPreviewCard(),
+              _buildTrainingPreviewCard(context, customColors, colorScheme),
               const SizedBox(height: 20.0),
-              _buildUserCard(),
+              _buildUserCard(context, customColors, colorScheme),
               const SizedBox(height: 20.0),
-              _buildAvailableSessionsView(),
+              _buildAvailableSessionsView(context, customColors, colorScheme),
               const SizedBox(height: 20.0),
-              _buildTrainingVenueView(),
+              _buildTrainingVenueView(context, customColors, colorScheme),
               const SizedBox(height: 20.0),
-              _buildAboutTrainingView(),
+              _buildAboutTrainingView(context, customColors, colorScheme),
               const SizedBox(height: 20.0),
-              _buildGoToListViewButton(context),
+              _buildGoToListViewButton(context, colorScheme),
               const SizedBox(height: 20.0),
-              _buildBottomText(),
+              _buildBottomText(context, customColors),
             ],
           ),
         ),
@@ -67,10 +70,14 @@ class CoachTrainingPreviewPage extends StatelessWidget {
     );
   }
 
-  Widget _buildTrainingPreviewCard() {
+  Widget _buildTrainingPreviewCard(
+    BuildContext context,
+    CustomColors customColors,
+    ColorScheme colorScheme,
+  ) {
     return BaseContainer(
-      borderColor: ColorsUtils.primary,
-      bgColor: ColorsUtils.selectedGridItemColor,
+      borderColor: colorScheme.primary,
+      bgColor: customColors.selectedGridItemColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,7 +86,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
             coachDetails.title,
             style: TextStyle(
               fontFamily: 'Inter',
-              color: ColorsUtils.primary,
+              color: colorScheme.primary,
               fontWeight: FontWeight.w600,
               fontSize: 18,
             ),
@@ -89,30 +96,32 @@ class CoachTrainingPreviewPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                "${coachDetails.activity} > ${coachDetails.subActivity}",
-                style: TextStyle(
-                  fontFamily: 'Inter',
-                  color: ColorsUtils.chipText,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
+              Expanded(
+                child: Text(
+                  "${coachDetails.activity} > ${coachDetails.subActivity}",
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    color: customColors.chipText,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                  ),
                 ),
               ),
               const SizedBox(width: 10.0),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
                   color: coachDetails.isOpenClass
-                      ? ColorsUtils.green
-                      : ColorsUtils.darkRed,
+                      ? customColors.green
+                      : customColors.darkRed,
                 ),
                 child: Text(
                   coachDetails.isOpenClass ? 'Open Class' : 'Group Class',
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
-                    color: ColorsUtils.white,
+                    color: customColors.onAccentText,
                     fontFamily: 'Montserrat',
                   ),
                 ),
@@ -120,72 +129,41 @@ class CoachTrainingPreviewPage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            alignment: WrapAlignment.start,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(Icons.access_time,
-                      size: 20, color: ColorsUtils.chipText),
-                  SizedBox(width: 8),
-                  Text(
-                    '${coachDetails.slotDurationFormatted} sessions',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w600,
-                      color: ColorsUtils.chipText,
-                    ),
-                  ),
-                ],
+              _buildTrainingInfoRow(
+                context,
+                icon: const Icon(Icons.access_time, size: 20),
+                label: '${coachDetails.slotDurationFormatted} sessions',
+                colorScheme: colorScheme,
+                customColors: customColors,
               ),
-              const SizedBox(width: 10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    "assets/images/ic_dollar_rounded.png",
+              _buildTrainingInfoRow(
+                context,
+                icon: Image.asset(
+                  "assets/images/ic_dollar_rounded.png",
+                  height: 20,
+                  width: 20,
+                ),
+                label: 'From ${parseDoubleToRoundString(coachDetails.slotRate)}/hr',
+                colorScheme: colorScheme,
+                customColors: customColors,
+              ),
+              if (coachDetails.isOpenClass)
+                _buildTrainingInfoRow(
+                  context,
+                  icon: Image.asset(
+                    "assets/images/ic_persons.png",
                     height: 20,
                     width: 20,
                   ),
-                  SizedBox(width: 8),
-                  Text(
-                    'From ${parseDoubleToRoundString(coachDetails.slotRate)}/hr',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w600,
-                      color: ColorsUtils.chipText,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(width: 10.0),
-              if (coachDetails.isOpenClass)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/ic_persons.png",
-                      height: 20,
-                      width: 20,
-                    ),
-                    SizedBox(width: 8),
-                    Text(
-                      '${coachDetails.maxCapacityOrGroupSize} max capacity',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w600,
-                        color: ColorsUtils.chipText,
-                      ),
-                    ),
-                  ],
+                  label: '${coachDetails.maxCapacityOrGroupSize} max capacity',
+                  colorScheme: colorScheme,
+                  customColors: customColors,
                 ),
             ],
           ),
@@ -194,10 +172,43 @@ class CoachTrainingPreviewPage extends StatelessWidget {
     );
   }
 
-  Widget _buildUserCard() {
+  Widget _buildTrainingInfoRow(
+    BuildContext context, {
+    required Widget icon,
+    required String label,
+    required ColorScheme colorScheme,
+    required CustomColors customColors,
+  }) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        IconTheme(
+          data: IconThemeData(color: customColors.chipText),
+          child: icon,
+        ),
+        const SizedBox(width: 8),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 13,
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.w600,
+            color: customColors.chipText,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildUserCard(
+    BuildContext context,
+    CustomColors customColors,
+    ColorScheme colorScheme,
+  ) {
     return BaseContainer(
-      borderColor: ColorsUtils.borderColor,
-      bgColor: ColorsUtils.buttonBg,
+      borderColor: customColors.borderColor,
+      bgColor: customColors.buttonBg,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -236,7 +247,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                 OQDOApplication.instance.userName ?? "",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.black,
+                  color: colorScheme.onSurface,
                   fontWeight: FontWeight.w600,
                   fontSize: 18,
                 ),
@@ -246,7 +257,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                 "${OQDOApplication.instance.coachExperienceYears ?? 0} ${(OQDOApplication.instance.coachExperienceYears ?? 0) > 1 ? "years" : "year"}",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.textGray,
+                  color: customColors.textGray,
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
                 ),
@@ -258,10 +269,14 @@ class CoachTrainingPreviewPage extends StatelessWidget {
     );
   }
 
-  Widget _buildAvailableSessionsView() {
+  Widget _buildAvailableSessionsView(
+    BuildContext context,
+    CustomColors customColors,
+    ColorScheme colorScheme,
+  ) {
     return BaseContainer(
-      borderColor: ColorsUtils.borderColor,
-      bgColor: ColorsUtils.white,
+      borderColor: customColors.borderColor,
+      bgColor: customColors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -275,7 +290,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                   "Available Sessions",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -288,7 +303,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final slotDetails = coachDetails.slotsList[index];
                     return BaseContainer(
-                      bgColor: ColorsUtils.buttonBg,
+                      bgColor: customColors.buttonBg,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -304,22 +319,20 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                                       child: Wrap(
                                         spacing: 8,
                                         runSpacing: 8,
-                                        children: slotDetails.sortedSelectedDays
-                                            .map((day) {
+                                        children: slotDetails.sortedSelectedDays.map((day) {
                                           return Container(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 10.0,
-                                                vertical: 4.0),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10.0, vertical: 4.0),
                                             decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20.0),
-                                                color: ColorsUtils.white),
+                                              borderRadius: BorderRadius.circular(20.0),
+                                              color: customColors.containerBG,
+                                            ),
                                             child: Text(
                                               day.title,
                                               style: TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w400,
-                                                color: ColorsUtils.black,
+                                                color: colorScheme.onSurface,
                                                 fontFamily: 'Inter',
                                               ),
                                             ),
@@ -335,7 +348,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                                       coachDetails.slotDurationInMinutes),
                                   style: TextStyle(
                                     fontFamily: 'Inter',
-                                    color: ColorsUtils.black,
+                                    color: colorScheme.onSurface,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 14,
                                   ),
@@ -352,7 +365,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                                 "S\$ ${parseDoubleToRoundString(slotDetails.ratePerHour ?? 0)}/hr",
                                 style: TextStyle(
                                   fontFamily: 'Inter',
-                                  color: ColorsUtils.primary,
+                                  color: colorScheme.primary,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16,
                                 ),
@@ -362,7 +375,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                                 "${slotDetails.tempNumberOfSlots} ${((slotDetails.tempNumberOfSlots) > 1) ? "Slots" : "Slot"}",
                                 style: TextStyle(
                                   fontFamily: 'Inter',
-                                  color: ColorsUtils.textGray,
+                                  color: customColors.textGray,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14,
                                 ),
@@ -373,8 +386,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                       ),
                     );
                   },
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(height: 10.0),
+                  separatorBuilder: (context, index) => const SizedBox(height: 10.0),
                 ),
               ],
             ),
@@ -384,10 +396,14 @@ class CoachTrainingPreviewPage extends StatelessWidget {
     );
   }
 
-  Widget _buildTrainingVenueView() {
+  Widget _buildTrainingVenueView(
+    BuildContext context,
+    CustomColors customColors,
+    ColorScheme colorScheme,
+  ) {
     return BaseContainer(
-      borderColor: ColorsUtils.borderColor,
-      bgColor: ColorsUtils.white,
+      borderColor: customColors.borderColor,
+      bgColor: customColors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -401,7 +417,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                   "Training Venue",
                   style: TextStyle(
                     fontFamily: 'Montserrat',
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -411,7 +427,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                   "Location Type",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.textGray,
+                    color: customColors.textGray,
                     fontWeight: FontWeight.w400,
                     fontSize: 14,
                   ),
@@ -423,11 +439,19 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                   children: [
                     if ((coachDetails.addressTypeId == 1) ||
                         (coachDetails.addressTypeId == 3))
-                      _buildLocationType(title: "Coach's Address"),
+                      _buildLocationType(
+                        context,
+                        customColors,
+                        title: "Coach's Address",
+                      ),
                     const SizedBox(width: 10.0),
                     if ((coachDetails.addressTypeId == 2) ||
                         (coachDetails.addressTypeId == 3))
-                      _buildLocationType(title: "Home Training"),
+                      _buildLocationType(
+                        context,
+                        customColors,
+                        title: "Home Training",
+                      ),
                   ],
                 ),
                 const SizedBox(height: 10),
@@ -435,7 +459,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                   "Address",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.textGray,
+                    color: customColors.textGray,
                     fontWeight: FontWeight.w400,
                     fontSize: 14,
                   ),
@@ -445,7 +469,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                   "Venue address will be provided after booking",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -458,10 +482,14 @@ class CoachTrainingPreviewPage extends StatelessWidget {
     );
   }
 
-  Widget _buildAboutTrainingView() {
+  Widget _buildAboutTrainingView(
+    BuildContext context,
+    CustomColors customColors,
+    ColorScheme colorScheme,
+  ) {
     return BaseContainer(
-      borderColor: ColorsUtils.borderColor,
-      bgColor: ColorsUtils.white,
+      borderColor: customColors.borderColor,
+      bgColor: customColors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -475,7 +503,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                   "About This Training",
                   style: TextStyle(
                     fontFamily: 'Montserrat',
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -485,7 +513,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                   "Join our open training sessions where you'll learn alongside other students. Perfect for building skills in a supportive group environment with professional instruction.",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.textGray,
+                    color: customColors.textGray,
                     fontWeight: FontWeight.w500,
                     fontSize: 12,
                   ),
@@ -501,17 +529,19 @@ class CoachTrainingPreviewPage extends StatelessWidget {
                           : "Maximum Group Size",
                       style: TextStyle(
                         fontFamily: 'Inter',
-                        color: ColorsUtils.textGray,
+                        color: customColors.textGray,
                         fontWeight: FontWeight.w500,
                         fontSize: 14,
                       ),
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      coachDetails.isOpenClass ? coachDetails.minSessions : coachDetails.maxCapacityOrGroupSize,
+                      coachDetails.isOpenClass
+                          ? coachDetails.minSessions
+                          : coachDetails.maxCapacityOrGroupSize,
                       style: TextStyle(
                         fontFamily: 'Inter',
-                        color: ColorsUtils.black,
+                        color: colorScheme.onSurface,
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
                       ),
@@ -526,11 +556,11 @@ class CoachTrainingPreviewPage extends StatelessWidget {
     );
   }
 
-  Widget _buildGoToListViewButton(BuildContext context) {
+  Widget _buildGoToListViewButton(BuildContext context, ColorScheme colorScheme) {
     return CustomButton(
       text: "Go to List",
-      textcolor: ColorsUtils.white,
-      buttonColor: ColorsUtils.primary,
+      textcolor: colorScheme.onPrimary,
+      buttonColor: colorScheme.primary,
       textsize: 16,
       fontWeight: FontWeight.bold,
       buttonheight: 50,
@@ -540,25 +570,29 @@ class CoachTrainingPreviewPage extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomText() {
+  Widget _buildBottomText(BuildContext context, CustomColors customColors) {
     return Text(
       "Need a different time slot? Contact the instructor directly for custom scheduling.",
       textAlign: TextAlign.center,
       style: TextStyle(
         fontFamily: 'Inter',
-        color: ColorsUtils.textGray,
+        color: customColors.textGray,
         fontWeight: FontWeight.w400,
         fontSize: 12,
       ),
     );
   }
 
-  Widget _buildLocationType({required String title}) {
+  Widget _buildLocationType(
+    BuildContext context,
+    CustomColors customColors, {
+    required String title,
+  }) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        color: ColorsUtils.green.withValues(alpha: 0.1),
+        color: customColors.green.withOpacity(0.1),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -567,7 +601,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
         children: [
           Icon(
             Icons.check,
-            color: ColorsUtils.green,
+            color: customColors.green,
             size: 16,
           ),
           const SizedBox(width: 3.0),
@@ -576,7 +610,7 @@ class CoachTrainingPreviewPage extends StatelessWidget {
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w600,
-              color: ColorsUtils.green,
+              color: customColors.green,
               fontFamily: 'Montserrat',
             ),
           ),
