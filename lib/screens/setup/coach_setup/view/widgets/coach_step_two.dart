@@ -6,8 +6,7 @@ import 'package:oqdo_mobile_app/screens/setup/coach_setup/viewmodel/create_coach
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/base_container.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/duration_input_field.dart';
 import 'package:oqdo_mobile_app/screens/setup/setups_bottom_sheets/ShowClearSlotsBottomSheet.dart';
-import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_field.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
@@ -83,7 +82,7 @@ class CoachStepTwo extends StatelessWidget {
         ),
       ),
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      backgroundColor: OQDOThemeData.whiteColor,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       builder: (BuildContext context) => const ShowClearSlotsBottomSheet(
         height: 230,
         fieldName: "Class Duration",
@@ -105,6 +104,8 @@ class CoachStepTwo extends StatelessWidget {
   }
 
   Widget _buildClassSettingsView(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+    final colorScheme = Theme.of(context).colorScheme;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,14 +115,14 @@ class CoachStepTwo extends StatelessWidget {
           "Class Configuration",
           style: TextStyle(
             fontFamily: 'SFPro',
-            color: ColorsUtils.primary,
+            color: colorScheme.primary,
             fontWeight: FontWeight.w600,
             fontSize: 16,
           ),
         ),
         const SizedBox(height: 15.0),
         BaseContainer(
-          bgColor: ColorsUtils.white,
+          bgColor: customColors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,7 +132,7 @@ class CoachStepTwo extends StatelessWidget {
                 "Class Settings",
                 style: TextStyle(
                   fontFamily: 'Montserrat',
-                  color: ColorsUtils.chipText,
+                  color: customColors.chipText,
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                 ),
@@ -139,7 +140,7 @@ class CoachStepTwo extends StatelessWidget {
               const SizedBox(height: 15),
               CommonTextField(
                 maxLength: context.read<CreateCoachViewModel>().selectedTrainingType?.id == 2 ? 3 : 4,
-                fillColor: ColorsUtils.white,
+                fillColor: customColors.white,
                 isNumber: true,
                 borderRadius: 6,
                 hint: context.read<CreateCoachViewModel>().selectedTrainingType?.id == 2 ? "Maximum Group Size" : "Class Capacity",
@@ -149,7 +150,7 @@ class CoachStepTwo extends StatelessWidget {
                 textStyle: TextStyle(
                   fontSize: 16,
                   fontFamily: "Inter",
-                  color: ColorsUtils.black,
+                  color: colorScheme.onSurface,
                   fontWeight: FontWeight.w500,
                 ),
                 validator: (value) {
@@ -172,7 +173,7 @@ class CoachStepTwo extends StatelessWidget {
                 "Maximum participants per class",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.hintTextColor,
+                  color: customColors.hintTextColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
@@ -197,7 +198,7 @@ class CoachStepTwo extends StatelessWidget {
                               ),
                             ),
                             clipBehavior: Clip.antiAliasWithSaveLayer,
-                            backgroundColor: OQDOThemeData.whiteColor,
+                            backgroundColor: Theme.of(context).colorScheme.surface,
                             builder: (BuildContext context) => const ShowClearSlotsBottomSheet(
                               height: 230,
                               fieldName: "Class Duration",
@@ -273,7 +274,7 @@ class CoachStepTwo extends StatelessWidget {
                                 ),
                               ),
                               clipBehavior: Clip.antiAliasWithSaveLayer,
-                              backgroundColor: OQDOThemeData.whiteColor,
+                              backgroundColor: Theme.of(context).colorScheme.surface,
                               builder: (BuildContext context) => const ShowClearSlotsBottomSheet(
                                 height: 230,
                                 fieldName: "Class Duration",
@@ -305,7 +306,7 @@ class CoachStepTwo extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 14,
                         fontFamily: "Inter",
-                        color: ColorsUtils.hintTextColor,
+                        color: customColors.hintTextColor,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -317,7 +318,7 @@ class CoachStepTwo extends StatelessWidget {
                 "Minimum 1 hour - coaches can choose longer durations for their classes",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.hintTextColor,
+                  color: customColors.hintTextColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
@@ -335,17 +336,17 @@ class CoachStepTwo extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                       decoration: BoxDecoration(
-                        color: ColorsUtils.selectedGridItemColor,
+                        color: customColors.selectedGridItemColor,
                         borderRadius: BorderRadius.circular(6),
                         border: Border.all(
-                          color: ColorsUtils.lightBlueBorderColor,
+                          color: customColors.lightBlueBorderColor,
                         ),
                       ),
                       child: Text(
                         duration,
                         style: TextStyle(
                           fontSize: 14,
-                          color: ColorsUtils.black,
+                          color: colorScheme.onSurface,
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w400,
                         ),
@@ -359,7 +360,7 @@ class CoachStepTwo extends StatelessWidget {
                 'Popular Duration. Click to select quickly.',
                 style: TextStyle(
                   fontSize: 12,
-                  color: ColorsUtils.textGray,
+                  color: customColors.textGray,
                   fontFamily: 'Inter',
                   fontWeight: FontWeight.w400,
                 ),
@@ -377,7 +378,7 @@ class CoachStepTwo extends StatelessWidget {
                         Expanded(
                           child: CommonTextField(
                             maxLength: 2,
-                            fillColor: ColorsUtils.white,
+                            fillColor: customColors.white,
                             isNumber: true,
                             borderRadius: 6,
                             hint: "Min Sessions to Book for Coaching",
@@ -387,7 +388,7 @@ class CoachStepTwo extends StatelessWidget {
                             textStyle: TextStyle(
                               fontSize: 16,
                               fontFamily: "Inter",
-                              color: ColorsUtils.black,
+                              color: colorScheme.onSurface,
                               fontWeight: FontWeight.w500,
                             ),
                             validator: (value) {
@@ -411,15 +412,15 @@ class CoachStepTwo extends StatelessWidget {
                         const SizedBox(width: 10),
                         Padding(
                           padding: const EdgeInsets.only(top: 15.0),
-                          child: Text(
-                            "sessions",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontFamily: "Inter",
-                              color: ColorsUtils.hintTextColor,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
+                      child: Text(
+                        "sessions",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: "Inter",
+                          color: customColors.hintTextColor,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                         )
                       ],
                     ),
@@ -428,7 +429,7 @@ class CoachStepTwo extends StatelessWidget {
                       "Minimum number of sessions students must book to get coaching",
                       style: TextStyle(
                         fontFamily: 'Inter',
-                        color: ColorsUtils.hintTextColor,
+                        color: customColors.hintTextColor,
                         fontWeight: FontWeight.w400,
                         fontSize: 12,
                       ),
@@ -443,6 +444,8 @@ class CoachStepTwo extends StatelessWidget {
   }
 
   Widget _buildTrainingVenueView(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+    final colorScheme = Theme.of(context).colorScheme;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -463,7 +466,7 @@ class CoachStepTwo extends StatelessWidget {
                       "Training Venue",
                       style: TextStyle(
                         fontFamily: 'Montserrat',
-                        color: ColorsUtils.chipText,
+                        color: customColors.chipText,
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
                       ),
@@ -478,18 +481,20 @@ class CoachStepTwo extends StatelessWidget {
                                 "Training Location",
                                 style: TextStyle(
                                   fontFamily: 'Inter',
-                                  color: ColorsUtils.chipText,
+                                  color: customColors.chipText,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
                                 ),
                               ),
                               const SizedBox(height: 10.0),
                               _buildTrainingLocationCheckBoxTitleRow(
+                                context,
                                 title: "At Coach's Address",
                                 isSelected: (context.watch<CreateCoachViewModel>().trainingLocationCheckBoxValue == 1),
                                 onTap: () => context.read<CreateCoachViewModel>().onChangeTrainingLocationCheckBoxValue(1),
                               ),
                               _buildTrainingLocationCheckBoxTitleRow(
+                                context,
                                 title: "Home Training",
                                 isSelected: (context.watch<CreateCoachViewModel>().trainingLocationCheckBoxValue == 2),
                                 onTap: () {
@@ -511,6 +516,7 @@ class CoachStepTwo extends StatelessWidget {
                                 },
                               ),
                               _buildTrainingLocationCheckBoxTitleRow(
+                                context,
                                 title: "Both Options Available",
                                 isSelected: (context.watch<CreateCoachViewModel>().trainingLocationCheckBoxValue == 3),
                                 onTap: () {
@@ -536,7 +542,7 @@ class CoachStepTwo extends StatelessWidget {
                                 "Select the training location options you offer",
                                 style: TextStyle(
                                   fontFamily: 'Inter',
-                                  color: ColorsUtils.textGray,
+                                  color: customColors.textGray,
                                   fontWeight: FontWeight.w400,
                                   fontSize: 12,
                                 ),
@@ -555,22 +561,22 @@ class CoachStepTwo extends StatelessWidget {
                                         children: [
                                           Container(
                                             decoration: BoxDecoration(
-                                              border: Border.all(color: ColorsUtils.borderColor),
+                                              border: Border.all(color: customColors.borderColor),
                                               borderRadius: BorderRadius.circular(6),
-                                              color: OQDOThemeData.backgroundColor,
+                                              color: colorScheme.surface,
                                             ),
                                             child: Padding(
                                               padding: const EdgeInsets.only(left: 10, right: 10),
                                               child: DropdownButton<CoachTrainingAddress>(
                                                   isExpanded: true,
-                                                  icon: const Icon(Icons.keyboard_arrow_down_rounded, color: OQDOThemeData.blackColor),
-                                                  dropdownColor: ColorsUtils.white,
+                                                  icon: Icon(Icons.keyboard_arrow_down_rounded, color: colorScheme.onSurface),
+                                                  dropdownColor: customColors.white,
                                                   underline: const SizedBox(),
                                                   borderRadius: BorderRadius.circular(6),
                                                   hint: CustomTextView(
                                                     label: "Select Training Venue",
                                                     textStyle: TextStyle(
-                                                      color: ColorsUtils.hintTextColor,
+                                                      color: customColors.hintTextColor,
                                                       fontSize: 14,
                                                       fontWeight: FontWeight.w400,
                                                       fontFamily: 'Inter',
@@ -588,7 +594,7 @@ class CoachStepTwo extends StatelessWidget {
                                                             address.addressName ?? "",
                                                             overflow: TextOverflow.ellipsis,
                                                             style: TextStyle(
-                                                              color: ColorsUtils.black,
+                                                              color: colorScheme.onSurface,
                                                               fontSize: 14,
                                                               fontWeight: FontWeight.bold,
                                                               fontFamily: 'Inter',
@@ -600,7 +606,7 @@ class CoachStepTwo extends StatelessWidget {
                                                             overflow: TextOverflow.ellipsis,
                                                             style: TextStyle(
                                                               fontFamily: 'Inter',
-                                                              color: ColorsUtils.hintTextColor,
+                                                              color: customColors.hintTextColor,
                                                               fontWeight: FontWeight.w400,
                                                               fontSize: 12,
                                                             ),
@@ -618,9 +624,9 @@ class CoachStepTwo extends StatelessWidget {
                                     CustomButton(
                                       text: "Add New Address",
                                       leadingIcon: Icon(Icons.add, size: 18),
-                                      textcolor: ColorsUtils.black,
-                                      buttonColor: ColorsUtils.buttonColorGrey,
-                                      borderColor: ColorsUtils.borderColor,
+                                      textcolor: colorScheme.onSurface,
+                                      buttonColor: customColors.buttonColorGrey,
+                                      borderColor: customColors.borderColor,
                                       textsize: 16,
                                       fontWeight: FontWeight.bold,
                                       buttonheight: 50,
@@ -636,7 +642,7 @@ class CoachStepTwo extends StatelessWidget {
                                       "Select from available venues or add a new custom address",
                                       style: TextStyle(
                                         fontFamily: 'Inter',
-                                        color: ColorsUtils.textGray,
+                                        color: customColors.textGray,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 12,
                                       ),
@@ -648,7 +654,7 @@ class CoachStepTwo extends StatelessWidget {
                                         children: [
                                           const SizedBox(height: 10.0),
                                           BaseContainer(
-                                            bgColor: ColorsUtils.buttonBg,
+                                            bgColor: customColors.buttonBg,
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.start,
                                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -662,7 +668,7 @@ class CoachStepTwo extends StatelessWidget {
                                                         context.read<CreateCoachViewModel>().selectedAddress?.addressName ?? "",
                                                         overflow: TextOverflow.ellipsis,
                                                         style: TextStyle(
-                                                          color: ColorsUtils.black,
+                                                          color: colorScheme.onSurface,
                                                           fontSize: 14,
                                                           fontWeight: FontWeight.bold,
                                                           fontFamily: 'Inter',
@@ -673,7 +679,7 @@ class CoachStepTwo extends StatelessWidget {
                                                         "${context.read<CreateCoachViewModel>().selectedAddress?.address1 ?? ""}${(context.read<CreateCoachViewModel>().selectedAddress?.address1 ?? "").isNotEmpty ? ", " : ""}${context.read<CreateCoachViewModel>().selectedAddress?.address2 ?? ""}${(context.read<CreateCoachViewModel>().selectedAddress?.address2 ?? "").isNotEmpty ? ", " : ""}${context.read<CreateCoachViewModel>().selectedAddress?.pinCode ?? ""}",
                                                         style: TextStyle(
                                                           fontFamily: 'Inter',
-                                                          color: ColorsUtils.hintTextColor,
+                                                          color: customColors.hintTextColor,
                                                           fontWeight: FontWeight.w400,
                                                           fontSize: 12,
                                                         ),
@@ -698,7 +704,7 @@ class CoachStepTwo extends StatelessWidget {
                                 "Training Location",
                                 style: TextStyle(
                                   fontFamily: 'Inter',
-                                  color: ColorsUtils.chipText,
+                                  color: customColors.chipText,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 12,
                                 ),
@@ -706,18 +712,21 @@ class CoachStepTwo extends StatelessWidget {
                               const SizedBox(height: 10.0),
                               if (context.watch<CreateCoachViewModel>().classCapacity > 0)
                                 _buildTrainingLocationCheckBoxTitleRow(
+                                  context,
                                   title: "At Coach's Address",
                                   isSelected: (context.watch<CreateCoachViewModel>().trainingLocationCheckBoxValue == 1),
                                   onTap: () => context.read<CreateCoachViewModel>().onChangeTrainingLocationCheckBoxValue(1),
                                 ),
                               if (context.watch<CreateCoachViewModel>().classCapacity == 1)
                                 _buildTrainingLocationCheckBoxTitleRow(
+                                  context,
                                   title: "Home Training",
                                   isSelected: (context.watch<CreateCoachViewModel>().trainingLocationCheckBoxValue == 2),
                                   onTap: () => context.read<CreateCoachViewModel>().onChangeTrainingLocationCheckBoxValue(2),
                                 ),
                               if (context.watch<CreateCoachViewModel>().classCapacity == 1)
                                 _buildTrainingLocationCheckBoxTitleRow(
+                                  context,
                                   title: "Both Options Available",
                                   isSelected: (context.watch<CreateCoachViewModel>().trainingLocationCheckBoxValue == 3),
                                   onTap: () => context.read<CreateCoachViewModel>().onChangeTrainingLocationCheckBoxValue(3),
@@ -727,7 +736,7 @@ class CoachStepTwo extends StatelessWidget {
                                 "Select the training location options you offer",
                                 style: TextStyle(
                                   fontFamily: 'Inter',
-                                  color: ColorsUtils.textGray,
+                                  color: customColors.textGray,
                                   fontWeight: FontWeight.w400,
                                   fontSize: 12,
                                 ),
@@ -746,22 +755,22 @@ class CoachStepTwo extends StatelessWidget {
                                         children: [
                                           Container(
                                             decoration: BoxDecoration(
-                                              border: Border.all(color: ColorsUtils.borderColor),
+                                              border: Border.all(color: customColors.borderColor),
                                               borderRadius: BorderRadius.circular(6),
-                                              color: OQDOThemeData.backgroundColor,
+                                              color: colorScheme.surface,
                                             ),
                                             child: Padding(
                                               padding: const EdgeInsets.only(left: 10, right: 10),
                                               child: DropdownButton<CoachTrainingAddress>(
                                                   isExpanded: true,
-                                                  icon: const Icon(Icons.keyboard_arrow_down_rounded, color: OQDOThemeData.blackColor),
-                                                  dropdownColor: ColorsUtils.white,
+                                                  icon: Icon(Icons.keyboard_arrow_down_rounded, color: colorScheme.onSurface),
+                                                  dropdownColor: customColors.white,
                                                   underline: const SizedBox(),
                                                   borderRadius: BorderRadius.circular(6),
                                                   hint: CustomTextView(
                                                     label: "Select Training Venue",
                                                     textStyle: TextStyle(
-                                                      color: ColorsUtils.hintTextColor,
+                                                      color: customColors.hintTextColor,
                                                       fontSize: 14,
                                                       fontWeight: FontWeight.w400,
                                                       fontFamily: 'Inter',
@@ -779,7 +788,7 @@ class CoachStepTwo extends StatelessWidget {
                                                             address.addressName ?? "",
                                                             overflow: TextOverflow.ellipsis,
                                                             style: TextStyle(
-                                                              color: ColorsUtils.black,
+                                                              color: colorScheme.onSurface,
                                                               fontSize: 14,
                                                               fontWeight: FontWeight.bold,
                                                               fontFamily: 'Inter',
@@ -791,7 +800,7 @@ class CoachStepTwo extends StatelessWidget {
                                                             overflow: TextOverflow.ellipsis,
                                                             style: TextStyle(
                                                               fontFamily: 'Inter',
-                                                              color: ColorsUtils.hintTextColor,
+                                                              color: customColors.hintTextColor,
                                                               fontWeight: FontWeight.w400,
                                                               fontSize: 12,
                                                             ),
@@ -809,22 +818,23 @@ class CoachStepTwo extends StatelessWidget {
                                     CustomButton(
                                       text: "Add New Address",
                                       leadingIcon: Icon(Icons.add, size: 18),
-                                      textcolor: ColorsUtils.black,
-                                      buttonColor: ColorsUtils.buttonColorGrey,
-                                      borderColor: ColorsUtils.borderColor,
+                                      textcolor: colorScheme.onSurface,
+                                      buttonColor: customColors.buttonColorGrey,
+                                      borderColor: customColors.borderColor,
                                       textsize: 16,
                                       fontWeight: FontWeight.bold,
                                       buttonheight: 50,
                                       radius: 5,
                                       buttonwidth: double.infinity,
-                                      onTap: () => _showAddAddressBottomSheet(context, context.read<CreateCoachViewModel>()),
+                                      onTap: () =>
+                                          _showAddAddressBottomSheet(context, context.read<CreateCoachViewModel>()),
                                     ),
                                     const SizedBox(height: 10.0),
                                     Text(
                                       "Select from available venues or add a new custom address",
                                       style: TextStyle(
                                         fontFamily: 'Inter',
-                                        color: ColorsUtils.textGray,
+                                        color: customColors.textGray,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 12,
                                       ),
@@ -836,7 +846,7 @@ class CoachStepTwo extends StatelessWidget {
                                         children: [
                                           const SizedBox(height: 10.0),
                                           BaseContainer(
-                                            bgColor: ColorsUtils.buttonBg,
+                                            bgColor: customColors.buttonBg,
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.start,
                                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -850,7 +860,7 @@ class CoachStepTwo extends StatelessWidget {
                                                         context.read<CreateCoachViewModel>().selectedAddress?.addressName ?? "",
                                                         overflow: TextOverflow.ellipsis,
                                                         style: TextStyle(
-                                                          color: ColorsUtils.black,
+                                                          color: colorScheme.onSurface,
                                                           fontSize: 14,
                                                           fontWeight: FontWeight.bold,
                                                           fontFamily: 'Inter',
@@ -861,7 +871,7 @@ class CoachStepTwo extends StatelessWidget {
                                                         "${context.read<CreateCoachViewModel>().selectedAddress?.address1 ?? ""}${(context.read<CreateCoachViewModel>().selectedAddress?.address1 ?? "").isNotEmpty ? ", " : ""}${context.read<CreateCoachViewModel>().selectedAddress?.address2 ?? ""}${(context.read<CreateCoachViewModel>().selectedAddress?.address2 ?? "").isNotEmpty ? ", " : ""}${context.read<CreateCoachViewModel>().selectedAddress?.pinCode ?? ""}",
                                                         style: TextStyle(
                                                           fontFamily: 'Inter',
-                                                          color: ColorsUtils.hintTextColor,
+                                                          color: customColors.hintTextColor,
                                                           fontWeight: FontWeight.w400,
                                                           fontSize: 12,
                                                         ),
@@ -888,6 +898,8 @@ class CoachStepTwo extends StatelessWidget {
   }
 
   void _showAddAddressBottomSheet(BuildContext aContext, CreateCoachViewModel viewModel) {
+    final customColors = Theme.of(aContext).extension<CustomColors>()!;
+    final colorScheme = Theme.of(aContext).colorScheme;
     showModalBottomSheet(
       context: aContext,
       isScrollControlled: true,
@@ -911,29 +923,29 @@ class CoachStepTwo extends StatelessWidget {
                     minHeight: 0, // Let content determine minimum height
                   ),
                   child: IntrinsicHeight(
-                    child: Container(
-                      // Remove fixed height - let content determine height
-                      padding: EdgeInsets.all(15.0),
-                      decoration: BoxDecoration(
-                        color: ColorsUtils.white,
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min, // Important: use min size
-                        children: [
-                          // Header
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Add Training Address',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: ColorsUtils.black,
-                                  fontFamily: 'Montserrat',
-                                ),
+                  child: Container(
+                    // Remove fixed height - let content determine height
+                    padding: EdgeInsets.all(15.0),
+                    decoration: BoxDecoration(
+                      color: customColors.white,
+                      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min, // Important: use min size
+                      children: [
+                        // Header
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Add Training Address',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: colorScheme.onSurface,
+                                fontFamily: 'Montserrat',
                               ),
+                            ),
                               GestureDetector(
                                 onTap: () {
                                   Navigator.of(context, rootNavigator: false).pop();
@@ -960,7 +972,7 @@ class CoachStepTwo extends StatelessWidget {
                                     CommonTextField(
                                       maxLength: 50,
                                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                                      fillColor: ColorsUtils.white,
+                                      fillColor: customColors.white,
                                       isAddress: true,
                                       borderRadius: 6,
                                       hint: "e.g Main Training Center",
@@ -968,7 +980,7 @@ class CoachStepTwo extends StatelessWidget {
                                       textStyle: TextStyle(
                                         fontSize: 16,
                                         fontFamily: "Inter",
-                                        color: ColorsUtils.black,
+                                        color: colorScheme.onSurface,
                                         fontWeight: FontWeight.w500,
                                       ),
                                       validator: (value) {
@@ -987,7 +999,7 @@ class CoachStepTwo extends StatelessWidget {
                                     CommonTextField(
                                       maxLength: 100,
                                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                                      fillColor: ColorsUtils.white,
+                                      fillColor: customColors.white,
                                       isAddress: true,
                                       borderRadius: 6,
                                       hint: "Street address, building name",
@@ -995,7 +1007,7 @@ class CoachStepTwo extends StatelessWidget {
                                       textStyle: TextStyle(
                                         fontSize: 16,
                                         fontFamily: "Inter",
-                                        color: ColorsUtils.black,
+                                        color: colorScheme.onSurface,
                                         fontWeight: FontWeight.w500,
                                       ),
                                       validator: (value) {
@@ -1014,7 +1026,7 @@ class CoachStepTwo extends StatelessWidget {
                                     CommonTextField(
                                       maxLength: 100,
                                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                                      fillColor: ColorsUtils.white,
+                                      fillColor: customColors.white,
                                       isAddress: true,
                                       borderRadius: 6,
                                       hint: "Apartment, suite, unit, etc.",
@@ -1022,7 +1034,7 @@ class CoachStepTwo extends StatelessWidget {
                                       textStyle: TextStyle(
                                         fontSize: 16,
                                         fontFamily: "Inter",
-                                        color: ColorsUtils.black,
+                                        color: colorScheme.onSurface,
                                         fontWeight: FontWeight.w500,
                                       ),
                                       validator: (value) {
@@ -1041,7 +1053,7 @@ class CoachStepTwo extends StatelessWidget {
                                     CommonTextField(
                                       maxLength: 6,
                                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                                      fillColor: ColorsUtils.white,
+                                      fillColor: customColors.white,
                                       isNumber: true,
                                       borderRadius: 6,
                                       hint: "Pincode",
@@ -1049,7 +1061,7 @@ class CoachStepTwo extends StatelessWidget {
                                       textStyle: TextStyle(
                                         fontSize: 16,
                                         fontFamily: "Inter",
-                                        color: ColorsUtils.black,
+                                        color: colorScheme.onSurface,
                                         fontWeight: FontWeight.w500,
                                       ),
                                       validator: (value) {
@@ -1072,8 +1084,8 @@ class CoachStepTwo extends StatelessWidget {
                               Expanded(
                                 child: CustomButton(
                                   text: "Cancel",
-                                  textcolor: ColorsUtils.black,
-                                  buttonColor: ColorsUtils.buttonBg,
+                                  textcolor: colorScheme.onSurface,
+                                  buttonColor: customColors.buttonBg,
                                   textsize: 16,
                                   fontWeight: FontWeight.bold,
                                   buttonheight: 50,
@@ -1088,8 +1100,8 @@ class CoachStepTwo extends StatelessWidget {
                               Expanded(
                                 child: CustomButton(
                                   text: "Save Address",
-                                  textcolor: ColorsUtils.white,
-                                  buttonColor: ColorsUtils.primary,
+                                  textcolor: colorScheme.onPrimary,
+                                  buttonColor: colorScheme.primary,
                                   textsize: 16,
                                   fontWeight: FontWeight.bold,
                                   buttonheight: 50,
@@ -1119,13 +1131,15 @@ class CoachStepTwo extends StatelessWidget {
   }
 
   Widget _buildRateSettingsView(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+    final colorScheme = Theme.of(context).colorScheme;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 20),
         BaseContainer(
-          bgColor: ColorsUtils.white,
+          bgColor: customColors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -1135,7 +1149,7 @@ class CoachStepTwo extends StatelessWidget {
                 "Rate Settings",
                 style: TextStyle(
                   fontFamily: 'Montserrat',
-                  color: ColorsUtils.chipText,
+                  color: customColors.chipText,
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                 ),
@@ -1153,7 +1167,7 @@ class CoachStepTwo extends StatelessWidget {
                         "Same Rate for All Sessions",
                         style: TextStyle(
                           fontFamily: 'Montserrat',
-                          color: ColorsUtils.chipText,
+                          color: customColors.chipText,
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
                         ),
@@ -1163,7 +1177,7 @@ class CoachStepTwo extends StatelessWidget {
                         "Apply one rate to all time slots",
                         style: TextStyle(
                           fontFamily: 'Inter',
-                          color: ColorsUtils.hintTextColor,
+                          color: customColors.hintTextColor,
                           fontWeight: FontWeight.w400,
                           fontSize: 12,
                         ),
@@ -1215,34 +1229,34 @@ class CoachStepTwo extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 15.0),
-                          child: Text(
-                            "S \$",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontFamily: "Inter",
-                              color: ColorsUtils.darkGrey,
-                              fontWeight: FontWeight.w400,
-                            ),
+                        child: Text(
+                          "S \$",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: "Inter",
+                            color: customColors.hintTextColor,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
+                      ),
                         const SizedBox(width: 10.0),
                         Expanded(
-                          child: CommonTextField(
-                            maxLength: 6,
-                            fillColor: ColorsUtils.white,
-                            controller: context.read<CreateCoachViewModel>().hourlyRateController,
-                            isDouble: true,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            normalBorderColor: ColorsUtils.borderColor,
-                            borderRadius: 6,
-                            hint: "Enter hourly rate",
-                            labelText: "Hourly Rate",
-                            textStyle: TextStyle(
-                              fontSize: 16,
-                              fontFamily: "Inter",
-                              color: ColorsUtils.black,
-                              fontWeight: FontWeight.w500,
-                            ),
+                        child: CommonTextField(
+                          maxLength: 6,
+                          fillColor: customColors.white,
+                          controller: context.read<CreateCoachViewModel>().hourlyRateController,
+                          isDouble: true,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          normalBorderColor: customColors.borderColor,
+                          borderRadius: 6,
+                          hint: "Enter hourly rate",
+                          labelText: "Hourly Rate",
+                          textStyle: TextStyle(
+                            fontSize: 16,
+                            fontFamily: "Inter",
+                            color: colorScheme.onSurface,
+                            fontWeight: FontWeight.w500,
+                          ),
                             validator: (value) {
                               if (value?.isEmpty ?? true) {
                                 return "Please enter hourly rate";
@@ -1270,7 +1284,10 @@ class CoachStepTwo extends StatelessWidget {
     );
   }
 
-  Widget _buildTrainingLocationCheckBoxTitleRow({required String title, required bool isSelected, required Function()? onTap}) {
+  Widget _buildTrainingLocationCheckBoxTitleRow(BuildContext context,
+      {required String title, required bool isSelected, required Function()? onTap}) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+    final colorScheme = Theme.of(context).colorScheme;
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
@@ -1282,16 +1299,18 @@ class CoachStepTwo extends StatelessWidget {
               width: 30,
               height: 30,
               decoration: BoxDecoration(
-                color: isSelected ? ColorsUtils.primary : ColorsUtils.greyBG,
+                color: isSelected ? colorScheme.primary : customColors.greyBG,
                 borderRadius: BorderRadius.circular(7),
               ),
-              child: isSelected ? Icon(Icons.check, size: 18, color: ColorsUtils.white) : null,
+              child: isSelected
+                  ? Icon(Icons.check, size: 18, color: customColors.onAccentText)
+                  : null,
             ),
             SizedBox(width: 8),
             Text(
               title,
               style: TextStyle(
-                color: isSelected ? ColorsUtils.black : ColorsUtils.hintTextColor,
+                color: isSelected ? colorScheme.onSurface : customColors.hintTextColor,
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Inter',
