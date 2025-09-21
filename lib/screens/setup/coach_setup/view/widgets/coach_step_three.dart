@@ -5,7 +5,7 @@ import 'package:oqdo_mobile_app/screens/setup/coach_setup/view/coach_training_pr
 import 'package:oqdo_mobile_app/screens/setup/coach_setup/viewmodel/create_coach_view_model.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/base_container.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/time_input_field.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_field.dart';
 import 'package:provider/provider.dart';
@@ -63,6 +63,8 @@ class CoachStepThree extends StatelessWidget {
   }
 
   Widget _buildTimeSlotView(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+    final colorScheme = Theme.of(context).colorScheme;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +74,7 @@ class CoachStepThree extends StatelessWidget {
           "Session Timetable",
           style: TextStyle(
             fontFamily: 'SFPro',
-            color: ColorsUtils.primary,
+            color: colorScheme.primary,
             fontWeight: FontWeight.w600,
             fontSize: 16,
           ),
@@ -86,9 +88,9 @@ class CoachStepThree extends StatelessWidget {
               CustomButton(
                 text: "Add Training Slot",
                 leadingIcon: Icon(Icons.add, size: 18),
-                textcolor: ColorsUtils.black,
-                buttonColor: ColorsUtils.buttonColorGrey,
-                borderColor: ColorsUtils.borderColor,
+                textcolor: colorScheme.onSurface,
+                buttonColor: customColors.buttonColorGrey,
+                borderColor: customColors.borderColor,
                 textsize: 16,
                 fontWeight: FontWeight.bold,
                 buttonheight: 50,
@@ -114,10 +116,10 @@ class CoachStepThree extends StatelessWidget {
                       strokeWidth: 1.5,
                       radius: const Radius.circular(5),
                       dashPattern: const [3, 3],
-                      color: ColorsUtils.messageRight,
+                      color: customColors.messageRight,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: ColorsUtils.buttonColorGrey,
+                          color: customColors.buttonColorGrey,
                           borderRadius: BorderRadius.all(
                             Radius.circular(5),
                           ),
@@ -138,13 +140,14 @@ class CoachStepThree extends StatelessWidget {
                                     children: slotDetails.sortedSelectedDays.map((day) {
                                       return Container(
                                         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
-                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0), color: ColorsUtils.primary),
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(20.0), color: colorScheme.primary),
                                         child: Text(
                                           day.title,
                                           style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w400,
-                                            color: ColorsUtils.white,
+                                            color: customColors.onAccentText,
                                             fontFamily: 'Inter',
                                           ),
                                         ),
@@ -161,20 +164,42 @@ class CoachStepThree extends StatelessWidget {
                                     padding: EdgeInsets.all(4.0),
                                     child: Image.asset(
                                       "assets/images/ic_cancel_appointment.png",
-                                      color: ColorsUtils.black,
+                                      color: colorScheme.onSurface,
                                     ),
                                   ),
                                 )
                               ],
                             ),
                             _buildTitleDetailsRow(
-                                title: "Time", details: slotDetails.getAccurateTimeRangeDisplay(context.read<CreateCoachViewModel>().getClassDurationInMinutes())),
-                            _buildTitleDetailsRow(title: "Class", details: "$numberOfSessions ${numberOfSessions > 1 ? "Sessions" : "Session"}"),
-                            _buildTitleDetailsRow(title: "Per Session Time", details: context.read<CreateCoachViewModel>().getFormattedClassDurationForDisplay()),
+                              context,
+                              title: "Time",
+                              details: slotDetails.getAccurateTimeRangeDisplay(
+                                context.read<CreateCoachViewModel>().getClassDurationInMinutes(),
+                              ),
+                            ),
                             _buildTitleDetailsRow(
-                                title: "Total Duration", details: context.read<CreateCoachViewModel>().getFormattedTotalClassDurationForDisplay(numberOfSessions)),
+                              context,
+                              title: "Class",
+                              details: "$numberOfSessions ${numberOfSessions > 1 ? "Sessions" : "Session"}",
+                            ),
+                            _buildTitleDetailsRow(
+                              context,
+                              title: "Per Session Time",
+                              details: context.read<CreateCoachViewModel>().getFormattedClassDurationForDisplay(),
+                            ),
+                            _buildTitleDetailsRow(
+                              context,
+                              title: "Total Duration",
+                              details: context
+                                  .read<CreateCoachViewModel>()
+                                  .getFormattedTotalClassDurationForDisplay(numberOfSessions),
+                            ),
                             if (!context.watch<CreateCoachViewModel>().isSameRates)
-                              _buildTitleDetailsRow(title: "Rate", details: "S\$ ${parseDoubleToRoundString(slotDetails.ratePerHour ?? 0)}/hour"),
+                              _buildTitleDetailsRow(
+                                context,
+                                title: "Rate",
+                                details: "S\$ ${parseDoubleToRoundString(slotDetails.ratePerHour ?? 0)}/hour",
+                              ),
                           ],
                         ),
                       ),
@@ -189,7 +214,7 @@ class CoachStepThree extends StatelessWidget {
                 "Add multiple time slots for different days and times. Overlapping times will be prevented.",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.hintTextColor,
+                  color: customColors.hintTextColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
@@ -201,7 +226,13 @@ class CoachStepThree extends StatelessWidget {
     );
   }
 
-  Widget _buildTitleDetailsRow({required String title, required String details, bool addTopPadding = true}) {
+  Widget _buildTitleDetailsRow(
+    BuildContext context, {
+    required String title,
+    required String details,
+    bool addTopPadding = true,
+  }) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -216,7 +247,7 @@ class CoachStepThree extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
-                color: ColorsUtils.black,
+                color: colorScheme.onSurface,
                 fontFamily: 'Inter',
               ),
             ),
@@ -226,7 +257,7 @@ class CoachStepThree extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
-                color: ColorsUtils.black,
+                color: colorScheme.onSurface,
                 fontFamily: 'Inter',
               ),
             ),
@@ -237,6 +268,8 @@ class CoachStepThree extends StatelessWidget {
   }
 
   void _showAddSlotBottomSheet(BuildContext context, CreateCoachViewModel viewModel) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+    final colorScheme = Theme.of(context).colorScheme;
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -264,7 +297,7 @@ class CoachStepThree extends StatelessWidget {
                       // Remove fixed height - let content determine height
                       padding: EdgeInsets.all(15.0),
                       decoration: BoxDecoration(
-                        color: ColorsUtils.white,
+                        color: customColors.white,
                         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                       ),
                       child: Column(
@@ -279,7 +312,7 @@ class CoachStepThree extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
-                                  color: ColorsUtils.black,
+                                  color: colorScheme.onSurface,
                                   fontFamily: 'Montserrat',
                                 ),
                               ),
@@ -316,6 +349,7 @@ class CoachStepThree extends StatelessWidget {
                                       children: context.watch<CreateCoachViewModel>().days.map((day) {
                                         final isSelected = context.watch<CreateCoachViewModel>().selectedDays.contains(day);
                                         return _buildDayItemWrap(
+                                            context: context,
                                             day: day.title,
                                             isSelected: isSelected,
                                             onTap: () {
@@ -328,7 +362,7 @@ class CoachStepThree extends StatelessWidget {
                                       'Select multiple days when the same schedule applies',
                                       style: TextStyle(
                                         fontSize: 12,
-                                        color: ColorsUtils.textGray,
+                                        color: customColors.textGray,
                                         fontFamily: 'Inter',
                                         fontWeight: FontWeight.w400,
                                       ),
@@ -345,21 +379,21 @@ class CoachStepThree extends StatelessWidget {
                                               fontSize: 16,
                                               fontWeight: FontWeight.w600,
                                               fontFamily: 'Montserrat',
-                                              color: ColorsUtils.black,
+                                              color: colorScheme.onSurface,
                                             ),
                                           ),
                                           const SizedBox(height: 10),
                                           CommonTextField(
                                             maxLength: 6,
                                             autovalidateMode: AutovalidateMode.onUserInteraction,
-                                            fillColor: ColorsUtils.white,
+                                            fillColor: customColors.white,
                                             isDouble: true,
                                             borderRadius: 6,
                                             hint: "Enter rate",
                                             textStyle: TextStyle(
                                               fontSize: 16,
                                               fontFamily: "Inter",
-                                              color: ColorsUtils.black,
+                                              color: colorScheme.onSurface,
                                               fontWeight: FontWeight.w500,
                                             ),
                                             validator: (value) {
@@ -375,7 +409,7 @@ class CoachStepThree extends StatelessWidget {
                                             'Custom rate for this specific time slot',
                                             style: TextStyle(
                                               fontSize: 12,
-                                              color: ColorsUtils.textGray,
+                                              color: customColors.textGray,
                                               fontFamily: 'Inter',
                                               fontWeight: FontWeight.w400,
                                             ),
@@ -390,7 +424,7 @@ class CoachStepThree extends StatelessWidget {
                                       children: [
                                         Row(
                                           children: [
-                                            Icon(Icons.access_time, size: 20, color: ColorsUtils.chipText),
+                                            Icon(Icons.access_time, size: 20, color: customColors.chipText),
                                             SizedBox(width: 8),
                                             Text(
                                               'Training Sessions (6 AM - 10 PM)',
@@ -398,7 +432,7 @@ class CoachStepThree extends StatelessWidget {
                                                 fontSize: 14,
                                                 fontFamily: 'Montserrat',
                                                 fontWeight: FontWeight.w600,
-                                                color: ColorsUtils.chipText,
+                                                color: customColors.chipText,
                                               ),
                                             ),
                                           ],
@@ -409,11 +443,11 @@ class CoachStepThree extends StatelessWidget {
                                           leadingIcon: Icon(
                                             Icons.add,
                                             size: 20,
-                                            color: ColorsUtils.black,
+                                            color: colorScheme.onSurface,
                                           ),
-                                          textcolor: ColorsUtils.black,
-                                          buttonColor: ColorsUtils.selectedGridItemColor,
-                                          borderColor: ColorsUtils.selectedGridItemColor,
+                                          textcolor: colorScheme.onSurface,
+                                          buttonColor: customColors.selectedGridItemColor,
+                                          borderColor: customColors.selectedGridItemColor,
                                           textsize: 16,
                                           fontWeight: FontWeight.bold,
                                           buttonheight: 35,
@@ -434,7 +468,7 @@ class CoachStepThree extends StatelessWidget {
                                                 return Form(
                                                   key: editSlot.formKey,
                                                   child: BaseContainer(
-                                                    bgColor: ColorsUtils.white,
+                                                    bgColor: customColors.white,
                                                     child: Column(
                                                       mainAxisAlignment: MainAxisAlignment.start,
                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -448,7 +482,7 @@ class CoachStepThree extends StatelessWidget {
                                                                 fontSize: 16,
                                                                 fontWeight: FontWeight.w600,
                                                                 fontFamily: 'Montserrat',
-                                                                color: ColorsUtils.black,
+                                                                color: colorScheme.onSurface,
                                                               ),
                                                             ),
                                                             GestureDetector(
@@ -467,7 +501,7 @@ class CoachStepThree extends StatelessWidget {
                                                             fontSize: 14,
                                                             fontWeight: FontWeight.w500,
                                                             fontFamily: 'Inter',
-                                                            color: ColorsUtils.chipText,
+                                                            color: customColors.chipText,
                                                           ),
                                                         ),
                                                         const SizedBox(height: 8),
@@ -493,21 +527,21 @@ class CoachStepThree extends StatelessWidget {
                                                               child: Container(
                                                                 padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                                                                 decoration: BoxDecoration(
-                                                                  color: ColorsUtils.selectedGridItemColor,
+                                                                  color: customColors.selectedGridItemColor,
                                                                   borderRadius: BorderRadius.circular(6),
                                                                   border: Border.all(
-                                                                    color: ColorsUtils.lightBlueBorderColor,
+                                                                    color: customColors.lightBlueBorderColor,
                                                                   ),
                                                                 ),
-                                                                child: Text(
-                                                                  time,
-                                                                  style: TextStyle(
-                                                                    fontSize: 14,
-                                                                    color: ColorsUtils.black,
+                                                               child: Text(
+                                                                 time,
+                                                                 style: TextStyle(
+                                                                   fontSize: 14,
+                                                                    color: colorScheme.onSurface,
                                                                     fontFamily: 'Inter',
                                                                     fontWeight: FontWeight.w400,
                                                                   ),
-                                                                ),
+                                                               ),
                                                               ),
                                                             );
                                                           }).toList(),
@@ -517,7 +551,7 @@ class CoachStepThree extends StatelessWidget {
                                                           'Popular training times. Click to select quickly.',
                                                           style: TextStyle(
                                                             fontSize: 12,
-                                                            color: ColorsUtils.textGray,
+                                                            color: customColors.textGray,
                                                             fontFamily: 'Inter',
                                                             fontWeight: FontWeight.w400,
                                                           ),
@@ -534,15 +568,15 @@ class CoachStepThree extends StatelessWidget {
                                                                   fontSize: 14,
                                                                   fontWeight: FontWeight.w500,
                                                                   fontFamily: 'Inter',
-                                                                  color: ColorsUtils.chipText,
+                                                                  color: customColors.chipText,
                                                                 ),
                                                               ),
                                                               const SizedBox(height: 15),
-                                                              CommonTextField(
-                                                                controller: editSlot.numberOfSlots,
-                                                                autovalidateMode: AutovalidateMode.onUserInteraction,
-                                                                maxLength: 2,
-                                                                fillColor: ColorsUtils.white,
+                                                             CommonTextField(
+                                                               controller: editSlot.numberOfSlots,
+                                                               autovalidateMode: AutovalidateMode.onUserInteraction,
+                                                               maxLength: 2,
+                                                                fillColor: customColors.white,
                                                                 isNumber: true,
                                                                 borderRadius: 6,
                                                                 hint: "Number of Classes",
@@ -550,7 +584,7 @@ class CoachStepThree extends StatelessWidget {
                                                                 textStyle: TextStyle(
                                                                   fontSize: 16,
                                                                   fontFamily: "Inter",
-                                                                  color: ColorsUtils.black,
+                                                                  color: colorScheme.onSurface,
                                                                   fontWeight: FontWeight.w500,
                                                                 ),
                                                                 validator: (value) {
@@ -571,7 +605,7 @@ class CoachStepThree extends StatelessWidget {
                                                                 'Consecutive classes without break',
                                                                 style: TextStyle(
                                                                   fontSize: 12,
-                                                                  color: ColorsUtils.textGray,
+                                                                  color: customColors.textGray,
                                                                   fontFamily: 'Inter',
                                                                   fontWeight: FontWeight.w400,
                                                                 ),
@@ -590,10 +624,10 @@ class CoachStepThree extends StatelessWidget {
                                                                 strokeWidth: 1.5,
                                                                 radius: const Radius.circular(5),
                                                                 dashPattern: const [3, 3],
-                                                                color: ColorsUtils.messageRight,
+                                                                color: customColors.messageRight,
                                                                 child: Container(
                                                                   decoration: BoxDecoration(
-                                                                    color: ColorsUtils.buttonColorGrey,
+                                                                    color: customColors.buttonColorGrey,
                                                                     borderRadius: BorderRadius.all(
                                                                       Radius.circular(5),
                                                                     ),
@@ -603,19 +637,25 @@ class CoachStepThree extends StatelessWidget {
                                                                     mainAxisAlignment: MainAxisAlignment.start,
                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                     children: [
-                                                                      _buildTitleDetailsRow(
+                                                                     _buildTitleDetailsRow(
+                                                                        context,
                                                                         title: "Start",
                                                                         details: editSlot.startTime.text,
                                                                         addTopPadding: false,
                                                                       ),
                                                                       _buildTitleDetailsRow(
+                                                                          context,
                                                                           title: "End",
-                                                                          details: editSlot.getAccurateEndTime(context.read<CreateCoachViewModel>().getClassDurationInMinutes())),
+                                                                          details: editSlot.getAccurateEndTime(context
+                                                                              .read<CreateCoachViewModel>()
+                                                                              .getClassDurationInMinutes())),
                                                                       _buildTitleDetailsRow(
+                                                                        context,
                                                                         title: "Per Session Time",
                                                                         details: context.read<CreateCoachViewModel>().getFormattedClassDurationForDisplay(),
                                                                       ),
                                                                       _buildTitleDetailsRow(
+                                                                        context,
                                                                         title: "Total Duration",
                                                                         details: context
                                                                             .read<CreateCoachViewModel>()
@@ -642,7 +682,7 @@ class CoachStepThree extends StatelessWidget {
                                       'Add multiple sessions if you have breaks between training periods on the same day',
                                       style: TextStyle(
                                         fontSize: 12,
-                                        color: ColorsUtils.textGray,
+                                        color: customColors.textGray,
                                         fontFamily: 'Inter',
                                         fontWeight: FontWeight.w400,
                                       ),
@@ -659,8 +699,8 @@ class CoachStepThree extends StatelessWidget {
                               Expanded(
                                 child: CustomButton(
                                   text: "Cancel",
-                                  textcolor: ColorsUtils.black,
-                                  buttonColor: ColorsUtils.buttonBg,
+                                  textcolor: colorScheme.onSurface,
+                                  buttonColor: customColors.buttonBg,
                                   textsize: 16,
                                   fontWeight: FontWeight.bold,
                                   buttonheight: 50,
@@ -675,8 +715,8 @@ class CoachStepThree extends StatelessWidget {
                               Expanded(
                                 child: CustomButton(
                                   text: "Add Time Slot",
-                                  textcolor: ColorsUtils.white,
-                                  buttonColor: ColorsUtils.primary,
+                                  textcolor: colorScheme.onPrimary,
+                                  buttonColor: colorScheme.primary,
                                   textsize: 16,
                                   fontWeight: FontWeight.bold,
                                   buttonheight: 50,
@@ -700,7 +740,14 @@ class CoachStepThree extends StatelessWidget {
     );
   }
 
-  Widget _buildDayItemWrap({required String day, required Function()? onTap, required bool isSelected}) {
+  Widget _buildDayItemWrap({
+    required BuildContext context,
+    required String day,
+    required Function()? onTap,
+    required bool isSelected,
+  }) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+    final colorScheme = Theme.of(context).colorScheme;
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
@@ -713,16 +760,18 @@ class CoachStepThree extends StatelessWidget {
               width: 30,
               height: 30,
               decoration: BoxDecoration(
-                color: isSelected ? ColorsUtils.primary : ColorsUtils.greyBG,
+                color: isSelected ? colorScheme.primary : customColors.greyBG,
                 borderRadius: BorderRadius.circular(7),
               ),
-              child: isSelected ? Icon(Icons.check, size: 18, color: ColorsUtils.white) : null,
+              child: isSelected
+                  ? Icon(Icons.check, size: 18, color: customColors.onAccentText)
+                  : null,
             ),
             SizedBox(width: 8),
             Text(
               day,
               style: TextStyle(
-                color: isSelected ? ColorsUtils.black : ColorsUtils.hintTextColor,
+                color: isSelected ? colorScheme.onSurface : customColors.hintTextColor,
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Inter',

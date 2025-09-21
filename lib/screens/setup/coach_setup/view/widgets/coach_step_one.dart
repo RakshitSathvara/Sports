@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:oqdo_mobile_app/screens/setup/coach_setup/viewmodel/create_coach_view_model.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/base_container.dart';
 import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/widgets/setup_grid_view_item.dart';
-import 'package:oqdo_mobile_app/utils/colorsUtils.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_field.dart';
 import 'package:provider/provider.dart';
@@ -12,15 +12,17 @@ class CoachStepOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customColors = Theme.of(context).extension<CustomColors>()!;
+    final colorScheme = Theme.of(context).colorScheme;
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildMessageListener(),
-          _buildTitleAndSessionTitleView(context),
-          _buildChooseYourActivityView(context),
-          _buildChooseTrainingTypeView(context),
+          _buildTitleAndSessionTitleView(context, customColors, colorScheme),
+          _buildChooseYourActivityView(context, customColors),
+          _buildChooseTrainingTypeView(context, customColors),
         ],
       ),
     );
@@ -48,7 +50,11 @@ class CoachStepOne extends StatelessWidget {
     );
   }
 
-  Widget _buildTitleAndSessionTitleView(BuildContext context) {
+  Widget _buildTitleAndSessionTitleView(
+    BuildContext context,
+    CustomColors customColors,
+    ColorScheme colorScheme,
+  ) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +64,7 @@ class CoachStepOne extends StatelessWidget {
           "Activity & Type Setup",
           style: TextStyle(
             fontFamily: 'SFPro',
-            color: ColorsUtils.primary,
+            color: colorScheme.primary,
             fontWeight: FontWeight.w600,
             fontSize: 16,
           ),
@@ -75,7 +81,7 @@ class CoachStepOne extends StatelessWidget {
                   "Session Title",
                   style: TextStyle(
                     fontFamily: 'Montserrat',
-                    color: ColorsUtils.chipText,
+                    color: customColors.chipText,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -84,7 +90,7 @@ class CoachStepOne extends StatelessWidget {
                 CommonTextField(
                   controller: context.read<CreateCoachViewModel>().titleController,
                   maxLength: 50,
-                  fillColor: ColorsUtils.white,
+                  fillColor: customColors.white,
                   borderRadius: 6,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   hint: "Enter session title",
@@ -92,7 +98,7 @@ class CoachStepOne extends StatelessWidget {
                   textStyle: TextStyle(
                     fontSize: 16,
                     fontFamily: "Inter",
-                    color: ColorsUtils.black,
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w500,
                   ),
                   validator: (value) {
@@ -107,7 +113,7 @@ class CoachStepOne extends StatelessWidget {
                   "Give your training session a memorable title",
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    color: ColorsUtils.hintTextColor,
+                    color: customColors.hintTextColor,
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
                   ),
@@ -115,19 +121,22 @@ class CoachStepOne extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }
 
-  Widget _buildChooseYourActivityView(BuildContext context) {
+  Widget _buildChooseYourActivityView(
+    BuildContext context,
+    CustomColors customColors,
+  ) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 20),
         BaseContainer(
-          bgColor: ColorsUtils.white,
+          bgColor: customColors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,22 +150,26 @@ class CoachStepOne extends StatelessWidget {
                     "Choose Your Activity",
                     style: TextStyle(
                       fontFamily: 'Montserrat',
-                      color: ColorsUtils.chipText,
+                      color: customColors.chipText,
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
                     ),
                   ),
                   const SizedBox(width: 10),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0), color: ColorsUtils.green.withValues(alpha: 0.15)),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      color: customColors.green.withOpacity(0.15),
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.check,
-                          color: ColorsUtils.green,
+                          color: customColors.green,
                           size: 16,
                         ),
                         const SizedBox(width: 5),
@@ -165,7 +178,7 @@ class CoachStepOne extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
-                            color: ColorsUtils.green,
+                            color: customColors.green,
                             fontFamily: 'Montserrat',
                           ),
                         ),
@@ -179,17 +192,27 @@ class CoachStepOne extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: context.watch<CreateCoachViewModel>().subActivityList.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(mainAxisSpacing: 15.0, crossAxisSpacing: 15.0, crossAxisCount: 2, childAspectRatio: 2),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisSpacing: 15.0,
+                  crossAxisSpacing: 15.0,
+                  crossAxisCount: 2,
+                  childAspectRatio: 2,
+                ),
                 itemBuilder: (context, index) {
                   final item = context.read<CreateCoachViewModel>().subActivityList[index];
-                  final isSelected = context.watch<CreateCoachViewModel>().selectedSubActivity?.SubActivityId == item.SubActivityId;
+                  final isSelected = context
+                          .watch<CreateCoachViewModel>()
+                          .selectedSubActivity
+                          ?.SubActivityId ==
+                      item.SubActivityId;
                   return SetupGridViewItem(
                     title: item.Name ?? "",
                     imagePath: item.imageUrl ?? "",
                     useLocalImage: false,
                     isSelected: isSelected,
                     isEnabled: !context.read<CreateCoachViewModel>().isEdit,
-                    onTap: () => context.read<CreateCoachViewModel>().onSelectActivity(item),
+                    onTap: () =>
+                        context.read<CreateCoachViewModel>().onSelectActivity(item),
                   );
                 },
               ),
@@ -198,7 +221,7 @@ class CoachStepOne extends StatelessWidget {
                 "Give your training session a memorable title",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.hintTextColor,
+                  color: customColors.hintTextColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
@@ -210,7 +233,10 @@ class CoachStepOne extends StatelessWidget {
     );
   }
 
-  Widget _buildChooseTrainingTypeView(BuildContext context) {
+  Widget _buildChooseTrainingTypeView(
+    BuildContext context,
+    CustomColors customColors,
+  ) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -230,7 +256,7 @@ class CoachStepOne extends StatelessWidget {
                     "Training Type",
                     style: TextStyle(
                       fontFamily: 'Montserrat',
-                      color: ColorsUtils.chipText,
+                      color: customColors.chipText,
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
                     ),
@@ -242,17 +268,29 @@ class CoachStepOne extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: context.read<CreateCoachViewModel>().trainingTypes.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(mainAxisSpacing: 15.0, crossAxisSpacing: 15.0, crossAxisCount: 2, childAspectRatio: 2),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisSpacing: 15.0,
+                  crossAxisSpacing: 15.0,
+                  crossAxisCount: 2,
+                  childAspectRatio: 2,
+                ),
                 itemBuilder: (context, index) {
-                  final item = context.watch<CreateCoachViewModel>().trainingTypes[index];
-                  final isSelected = context.watch<CreateCoachViewModel>().selectedTrainingType?.id == item.id;
+                  final item =
+                      context.watch<CreateCoachViewModel>().trainingTypes[index];
+                  final isSelected = context
+                          .watch<CreateCoachViewModel>()
+                          .selectedTrainingType
+                          ?.id ==
+                      item.id;
                   return SetupGridViewItem(
                     title: item.title,
-                    unSelectedColor: ColorsUtils.white,
+                    unSelectedColor: customColors.white,
                     imagePath: item.imagePath,
                     isSelected: isSelected,
                     isEnabled: true,
-                    onTap: () => context.read<CreateCoachViewModel>().onSelectTrainingType(item),
+                    onTap: () => context
+                        .read<CreateCoachViewModel>()
+                        .onSelectTrainingType(item),
                   );
                 },
               ),
@@ -263,7 +301,7 @@ class CoachStepOne extends StatelessWidget {
                     : "Multiple individuals can book separately up to set capacity.",
                 style: TextStyle(
                   fontFamily: 'Inter',
-                  color: ColorsUtils.hintTextColor,
+                  color: customColors.hintTextColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
                 ),
