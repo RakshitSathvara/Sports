@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:oqdo_mobile_app/widgets/theme_toggle_widgets.dart';
+import 'package:oqdo_mobile_app/screens/home/tools_card_view.dart';
 
-/// A simplified home page that demonstrates light and dark theme support.
-///
-/// This page is a visual reference implementation based on the provided
-/// screenshots. It intentionally keeps the logic minimal and focuses on
-/// layout so it can be displayed without requiring any authentication.
 class NewHomePage extends StatelessWidget {
   const NewHomePage({super.key});
 
@@ -15,127 +10,20 @@ class NewHomePage extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
-        title: const Text('oqdo'),
-        centerTitle: true,
-        actions: const [
-          // Tapping this button toggles between light and dark themes.
-          ThemeToggleButton(),
-        ],
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Hero section -------------------------------------------------
-            Container(
-              height: 200,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                image: const DecorationImage(
-                  image: AssetImage('assets/images/home.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    colors: [
-                      Colors.black.withOpacity(0.6),
-                      Colors.transparent,
-                    ],
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Your world of Sports,\nHobbies and Wellness!',
-                      style: textTheme.titleLarge!.copyWith(
-                          color: Colors.white, fontWeight: FontWeight.w600),
-                    ),
-                    const SizedBox(height: 8),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: const Text('My Bookings'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 24),
-
-            // Category chips ----------------------------------------------
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                _CategoryChip(label: 'Sports', selected: true),
-                _CategoryChip(label: 'Hobbies'),
-                _CategoryChip(label: 'Wellness'),
-              ],
-            ),
-            const SizedBox(height: 24),
-
-            // Quick actions ------------------------------------------------
-            Row(
-              children: const [
-                Expanded(
-                  child: _ActionCard(
-                    icon: Icons.person_pin,
-                    label: 'Book a Coach',
-                  ),
-                ),
-                SizedBox(width: 12),
-                Expanded(
-                  child: _ActionCard(
-                    icon: Icons.location_city,
-                    label: 'Book a Venue',
-                  ),
-                ),
-                SizedBox(width: 12),
-                Expanded(
-                  child: _ActionCard(
-                    icon: Icons.meeting_room,
-                    label: 'Hire Space',
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 24),
-
-            // Refer friends banner ---------------------------------------
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: colorScheme.secondary,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Invite friends to join our community and start earning',
-                      style: textTheme.bodyMedium,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text('Refer Now'),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 10),
+            _firstSection(context),
+            const SizedBox(height: 10),
+            _secondSection(),
+            const SizedBox(height: 10),
+            _getTools(context),
+            
+            
+    
 
             // Community section -----------------------------------------
             Text('Community', style: textTheme.titleMedium),
@@ -206,6 +94,183 @@ class NewHomePage extends StatelessWidget {
       ),
     );
   }
+
+  Widget _firstSection(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 230,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        image: const DecorationImage(
+          image: AssetImage('assets/images/new_home_page.jpg'), // Replace with your image
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.black.withOpacity(0.3),
+              Colors.black.withOpacity(0.6),
+            ],
+          ),
+        ),
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Your world of Sports, Hobbies\nand Wellness!',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    height: 1.2,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                const Text(
+                  'Book a coach or a venue, organise sporting activities & hobbies',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    height: 1.3,
+                  ),
+                ),
+              ],
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(25),
+                  border: Border.all(
+                    color: Colors.white.withOpacity(0.3),
+                    width: 1,
+                  ),
+                ),
+                child: const Text(
+                  'My Bookings',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _secondSection() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Flexible(child: Image.asset('assets/images/new_home_sport.png',height: 80)),
+        Flexible(child: Image.asset('assets/images/new_home_hobbies.png',height: 80)),
+        Flexible(child: Image.asset('assets/images/new_home_wellness.png',height: 80))
+      ],
+    );
+  }
+
+  Widget _getTools(BuildContext context){
+    return Container(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Coach Tools',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(height: 10),
+          GridView.count(
+            crossAxisCount: 2,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            childAspectRatio: 1.0,
+            children: [
+              ToolsCard(
+                title: 'Create Batch',
+                subtitle: 'Coaching schedule',
+                icon: Icons.check,
+                iconColor: Colors.white,
+                backgroundColor: Colors.green.shade100,
+                circleColor: Colors.green.shade300,
+                onTap: () => _handleCreateBatch(context),
+              ),
+              ToolsCard(
+                title: 'Appointments',
+                subtitle: "Today's sessions",
+                icon: Icons.calendar_today,
+                iconColor: Colors.white,
+                backgroundColor: Colors.orange.shade50,
+                circleColor: Colors.orange.shade300,
+                onTap: () => _handleAppointments(context),
+              ),
+              ToolsCard(
+                title: 'Set Vacation',
+                subtitle: 'Block time off',
+                icon: Icons.flight,
+                iconColor: Colors.white,
+                backgroundColor: Colors.blue.shade50,
+                circleColor: Colors.blue.shade300,
+                onTap: () => _handleSetVacation(context),
+              ),
+              ToolsCard(
+                title: 'Cancellations',
+                subtitle: 'Review requests',
+                icon: Icons.cancel,
+                iconColor: Colors.white,
+                backgroundColor: Colors.red.shade50,
+                circleColor: Colors.red.shade300,
+                onTap: () => _handleCancellations(context),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _handleCreateBatch(BuildContext context) {
+    print('Create Batch tapped');
+    // Navigate to create batch screen
+  }
+
+  void _handleAppointments(BuildContext context) {
+    print('Appointments tapped');
+    // Navigate to appointments screen
+  }
+
+  void _handleSetVacation(BuildContext context) {
+    print('Set Vacation tapped');
+    // Navigate to vacation settings
+  }
+
+  void _handleCancellations(BuildContext context) {
+    print('Cancellations tapped');
+    // Navigate to cancellations screen
+  }
 }
 
 class _CategoryChip extends StatelessWidget {
@@ -252,8 +317,7 @@ class _ActionCard extends StatelessWidget {
           children: [
             Icon(icon, size: 32, color: colorScheme.primary),
             const SizedBox(height: 8),
-            Text(label,
-                style: textTheme.bodyMedium, textAlign: TextAlign.center),
+            Text(label, style: textTheme.bodyMedium, textAlign: TextAlign.center),
           ],
         ),
       ),
@@ -284,8 +348,7 @@ class _CommunityCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
-    final subtitleStyle = textTheme.bodySmall
-        ?.copyWith(color: colorScheme.onSurface.withOpacity(0.6));
+    final subtitleStyle = textTheme.bodySmall?.copyWith(color: colorScheme.onSurface.withOpacity(0.6));
 
     return Card(
       color: colorScheme.surface,
@@ -304,8 +367,7 @@ class _CommunityCard extends StatelessWidget {
               child: Icon(item.icon, color: item.iconColor, size: 28),
             ),
             const SizedBox(height: 12),
-            Text(item.title,
-                style: textTheme.titleMedium, textAlign: TextAlign.center),
+            Text(item.title, style: textTheme.titleMedium, textAlign: TextAlign.center),
             const SizedBox(height: 4),
             Text(
               item.subtitle,

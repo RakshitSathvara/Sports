@@ -179,7 +179,7 @@ class FacilityStepThree extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontFamily: "Inter",
-                                color: Theme.of(context).extension<CustomColors>()!.darkGrey,
+                                color: Theme.of(context).extension<CustomColors>()!.greyText,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -337,20 +337,24 @@ class FacilityStepThree extends StatelessWidget {
                             ),
                             _buildTitleDetailsRow(
                                 title: "Time",
-                                details: context.read<CreateFacilityViewModel>().getAccurateTimeRangeForDisplay(slotDetails.startTime.text, slotDetails.tempNumberOfSlots)),
-                            _buildTitleDetailsRow(title: "Slots", details: slotDetails.numberOfSlots.text),
+                                details: context.read<CreateFacilityViewModel>().getAccurateTimeRangeForDisplay(slotDetails.startTime.text, slotDetails.tempNumberOfSlots),
+                                context: context),
+                            _buildTitleDetailsRow(title: "Slots", details: slotDetails.numberOfSlots.text, context: context),
                             _buildTitleDetailsRow(
                               title: "Per Slot Duration",
                               details: context.read<CreateFacilityViewModel>().getFormattedSlotDurationForDisplay(),
+                              context: context,
                             ),
                             _buildTitleDetailsRow(
                               title: "Total Duration",
                               details: context.read<CreateFacilityViewModel>().getFormattedTotalDurationForDisplay(slotDetails.tempNumberOfSlots),
+                              context: context,
                             ),
                             if (!context.watch<CreateFacilityViewModel>().isSameRates)
                               _buildTitleDetailsRow(
                                 title: "Rate",
                                 details: "S\$ ${parseDoubleToRoundString(slotDetails.ratePerHour ?? 0)}/hour",
+                                context: context,
                               ),
                           ],
                         ),
@@ -368,7 +372,7 @@ class FacilityStepThree extends StatelessWidget {
     );
   }
 
-  Widget _buildTitleDetailsRow({required String title, required String details, bool addTopPadding = true}) {
+  Widget _buildTitleDetailsRow({required String title, required String details, bool addTopPadding = true, required BuildContext context}) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -486,6 +490,7 @@ class FacilityStepThree extends StatelessWidget {
                                         return _buildDayItemWrap(
                                           day: day.title,
                                           isSelected: isSelected,
+                                          context: context,
                                           onTap: () {
                                             context.read<CreateFacilityViewModel>().toggleDay(day);
                                           },
@@ -517,7 +522,7 @@ class FacilityStepThree extends StatelessWidget {
                                                 style: TextStyle(
                                                   fontSize: 14,
                                                   fontFamily: "Inter",
-                                                  color: Theme.of(context).extension<CustomColors>()!.darkGrey,
+                                                  color: Theme.of(context).extension<CustomColors>()!.greyText,
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                               ),
@@ -777,17 +782,22 @@ class FacilityStepThree extends StatelessWidget {
                                                                         title: "Start Time",
                                                                         details: editSlot.startTime.text,
                                                                         addTopPadding: false,
+                                                                        context: context,
                                                                       ),
                                                                       _buildTitleDetailsRow(
                                                                           title: "End Time",
-                                                                          details: viewModel.getAccurateEndTimeForDisplay(editSlot.startTime.text, editSlot.tempNumberOfSlots)),
+                                                                          details: viewModel.getAccurateEndTimeForDisplay(editSlot.startTime.text, editSlot.tempNumberOfSlots),
+                                                                          context: context,
+                                                                          ),
                                                                       _buildTitleDetailsRow(
                                                                         title: "Per Slot Duration",
                                                                         details: viewModel.getFormattedSlotDurationForDisplay(),
+                                                                        context: context,
                                                                       ),
                                                                       _buildTitleDetailsRow(
                                                                         title: "Total Duration",
                                                                         details: viewModel.getFormattedTotalDurationForDisplay(editSlot.tempNumberOfSlots),
+                                                                        context: context,
                                                                       ),
                                                                     ],
                                                                   ),
@@ -869,7 +879,7 @@ class FacilityStepThree extends StatelessWidget {
     );
   }
 
-  Widget _buildDayItemWrap({required String day, required Function()? onTap, required bool isSelected}) {
+  Widget _buildDayItemWrap({required String day, required Function()? onTap, required bool isSelected, required BuildContext context}) {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
