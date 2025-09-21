@@ -48,8 +48,14 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+    final customColors = theme.extension<CustomColors>()!;
+
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: colorScheme.background,
       appBar: CustomAppBar(
         title: 'Batch Setup',
         onBack: () {
@@ -57,8 +63,7 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        // isExtended: true,
-        backgroundColor: Theme.of(context).extension<CustomColors>()!.greyButton,
+        backgroundColor: customColors.greyButton,
         onPressed: () async {
           await Navigator.pushNamed(context, CreateCoachSetupPage.routeName).then((value) {
             if (value != null) {
@@ -67,26 +72,18 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
               });
             }
           });
-          // await Navigator.pushNamed(context, Constants.ADDBATCHSETUPPAGE).then((value) {
-          //   if (value != null) {
-          //     Future.delayed(const Duration(milliseconds: 200), () {
-          //       getCoachBatchList();
-          //     });
-          //   }
-          // });
         },
-        // isExtended: true,
         child: Icon(
           Icons.add_rounded,
           size: 50,
-          color: Theme.of(context).colorScheme.primary,
+          color: colorScheme.primary,
         ),
       ),
       body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Theme.of(context).colorScheme.onBackground,
+          color: theme.scaffoldBackgroundColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -100,9 +97,14 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
                         scrollDirection: Axis.vertical,
                         itemCount: coachBatchList.length,
                         separatorBuilder: (context, index) {
-                          return const Divider();
+                          return Divider(
+                            height: 1,
+                            thickness: 1,
+                            color: theme.dividerColor,
+                          );
                         },
                         itemBuilder: (BuildContext context, int index) {
+                          final batchDetails = coachBatchList[index];
                           return Padding(
                             padding: const EdgeInsets.fromLTRB(20, 0, 10, 10),
                             child: Row(
@@ -117,30 +119,31 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       CustomTextView(
-                                        label: coachBatchList[index].name,
+                                        label: batchDetails.name,
                                         textOverFlow: TextOverflow.ellipsis,
                                         maxLine: 2,
                                         type: styleSubTitle,
-                                        textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                              color: Theme.of(context).colorScheme.onSurface,
-                                            ),
+                                        textStyle: textTheme.bodyMedium!.copyWith(
+                                          color: colorScheme.onSurface,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
                                       const SizedBox(
                                         height: 7,
                                       ),
                                       GestureDetector(
                                         onTap: () {
-                                          getCoachBatchDetailsById(coachBatchList[index].coachBatchSetupId);
+                                          getCoachBatchDetailsById(batchDetails.coachBatchSetupId);
                                         },
                                         child: CustomTextView(
                                           label: 'Details',
                                           type: styleSubTitle,
-                                          textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                                color: Theme.of(context).colorScheme.shadow,
-                                                fontWeight: FontWeight.w300,
-                                                fontSize: 14,
-                                                decoration: TextDecoration.underline,
-                                              ),
+                                          textStyle: textTheme.bodyMedium!.copyWith(
+                                            color: colorScheme.primary,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 14,
+                                            decoration: TextDecoration.underline,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -151,32 +154,32 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
                                     IconButton(
                                       onPressed: () async {
                                         CalendarViewModel calendarViewModel = CalendarViewModel();
-                                        calendarViewModel.coachBatchSetupId = coachBatchList[index].coachBatchSetupId;
+                                        calendarViewModel.coachBatchSetupId = batchDetails.coachBatchSetupId;
                                         calendarViewModel.selectedDateTime = DateTime.now();
                                         await Navigator.of(context).pushNamed(Constants.coachBatchCancelSlotScreen, arguments: calendarViewModel);
                                       },
                                       icon: ImageIcon(
                                         const AssetImage("assets/images/ic_cancel.png"),
-                                        color: Theme.of(context).colorScheme.onSurface,
+                                        color: colorScheme.onSurface,
                                       ),
                                     ),
                                     IconButton(
                                       onPressed: () async {
-                                        debugPrint(coachBatchList[index].coachBatchSetupId.toString());
-                                        getCoachBatchBySetupId(coachBatchList[index].coachBatchSetupId!);
+                                        debugPrint(batchDetails.coachBatchSetupId.toString());
+                                        getCoachBatchBySetupId(batchDetails.coachBatchSetupId!);
                                       },
                                       icon: ImageIcon(
                                         const AssetImage("assets/images/ic_edit.png"),
-                                        color: Theme.of(context).colorScheme.onSurface,
+                                        color: colorScheme.onSurface,
                                       ),
                                     ),
                                     IconButton(
                                       onPressed: () {
-                                        _showAlertDialog(context, coachBatchList[index]);
+                                        _showAlertDialog(context, batchDetails);
                                       },
                                       icon: ImageIcon(
                                         const AssetImage("assets/images/ic_delete.png"),
-                                        color: Theme.of(context).colorScheme.onSurface,
+                                        color: colorScheme.onSurface,
                                       ),
                                     ),
                                   ],
@@ -199,7 +202,9 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
                                 child: RichText(
                                   textAlign: TextAlign.center,
                                   text: TextSpan(
-                                    style: Theme.of(context).textTheme.bodyMedium,
+                                    style: textTheme.bodyMedium?.copyWith(
+                                      color: colorScheme.onSurface,
+                                    ),
                                     children: [
                                       const TextSpan(text: 'There is nothing to show,\nadd Batch from '),
                                       WidgetSpan(
@@ -207,7 +212,7 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
                                         child: Icon(
                                           Icons.add_rounded,
                                           size: 25,
-                                          color: Theme.of(context).colorScheme.primary,
+                                          color: colorScheme.primary,
                                         ),
                                       ),
                                       const TextSpan(text: ' icon below.'),
@@ -224,21 +229,13 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
                   onPressed: () async {
                     await Navigator.pushNamed(context, Constants.coachVacationListScreen);
                   },
-                  // icon: Icon(
-                  //   Icons.add_rounded,
-                  //   color: Theme.of(context).colorScheme.primary,
-                  // ),
-                  style: ButtonStyle(
-                    foregroundColor: MaterialStateProperty.all<Color>(
-                      Theme.of(context).colorScheme.onBackground,
-                    ),
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      Theme.of(context).extension<CustomColors>()!.greyButton,
-                    ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: customColors.greyButton,
+                    foregroundColor: colorScheme.primary,
+                    textStyle: textTheme.labelLarge,
                   ),
-                  child: Text(
+                  child: const Text(
                     "Vacation",
-                    style: TextStyle(color: Theme.of(context).colorScheme.primary),
                   ),
                 ),
               )
