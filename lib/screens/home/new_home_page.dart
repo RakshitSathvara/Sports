@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:oqdo_mobile_app/model/selecte_home_model.dart';
 import 'package:oqdo_mobile_app/screens/home/tools_card_view.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
+import 'package:oqdo_mobile_app/utils/constants.dart';
 
 class NewHomePage extends StatelessWidget {
   const NewHomePage({super.key});
@@ -194,7 +197,6 @@ class NewHomePage extends StatelessWidget {
 
   Widget _getTools(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -207,49 +209,32 @@ class NewHomePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            childAspectRatio: 1.0,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ToolsCard(
-                title: 'Create Batch',
-                subtitle: 'Coaching schedule',
-                icon: Icons.check,
-                iconColor: Colors.white,
-                backgroundColor: Colors.green.shade100,
-                circleColor: Colors.green.shade300,
-                onTap: () => _handleCreateBatch(context),
+              Expanded(
+                child: ToolsCard(
+                  title: 'Book a Coach',
+                  subtitle: 'Expert guidance',
+                  imagePath: 'assets/images/ic_book_coach.png',
+                  backgroundColor: Theme.of(context).extension<CustomColors>()!.coachToolsBg,
+                  textColor: Theme.of(context).extension<CustomColors>()!.showTextColorForCancelAppointment,
+                  subtitleColor: Theme.of(context).extension<CustomColors>()!.greyText,
+                  onTap: () => handleBookCoach(context),
+                ),
               ),
-              ToolsCard(
-                title: 'Appointments',
-                subtitle: "Today's sessions",
-                icon: Icons.calendar_today,
-                iconColor: Colors.white,
-                backgroundColor: Colors.orange.shade50,
-                circleColor: Colors.orange.shade300,
-                onTap: () => _handleAppointments(context),
-              ),
-              ToolsCard(
-                title: 'Set Vacation',
-                subtitle: 'Block time off',
-                icon: Icons.flight,
-                iconColor: Colors.white,
-                backgroundColor: Colors.blue.shade50,
-                circleColor: Colors.blue.shade300,
-                onTap: () => _handleSetVacation(context),
-              ),
-              ToolsCard(
-                title: 'Cancellations',
-                subtitle: 'Review requests',
-                icon: Icons.cancel,
-                iconColor: Colors.white,
-                backgroundColor: Colors.red.shade50,
-                circleColor: Colors.red.shade300,
-                onTap: () => _handleCancellations(context),
+              const SizedBox(width: 10),
+              Expanded(
+                child: ToolsCard(
+                  title: 'Book a Venue',
+                  subtitle: "Find your space",
+                  imagePath: 'assets/images/ic_book_facility.png',
+                  backgroundColor: Theme.of(context).extension<CustomColors>()!.coachToolsBg,
+                  textColor: Theme.of(context).extension<CustomColors>()!.showTextColorForCancelAppointment,
+                  subtitleColor: Theme.of(context).extension<CustomColors>()!.greyText,
+                  onTap: () => handleBookVenue(context),
+                ),
               ),
             ],
           ),
@@ -258,24 +243,14 @@ class NewHomePage extends StatelessWidget {
     );
   }
 
-  void _handleCreateBatch(BuildContext context) {
-    print('Create Batch tapped');
-    // Navigate to create batch screen
+  void handleBookCoach(BuildContext context) {
+    SelectedHomeModel selectedHomeModel = SelectedHomeModel();
+    Navigator.pushNamed(context, Constants.COACHLISTPAGE, arguments: selectedHomeModel);
   }
 
-  void _handleAppointments(BuildContext context) {
-    print('Appointments tapped');
-    // Navigate to appointments screen
-  }
-
-  void _handleSetVacation(BuildContext context) {
-    print('Set Vacation tapped');
-    // Navigate to vacation settings
-  }
-
-  void _handleCancellations(BuildContext context) {
-    print('Cancellations tapped');
-    // Navigate to cancellations screen
+  void handleBookVenue(BuildContext context) {
+    SelectedHomeModel selectedHomeModel = SelectedHomeModel();
+    Navigator.pushNamed(context, Constants.FACILITIESLISTPAGE, arguments: selectedHomeModel);
   }
 }
 
