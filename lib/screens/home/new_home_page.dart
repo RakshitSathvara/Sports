@@ -9,7 +9,6 @@ class NewHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
@@ -22,7 +21,7 @@ class NewHomePage extends StatelessWidget {
             _firstSection(context),
             const SizedBox(height: 10),
             _secondSection(),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             _getTools(context),
 
             // Community section -----------------------------------------
@@ -102,7 +101,8 @@ class NewHomePage extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         image: const DecorationImage(
-          image: AssetImage('assets/images/new_home_page.jpg'), // Replace with your image
+          image: AssetImage(
+              'assets/images/new_home_page.jpg'), // Replace with your image
           fit: BoxFit.cover,
         ),
       ),
@@ -149,7 +149,8 @@ class NewHomePage extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(25),
@@ -181,14 +182,17 @@ class NewHomePage extends StatelessWidget {
         children: [
           Transform.translate(
               offset: Offset(0, 0), // Adjust overlap
-              child: Image.asset('assets/images/new_home_sport.png', height: 80)),
+              child:
+                  Image.asset('assets/images/new_home_sport.png', height: 80)),
           Transform.translate(
             offset: Offset(4, 0), // Adjust overlap
-            child: Image.asset('assets/images/new_home_hobbies.png', height: 80),
+            child:
+                Image.asset('assets/images/new_home_hobbies.png', height: 80),
           ),
           Transform.translate(
             offset: Offset(5, 0), // Adjust overlap
-            child: Image.asset('assets/images/new_home_wellness.png', height: 80),
+            child:
+                Image.asset('assets/images/new_home_wellness.png', height: 80),
           ),
         ],
       ),
@@ -196,61 +200,70 @@ class NewHomePage extends StatelessWidget {
   }
 
   Widget _getTools(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Coach Tools',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Get Moving',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            fontFamily: 'Inter',
+            color: Theme.of(context).extension<CustomColors>()!.getMovingTextColor,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ToolsCard(
+                title: 'Book a Coach',
+                subtitle: 'Expert guidance',
+                imagePath: 'assets/images/ic_book_coach.png',
+                backgroundColor:
+                    Theme.of(context).extension<CustomColors>()!.coachToolsBg,
+                textColor: Theme.of(context)
+                    .extension<CustomColors>()!
+                    .showTextColorForCancelAppointment,
+                subtitleColor:
+                    Theme.of(context).extension<CustomColors>()!.greyText,
+                onTap: () => handleBookCoach(context),
+              ),
             ),
-          ),
-          const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: ToolsCard(
-                  title: 'Book a Coach',
-                  subtitle: 'Expert guidance',
-                  imagePath: 'assets/images/ic_book_coach.png',
-                  backgroundColor: Theme.of(context).extension<CustomColors>()!.coachToolsBg,
-                  textColor: Theme.of(context).extension<CustomColors>()!.showTextColorForCancelAppointment,
-                  subtitleColor: Theme.of(context).extension<CustomColors>()!.greyText,
-                  onTap: () => handleBookCoach(context),
-                ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: ToolsCard(
+                title: 'Book a Venue',
+                subtitle: "Find your space",
+                imagePath: 'assets/images/ic_book_facility.png',
+                backgroundColor:
+                    Theme.of(context).extension<CustomColors>()!.coachToolsBg,
+                textColor: Theme.of(context)
+                    .extension<CustomColors>()!
+                    .showTextColorForCancelAppointment,
+                subtitleColor:
+                    Theme.of(context).extension<CustomColors>()!.greyText,
+                onTap: () => handleBookVenue(context),
               ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: ToolsCard(
-                  title: 'Book a Venue',
-                  subtitle: "Find your space",
-                  imagePath: 'assets/images/ic_book_facility.png',
-                  backgroundColor: Theme.of(context).extension<CustomColors>()!.coachToolsBg,
-                  textColor: Theme.of(context).extension<CustomColors>()!.showTextColorForCancelAppointment,
-                  subtitleColor: Theme.of(context).extension<CustomColors>()!.greyText,
-                  onTap: () => handleBookVenue(context),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
   void handleBookCoach(BuildContext context) {
     SelectedHomeModel selectedHomeModel = SelectedHomeModel();
-    Navigator.pushNamed(context, Constants.COACHLISTPAGE, arguments: selectedHomeModel);
+    Navigator.pushNamed(context, Constants.COACHLISTPAGE,
+        arguments: selectedHomeModel);
   }
 
   void handleBookVenue(BuildContext context) {
     SelectedHomeModel selectedHomeModel = SelectedHomeModel();
-    Navigator.pushNamed(context, Constants.FACILITIESLISTPAGE, arguments: selectedHomeModel);
+    Navigator.pushNamed(context, Constants.FACILITIESLISTPAGE,
+        arguments: selectedHomeModel);
   }
 }
 
@@ -298,7 +311,8 @@ class _ActionCard extends StatelessWidget {
           children: [
             Icon(icon, size: 32, color: colorScheme.primary),
             const SizedBox(height: 8),
-            Text(label, style: textTheme.bodyMedium, textAlign: TextAlign.center),
+            Text(label,
+                style: textTheme.bodyMedium, textAlign: TextAlign.center),
           ],
         ),
       ),
@@ -329,7 +343,8 @@ class _CommunityCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
-    final subtitleStyle = textTheme.bodySmall?.copyWith(color: colorScheme.onSurface.withOpacity(0.6));
+    final subtitleStyle = textTheme.bodySmall
+        ?.copyWith(color: colorScheme.onSurface.withOpacity(0.6));
 
     return Card(
       color: colorScheme.surface,
@@ -348,7 +363,8 @@ class _CommunityCard extends StatelessWidget {
               child: Icon(item.icon, color: item.iconColor, size: 28),
             ),
             const SizedBox(height: 12),
-            Text(item.title, style: textTheme.titleMedium, textAlign: TextAlign.center),
+            Text(item.title,
+                style: textTheme.titleMedium, textAlign: TextAlign.center),
             const SizedBox(height: 4),
             Text(
               item.subtitle,
@@ -421,7 +437,8 @@ class _CommunityTile extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
           child: Column(
             children: [
-              Icon(icon, size: 36, color: Theme.of(context).colorScheme.primary),
+              Icon(icon,
+                  size: 36, color: Theme.of(context).colorScheme.primary),
               SizedBox(height: 12),
               Text(
                 label,

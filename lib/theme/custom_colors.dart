@@ -53,6 +53,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.darkRed,
     required this.onAccentText,
     required this.coachToolsBg,
+    required this.getMovingTextColor,
   });
 
   final Color greyButton;
@@ -106,6 +107,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color darkRed;
   final Color onAccentText;
   final Color coachToolsBg;
+  final Color getMovingTextColor;
 
   static const CustomColors light = CustomColors(
     greyButton: Color(0xFFEFEFEF),
@@ -159,6 +161,8 @@ class CustomColors extends ThemeExtension<CustomColors> {
     darkRed: Color(0xFFA80000),
     onAccentText: Color(0xFFFFFFFF),
     coachToolsBg: Color(0xFFF7F7F7),
+    getMovingTextColor: Color(0xFF000000)
+
   );
 
   static const CustomColors dark = CustomColors(
@@ -213,6 +217,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     darkRed: Color(0xFFE57373),
     onAccentText: Color(0xFFFFFFFF),
     coachToolsBg: Color(0xFF1F2937),
+    getMovingTextColor: Color(0xFFFFFFFF)
   );
 
   @override
@@ -268,6 +273,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? darkRed,
     Color? onAccentText,
     Color? coachToolsBg,
+    Color? getMovingTextColor,
   }) {
     return CustomColors(
       greyButton: greyButton ?? this.greyButton,
@@ -321,6 +327,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       darkRed: darkRed ?? this.darkRed,
       onAccentText: onAccentText ?? this.onAccentText,
       coachToolsBg: coachToolsBg ?? this.coachToolsBg,
+      getMovingTextColor: getMovingTextColor ?? this.getMovingTextColor,
     );
   }
 
@@ -380,6 +387,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       darkRed: Color.lerp(darkRed, other.darkRed, t)!,
       onAccentText: Color.lerp(onAccentText, other.onAccentText, t)!,
       coachToolsBg: Color.lerp(coachToolsBg, other.coachToolsBg, t)!,
+      getMovingTextColor: Color.lerp(getMovingTextColor, other.getMovingTextColor, t)!,
     );
   }
 }
