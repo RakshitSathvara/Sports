@@ -21,9 +21,6 @@ class NewHomePage extends StatelessWidget {
             _secondSection(),
             const SizedBox(height: 10),
             _getTools(context),
-            
-            
-    
 
             // Community section -----------------------------------------
             Text('Community', style: textTheme.titleMedium),
@@ -175,18 +172,27 @@ class NewHomePage extends StatelessWidget {
   }
 
   Widget _secondSection() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Flexible(child: Image.asset('assets/images/new_home_sport.png',height: 80)),
-        Flexible(child: Image.asset('assets/images/new_home_hobbies.png',height: 80)),
-        Flexible(child: Image.asset('assets/images/new_home_wellness.png',height: 80))
-      ],
+    return SizedBox(
+      height: 50,
+      child: Row(
+        children: [
+          Transform.translate(
+              offset: Offset(0, 0), // Adjust overlap
+              child: Image.asset('assets/images/new_home_sport.png', height: 80)),
+          Transform.translate(
+            offset: Offset(4, 0), // Adjust overlap
+            child: Image.asset('assets/images/new_home_hobbies.png', height: 80),
+          ),
+          Transform.translate(
+            offset: Offset(5, 0), // Adjust overlap
+            child: Image.asset('assets/images/new_home_wellness.png', height: 80),
+          ),
+        ],
+      ),
     );
   }
 
-  Widget _getTools(BuildContext context){
+  Widget _getTools(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
       child: Column(
