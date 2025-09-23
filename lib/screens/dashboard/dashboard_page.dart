@@ -19,6 +19,7 @@ import 'package:oqdo_mobile_app/model/end_user_profile_response.dart';
 import 'package:oqdo_mobile_app/model/facility_profile_response.dart';
 import 'package:oqdo_mobile_app/model/selecte_home_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
+import 'package:oqdo_mobile_app/providers/theme_provider.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/data/get_all_buddies_repository.dart';
 import 'package:oqdo_mobile_app/screens/buddies/features/buddies/domain/chat_provider.dart';
 import 'package:oqdo_mobile_app/screens/cancellation%20request/coach_cancellation_request_page.dart';
@@ -30,6 +31,7 @@ import 'package:oqdo_mobile_app/screens/home/service_provider_calendar_screen.da
 import 'package:oqdo_mobile_app/screens/profile/coach_profile.dart';
 import 'package:oqdo_mobile_app/screens/profile/facility_profile.dart';
 import 'package:oqdo_mobile_app/screens/profile/learner_profile.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/ConnectivityService.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
@@ -513,17 +515,14 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
               _scaffoldKey.currentState!.openDrawer();
             },
             icon: ImageIcon(
-              const AssetImage("assets/images/menu_icon.png"),
-              color: Theme.of(context).colorScheme.onSurface,
+              AssetImage("assets/images/menu_icon.png"),
+              color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor,
             ),
           ),
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).extension<CustomColors>()!.appBackgroundColor,
           title: Text(
             "oqdo",
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontWeight: FontWeight.w600,
-                fontSize: 20.0),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w600, fontSize: 20.0),
           ),
           centerTitle: true,
           actions: [
@@ -553,23 +552,25 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                   )
                 : isLogin == '1' && (OQDOApplication.instance.userType == Constants.facilityType || OQDOApplication.instance.userType == Constants.coachType)
                     ? const SizedBox()
-                    : GestureDetector(
-                        onTap: () async {
-                          if (isLogin == '1') {
-                            SelectedHomeModel selectedHomeModel = SelectedHomeModel();
-                            await Navigator.pushNamed(context, Constants.facilityFavoritesList, arguments: selectedHomeModel);
-                          } else {
-                            showSnackBarColor('Please login', context, true);
-                            Timer(const Duration(microseconds: 500), () {
-                              Navigator.of(context).pushNamed(Constants.LOGIN);
-                            });
-                          }
+                    : GestureDetector(onTap: () async {
+                        if (isLogin == '1') {
+                          SelectedHomeModel selectedHomeModel = SelectedHomeModel();
+                          await Navigator.pushNamed(context, Constants.facilityFavoritesList, arguments: selectedHomeModel);
+                        } else {
+                          showSnackBarColor('Please login', context, true);
+                          Timer(const Duration(microseconds: 500), () {
+                            Navigator.of(context).pushNamed(Constants.LOGIN);
+                          });
+                        }
+                      }, child: Consumer<ThemeProvider>(
+                        builder: (context, themeProvider, child) {
+                          return Image.asset(
+                            themeProvider.isDarkMode ? "assets/images/ic_fav_dark.png" : "assets/images/ic_fav_light.png",
+                            height: 30,
+                            width: 30,
+                          );
                         },
-                        child: Image.asset(
-                          "assets/images/ic_fav.png",
-                          height: 30,
-                          width: 30,
-                        )),
+                      )),
             IconButton(
               onPressed: () async {
                 if (isLogin != null && isLogin == '1') {
@@ -583,16 +584,15 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
               },
               icon: Stack(
                 children: [
-                  Center(
-                    child: Image.asset(
-                      'assets/images/notify_icon.png',
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.white
-                          : Colors.black,
-                      width: 30,
-                      height: 30,
-                    ),
-                  ),
+                  Center(child: Consumer<ThemeProvider>(
+                    builder: (context, themeProvider, child) {
+                      return Image.asset(
+                        themeProvider.isDarkMode ? 'assets/images/ic_notification_dark.png' : 'assets/images/ic_notification_light.png',
+                        width: 30,
+                        height: 30,
+                      );
+                    },
+                  )),
                   Provider.of<NotificationProvider>(context).isNewNotification
                       ? Positioned(
                           top: 10,
@@ -705,8 +705,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                                             label: value.userName,
                                             textOverFlow: TextOverflow.ellipsis,
                                             maxLine: 2,
-                                            textStyle:
-                                                Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 21),
+                                            textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 21),
                                           );
                                         },
                                       ),
@@ -1424,10 +1423,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                                 ),
                                 label: Text(
                                   'Equipments',
-                                  style: TextStyle(
-                                      color: Theme.of(context).colorScheme.onPrimary,
-                                      fontFamily: 'SFPro',
-                                      fontWeight: FontWeight.w500),
+                                  style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontFamily: 'SFPro', fontWeight: FontWeight.w500),
                                 ),
                                 style: TextButton.styleFrom(
                                   foregroundColor: Theme.of(context).colorScheme.onPrimary,
@@ -1455,10 +1451,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                                 ),
                                 label: Text(
                                   'Ads',
-                                  style: TextStyle(
-                                      color: Theme.of(context).colorScheme.onPrimary,
-                                      fontFamily: 'SFPro',
-                                      fontWeight: FontWeight.w500),
+                                  style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontFamily: 'SFPro', fontWeight: FontWeight.w500),
                                 ),
                                 style: TextButton.styleFrom(
                                   foregroundColor: Theme.of(context).colorScheme.onPrimary,
@@ -1523,10 +1516,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                                   ),
                                   label: Text(
                                     'Equipments',
-                                    style: TextStyle(
-                                        color: Theme.of(context).colorScheme.onPrimary,
-                                        fontFamily: 'SFPro',
-                                        fontWeight: FontWeight.w500),
+                                    style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontFamily: 'SFPro', fontWeight: FontWeight.w500),
                                   ),
                                   style: TextButton.styleFrom(
                                     foregroundColor: Theme.of(context).colorScheme.onPrimary,
@@ -1554,10 +1544,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                                   ),
                                   label: Text(
                                     'Ads',
-                                    style: TextStyle(
-                                        color: Theme.of(context).colorScheme.onPrimary,
-                                        fontFamily: 'SFPro',
-                                        fontWeight: FontWeight.w500),
+                                    style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontFamily: 'SFPro', fontWeight: FontWeight.w500),
                                   ),
                                   style: TextButton.styleFrom(
                                     foregroundColor: Theme.of(context).colorScheme.onPrimary,
@@ -1572,7 +1559,7 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
                   ],
                 ),
               ),
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).extension<CustomColors>()!.appBackgroundColor,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
             onPressed: _toggleFab,
@@ -1604,15 +1591,9 @@ class DashboardPagesState extends State<DashboardPages> with SingleTickerProvide
           unselectedItemColor: Theme.of(context).colorScheme.onSurface,
           selectedItemColor: Theme.of(context).colorScheme.primary,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Theme.of(context).colorScheme.background,
-          unselectedLabelStyle: TextStyle(
-              color: Theme.of(context).colorScheme.onSurface,
-              fontWeight: FontWeight.w500,
-              fontSize: 12),
-          selectedLabelStyle: TextStyle(
-              color: Theme.of(context).colorScheme.primary,
-              fontWeight: FontWeight.w500,
-              fontSize: 12),
+          backgroundColor: Theme.of(context).extension<CustomColors>()!.bottomNavigationBarBackgroundColor,
+          unselectedLabelStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500, fontSize: 12),
+          selectedLabelStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500, fontSize: 12),
           items: [
             const BottomNavigationBarItem(
               icon: ImageIcon(

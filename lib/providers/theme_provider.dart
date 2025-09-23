@@ -9,6 +9,7 @@ class ThemeProvider extends ChangeNotifier {
   factory ThemeProvider() => _instance;
 
   static const String _themeKey = 'theme_mode';
+  bool _disposed = false;
 
   ThemeType _themeType = ThemeType.dark;
 
@@ -36,14 +37,18 @@ class ThemeProvider extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     final themeIndex = prefs.getInt(_themeKey) ?? ThemeType.dark.index;
     _themeType = ThemeType.values[themeIndex];
-    notifyListeners();
+    if (!_disposed && hasListeners) {
+      notifyListeners();
+    }
   }
 
   Future<void> setTheme(ThemeType themeType) async {
     _themeType = themeType;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt(_themeKey, themeType.index);
-    notifyListeners();
+    if (!_disposed && hasListeners) {
+      notifyListeners();
+    }
   }
 
   Future<void> toggleTheme() async {
@@ -55,5 +60,32 @@ class ThemeProvider extends ChangeNotifier {
       final brightness = WidgetsBinding.instance.platformDispatcher.platformBrightness;
       await setTheme(brightness == Brightness.dark ? ThemeType.light : ThemeType.dark);
     }
+  }
+
+  @override
+  void addListener(VoidCallback listener) {
+    // If disposed and trying to add a listener, reset the disposed state
+    // This handles the case where the singleton provider is reused after disposal
+    if (_disposed) {
+      _disposed = false;
+    }
+    super.addListener(listener);
+  }
+
+  @override
+  void removeListener(VoidCallback listener) {
+    // Only remove listener if not disposed
+    if (!_disposed) {
+      super.removeListener(listener);
+    }
+  }
+
+  @override
+  // ignore: must_call_super
+  void dispose() {
+    // For singleton pattern, don't actually dispose the notifier
+    // Just mark as disposed to prevent notifications
+    _disposed = true;
+    // Don't call super.dispose() to keep the singleton alive
   }
 }

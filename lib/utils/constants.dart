@@ -169,8 +169,8 @@ class Constants {
   static const String internetConnectionErrorMsg = 'Offline. Please check your internet connection';
 
   // static const int timeOutValueInSeconds = 30;
-  static const double androidAppVersion = 2.5; //latest version 2.4 to 2.5 - App version 2.5
-  static const double iosAppVersion = 2.5; //latest version 2.4 to 2.5 - iOS version 2.5
+  static const double androidAppVersion = 2.6; //latest version 2.4 to 2.5 - App version 2.5
+  static const double iosAppVersion = 2.6; //latest version 2.4 to 2.5 - iOS version 2.5
   static const String accountCloseErrorMsg = 'Your account will be closed in a few minutes and you will no longer be able to use this account';
   int isAppInBackground = 0;
 }

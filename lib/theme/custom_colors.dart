@@ -54,6 +54,14 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.onAccentText,
     required this.coachToolsBg,
     required this.getMovingTextColor,
+    required this.homeScreenRewardBgColor,
+    required this.blackAndWhiteColor,
+    required this.homeScreenRewardTextColor,
+    required this.homeScreenRewardButtonColor,
+    required this.homeScreenRewardButtonTextColor,
+    required this.appBackgroundColor,
+    required this.bottomNavigationBarBackgroundColor,
+    required this.promoteBusinessBorderColor,
   });
 
   final Color greyButton;
@@ -108,6 +116,14 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color onAccentText;
   final Color coachToolsBg;
   final Color getMovingTextColor;
+  final Color homeScreenRewardBgColor;
+  final Color blackAndWhiteColor;
+  final Color homeScreenRewardTextColor;
+  final Color homeScreenRewardButtonColor;
+  final Color homeScreenRewardButtonTextColor;
+  final Color appBackgroundColor;
+  final Color bottomNavigationBarBackgroundColor;
+  final Color promoteBusinessBorderColor;
 
   static const CustomColors light = CustomColors(
     greyButton: Color(0xFFEFEFEF),
@@ -161,8 +177,15 @@ class CustomColors extends ThemeExtension<CustomColors> {
     darkRed: Color(0xFFA80000),
     onAccentText: Color(0xFFFFFFFF),
     coachToolsBg: Color(0xFFF7F7F7),
-    getMovingTextColor: Color(0xFF000000)
-
+    getMovingTextColor: Color(0xFF000000),
+    homeScreenRewardBgColor: Color(0xFF3396D3),
+    blackAndWhiteColor: Color(0xFF000000),
+    homeScreenRewardTextColor: Color(0xFF006590),
+    homeScreenRewardButtonColor: Color(0xFF3396D3),
+    homeScreenRewardButtonTextColor: Color(0xFFFFFFFF),
+    appBackgroundColor: Color(0xFFFFFFFF),
+    bottomNavigationBarBackgroundColor: Color(0xFFFFFFFF),
+    promoteBusinessBorderColor: Color(0xFF3396D3),
   );
 
   static const CustomColors dark = CustomColors(
@@ -217,7 +240,15 @@ class CustomColors extends ThemeExtension<CustomColors> {
     darkRed: Color(0xFFE57373),
     onAccentText: Color(0xFFFFFFFF),
     coachToolsBg: Color(0xFF1F2937),
-    getMovingTextColor: Color(0xFFFFFFFF)
+    getMovingTextColor: Color(0xFFFFFFFF),
+    homeScreenRewardBgColor: Color(0xFF1F2937),
+    blackAndWhiteColor: Color(0xFFFFFFFF) ,
+    homeScreenRewardTextColor: Color(0xFF3396D3),
+    homeScreenRewardButtonColor: Color(0xFF3396D3),
+    homeScreenRewardButtonTextColor: Color(0xFFFFFFFF),
+    appBackgroundColor: Color(0xFF111827),
+    bottomNavigationBarBackgroundColor: Color(0xFF1F2937),
+    promoteBusinessBorderColor: Color(0xFF3396D3),
   );
 
   @override
@@ -274,6 +305,14 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? onAccentText,
     Color? coachToolsBg,
     Color? getMovingTextColor,
+    Color? homeScreenRewardBgColor,
+    Color? blackAndWhiteColor,
+    Color? homeScreenRewardTextColor,
+    Color? homeScreenRewardButtonColor,
+    Color? homeScreenRewardButtonTextColor,
+    Color? appBackgroundColor,
+    Color? bottomNavigationBarBackgroundColor,
+    Color? promoteBusinessBorderColor,
   }) {
     return CustomColors(
       greyButton: greyButton ?? this.greyButton,
@@ -328,6 +367,14 @@ class CustomColors extends ThemeExtension<CustomColors> {
       onAccentText: onAccentText ?? this.onAccentText,
       coachToolsBg: coachToolsBg ?? this.coachToolsBg,
       getMovingTextColor: getMovingTextColor ?? this.getMovingTextColor,
+      homeScreenRewardBgColor: homeScreenRewardBgColor ?? this.homeScreenRewardBgColor,
+      blackAndWhiteColor: blackAndWhiteColor ?? this.blackAndWhiteColor,
+      homeScreenRewardTextColor: homeScreenRewardTextColor ?? this.homeScreenRewardTextColor,
+      homeScreenRewardButtonColor: homeScreenRewardButtonColor ?? this.homeScreenRewardButtonColor,
+      homeScreenRewardButtonTextColor: homeScreenRewardButtonTextColor ?? this.homeScreenRewardButtonTextColor,
+      appBackgroundColor: appBackgroundColor ?? this.appBackgroundColor,
+      bottomNavigationBarBackgroundColor: bottomNavigationBarBackgroundColor ?? this.bottomNavigationBarBackgroundColor,
+      promoteBusinessBorderColor: promoteBusinessBorderColor ?? this.promoteBusinessBorderColor,
     );
   }
 
@@ -388,6 +435,14 @@ class CustomColors extends ThemeExtension<CustomColors> {
       onAccentText: Color.lerp(onAccentText, other.onAccentText, t)!,
       coachToolsBg: Color.lerp(coachToolsBg, other.coachToolsBg, t)!,
       getMovingTextColor: Color.lerp(getMovingTextColor, other.getMovingTextColor, t)!,
+      homeScreenRewardBgColor: Color.lerp(homeScreenRewardBgColor, other.homeScreenRewardBgColor, t)!,
+      blackAndWhiteColor: Color.lerp(blackAndWhiteColor, other.blackAndWhiteColor, t)!,
+      homeScreenRewardTextColor: Color.lerp(homeScreenRewardTextColor, other.homeScreenRewardTextColor, t)!,
+      homeScreenRewardButtonColor: Color.lerp(homeScreenRewardButtonColor, other.homeScreenRewardButtonColor, t)!,
+      homeScreenRewardButtonTextColor: Color.lerp(homeScreenRewardButtonTextColor, other.homeScreenRewardButtonTextColor, t)!,
+      appBackgroundColor: Color.lerp(appBackgroundColor, other.appBackgroundColor, t)!,
+      bottomNavigationBarBackgroundColor: Color.lerp(bottomNavigationBarBackgroundColor, other.bottomNavigationBarBackgroundColor, t)!,
+      promoteBusinessBorderColor: Color.lerp(promoteBusinessBorderColor, other.promoteBusinessBorderColor, t)!,
     );
   }
 }

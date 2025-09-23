@@ -11,6 +11,7 @@ import 'package:oqdo_mobile_app/model/common_passing_args.dart';
 import 'package:oqdo_mobile_app/model/end_user_appointment_model_details.dart';
 import 'package:oqdo_mobile_app/model/get_all_activity_and_sub_activity_response.dart';
 import 'package:oqdo_mobile_app/model/selecte_home_model.dart';
+import 'package:oqdo_mobile_app/providers/theme_provider.dart';
 import 'package:oqdo_mobile_app/screens/appointment/CoachEndUserCancelAppointment.dart';
 import 'package:oqdo_mobile_app/screens/appointment/EndUserFacilityAppointmentDetails.dart';
 import 'package:oqdo_mobile_app/screens/appointment/FacilityEndUserCancelAppointment.dart';
@@ -208,10 +209,11 @@ class RouteGenerator {
 
       case Constants.APPPAGES:
         return MaterialPageRoute(
-            builder: (_) => MultiProvider(
+            builder: (context) => MultiProvider(
                   providers: [
                     ChangeNotifierProvider<ProfileViewModel>(create: (_) => ProfileViewModel()),
                     ChangeNotifierProvider<DashboardViewModel>(create: (_) => DashboardViewModel()),
+                    ChangeNotifierProvider<ThemeProvider>.value(value: Provider.of<ThemeProvider>(context, listen: false))
                   ],
                   child: DashboardPages(tabNumber: args as int),
                 ));

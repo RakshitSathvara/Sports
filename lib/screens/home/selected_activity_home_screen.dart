@@ -114,7 +114,7 @@ class _SelectedActivityHomeScreenState extends State<SelectedActivityHomeScreen>
                         });
                       }
                     }),
-                    circlecontainer('assets/images/ic_coaches.png', 'Coaches', () async {
+                    circlecontainer('assets/images/ic_batch.png', 'Coaches', () async {
                       if (OQDOApplication.instance.isLogin == '1') {
                         if (OQDOApplication.instance.userType == Constants.endUserType) {
                           await Navigator.pushNamed(context, Constants.COACHLISTPAGE, arguments: widget.selectedHomeModel);
