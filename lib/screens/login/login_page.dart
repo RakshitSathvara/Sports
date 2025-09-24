@@ -10,6 +10,7 @@ import 'package:oqdo_mobile_app/components/my_button.dart';
 import 'package:oqdo_mobile_app/helper/helpers.dart';
 import 'package:oqdo_mobile_app/model/login_response_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/theme/oqdo_theme_data.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
 import 'package:oqdo_mobile_app/utils/custom_text_view.dart';
@@ -52,8 +53,15 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
     hp = Helper.of(context);
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog = ProgressDialog(
+        context,
+        type: ProgressDialogType.normal,
+        isDismissible: false,
+      );
+      _progressDialog.style(
+        message: "Please wait..",
+        backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+      );
     });
     getToken();
   }
@@ -129,17 +137,13 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           CustomTextView(
                             label: 'Welcome',
-                            textStyle: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 24.0, fontWeight: FontWeight.w400),
+                            textStyle:
+                                Theme.of(context).textTheme.titleLarge!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 24.0, fontWeight: FontWeight.w400),
                           ),
                           CustomTextView(
                             label: 'Back',
-                            textStyle: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 24.0, fontWeight: FontWeight.w400),
+                            textStyle:
+                                Theme.of(context).textTheme.titleLarge!.copyWith(color: Theme.of(context).colorScheme.onSurface, fontSize: 24.0, fontWeight: FontWeight.w400),
                           ),
                         ],
                       ),

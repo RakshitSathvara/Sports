@@ -62,10 +62,11 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.appBackgroundColor,
     required this.bottomNavigationBarBackgroundColor,
     required this.promoteBusinessBorderColor,
+    required this.progressDialogBackgroundColor,
   });
 
   final Color greyButton;
-  final Color greyCircle; 
+  final Color greyCircle;
   final Color redColor;
   final Color redDeleteColor;
   final Color vacationList;
@@ -124,6 +125,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   final Color appBackgroundColor;
   final Color bottomNavigationBarBackgroundColor;
   final Color promoteBusinessBorderColor;
+  final Color progressDialogBackgroundColor;
 
   static const CustomColors light = CustomColors(
     greyButton: Color(0xFFEFEFEF),
@@ -145,7 +147,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     greenAmount: Color(0xFF008000),
     pendingAmount: Color(0xFFB59800),
     yellowStatus: Color(0xFFE1B000),
-    filterDivider: Color( 0xFFE3E3E3),
+    filterDivider: Color(0xFFE3E3E3),
     referEarnColor: Color(0xFF006590),
     closeAccountColor: Color(0xFFFC5555),
     chatPrimary: Color(0xFF2B5278),
@@ -186,6 +188,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     appBackgroundColor: Color(0xFFFFFFFF),
     bottomNavigationBarBackgroundColor: Color(0xFFFFFFFF),
     promoteBusinessBorderColor: Color(0xFF3396D3),
+    progressDialogBackgroundColor: Color(0xFFF0F7FF),
   );
 
   static const CustomColors dark = CustomColors(
@@ -217,7 +220,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     buddiesBackground: Color(0xFF2A2A2A),
     buddiesCard: Color(0xFF333333),
     buddiesBorder: Color(0xFF404040),
-    myButtonBgColor : Color(0xFF006590),
+    myButtonBgColor: Color(0xFF006590),
     meetupButtonColor: Color(0xFFFFB74D),
     coachFacilityFavIconColor: Color(0xFFFFFFFF),
     showTextColorForCancelAppointment: Color(0xFFFFFFFF),
@@ -242,13 +245,14 @@ class CustomColors extends ThemeExtension<CustomColors> {
     coachToolsBg: Color(0xFF1F2937),
     getMovingTextColor: Color(0xFFFFFFFF),
     homeScreenRewardBgColor: Color(0xFF1F2937),
-    blackAndWhiteColor: Color(0xFFFFFFFF) ,
+    blackAndWhiteColor: Color(0xFFFFFFFF),
     homeScreenRewardTextColor: Color(0xFF3396D3),
     homeScreenRewardButtonColor: Color(0xFF3396D3),
     homeScreenRewardButtonTextColor: Color(0xFFFFFFFF),
     appBackgroundColor: Color(0xFF111827),
     bottomNavigationBarBackgroundColor: Color(0xFF1F2937),
     promoteBusinessBorderColor: Color(0xFF3396D3),
+    progressDialogBackgroundColor: Color(0xFF1A2A3D),
   );
 
   @override
@@ -313,6 +317,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     Color? appBackgroundColor,
     Color? bottomNavigationBarBackgroundColor,
     Color? promoteBusinessBorderColor,
+    Color? progressDialogBackgroundColor,
   }) {
     return CustomColors(
       greyButton: greyButton ?? this.greyButton,
@@ -375,6 +380,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       appBackgroundColor: appBackgroundColor ?? this.appBackgroundColor,
       bottomNavigationBarBackgroundColor: bottomNavigationBarBackgroundColor ?? this.bottomNavigationBarBackgroundColor,
       promoteBusinessBorderColor: promoteBusinessBorderColor ?? this.promoteBusinessBorderColor,
+      progressDialogBackgroundColor: progressDialogBackgroundColor ?? this.progressDialogBackgroundColor,
     );
   }
 
@@ -413,8 +419,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       myButtonBgColor: Color.lerp(myButtonBgColor, other.myButtonBgColor, t)!,
       meetupButtonColor: Color.lerp(meetupButtonColor, other.meetupButtonColor, t)!,
       coachFacilityFavIconColor: Color.lerp(coachFacilityFavIconColor, other.coachFacilityFavIconColor, t)!,
-      showTextColorForCancelAppointment:
-          Color.lerp(showTextColorForCancelAppointment, other.showTextColorForCancelAppointment, t)!,
+      showTextColorForCancelAppointment: Color.lerp(showTextColorForCancelAppointment, other.showTextColorForCancelAppointment, t)!,
       bazaarTabBackground: Color.lerp(bazaarTabBackground, other.bazaarTabBackground, t)!,
       bazaarChatBackground: Color.lerp(bazaarChatBackground, other.bazaarChatBackground, t)!,
       meetupCreatorCard: Color.lerp(meetupCreatorCard, other.meetupCreatorCard, t)!,
@@ -443,7 +448,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       appBackgroundColor: Color.lerp(appBackgroundColor, other.appBackgroundColor, t)!,
       bottomNavigationBarBackgroundColor: Color.lerp(bottomNavigationBarBackgroundColor, other.bottomNavigationBarBackgroundColor, t)!,
       promoteBusinessBorderColor: Color.lerp(promoteBusinessBorderColor, other.promoteBusinessBorderColor, t)!,
+      progressDialogBackgroundColor: Color.lerp(progressDialogBackgroundColor, other.progressDialogBackgroundColor, t)!,
     );
   }
 }
-

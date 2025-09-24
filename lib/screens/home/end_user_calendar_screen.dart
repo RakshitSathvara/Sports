@@ -81,20 +81,14 @@ class _EndUserCalendarViewScreenState extends State<EndUserCalendarViewScreen> {
               ),
               CustomTextView(
                 label: '${_currentDay.split("-")[0]} ${_currentDay.split('-')[1]} ${_currentDay.split('-')[2]}',
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontSize: 21,
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w500),
               ),
               const SizedBox(
                 height: 3,
               ),
               CustomTextView(
                 label: initSelectedDate,
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontSize: 21,
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w500),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 40, left: 25, right: 25),
@@ -114,10 +108,7 @@ class _EndUserCalendarViewScreenState extends State<EndUserCalendarViewScreen> {
                     isTodayHighlighted: true,
                     outsideDaysVisible: false,
                     selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-                    defaultTextStyle: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).colorScheme.onSurface),
+                    defaultTextStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                   ),
                   onCalendarCreated: (controller) {
                     _pageController = controller;
@@ -165,17 +156,13 @@ class _EndUserCalendarViewScreenState extends State<EndUserCalendarViewScreen> {
                               child: ElevatedButton(
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all<Color>(
-                                    Theme.of(context)
-                                        .extension<CustomColors>()!
-                                        .meetupButtonColor,
+                                    Theme.of(context).extension<CustomColors>()!.meetupButtonColor,
                                   ),
                                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(18.0),
                                         side: BorderSide(
-                                          color: Theme.of(context)
-                                              .extension<CustomColors>()!
-                                              .meetupButtonColor,
+                                          color: Theme.of(context).extension<CustomColors>()!.meetupButtonColor,
                                         )),
                                   ),
                                 ),
@@ -190,10 +177,8 @@ class _EndUserCalendarViewScreenState extends State<EndUserCalendarViewScreen> {
                                 },
                                 child: CustomTextView(
                                   label: meetupStr,
-                                  textStyle: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18,
-                                      color: Theme.of(context).extension<CustomColors>()!.showTextColorForCancelAppointment),
+                                  textStyle:
+                                      TextStyle(fontWeight: FontWeight.w600, fontSize: 18, color: Theme.of(context).extension<CustomColors>()!.showTextColorForCancelAppointment),
                                 ),
                               ),
                             ),
@@ -223,10 +208,8 @@ class _EndUserCalendarViewScreenState extends State<EndUserCalendarViewScreen> {
                                 },
                                 child: CustomTextView(
                                   label: appointmentStr,
-                                  textStyle: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18,
-                                      color: Theme.of(context).extension<CustomColors>()!.showTextColorForCancelAppointment),
+                                  textStyle:
+                                      TextStyle(fontWeight: FontWeight.w600, fontSize: 18, color: Theme.of(context).extension<CustomColors>()!.showTextColorForCancelAppointment),
                                 ),
                               ),
                             ),
@@ -254,20 +237,14 @@ class _EndUserCalendarViewScreenState extends State<EndUserCalendarViewScreen> {
             children: [
               CustomTextView(
                 label: headerText.split(' ')[0],
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w700,
-                    color: Theme.of(context).colorScheme.onBackground),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onBackground),
               ),
               const SizedBox(
                 height: 5,
               ),
               CustomTextView(
                 label: headerText.split(' ')[1],
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w700,
-                    color: Theme.of(context).colorScheme.onBackground),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onBackground),
               ),
             ],
           ),
@@ -366,7 +343,10 @@ class _EndUserCalendarViewScreenState extends State<EndUserCalendarViewScreen> {
 
   Future<void> getEndUserAppointments(DateTime passingDate) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+        message: "Please wait..",
+        backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+        messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       List<EndUserAppointmentsResponseModel> endUserAppointmentList = await Provider.of<AppointmentViewModel>(context, listen: false)
@@ -421,8 +401,8 @@ class _EndUserCalendarViewScreenState extends State<EndUserCalendarViewScreen> {
 
   Future<void> getAllMeetupList() async {
     try {
-      MeetupResponseModel meetupResponseModel = await Provider.of<AppointmentViewModel>(context, listen: false)
-          .getAllMeetupList(convertDateTimeToString(kPreviousDay), convertDateTimeToString(kLastDay));
+      MeetupResponseModel meetupResponseModel =
+          await Provider.of<AppointmentViewModel>(context, listen: false).getAllMeetupList(convertDateTimeToString(kPreviousDay), convertDateTimeToString(kLastDay));
       if (!mounted) return;
       await _progressDialog.hide();
       if (meetupResponseModel.data!.isNotEmpty) {
