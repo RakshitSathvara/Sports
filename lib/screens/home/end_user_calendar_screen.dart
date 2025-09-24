@@ -103,11 +103,13 @@ class _EndUserCalendarViewScreenState extends State<EndUserCalendarViewScreen> {
                   currentDay: kToday,
                   daysOfWeekStyle: DaysOfWeekStyle(
                       weekdayStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
-                      weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500)),
+                      weekendStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),),
                   calendarStyle: CalendarStyle(
                     isTodayHighlighted: true,
                     outsideDaysVisible: false,
+                    weekendTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontWeight: FontWeight.w400, fontSize: 15),
                     selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
+                    disabledTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.greyBG, fontWeight: FontWeight.w400, fontSize: 15),
                     defaultTextStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                   ),
                   onCalendarCreated: (controller) {
@@ -344,9 +346,9 @@ class _EndUserCalendarViewScreenState extends State<EndUserCalendarViewScreen> {
   Future<void> getEndUserAppointments(DateTime passingDate) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
     _progressDialog.style(
-            message: "Please wait..",
-            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
-            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
+        message: "Please wait..",
+        backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+        messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       List<EndUserAppointmentsResponseModel> endUserAppointmentList = await Provider.of<AppointmentViewModel>(context, listen: false)

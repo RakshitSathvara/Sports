@@ -72,20 +72,14 @@ class _ServiceProviderCalendarScreenState extends State<ServiceProviderCalendarS
               ),
               CustomTextView(
                 label: '${_currentDay.split("-")[0]} ${_currentDay.split('-')[1]} ${_currentDay.split('-')[2]}',
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 21,
-                    color: Theme.of(context).colorScheme.onBackground,
-                    fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w500),
               ),
               const SizedBox(
                 height: 3,
               ),
               CustomTextView(
                 label: initSelectedDate,
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 21,
-                    color: Theme.of(context).colorScheme.onBackground,
-                    fontWeight: FontWeight.w500),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.w500),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 40, left: 25, right: 25),
@@ -104,11 +98,10 @@ class _ServiceProviderCalendarScreenState extends State<ServiceProviderCalendarS
                   calendarStyle: CalendarStyle(
                     isTodayHighlighted: true,
                     outsideDaysVisible: false,
+                    weekendTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontWeight: FontWeight.w400, fontSize: 15),
                     selectedDecoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, shape: BoxShape.circle),
-                    defaultTextStyle: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).colorScheme.onSurface),
+                    disabledTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.greyBG, fontWeight: FontWeight.w400, fontSize: 15),
+                    defaultTextStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Theme.of(context).colorScheme.onSurface),
                   ),
                   onCalendarCreated: (controller) {
                     _pageController = controller;
@@ -170,20 +163,14 @@ class _ServiceProviderCalendarScreenState extends State<ServiceProviderCalendarS
             children: [
               CustomTextView(
                 label: headerText.split(' ')[0],
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w700,
-                    color: Theme.of(context).colorScheme.onBackground),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onBackground),
               ),
               const SizedBox(
                 height: 5,
               ),
               CustomTextView(
                 label: headerText.split(' ')[1],
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w700,
-                    color: Theme.of(context).colorScheme.onBackground),
+                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 21, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onBackground),
               ),
             ],
           ),
@@ -244,9 +231,9 @@ class _ServiceProviderCalendarScreenState extends State<ServiceProviderCalendarS
   Future<void> getFacilityAppointments(DateTime passingDate) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
     _progressDialog.style(
-            message: "Please wait..",
-            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
-            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
+        message: "Please wait..",
+        backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+        messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       List<FacilityAppointmentsResponseModel> endUserAppointmentList = await Provider.of<AppointmentViewModel>(context, listen: false)
@@ -300,9 +287,9 @@ class _ServiceProviderCalendarScreenState extends State<ServiceProviderCalendarS
   Future<void> getCoachAppointments(DateTime passingDate) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
     _progressDialog.style(
-            message: "Please wait..",
-            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
-            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
+        message: "Please wait..",
+        backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+        messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       List<CoachAppointmentsResponseModel> endUserAppointmentList = await Provider.of<AppointmentViewModel>(context, listen: false)
