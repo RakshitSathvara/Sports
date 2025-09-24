@@ -127,8 +127,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomTextView(
-                            label: "Profile", type: styleSubTitle, textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold)),
+                        CustomTextView(label: "Profile", type: styleSubTitle, textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold)),
                         const SizedBox(
                           height: 8,
                         ),
@@ -160,9 +159,8 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                             }
                                             return Center(
                                               child: CircularProgressIndicator(
-                                                value: loadingProgress.expectedTotalBytes != null
-                                                    ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                                                    : null,
+                                                value:
+                                                    loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
                                               ),
                                             );
                                           },
@@ -269,9 +267,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                     child: Image.asset(
                                       "assets/images/ic_edit.png",
                                       fit: BoxFit.scaleDown,
-                                      color: Theme.of(context).brightness == Brightness.dark
-                                          ? Colors.white
-                                          : Colors.black,
+                                      color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                                       height: 30,
                                       width: 30,
                                     ),
@@ -324,9 +320,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                     child: Image.asset(
                                       "assets/images/ic_edit.png",
                                       fit: BoxFit.scaleDown,
-                                      color: Theme.of(context).brightness == Brightness.dark
-                                          ? Colors.white
-                                          : Colors.black,
+                                      color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                                       height: 30,
                                       width: 30,
                                     ),
@@ -355,28 +349,20 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
                           ],
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              fontSize: 16, color: Theme.of(context).colorScheme.primary),
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                           decoration: InputDecoration(
                             isDense: true,
                             filled: false,
-                            contentPadding:
-                                const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                             border: const UnderlineInputBorder(),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.onSurface),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                             ),
                             disabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurface
-                                      .withOpacity(0.5)),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
                             ),
                           ),
                         ),
@@ -400,28 +386,20 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9 ]+')),
                           ],
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              fontSize: 16, color: Theme.of(context).colorScheme.primary),
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                           decoration: InputDecoration(
                             isDense: true,
                             filled: false,
-                            contentPadding:
-                                const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                             border: const UnderlineInputBorder(),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.onSurface),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                             ),
                             disabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurface
-                                      .withOpacity(0.5)),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
                             ),
                           ),
                         ),
@@ -444,34 +422,21 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           maxLines: 1,
                           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                                 fontSize: 16,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .primary
-                                    .withOpacity(0.5),
+                                color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                               ),
                           decoration: InputDecoration(
                             isDense: true,
                             filled: false,
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 0, vertical: 4),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                             border: const UnderlineInputBorder(),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurface
-                                      .withOpacity(0.5)),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                             ),
                             disabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurface
-                                      .withOpacity(0.5)),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
                             ),
                           ),
                         ),
@@ -503,35 +468,22 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           ],
                           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                                 fontSize: 16,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .primary
-                                    .withOpacity(0.5),
+                                color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                               ),
                           decoration: InputDecoration(
                             isDense: true,
                             filled: false,
                             counterText: '',
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 0, vertical: 4),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                             border: const UnderlineInputBorder(),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurface
-                                      .withOpacity(0.5)),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                             ),
                             disabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurface
-                                      .withOpacity(0.5)),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
                             ),
                           ),
                         ),
@@ -609,29 +561,21 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                             FilteringTextInputFormatter.digitsOnly,
                           ],
                           maxLength: 6,
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              fontSize: 16, color: Theme.of(context).colorScheme.primary),
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                           decoration: InputDecoration(
                             isDense: true,
                             filled: false,
                             counterText: '',
-                            contentPadding:
-                                const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                             border: const UnderlineInputBorder(),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.onSurface),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                             ),
                             disabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurface
-                                      .withOpacity(0.5)),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
                             ),
                           ),
                         ),
@@ -706,9 +650,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                     child: Image.asset(
                                       "assets/images/ic_edit.png",
                                       fit: BoxFit.scaleDown,
-                                      color: Theme.of(context).brightness == Brightness.dark
-                                          ? Colors.white
-                                          : Colors.black,
+                                      color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                                       height: 30,
                                       width: 30,
                                     ),
@@ -741,28 +683,20 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+')),
                           ],
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              fontSize: 16, color: Theme.of(context).colorScheme.primary),
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                           decoration: InputDecoration(
                             isDense: true,
                             filled: false,
-                            contentPadding:
-                                const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                             border: const UnderlineInputBorder(),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.onSurface),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                             ),
                             disabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurface
-                                      .withOpacity(0.5)),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
                             ),
                           ),
                         ),
@@ -905,10 +839,8 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                                           ),
                                                           padding: const EdgeInsets.fromLTRB(24, 10, 24, 10),
                                                           child: CustomTextView(
-                                                              textStyle: Theme.of(context)
-                                                                  .textTheme
-                                                                  .titleMedium!
-                                                                  .copyWith(color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
+                                                              textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                                                  color: Theme.of(context).extension<CustomColors>()!.chipText, fontSize: 13.0, fontWeight: FontWeight.w400),
                                                               label: sectionInterest[sectionInterest.keys.toList()[index]]![indexInterest].subActivityName),
                                                         ),
                                                         const SizedBox(
@@ -992,29 +924,21 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                           minLines: 1,
                           maxLines: 3,
                           controller: descriptionController,
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              fontSize: 16, color: Theme.of(context).colorScheme.primary),
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16, color: Theme.of(context).colorScheme.primary),
                           decoration: InputDecoration(
                             isDense: true,
                             filled: false,
                             counterText: '',
-                            contentPadding:
-                                const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                             border: const UnderlineInputBorder(),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.onSurface),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Theme.of(context).colorScheme.primary),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                             ),
                             disabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurface
-                                      .withOpacity(0.5)),
+                              borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
                             ),
                           ),
                         ),
@@ -1088,8 +1012,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                             child: GestureDetector(
                                               onTap: () {
                                                 // edit training address
-                                                Navigator.pushNamed(context, Constants.endUserTrainingAddress, arguments: endUserAddressList[index])
-                                                    .then((value) {
+                                                Navigator.pushNamed(context, Constants.endUserTrainingAddress, arguments: endUserAddressList[index]).then((value) {
                                                   if (value != null) {
                                                     bool data = value as bool;
                                                     if (data) {
@@ -1103,9 +1026,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                                 width: 25,
                                                 fit: BoxFit.fill,
                                                 height: 25,
-                                                color: Theme.of(context).brightness == Brightness.dark
-                                                    ? Colors.white
-                                                    : Colors.black,
+                                                color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                                               ),
                                             ),
                                           ),
@@ -1130,7 +1051,8 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                               CustomTextView(
                                                 label:
                                                     '${endUserAddressList[index].address1!},${endUserAddressList[index].address2!},${endUserAddressList[index].cityName!} - ${endUserAddressList[index].pinCode!}',
-                                                textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: Theme.of(context).extension<CustomColors>()!.subTitle),
+                                                textStyle:
+                                                    Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 14.0, color: Theme.of(context).extension<CustomColors>()!.subTitle),
                                                 maxLine: 2,
                                                 textOverFlow: TextOverflow.ellipsis,
                                               ),
@@ -1169,8 +1091,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                         InkWell(
                           onTap: () {
                             if (endUserProfileResponseModel.referralCode != OQDOApplication.instance.configResponseModel!.defaultRefCode) {
-                              ReferEarnIntent intent =
-                                  ReferEarnIntent(referCode: endUserProfileResponseModel.referralCode, userType: OQDOApplication.instance.userType);
+                              ReferEarnIntent intent = ReferEarnIntent(referCode: endUserProfileResponseModel.referralCode, userType: OQDOApplication.instance.userType);
                               Navigator.of(context).pushNamed(Constants.referEarnScreen, arguments: intent);
                             } else {
                               showDialog(
@@ -1242,7 +1163,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                             "Refer and Earn",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              color: Theme.of(context).extension<CustomColors>()!.white,
+                                              color: Theme.of(context).extension<CustomColors>()!.onAccentText,
                                               fontSize: 20.0, // Adjust font size as needed
                                             ),
                                           ),
@@ -1270,28 +1191,26 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                                 onTap: () {
                                   openCloseAccountDialog();
                                 },
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  color: Theme.of(context).extension<CustomColors>()!.closeAccountColor,
-                                ),
-                                child: Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(16.0),
-                                    child: Text(
-                                      "Close Account",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .onPrimary,
-                                        fontSize: 18.0,
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    color: Theme.of(context).extension<CustomColors>()!.closeAccountColor,
+                                  ),
+                                  child: Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: Text(
+                                        "Close Account",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Theme.of(context).extension<CustomColors>()!.onAccentText,
+                                          fontSize: 18.0,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
                               )
                             : Center(
                                 child: Text(
@@ -1312,8 +1231,7 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                     ? const CircularProgressIndicator()
                     : CustomTextView(
                         label: 'User not found',
-                        textStyle:
-                            Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground, fontSize: 16.0),
+                        textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onBackground, fontSize: 16.0),
                       ),
               ),
       ),
@@ -2030,10 +1948,10 @@ class LearnerProfilePageState extends State<LearnerProfilePage> {
                               isCloseAccount = true;
                             });
                           },
-                            child: Text(
-                              'Close',
-                              style: TextStyle(color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.bold, fontSize: 18),
-                            ),
+                          child: Text(
+                            'Close',
+                            style: TextStyle(color: Theme.of(context).colorScheme.onBackground, fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
                         ),
                       ],
                     ),

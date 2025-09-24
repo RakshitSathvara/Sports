@@ -209,7 +209,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     pendingAmount: Color(0xFFFFA726),
     yellowStatus: Color(0xFFFFD54F),
     filterDivider: Color(0xFF404040),
-    referEarnColor: Color(0xFF4FC3F7),
+    referEarnColor: Color(0xFF006590),
     closeAccountColor: Color(0xFFFF5252),
     chatPrimary: Color(0xFF2B5278),
     accentBlue: Color(0xFF4FC3F7),
