@@ -13,7 +13,8 @@ import 'package:oqdo_mobile_app/model/selecte_home_model.dart';
 import 'package:oqdo_mobile_app/oqdo_application.dart';
 import 'package:oqdo_mobile_app/screens/home/tools_card_view.dart';
 import 'package:oqdo_mobile_app/screens/home/widget/community_view.dart';
-import 'package:oqdo_mobile_app/screens/profile/learner_profile.dart';
+import 'package:oqdo_mobile_app/screens/setup/coach_setup/view/create_coach_setup_page.dart';
+import 'package:oqdo_mobile_app/screens/setup/facility_setup/view/create_facility_setup_page.dart';
 import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 import 'package:oqdo_mobile_app/utils/ConnectivityService.dart';
 import 'package:oqdo_mobile_app/utils/constants.dart';
@@ -128,49 +129,54 @@ class _NewHomePageState extends State<NewHomePage> with WidgetsBindingObserver {
   }
 
   Widget _promoteBusinessSection() {
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: Theme.of(context).extension<CustomColors>()!.homeScreenRewardBgColor.withAlpha(10),
-        border: Border.all(color: Theme.of(context).extension<CustomColors>()!.promoteBusinessBorderColor, width: 1),
-      ),
-      child: Row(
-        children: [
-          Image.asset(
-            'assets/images/ic_promote.png',
-            height: 36,
-            width: 36,
-          ),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                'Promote Your Business',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Inter',
-                  color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor,
+    return GestureDetector(
+      onTap: () async {
+        await Navigator.pushNamed(context, Constants.addAdsScreen);
+      },
+      child: Container(
+        width: double.infinity,
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: Theme.of(context).extension<CustomColors>()!.homeScreenRewardBgColor.withAlpha(10),
+          border: Border.all(color: Theme.of(context).extension<CustomColors>()!.promoteBusinessBorderColor, width: 1),
+        ),
+        child: Row(
+          children: [
+            Image.asset(
+              'assets/images/ic_promote.png',
+              height: 36,
+              width: 36,
+            ),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Promote Your Business',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Inter',
+                    color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                'Get your message in front of thousands of potential customers.',
-                style: TextStyle(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'Inter',
-                  color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor,
+                const SizedBox(height: 6),
+                Text(
+                  'Get your message in front of thousands of potential customers.',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'Inter',
+                    color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor,
+                  ),
                 ),
-              ),
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -210,9 +216,10 @@ class _NewHomePageState extends State<NewHomePage> with WidgetsBindingObserver {
                   'Your world of Sports, Hobbies\nand Wellness!',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 24,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                     height: 1.2,
+                    fontFamily: 'Montserrat'
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -220,8 +227,10 @@ class _NewHomePageState extends State<NewHomePage> with WidgetsBindingObserver {
                   'Book a coach or a venue, organise sporting activities & hobbies',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 14,
                     height: 1.3,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'Inter',
                   ),
                 ),
               ],
@@ -250,10 +259,10 @@ class _NewHomePageState extends State<NewHomePage> with WidgetsBindingObserver {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.white.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                      color: Colors.white.withOpacity(0.3),
+                      color: Colors.white.withOpacity(0.5),
                       width: 1,
                     ),
                   ),
@@ -262,7 +271,8 @@ class _NewHomePageState extends State<NewHomePage> with WidgetsBindingObserver {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -386,7 +396,11 @@ class _NewHomePageState extends State<NewHomePage> with WidgetsBindingObserver {
                 backgroundColor: Theme.of(context).extension<CustomColors>()!.coachToolsBg,
                 textColor: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor,
                 subtitleColor: Theme.of(context).extension<CustomColors>()!.greyText,
-                onTap: () => handleBookCoach(context),
+                onTap: () => {
+                  OQDOApplication.instance.userType == Constants.coachType
+                      ? Navigator.of(context).pushNamed(CreateCoachSetupPage.routeName)
+                      : Navigator.of(context).pushNamed(CreateFacilitySetupPage.routeName)
+                },
               ),
             ),
             const SizedBox(width: 10),
@@ -398,7 +412,11 @@ class _NewHomePageState extends State<NewHomePage> with WidgetsBindingObserver {
                 backgroundColor: Theme.of(context).extension<CustomColors>()!.coachToolsBg,
                 textColor: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor,
                 subtitleColor: Theme.of(context).extension<CustomColors>()!.greyText,
-                onTap: () => handleBookVenue(context),
+                onTap: () async {
+                  OQDOApplication.instance.userType == Constants.coachType
+                      ? await Navigator.pushNamed(context, Constants.coachAppointmentScreen, arguments: DateTime.now())
+                      : await Navigator.pushNamed(context, Constants.facilityAppointmentScreen, arguments: DateTime.now());
+                },
               ),
             ),
           ],
@@ -416,7 +434,11 @@ class _NewHomePageState extends State<NewHomePage> with WidgetsBindingObserver {
                 backgroundColor: Theme.of(context).extension<CustomColors>()!.coachToolsBg,
                 textColor: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor,
                 subtitleColor: Theme.of(context).extension<CustomColors>()!.greyText,
-                onTap: () => handleBookCoach(context),
+                onTap: () {
+                  OQDOApplication.instance.userType == Constants.coachType
+                      ? Navigator.of(context).pushNamed(Constants.coachVacationScreen)
+                      : Navigator.of(context).pushNamed(Constants.ADDFACILITYVACATIONPAGE);
+                },
               ),
             ),
             const SizedBox(width: 10),
@@ -428,7 +450,9 @@ class _NewHomePageState extends State<NewHomePage> with WidgetsBindingObserver {
                 backgroundColor: Theme.of(context).extension<CustomColors>()!.coachToolsBg,
                 textColor: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor,
                 subtitleColor: Theme.of(context).extension<CustomColors>()!.greyText,
-                onTap: () => handleBookVenue(context),
+                onTap: () async {
+                  await Navigator.pushNamedAndRemoveUntil(context, Constants.APPPAGES, Helper.of(context).predicate, arguments: 3);
+                },
               ),
             ),
           ],
