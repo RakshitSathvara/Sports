@@ -630,7 +630,10 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
 
   Future<void> sendFriendRequest(AllBuddiesModel allBuddiesModel) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       Map<String, dynamic> request = {};
@@ -689,7 +692,10 @@ class _BuddiesScreenState extends State<BuddiesScreen> {
 
   Future<void> callAcceptReject(AllBuddiesModel allBuddiesModel) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       Map<String, dynamic> request = {};

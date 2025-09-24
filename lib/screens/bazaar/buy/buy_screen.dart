@@ -16,6 +16,7 @@ import 'package:oqdo_mobile_app/utils/string_manager.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
 import 'package:oqdo_mobile_app/screens/bazaar/sell/models/equipment_category_response_model.dart' as sell_models;
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class BuyScreen extends StatefulWidget {
   const BuyScreen({super.key});
@@ -339,7 +340,10 @@ class _BuyScreenState extends State<BuyScreen> {
   Future<void> addRemoveFromFavorite(EquipmentData equipment) async {
     try {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       await _progressDialog.show();
 
       await Provider.of<SellViewmodel>(context, listen: false).addRemoveFromFavorite(equipment.equipmentId.toString()).then((value) async {

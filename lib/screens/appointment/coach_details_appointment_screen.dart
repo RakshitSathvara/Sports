@@ -505,7 +505,10 @@ class _CoachDetailAppointmentScreenState extends State<CoachDetailAppointmentScr
 
   Future<void> getFacilityAppointmentDetails() async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       model.CoachAppointmentDetailResponseModel facilityAppointmentDetailModel =

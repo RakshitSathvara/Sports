@@ -768,7 +768,10 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
 
   Future<void> get21DaysFacilitySlots(int? facilitySetupId, String convertDateTimeToString, String passingLastDate) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       List<Get21DaysSlotResponseModel> list =
@@ -881,7 +884,10 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
 
   Future<void> freezeFacilityBookingCall(SlotListModel slotList) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     Map<String, dynamic> request = {};
     request['EndUserId'] = OQDOApplication.instance.endUserID.toString();
     request['FacilitySetupDetailId'] = _calendarViewModel.getFacilityByIdModel!.facilitySetupDetailId.toString();
@@ -1256,7 +1262,10 @@ class _SlotSelectionScreenState extends State<SlotSelectionScreen> {
   /// and returns a Future that completes when all slots have been unfrozen.
   Future<void> unFreezeAllSelectedSlot() async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       if (unFreezeCountList.isNotEmpty) {
         await _progressDialog.show();

@@ -248,7 +248,10 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
 
   void getCoachBatchList() async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     if (_progressDialog.isShowing()) {
       await _progressDialog.hide();
     }
@@ -290,7 +293,10 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
   Future<void> getCoachBatchBySetupId(int batchID) async {
     try {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       await _progressDialog.show();
       GetCoachBySetupIdModel getCoachBySetupIdModel = await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getBatchByID(batchID);
       await _progressDialog.hide();
@@ -358,7 +364,10 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
 
   Future<void> deleteBatchSetup(Datum selectedBatchModel) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     Map deleteSetupMap = {};
     deleteSetupMap['CoachBatchSetupId'] = selectedBatchModel.coachBatchSetupId;
     deleteSetupMap['CoachId'] = OQDOApplication.instance.coachID;
@@ -408,7 +417,10 @@ class BatchSetupListPageState extends State<BatchSetupListPage> {
   Future<void> getCoachBatchDetailsById(int? coachBatchSetupId) async {
     try {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       await _progressDialog.show();
       CoachDetailsResponseModel coachDetailsResponseModel = await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getCoachDetailsById(coachBatchSetupId!);
       await _progressDialog.hide();

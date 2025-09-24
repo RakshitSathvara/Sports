@@ -465,7 +465,10 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
   Future<void> getCoachDetailsById(int coachBatchId) async {
     try {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       await _progressDialog.show();
       await Provider.of<BookingViewModel>(context, listen: false).getCoachDetailsById(coachBatchId).then((value) async {
         Response res = value;
@@ -529,7 +532,10 @@ class _CoachFavoritesListPageState extends State<CoachFavoritesListPage> {
   Future<void> addRemoveFromFavorite(CoachBatchData coachesModel) async {
     try {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       await _progressDialog.show();
 
       Map<String, dynamic> request = {"SetupId": coachesModel.coachBatchSetupId.toString(), "Flag": 'C'};

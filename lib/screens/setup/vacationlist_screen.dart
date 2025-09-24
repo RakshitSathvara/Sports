@@ -236,7 +236,10 @@ class _VacationListScreenState extends State<VacationListScreen> {
 
   Future<void> getFacilityVacationCall() async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       List<FacilityVacationResponseModel> response =
@@ -294,7 +297,10 @@ class _VacationListScreenState extends State<VacationListScreen> {
 
   Future<void> deleteVacation(int? vacationId) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       Map<String, dynamic> request = {};

@@ -14,6 +14,7 @@ import 'package:oqdo_mobile_app/utils/network_interceptor.dart';
 import 'package:oqdo_mobile_app/utils/string_manager.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class SellScreen extends StatefulWidget {
   const SellScreen({super.key});
@@ -41,7 +42,10 @@ class _SellScreenState extends State<SellScreen> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _progressDialog = ProgressDialog(context,
           type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       getSellEquipments(isInitial: true);
     });
   }

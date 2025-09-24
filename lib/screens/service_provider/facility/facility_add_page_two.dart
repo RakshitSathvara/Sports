@@ -31,6 +31,7 @@ import '../../../model/common_passing_args.dart';
 import '../../../model/get_all_activity_and_sub_activity_response.dart';
 import '../../../model/upload_file_response.dart';
 import '../../../viewmodels/end_user_resgistration_view_model.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class FacilityAddPageTwo extends StatefulWidget {
   final CommonPassingArgs commonPassingArgs;
@@ -110,7 +111,10 @@ class _FacilityAddPageTwoState extends State<FacilityAddPageTwo> {
     // comment.add(TextEditingController());
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait...");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       getAllActivity();
       getPrefData();
       _focusNode.addListener(_onFocusChange);

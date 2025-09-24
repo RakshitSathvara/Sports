@@ -18,6 +18,7 @@ import 'package:oqdo_mobile_app/utils/validator.dart';
 import 'package:oqdo_mobile_app/viewmodels/service_provider_setup_viewmodel.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class CoachVacationScreen extends StatefulWidget {
   const CoachVacationScreen({Key? key}) : super(key: key);
@@ -488,7 +489,10 @@ class _CoachVacationScreenState extends State<CoachVacationScreen> {
 
   Future<void> getCancelReasons() async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       List<CancelReasonListResponseModel> list = await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getCancelReasonList();
@@ -534,7 +538,10 @@ class _CoachVacationScreenState extends State<CoachVacationScreen> {
   void getCoachBatchList() async {
     try {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       await _progressDialog.show();
       GetCoachBatchModel facilityListResponseModel =
           await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getCoachBatchList(OQDOApplication.instance.coachID!);

@@ -21,6 +21,7 @@ import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
 
 import '../../helper/helpers.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({Key? key}) : super(key: key);
@@ -57,7 +58,10 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
     hp = Helper.of(context);
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait...");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     });
   }
 
