@@ -478,7 +478,10 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
 
   Future<void> getEndUserAppointments(DateTime passingDate) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       List<EndUserAppointmentsResponseModel> endUserAppointmentList = await Provider.of<AppointmentViewModel>(context, listen: false)
@@ -1401,7 +1404,10 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
 
   Future<void> getAppointmentDetails(int bookingId, int? setupDaySlotMapId) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       model.CoachAppointmentDetailResponseModel facilityAppointmentDetailModel =
@@ -1494,7 +1500,10 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
 
   Future<void> getFacilityAppointmentDetails(int? bookingId, int? setupDaySlotMapId) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       FacilityAppointmentDetailModel facilityAppointmentDetailModel =
@@ -1548,7 +1557,10 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
 
   Future<void> facilityCancelRequest(FacilityAppointmentDetailModel? facilityAppointmentDetailModel, int? setupDaySlotMapId) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       Map<String, dynamic> request = {};
@@ -1607,7 +1619,10 @@ class _EndUserAppointmentsScreenState extends State<EndUserAppointmentsScreen> {
 
   Future<void> coachCancelRequest(model.CoachAppointmentDetailResponseModel coachAppointmentDetailResponseModel, int? setupDaySlotMapId) async {
     _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-    _progressDialog.style(message: "Please wait..");
+    _progressDialog.style(
+            message: "Please wait..",
+            backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+            messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     try {
       await _progressDialog.show();
       Map<String, dynamic> request = {};

@@ -29,6 +29,7 @@ import '../../../oqdo_application.dart';
 import '../../../utils/string_manager.dart';
 import '../../../utils/validator.dart';
 import '../../../viewmodels/end_user_resgistration_view_model.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class FacilityAddPageOne extends StatefulWidget {
   final CommonPassingArgs commonPassingArgs;
@@ -88,7 +89,10 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
     mobile.add(TextEditingController());
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       // getAllCity();
       // facilityName.text = _commonPassingArgs.facilityName!;
       getShredPrefValues();
@@ -873,7 +877,10 @@ class _FacilityAddPageOneState extends State<FacilityAddPageOne> {
         showSnackBar('6 digit postal code is required', context);
       } else {
         _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-        _progressDialog.style(message: "Please wait..");
+        _progressDialog.style(
+                message: "Please wait..",
+                backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+                messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
         await _progressDialog.show();
         // final bytes = File(croppedFile!.path).readAsBytesSync();
         // String convertedBytes = base64Encode(bytes);

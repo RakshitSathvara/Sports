@@ -18,6 +18,7 @@ import 'package:oqdo_mobile_app/utils/validator.dart';
 import 'package:oqdo_mobile_app/viewmodels/login_view_model.dart';
 import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:provider/provider.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -46,7 +47,10 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     });
   }
 

@@ -30,6 +30,7 @@ import '../../../theme/oqdo_theme_data.dart';
 import '../../../utils/string_manager.dart';
 import '../../../utils/validator.dart';
 import '../../../viewmodels/end_user_resgistration_view_model.dart';
+import 'package:oqdo_mobile_app/theme/custom_colors.dart';
 
 class CoachAddPageOne extends StatefulWidget {
   final CommonPassingArgs commonPassingArgs;
@@ -78,7 +79,10 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
     hp = Helper.of(context);
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       // getAllCity();
       getPrefValue();
     });
@@ -637,7 +641,10 @@ class CoachAddPageOneState extends State<CoachAddPageOne> {
           showSnackBar('4 digit IC Number is required', context);
         } else {
           _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-          _progressDialog.style(message: "Please wait..");
+          _progressDialog.style(
+                  message: "Please wait..",
+                  backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+                  messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
           // final bytes = File(croppedFile!.path).readAsBytesSync();
           // String convertedBytes = base64Encode(bytes);
           // debugPrint(convertedBytes);

@@ -260,7 +260,10 @@ class FacilitySetupPageState extends State<FacilitySetupPage> {
     try {
       if (showLoader) {
         _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-        _progressDialog.style(message: "Please wait..");
+        _progressDialog.style(
+                message: "Please wait..",
+                backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+                messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
         _progressDialog.show();
       }
       FacilityListResponseModel facilityListResponseModel =
@@ -315,7 +318,10 @@ class FacilitySetupPageState extends State<FacilitySetupPage> {
   Future<void> deleteFacilitySetupCall(Data facilitySetupList) async {
     try {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       await _progressDialog.show();
       Map deleteFacilitySetupRequestMap = {};
       deleteFacilitySetupRequestMap['FacilitySetupId'] = facilitySetupList.facilitySetupId!.toString();
@@ -362,7 +368,10 @@ class FacilitySetupPageState extends State<FacilitySetupPage> {
   Future<void> callGetSetupById(int? facilitySetupId) async {
     try {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       await _progressDialog.show();
       GetFacilityByIdModel getFacilityByIdModel = await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getFacilityById(facilitySetupId!);
       await _progressDialog.hide();
@@ -406,7 +415,10 @@ class FacilitySetupPageState extends State<FacilitySetupPage> {
   Future<void> getFacilityDetailsById(int? facilityId) async {
     try {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait..");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       await _progressDialog.show();
       GetFacilityByIdModel getFacilityByIdModel = await Provider.of<ServiceProviderSetupViewModel>(context, listen: false).getFacilityById(facilityId!);
       await _progressDialog.hide();

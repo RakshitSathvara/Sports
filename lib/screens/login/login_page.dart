@@ -59,9 +59,9 @@ class _LoginPageState extends State<LoginPage> {
         isDismissible: false,
       );
       _progressDialog.style(
-        message: "Please wait..",
-        backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
-      );
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
     });
     getToken();
   }

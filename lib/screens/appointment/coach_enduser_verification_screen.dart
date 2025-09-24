@@ -36,7 +36,10 @@ class _CoachEndUserVerificationScreenState extends State<CoachEndUserVerificatio
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _progressDialog = ProgressDialog(context, type: ProgressDialogType.normal, isDismissible: false);
-      _progressDialog.style(message: "Please wait...");
+      _progressDialog.style(
+              message: "Please wait..",
+              backgroundColor: Theme.of(context).extension<CustomColors>()!.progressDialogBackgroundColor,
+              messageTextStyle: TextStyle(color: Theme.of(context).extension<CustomColors>()!.blackAndWhiteColor, fontFamily: 'Inter', fontWeight: FontWeight.bold, fontSize: 18));
       for (var i = 0; i < widget.cancelCoachAppointmentModel!.bookingSlotList!.length; i++) {
         if (widget.cancelCoachAppointmentModel!.bookingSlotList![i].isSlotSelected!) {
           setState(() {
